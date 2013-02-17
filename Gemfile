@@ -3,6 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
+gem "activesupport", ">=3.2.12"
 gem "httparty", "~>0.10.2"
 
 # Add dependencies to develop your gem here.
@@ -10,9 +11,11 @@ gem "httparty", "~>0.10.2"
 group :development do
   gem "rspec"
   gem "rr"
+  gem "webmock"
   gem "vcr"
   gem "rdoc"
   gem "bundler"
   gem "jeweler"
   gem "simplecov"
+  gem "awesome_print"
 end
