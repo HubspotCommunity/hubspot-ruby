@@ -25,8 +25,6 @@ Jeweler::Tasks.new do |gem|
   gem.version = Hubspot::Version::STRING
 
   # dependencies defined in Gemfile
-  gem.add_dependency "activesupport", ">=3.0.0"
-  gem.add_dependency "httparty", ">=0.10.0"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
