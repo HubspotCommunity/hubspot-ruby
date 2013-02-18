@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
-    "VERSION",
+    "hubspot-ruby.gemspec",
     "lib/hubspot-ruby.rb",
     "lib/hubspot/config.rb",
     "lib/hubspot/contact.rb",
