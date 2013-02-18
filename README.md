@@ -1,10 +1,10 @@
-= HubSpot REST API wrappers for ruby
+# HubSpot REST API wrappers for ruby
 
 Wraps the HubSpot REST API for convenient access from ruby applications.
 
 Documentation for the HubSpot REST API can be found here: https://developers.hubspot.com/docs/endpoints
 
-== Setup
+## Setup
 
     gem install hubspot-ruby
 
@@ -19,15 +19,15 @@ initializer:
 
 If you're have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
 
-=== Note about authentication
+### Note about authentication
 
 For now, this library only supports authentication with a HubSpot API key (aka "hapikey"). OAuth is not yet supported.
 
-== Usage
+## Usage
 
 Not much is supported yet, but that will change. Here's what you can do for now:
 
-=== Find a contact
+### Find a contact
 
 These methods will return a `Hubspot::Contact` object if successful, `nil` otherwise:
 
@@ -36,7 +36,7 @@ Hubspot::Contact.find_by_email("email@address.com")
 Hubspot::Contact.find_by_id(12345) # Pass the contact VID
 ```
 
-=== Update a contact
+### Update a contact
 
 Given an instance of `Hubspot::Contact`, update its attributes with:
 
@@ -44,7 +44,7 @@ Given an instance of `Hubspot::Contact`, update its attributes with:
 contact.update!({firstname: "First", lastname: "Last"})
 ```
 
-== Contributing to hubspot-ruby
+## Contributing to hubspot-ruby
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -54,7 +54,7 @@ contact.update!({firstname: "First", lastname: "Last"})
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-=== Testing
+### Testing
 
 All tests can be run with `rake spec`. Isolate fast-running tests with `rake spec:quick`.
 
@@ -64,11 +64,11 @@ order to disable VCR.
 
 "Live" tests can be isolated with `rake spec:live`.
 
-== Disclaimer
+## Disclaimer
 
 This project and the code therein was not created by and is not supported by HubSpot, Inc or any of its affiliates.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2013 Omada Health Inc. See LICENSE.txt for further details.
 
