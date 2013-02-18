@@ -46,10 +46,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (>= 3.2.12)
+  activesupport (>= 3.0.0)
   awesome_print
   bundler
-  httparty (~> 0.10.2)
+  httparty (>= 0.10.0)
   jeweler
   rdoc
   rr

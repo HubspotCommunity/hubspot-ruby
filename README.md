@@ -10,12 +10,16 @@ Documentation for the HubSpot REST API can be found here: https://developers.hub
 
 Or with bundler,
 
-    gem "hubspot-ruby"
+```ruby
+gem "hubspot-ruby"
+```
 
 Before using the library, you must initialize it with your HubSpot API key. If you're using Rails, put this code in an
 initializer:
 
-    Hubspot.configure(hapikey: "YOUR_API_KEY")
+```ruby
+Hubspot.configure(hapikey: "YOUR_API_KEY")
+```
 
 If you're have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
 

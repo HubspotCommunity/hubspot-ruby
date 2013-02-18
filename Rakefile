@@ -12,16 +12,21 @@ end
 require 'rake'
 
 require 'jeweler'
+require './lib/hubspot/version.rb'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "hubspot-ruby"
-  gem.homepage = "http://github.com/andrewdimichele/hubspot-ruby"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "backflip@gmail.com"
+  gem.homepage = "http://github.com/omadahealth/hubspot-ruby"
+  #gem.license = "MIT"
+  gem.summary = %Q{hubspot-ruby is a wrapper for the HubSpot REST API}
+  gem.description = %Q{hubspot-ruby is a wrapper for the HubSpot REST API}
+  gem.email = "andrew@omadahealth.com"
   gem.authors = ["Andrew DiMichele"]
+  gem.version = Hubspot::Version::STRING
+
   # dependencies defined in Gemfile
+  gem.add_dependency "activesupport", ">=3.0.0"
+  gem.add_dependency "httparty", ">=0.10.0"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
