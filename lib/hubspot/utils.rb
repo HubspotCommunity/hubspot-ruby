@@ -1,14 +1,20 @@
 module Hubspot
   class ConfigurationError < StandardError; end
   class MissingInterpolation < StandardError; end
+  class RequestError < StandardError; end
 
   class Utils
     class << self
       # Parses the hubspot properties format into a key-value hash
-      def parse_properties(props)
+      def properties_to_hash(props)
         newprops = {}
         props.each{ |k,v| newprops[k] = v["value"] }
         newprops
+      end
+
+      # Turns a hash into the hubspot properties format
+      def hash_to_properties(hash)
+        hash.map{ |k,v| {"property" => k.to_s, "value" => v}}
       end
 
       # Generate the API URL for the request

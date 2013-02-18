@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Mon, 18 Feb 2013 00:27:11 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Content-Length:
+      - '4857'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"vid":82325,"canonical-vid":82325,"portal-id":62515,"profile-token":"AO_T-mOEnUzEVVZQVj3XwZCiE87gPcrjLaNbtQmsuVg5c7YUx7BIfMF48rHWdEvZSEpbpX-V7Qz46i0z1hk7KQyH41DJZLQPB2F-aH8qrG1EW-mIZxHl-QmK9Ffo4ILZrKoOwwr3qqZw","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mOEnUzEVVZQVj3XwZCiE87gPcrjLaNbtQmsuVg5c7YUx7BIfMF48rHWdEvZSEpbpX-V7Qz46i0z1hk7KQyH41DJZLQPB2F-aH8qrG1EW-mIZxHl-QmK9Ffo4ILZrKoOwwr3qqZw/","properties":{"hs_analytics_num_visits":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_last_referrer":{"value":"","versions":[{"value":"","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_social_linkedin_clicks":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_last_url":{"value":"","versions":[{"value":"","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_social_last_engagement":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_social_num_broadcast_clicks":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1348916431004,"selected":false}]},"hs_social_facebook_clicks":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"createdate":{"value":"1345062449327","versions":[{"value":"1345062449327","source-type":"API","source-id":null,"source-label":null,"timestamp":1345062449002,"selected":false}]},"lastname":{"value":"Cunningham","versions":[{"value":"Cunningham","source-type":"API","source-id":null,"source-label":null,"timestamp":1361146313002,"selected":false}]},"hs_social_twitter_clicks":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"firstname":{"value":"Steve","versions":[{"value":"Steve","source-type":"API","source-id":null,"source-label":null,"timestamp":1361146313002,"selected":false}]},"hs_analytics_first_url":{"value":"","versions":[{"value":"","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_source":{"value":"OFFLINE","versions":[{"value":"OFFLINE","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_first_referrer":{"value":"","versions":[{"value":"","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_num_event_completions":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1348916431004,"selected":false}]},"hs_social_google_plus_clicks":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1348916431004,"selected":false}]},"email":{"value":"testingapis@hubspot.com","versions":[{"value":"testingapis@hubspot.com","source-type":"CONTACTS_WEB","source-id":"dadams@hubspot.com","source-label":null,"timestamp":1345062449008,"selected":false}]},"hs_analytics_last_timestamp":{"value":"1345062449327","versions":[{"value":"1345062449327","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_num_page_views":{"value":"0","versions":[{"value":"0","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_first_timestamp":{"value":"1345062449327","versions":[{"value":"1345062449327","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_source_data_2":{"value":"","versions":[{"value":"","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_source_data_1":{"value":"","versions":[{"value":"","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1345067864004,"selected":false}]},"hs_analytics_last_visit_timestamp":{"value":"1345062449327","versions":[{"value":"1345062449327","source-type":"ANALYTICS","source-id":null,"source-label":null,"timestamp":1348916431004,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":82325,"identities":[{"type":"EMAIL","value":"testingapis@hubspot.com","timestamp":1345062449327},{"type":"LEAD_GUID","value":"c0da5c41-f289-4642-910c-9aa2b0fba245","timestamp":1345062449333}]}]}'
+    http_version: 
+  recorded_at: Mon, 18 Feb 2013 00:27:11 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/email/notacontact@test.com/profile?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Mon, 18 Feb 2013 00:27:11 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Content-Length:
+      - '95'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"status":"error","message":"resource not found","guid":"c1ff8266-2bff-4278-9717-d4db2ea429cc"}'
+    http_version: 
+  recorded_at: Mon, 18 Feb 2013 00:27:11 GMT
+recorded_with: VCR 2.4.0

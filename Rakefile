@@ -27,13 +27,18 @@ Jeweler::RubygemsDotOrgTasks.new
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
+
+namespace :spec do
+  RSpec::Core::RakeTask.new(:quick) do |spec|
+    spec.pattern = FileList['spec/**/*_spec.rb'].select{ |s| !s.match("/live/") }
+  end
+  RSpec::Core::RakeTask.new(:live) do |spec|
+    spec.pattern = FileList['spec/live/*_spec.rb']
+  end
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
 task :default => :spec

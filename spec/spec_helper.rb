@@ -29,4 +29,12 @@ RSpec.configure do |config|
   config.after(:each) do
     Hubspot::Config.reset!
   end
+
+  config.around(:each, live: true) do |example|
+    VCR.turn_off!
+    WebMock.disable!
+    example.run
+    WebMock.enable!
+    VCR.turn_on!
+  end
 end
