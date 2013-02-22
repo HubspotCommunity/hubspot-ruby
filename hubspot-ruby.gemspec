@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew DiMichele"]
-  s.date = "2013-02-18"
+  s.date = "2013-02-22"
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
   s.email = "andrew@omadahealth.com"
   s.extra_rdoc_files = [
@@ -28,12 +28,17 @@ Gem::Specification.new do |s|
     "lib/hubspot-ruby.rb",
     "lib/hubspot/config.rb",
     "lib/hubspot/contact.rb",
+    "lib/hubspot/exceptions.rb",
     "lib/hubspot/utils.rb",
     "lib/hubspot/version.rb",
-    "spec/fixtures/vcr_cassettes/example_contact.yml",
-    "spec/fixtures/vcr_cassettes/find_contact_by_email.yml",
-    "spec/fixtures/vcr_cassettes/find_contact_by_id.yml",
-    "spec/fixtures/vcr_cassettes/update_contact.yml",
+    "spec/fixtures/vcr_cassettes/contact_create.yml",
+    "spec/fixtures/vcr_cassettes/contact_create_existing_email.yml",
+    "spec/fixtures/vcr_cassettes/contact_create_invalid_email.yml",
+    "spec/fixtures/vcr_cassettes/contact_create_with_params.yml",
+    "spec/fixtures/vcr_cassettes/contact_example.yml",
+    "spec/fixtures/vcr_cassettes/contact_find_by_email.yml",
+    "spec/fixtures/vcr_cassettes/contact_find_by_id.yml",
+    "spec/fixtures/vcr_cassettes/contact_update.yml",
     "spec/lib/hubspot-ruby_spec.rb",
     "spec/lib/hubspot/config_spec.rb",
     "spec/lib/hubspot/contact_spec.rb",
@@ -61,8 +66,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<awesome_print>, [">= 0"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<httparty>, [">= 0.10.0"])
     else
       s.add_dependency(%q<activesupport>, [">= 3.0.0"])
       s.add_dependency(%q<httparty>, [">= 0.10.0"])
@@ -75,8 +78,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<awesome_print>, [">= 0"])
-      s.add_dependency(%q<activesupport>, [">= 3.0.0"])
-      s.add_dependency(%q<httparty>, [">= 0.10.0"])
     end
   else
     s.add_dependency(%q<activesupport>, [">= 3.0.0"])
@@ -90,8 +91,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<awesome_print>, [">= 0"])
-    s.add_dependency(%q<activesupport>, [">= 3.0.0"])
-    s.add_dependency(%q<httparty>, [">= 0.10.0"])
   end
 end
 
