@@ -8,18 +8,25 @@ module Hubspot
   # {https://developers.hubspot.com/docs/endpoints#contacts-api}
   #
   class Contact
+    CREATE_CONTACT_PATH = "/contacts/v1/contact"
     GET_CONTACT_BY_EMAIL_PATH = "/contacts/v1/contact/email/:contact_email/profile"
     GET_CONTACT_BY_ID_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
     UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
 
     class << self
-      # TODO: Creates a new contact
+      # Creates a new contact
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
       # @param email [Hash] unique email of the new contact
       # @param params [Hash] hash of properties to set on the contact
       # @return [Hubspot::Contact] the newly created contact
       def create!(email, params={})
-        raise NotImplementedError
+        params_with_email = params.stringify_keys.merge("email" => email)
+        url = Hubspot::Utils.generate_url(CREATE_CONTACT_PATH)
+        post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_email)}
+        resp = HTTParty.post(url, body: post_data.to_json, format: :json)
+        raise(Hubspot::ContactExistsError.new(resp, "Contact already exists with email: #{email}")) if resp.code == 409
+        raise(Hubspot::RequestError.new(resp, "Cannot create contact with email: #{email}")) unless resp.success?
+        Hubspot::Contact.new(resp.parsed_response)
       end
 
       # Finds a contact by email
@@ -28,7 +35,7 @@ module Hubspot
       # @return [Hubspot::Contact, nil] the contact found or nil
       def find_by_email(email)
         url = Hubspot::Utils.generate_url(GET_CONTACT_BY_EMAIL_PATH, {contact_email: email})
-        resp = HTTParty.get(url)
+        resp = HTTParty.get(url, format: :json)
         if resp.code == 200
           Hubspot::Contact.new(resp.parsed_response)
         else
@@ -41,7 +48,7 @@ module Hubspot
       # @return [Hubspot::Contact, nil] the contact found or nil
       def find_by_id(vid)
         url = Hubspot::Utils.generate_url(GET_CONTACT_BY_ID_PATH, {contact_id: vid})
-        resp = HTTParty.get(url)
+        resp = HTTParty.get(url, format: :json)
         if resp.code == 200
           Hubspot::Contact.new(resp.parsed_response)
         else
@@ -114,8 +121,8 @@ module Hubspot
       params.stringify_keys!
       url = Hubspot::Utils.generate_url(UPDATE_CONTACT_PATH, {contact_id: vid})
       query = {"properties" => Hubspot::Utils.hash_to_properties(params)}
-      resp = HTTParty.post(url, body: query.to_json)
-      raise(Hubspot::RequestError.new(resp.response)) unless resp.success?
+      resp = HTTParty.post(url, body: query.to_json, format: :json)
+      raise(Hubspot::RequestError.new(resp)) unless resp.success?
       @properties.merge!(params)
       self
     end

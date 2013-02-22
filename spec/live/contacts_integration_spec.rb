@@ -12,4 +12,6 @@ describe "Contacts API Live test", live: true do
     contact["firstname"].should == "Clint"
     contact["lastname"].should == "Eastwood"
   end
+
+  pending "creates and destroys a contact"
 end

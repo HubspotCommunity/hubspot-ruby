@@ -1,8 +1,4 @@
 module Hubspot
-  class ConfigurationError < StandardError; end
-  class MissingInterpolation < StandardError; end
-  class RequestError < StandardError; end
-
   class Utils
     class << self
       # Parses the hubspot properties format into a key-value hash
@@ -26,17 +22,18 @@ module Hubspot
       #
       def generate_url(path, params={})
         raise Hubspot::ConfigurationError.new("'hapikey' not configured") unless Hubspot::Config.hapikey
+        path = path.clone
+        params = params.clone
         params["hapikey"] = Hubspot::Config.hapikey
-        ipath = path.clone
         params.each do |k,v|
-          if ipath.match(":#{k}")
-            ipath.gsub!(":#{k}",v.to_s)
+          if path.match(":#{k}")
+            path.gsub!(":#{k}",v.to_s)
             params.delete(k)
           end
         end
-        raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if ipath =~ /:/
+        raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
         query = params.map{ |k,v| "#{k}=#{v}" }.join("&")
-        Hubspot::Config.base_url + ipath + "?" + query
+        Hubspot::Config.base_url + path + "?" + query
       end
     end
   end

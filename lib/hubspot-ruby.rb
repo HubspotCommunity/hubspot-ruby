@@ -1,5 +1,6 @@
 require 'active_support/core_ext'
 require 'httparty'
+require 'hubspot/exceptions'
 require 'hubspot/config'
 require 'hubspot/contact'
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Hubspot::Contact do
   let(:example_contact_hash) do
-    VCR.use_cassette("example_contact", record: :none) do
+    VCR.use_cassette("contact_example", record: :none) do
       HTTParty.get("https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo").parsed_response
     end
   end
@@ -13,14 +13,49 @@ describe Hubspot::Contact do
     subject{ Hubspot::Contact.new(example_contact_hash) }
     it{ should be_an_instance_of Hubspot::Contact }
     its(["email"]){ should == "testingapis@hubspot.com" }
-    its(["firstname"]){ should == "Test" }
-    its(["lastname"]){ should == "Contact" }
-    its(["phone"]){ should == "555-555-2262" }
+    its(["firstname"]){ should == "Clint" }
+    its(["lastname"]){ should == "Eastwood" }
+    its(["phone"]){ should == "555-555-5432" }
     its(:vid){ should == 82325 }
   end
 
+  describe ".create!" do
+    let(:cassette){ "contact_create" }
+    before{ VCR.insert_cassette(cassette, record: :new_episodes) }
+    after{ VCR.eject_cassette }
+    let(:params){{}}
+    subject{ Hubspot::Contact.create!(email, params) }
+    context "with a new email" do
+      let(:email){ "newcontact#{Time.now.to_i}@hsgem.com" }
+      it{ should be_an_instance_of Hubspot::Contact }
+      its(:email){ should match /newcontact.*@hsgem.com/ } # Due to VCR the email may not match exactly
+
+      context "and some params" do
+        let(:cassette){ "contact_create_with_params" }
+        let(:email){ "newcontact_x_#{Time.now.to_i}@hsgem.com" }
+        let(:params){ {firstname: "Hugh", lastname: "Jackman" } }
+        its(["firstname"]){ should == "Hugh"}
+        its(["lastname"]){ should == "Jackman"}
+      end
+    end
+    context "with an existing email" do
+      let(:cassette){ "contact_create_existing_email" }
+      let(:email){ "testingapis@hubspot.com" }
+      it "raises a ContactExistsError" do
+        expect{ subject }.to raise_error Hubspot::ContactExistsError
+      end
+    end
+    context "with an invalid email" do
+      let(:cassette){ "contact_create_invalid_email" }
+      let(:email){ "not_an_email" }
+      it "raises a RequestError" do
+        expect{ subject }.to raise_error Hubspot::RequestError
+      end
+    end
+  end
+
   describe ".find_by_email" do
-    before{ VCR.insert_cassette("find_contact_by_email", record: :new_episodes) }
+    before{ VCR.insert_cassette("contact_find_by_email", record: :new_episodes) }
     after{ VCR.eject_cassette }
     subject{ Hubspot::Contact.find_by_email(email) }
 
@@ -37,7 +72,7 @@ describe Hubspot::Contact do
   end
 
   describe ".find_by_id" do
-    before{ VCR.insert_cassette("find_contact_by_id", record: :new_episodes) }
+    before{ VCR.insert_cassette("contact_find_by_id", record: :new_episodes) }
     after{ VCR.eject_cassette }
     subject{ Hubspot::Contact.find_by_id(vid) }
 
@@ -54,7 +89,7 @@ describe Hubspot::Contact do
   end
 
   describe "#update!" do
-    before{ VCR.insert_cassette("update_contact", record: :new_episodes) }
+    before{ VCR.insert_cassette("contact_update", record: :new_episodes) }
     after{ VCR.eject_cassette }
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }
     let(:params){ {firstname: "Steve", lastname: "Cunningham"} }

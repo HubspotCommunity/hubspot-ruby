@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ! '{"properties":[{"property":"email","value":"not_an_email"}]}'
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Fri, 22 Feb 2013 20:28:36 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Content-Length:
+      - '177'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"status":"error","message":"Invalid value for type in identity:
+        value: \"not_an_email\"\ntype: EMAIL\ntimestamp: 1361564916579\n","guid":"74dee415-f9fd-4525-83e6-436df7c2aa56"}'
+    http_version: 
+  recorded_at: Fri, 22 Feb 2013 20:28:36 GMT
+recorded_with: VCR 2.4.0

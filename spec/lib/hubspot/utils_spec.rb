@@ -33,9 +33,13 @@ describe Hubspot::Utils do
 
   describe ".generate_url" do
     let(:path){ "/test/:email/profile" }
-    let(:params){{}}
+    let(:params){{email: "test"}}
     subject{ Hubspot::Utils.generate_url(path, params) }
     before{ Hubspot.configure(hapikey: "demo") }
+
+    it "doesn't modify params" do
+      expect{ subject }.to_not change{params}
+    end
 
     context "when configure hasn't been called" do
       before{ Hubspot::Config.reset! }
@@ -45,6 +49,7 @@ describe Hubspot::Utils do
     end
 
     context "with interpolations but no params" do
+      let(:params){{}}
       it "raises an interpolation exception" do
         expect{ subject }.to raise_error Hubspot::MissingInterpolation
       end
