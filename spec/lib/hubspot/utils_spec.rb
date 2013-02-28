@@ -34,11 +34,18 @@ describe Hubspot::Utils do
   describe ".generate_url" do
     let(:path){ "/test/:email/profile" }
     let(:params){{email: "test"}}
-    subject{ Hubspot::Utils.generate_url(path, params) }
-    before{ Hubspot.configure(hapikey: "demo") }
+    let(:options){{}}
+    subject{ Hubspot::Utils.generate_url(path, params, options) }
+    before{ Hubspot.configure(hapikey: "demo", portal_id: "62515") }
 
     it "doesn't modify params" do
       expect{ subject }.to_not change{params}
+    end
+
+    context "with a portal_id param" do
+      let(:path){ "/test/:portal_id/profile" }
+      let(:params){{}}
+      it{ should == "https://api.hubapi.com/test/62515/profile?hapikey=demo" }
     end
 
     context "when configure hasn't been called" do
@@ -69,6 +76,12 @@ describe Hubspot::Utils do
     context "with query params" do
       let(:params){{email: "email@address.com", id: 1234}}
       it{ should == "https://api.hubapi.com/test/email@address.com/profile?id=1234&hapikey=demo" }
+    end
+
+    context "with options" do
+
+      let(:options){ {base_url: "https://cool.com", hapikey: false} }
+      it{ should == "https://cool.com/test/test/profile"}
     end
   end
 end

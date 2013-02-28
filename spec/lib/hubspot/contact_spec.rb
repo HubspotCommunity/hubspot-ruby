@@ -20,9 +20,7 @@ describe Hubspot::Contact do
   end
 
   describe ".create!" do
-    let(:cassette){ "contact_create" }
-    before{ VCR.insert_cassette(cassette, record: :new_episodes) }
-    after{ VCR.eject_cassette }
+    cassette "contact_create"
     let(:params){{}}
     subject{ Hubspot::Contact.create!(email, params) }
     context "with a new email" do
@@ -31,7 +29,7 @@ describe Hubspot::Contact do
       its(:email){ should match /newcontact.*@hsgem.com/ } # Due to VCR the email may not match exactly
 
       context "and some params" do
-        let(:cassette){ "contact_create_with_params" }
+        cassette "contact_create_with_params"
         let(:email){ "newcontact_x_#{Time.now.to_i}@hsgem.com" }
         let(:params){ {firstname: "Hugh", lastname: "Jackman" } }
         its(["firstname"]){ should == "Hugh"}
@@ -39,14 +37,14 @@ describe Hubspot::Contact do
       end
     end
     context "with an existing email" do
-      let(:cassette){ "contact_create_existing_email" }
+      cassette "contact_create_existing_email"
       let(:email){ "testingapis@hubspot.com" }
       it "raises a ContactExistsError" do
         expect{ subject }.to raise_error Hubspot::ContactExistsError
       end
     end
     context "with an invalid email" do
-      let(:cassette){ "contact_create_invalid_email" }
+      cassette "contact_create_invalid_email"
       let(:email){ "not_an_email" }
       it "raises a RequestError" do
         expect{ subject }.to raise_error Hubspot::RequestError
@@ -55,8 +53,7 @@ describe Hubspot::Contact do
   end
 
   describe ".find_by_email" do
-    before{ VCR.insert_cassette("contact_find_by_email", record: :new_episodes) }
-    after{ VCR.eject_cassette }
+    cassette "contact_find_by_email"
     subject{ Hubspot::Contact.find_by_email(email) }
 
     context "when the contact is found" do
@@ -72,8 +69,7 @@ describe Hubspot::Contact do
   end
 
   describe ".find_by_id" do
-    before{ VCR.insert_cassette("contact_find_by_id", record: :new_episodes) }
-    after{ VCR.eject_cassette }
+    cassette "contact_find_by_id"
     subject{ Hubspot::Contact.find_by_id(vid) }
 
     context "when the contact is found" do
@@ -89,8 +85,7 @@ describe Hubspot::Contact do
   end
 
   describe "#update!" do
-    before{ VCR.insert_cassette("contact_update", record: :new_episodes) }
-    after{ VCR.eject_cassette }
+    cassette "contact_update"
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }
     let(:params){ {firstname: "Steve", lastname: "Cunningham"} }
     subject{ contact.update!(params) }

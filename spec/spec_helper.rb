@@ -37,4 +37,6 @@ RSpec.configure do |config|
     WebMock.enable!
     VCR.turn_on!
   end
+
+  config.extend CassetteHelper
 end

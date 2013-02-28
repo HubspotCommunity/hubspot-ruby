@@ -20,11 +20,18 @@ module Hubspot
       #
       # @return [String]
       #
-      def generate_url(path, params={})
-        raise Hubspot::ConfigurationError.new("'hapikey' not configured") unless Hubspot::Config.hapikey
+      def generate_url(path, params={}, options={})
+        Hubspot::Config.ensure! :hapikey
         path = path.clone
         params = params.clone
-        params["hapikey"] = Hubspot::Config.hapikey
+        base_url = options[:base_url] || Hubspot::Config.base_url
+        params["hapikey"] = Hubspot::Config.hapikey unless options[:hapikey] == false
+
+        if path =~ /:portal_id/
+          Hubspot::Config.ensure! :portal_id
+          params["portal_id"] = Hubspot::Config.portal_id if path =~ /:portal_id/
+        end
+
         params.each do |k,v|
           if path.match(":#{k}")
             path.gsub!(":#{k}",v.to_s)
@@ -33,7 +40,8 @@ module Hubspot
         end
         raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
         query = params.map{ |k,v| "#{k}=#{v}" }.join("&")
-        Hubspot::Config.base_url + path + "?" + query
+        path += "?" if query.present?
+        base_url + path + query
       end
     end
   end

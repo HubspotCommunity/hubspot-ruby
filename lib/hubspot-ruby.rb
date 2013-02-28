@@ -3,6 +3,7 @@ require 'httparty'
 require 'hubspot/exceptions'
 require 'hubspot/config'
 require 'hubspot/contact'
+require 'hubspot/form'
 
 module Hubspot
   def self.configure(config={})
