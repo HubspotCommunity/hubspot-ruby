@@ -12,6 +12,7 @@ module Hubspot
     GET_CONTACT_BY_EMAIL_PATH = "/contacts/v1/contact/email/:contact_email/profile"
     GET_CONTACT_BY_ID_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
     UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
+    DESTROY_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id"
 
     class << self
       # Creates a new contact
@@ -127,11 +128,18 @@ module Hubspot
       self
     end
 
-    # TODO: Archives the contact in hubspot
+    # Archives the contact in hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
-    # @return [nil]
+    # @return [TrueClass] true
     def destroy!
-      raise NotImplementedError
+      url = Hubspot::Utils.generate_url(DESTROY_CONTACT_PATH, {contact_id: vid})
+      resp = HTTParty.delete(url, format: :json)
+      raise(Hubspot::RequestError.new(resp)) unless resp.success?
+      @destroyed = true
+    end
+
+    def destroyed?
+      !!@destroyed
     end
   end
 end

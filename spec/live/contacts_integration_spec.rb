@@ -13,5 +13,14 @@ describe "Contacts API Live test", live: true do
     contact["lastname"].should == "Eastwood"
   end
 
-  pending "creates and destroys a contact"
+  it "creates and destroys a contact" do
+    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
+    contact.destroy! if contact
+    Hubspot::Contact.create!("create_delete_test@hsgemtest.com")
+    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
+    contact.should be_present
+    contact.destroy!
+    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
+    contact.should_not be_present
+  end
 end

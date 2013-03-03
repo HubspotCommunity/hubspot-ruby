@@ -101,4 +101,28 @@ describe Hubspot::Contact do
       end
     end
   end
+
+  describe "#destroy!" do
+    cassette "contact_destroy"
+    let(:contact){ Hubspot::Contact.create!("newcontact_y_#{Time.now.to_i}@hsgem.com") }
+    subject{ contact.destroy! }
+    it { should be_true }
+    it "should be destroyed" do
+      subject
+      contact.destroyed?.should be_true
+    end
+    context "when the request is not successful" do
+      let(:contact){ Hubspot::Contact.new({"vid" => "invalid", "properties" => {}})}
+      it "raises an error" do
+        expect{ subject }.to raise_error Hubspot::RequestError
+        contact.destroyed?.should be_false
+      end
+    end
+  end
+
+  describe "#destroyed?" do
+    let(:contact){ Hubspot::Contact.new(example_contact_hash) }
+    subject{ contact }
+    its(:destroyed?){ should be_false }
+  end
 end
