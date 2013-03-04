@@ -16,6 +16,7 @@ describe Hubspot::Contact do
     its(["firstname"]){ should == "Clint" }
     its(["lastname"]){ should == "Eastwood" }
     its(["phone"]){ should == "555-555-5432" }
+    its(:utk){ should == "1234567890" }
     its(:vid){ should == 82325 }
   end
 
@@ -80,6 +81,22 @@ describe Hubspot::Contact do
 
     context "when the contact cannot be found" do
       let(:vid){ 9999999 }
+      it{ should be_nil }
+    end
+  end
+
+  describe ".find_by_utk" do
+    cassette "contact_find_by_utk"
+    subject{ Hubspot::Contact.find_by_utk(utk) }
+
+    context "when the contact is found" do
+      let(:utk){ "f844d2217850188692f2610c717c2e9b" }
+      it{ should be_an_instance_of Hubspot::Contact }
+      its(:utk){ should == "f844d2217850188692f2610c717c2e9b" }
+    end
+
+    context "when the contact cannot be found" do
+      let(:utk){ "invalid" }
       it{ should be_nil }
     end
   end

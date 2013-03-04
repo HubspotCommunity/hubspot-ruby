@@ -11,6 +11,7 @@ module Hubspot
     CREATE_CONTACT_PATH = "/contacts/v1/contact"
     GET_CONTACT_BY_EMAIL_PATH = "/contacts/v1/contact/email/:contact_email/profile"
     GET_CONTACT_BY_ID_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
+    GET_CONTACT_BY_UTK_PATH = "/contacts/v1/contact/utk/:contact_utk/profile"
     UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
     DESTROY_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id"
 
@@ -37,7 +38,7 @@ module Hubspot
       def find_by_email(email)
         url = Hubspot::Utils.generate_url(GET_CONTACT_BY_EMAIL_PATH, {contact_email: email})
         resp = HTTParty.get(url, format: :json)
-        if resp.code == 200
+        if resp.success?
           Hubspot::Contact.new(resp.parsed_response)
         else
           nil
@@ -50,19 +51,25 @@ module Hubspot
       def find_by_id(vid)
         url = Hubspot::Utils.generate_url(GET_CONTACT_BY_ID_PATH, {contact_id: vid})
         resp = HTTParty.get(url, format: :json)
-        if resp.code == 200
+        if resp.success?
           Hubspot::Contact.new(resp.parsed_response)
         else
           nil
         end
       end
 
-      # TODO: Finds a contact by its User Token (hubspotutk cookie value)
+      # Finds a contact by its User Token (hubspotutk cookie value)
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
       # @param utk [String] hubspotutk cookie value
       # @return [Hubspot::Contact, nil] the contact found or nil
       def find_by_utk(utk)
-        raise NotImplementedError
+        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_UTK_PATH, {contact_utk: utk})
+        resp = HTTParty.get(url, format: :json)
+        if resp.success?
+          Hubspot::Contact.new(resp.parsed_response)
+        else
+          nil
+        end
       end
 
       # TODO: Get all contacts
@@ -112,6 +119,10 @@ module Hubspot
 
     def email
       @properties["email"]
+    end
+
+    def utk
+      @properties["usertoken"]
     end
 
     # Updates the properties of a contact

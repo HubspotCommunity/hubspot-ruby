@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Contacts API Live test", live: true do
+  # Let's try to hit all the API endpoints at least once
+
   before do
     Hubspot.configure hapikey: "demo"
   end
@@ -22,5 +24,9 @@ describe "Contacts API Live test", live: true do
     contact.destroy!
     contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
     contact.should_not be_present
+  end
+
+  it "finds a contact by utk" do
+    Hubspot::Contact.find_by_utk("f844d2217850188692f2610c717c2e9b").should be_present
   end
 end
