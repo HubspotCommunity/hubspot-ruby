@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrew DiMichele"]
-  s.date = "2013-02-22"
+  s.date = "2013-03-04"
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
   s.email = "andrew@omadahealth.com"
   s.extra_rdoc_files = [
@@ -29,30 +29,35 @@ Gem::Specification.new do |s|
     "lib/hubspot/config.rb",
     "lib/hubspot/contact.rb",
     "lib/hubspot/exceptions.rb",
+    "lib/hubspot/form.rb",
     "lib/hubspot/utils.rb",
     "lib/hubspot/version.rb",
     "spec/fixtures/vcr_cassettes/contact_create.yml",
     "spec/fixtures/vcr_cassettes/contact_create_existing_email.yml",
     "spec/fixtures/vcr_cassettes/contact_create_invalid_email.yml",
     "spec/fixtures/vcr_cassettes/contact_create_with_params.yml",
+    "spec/fixtures/vcr_cassettes/contact_destroy.yml",
     "spec/fixtures/vcr_cassettes/contact_example.yml",
     "spec/fixtures/vcr_cassettes/contact_find_by_email.yml",
     "spec/fixtures/vcr_cassettes/contact_find_by_id.yml",
+    "spec/fixtures/vcr_cassettes/contact_find_by_utk.yml",
     "spec/fixtures/vcr_cassettes/contact_update.yml",
     "spec/lib/hubspot-ruby_spec.rb",
     "spec/lib/hubspot/config_spec.rb",
     "spec/lib/hubspot/contact_spec.rb",
+    "spec/lib/hubspot/form_spec.rb",
     "spec/lib/hubspot/utils_spec.rb",
     "spec/live/contacts_integration_spec.rb",
-    "spec/spec_helper.rb"
+    "spec/spec_helper.rb",
+    "spec/support/cassette_helper.rb"
   ]
   s.homepage = "http://github.com/omadahealth/hubspot-ruby"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.25"
+  s.rubygems_version = "2.0.0"
   s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
 
   if s.respond_to? :specification_version then
-    s.specification_version = 3
+    s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
