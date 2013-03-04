@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/omadahealth/hubspot-ruby"
   s.require_paths = ["lib"]
-  s.rubygems_version = "2.0.0"
+  s.rubygems_version = "2.0.1"
   s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
 
   if s.respond_to? :specification_version then
