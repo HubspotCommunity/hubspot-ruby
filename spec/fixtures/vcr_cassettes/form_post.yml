@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://forms.hubspot.com/uploads/form/v2/62515/014c1de3-def3-4957-b708-eb00b884db73?email=funtimes@email.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      - 'false'
+      Date:
+      - Sat, 02 Mar 2013 00:52:15 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Sat, 02 Mar 2013 00:52:17 GMT
+recorded_with: VCR 2.4.0
