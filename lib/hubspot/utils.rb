@@ -39,10 +39,32 @@ module Hubspot
           end
         end
         raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
-        query = params.map{ |k,v| "#{k}=#{v}" }.join("&")
+        query = format_query_string(params)
         path += "?" if query.present?
         base_url + path + query
       end
+
+      private
+
+      def format_query_string(params)
+        simple = {}
+        complex = {}
+        params.each do |k,v|
+          if v.is_a? Array
+            complex[k] = v
+          else
+            simple[k] = v
+          end
+        end
+
+        query = [simple.map{ |k,v| "#{k}=#{v}" }.join("&")]
+        complex.each do |name, value|
+          query << "#{name}=" + value.join("&#{name}=")
+        end
+        query.delete('')
+        query.join('&')
+      end
+
     end
   end
 end
