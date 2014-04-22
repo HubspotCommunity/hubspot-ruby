@@ -12,6 +12,7 @@ module Hubspot
     GET_CONTACT_BY_EMAIL_PATH = "/contacts/v1/contact/email/:contact_email/profile"
     GET_CONTACT_BY_ID_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
     GET_CONTACT_BY_UTK_PATH = "/contacts/v1/contact/utk/:contact_utk/profile"
+    GET_CONTACTS_PATH = "/contacts/v1/lists/all/contacts/all"
     UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
     DESTROY_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id"
 
@@ -72,12 +73,26 @@ module Hubspot
         end
       end
 
-      # TODO: Get all contacts
+      # Get all contacts
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
-      # @param count [Fixnum] number of contacts per page; max 100
-      # @return [Hubspot::ContactCollection] the paginated collection of contacts
-      def all(count=100)
-        raise NotImplementedError
+      # @param [Hash] Options for contact fetching
+      # @option params [Integer] :count number of contacts per page; max 100
+      # @option params [Array] :property set of properties to retrieve per contact
+      # @option params [Integer] :vid_offset Offset # for paginating requests
+      # @return [Hash] collection with :contacts, :has_more, and :vid_offset keys
+      def all(params={})
+        params['vidOffset'] = params.delete(:vid_offset) if params[:vid_offset]
+        url = Hubspot::Utils.generate_url(GET_CONTACTS_PATH, params)
+        resp = HTTParty.get(url, format: :json)
+        if resp.success?
+          {
+            contacts: resp['contacts'].map { |c| Hubspot::Contact.new(c) },
+            has_more: resp['has-more'],
+            vid_offset: resp['vid-offset']
+          }
+        else
+          nil
+        end
       end
 
       # TODO: Get recently updated and created contacts
