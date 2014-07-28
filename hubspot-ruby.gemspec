@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Andrew DiMichele"]
   s.date = "2013-03-04"
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
-  s.email = "andrew@omadahealth.com"
+  s.email = "hello@omadahealth.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
