@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   #gem.license = "MIT"
   gem.summary = %Q{hubspot-ruby is a wrapper for the HubSpot REST API}
   gem.description = %Q{hubspot-ruby is a wrapper for the HubSpot REST API}
-  gem.email = "andrew@omadahealth.com"
+  gem.email = "hello@omadahealth.com"
   gem.authors = ["Andrew DiMichele"]
   gem.version = Hubspot::Version::STRING
 
