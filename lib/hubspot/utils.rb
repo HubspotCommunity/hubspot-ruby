@@ -39,9 +39,20 @@ module Hubspot
           end
         end
         raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
-        query = params.map{ |k,v| "#{k}=#{v}" }.join("&")
+        query = params.map{ |k,v| "#{k}=#{converted_value(v)}" }.join("&")
         path += "?" if query.present?
         base_url + path + query
+      end
+
+
+      private
+
+      def converted_value(value)
+        if (value.is_a?(Time))
+          (value.to_i * 1000) # convert into milliseconds since epoch
+        else
+          value
+        end
       end
     end
   end

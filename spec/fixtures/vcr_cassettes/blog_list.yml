@@ -2,6 +2,41 @@
 http_interactions:
 - request:
     method: get
+    uri: https://api.hubapi.com/content/api/v2/blogs?hapikey=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 401
+      message: UNAUTHORIZED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 17 Oct 2014 03:17:59 GMT
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Content-Length:
+      - '79'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"succeeded": false, "message": "You are not authorized to view this
+        resource"}'
+    http_version: 
+  recorded_at: Fri, 17 Oct 2014 03:17:59 GMT
+- request:
+    method: get
     uri: https://api.hubapi.com/content/api/v2/blogs?hapikey=demo
     body:
       encoding: US-ASCII
@@ -19,7 +54,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 17 Oct 2014 01:05:37 GMT
+      - Fri, 17 Oct 2014 03:20:23 GMT
       P3p:
       - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
         PSAa PSDa OUR IND DSP NON COR'
@@ -28,7 +63,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Hs-Mc-Reqs:
-      - Z2V0X21hbnk6Myw3O2dldDo0LDY=
+      - Z2V0X21hbnk6NCw2O3NldDoxLDE7Z2V0OjQsOA==
       Content-Length:
       - '2828'
       Connection:
@@ -70,5 +105,5 @@ http_interactions:
         1390355024000, "use_featured_image_in_summary": false, "weekly_notification_email_id":
         348108964}], "limit": 20, "offset": 0}'
     http_version: 
-  recorded_at: Fri, 17 Oct 2014 01:05:37 GMT
+  recorded_at: Fri, 17 Oct 2014 03:20:23 GMT
 recorded_with: VCR 2.4.0

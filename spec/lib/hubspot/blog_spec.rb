@@ -18,13 +18,20 @@ describe Hubspot::Blog do
     it "should have a list of blogs" do
       blog_list.count.should be(1)
     end
-
-
   end
 
   describe "#initialize" do
     subject{ Hubspot::Blog.new(example_blog_hash) }
     its(["name"]) { should == "API Demonstration Blog" }
     its(["id"])   { should == 351076997 }
+  end
+
+  describe "#posts" do
+    let(:blog) { Hubspot::Blog.new(example_blog_hash) }
+    cassette "one_month_blog_posts_list"
+
+    it "should filter the posts to published by default" do
+      blog.posts.length.should be(0)
+    end
   end
 end
