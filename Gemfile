@@ -18,4 +18,5 @@ group :development do
   gem "jeweler"
   gem "simplecov"
   gem "awesome_print"
+  gem "guard-rspec", require: false
 end
