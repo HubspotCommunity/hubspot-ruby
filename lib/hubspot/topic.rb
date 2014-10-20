@@ -3,9 +3,9 @@ require 'httparty'
 
 module Hubspot
   #
-  # HubSpot Contacts API
+  # HubSpot Topics API
   #
-  # {https://developers.hubspot.com/docs/endpoints#contacts-api}
+  # {https://developers.hubspot.com/docs/methods/blogv2/get_topics)
   #
   class Topic
     TOPIC_LIST_PATH = "/content/api/v2/topics"
@@ -13,8 +13,6 @@ module Hubspot
 
     class << self
       # Lists the topics
-      # {https://developers.hubspot.com/docs/methods/blogv2/get_blogs}
-      # No param filtering is currently implemented
       # @return [Hubspot::Topic, []] array of topics or empty_array
       def list
         url = Hubspot::Utils.generate_url(TOPIC_LIST_PATH)
