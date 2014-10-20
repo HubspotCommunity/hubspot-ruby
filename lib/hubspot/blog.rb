@@ -90,6 +90,10 @@ module Hubspot
     def [](property)
       @properties[property]
     end
+
+    def created_at
+      Time.at(@properties['created'] / 1000)
+    end
   end
 
 end
