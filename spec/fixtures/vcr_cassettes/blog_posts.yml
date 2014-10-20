@@ -66,4 +66,42 @@ http_interactions:
         {}, "type": "blog_comments", "id": "blog_comments", "css": {}}}}'
     http_version: 
   recorded_at: Tue, 09 Oct 2012 11:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/topics/349001328?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 20 Oct 2014 03:38:36 GMT
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MSwxO2dldDoyLDM=
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"created": 1381896200000, "deleted_at": 0, "description": "", "id":
+        349001328, "name": "api-docs", "portal_id": 62515, "slug": "api-docs", "updated":
+        1381896200000}'
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 11:00:00 GMT
 recorded_with: VCR 2.4.0

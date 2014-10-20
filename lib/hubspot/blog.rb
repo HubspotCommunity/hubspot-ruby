@@ -112,7 +112,9 @@ module Hubspot
         if @properties['topic_ids'].empty?
           []
         else
-          [1]
+          @properties['topic_ids'].map do |topic_id|
+            Hubspot::Topic.find_by_topic_id(topic_id)
+          end
         end
       end
     end

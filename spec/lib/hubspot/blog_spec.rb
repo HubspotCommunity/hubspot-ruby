@@ -110,7 +110,7 @@ describe Hubspot do
       let(:blog_with_topic) { Hubspot::BlogPost.find_by_blog_post_id(422192866) }
 
       it "should return topic objects" do
-        expect(blog_with_topic.topics.length).to eq(1)
+        expect(blog_with_topic.topics.first.is_a?(Hubspot::Topic)).to be(true)
       end
     end
   end

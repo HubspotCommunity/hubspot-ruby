@@ -9,6 +9,7 @@ module Hubspot
   #
   class Topic
     TOPIC_LIST_PATH = "/content/api/v2/topics"
+    GET_TOPIC_BY_ID_PATH = "/content/api/v2/topics/:topic_id"
 
     class << self
       # Lists the topics
@@ -24,6 +25,16 @@ module Hubspot
           end
         else
           []
+        end
+      end
+
+      def find_by_topic_id(id)
+        url = Hubspot::Utils.generate_url(GET_TOPIC_BY_ID_PATH, topic_id: id)
+        resp = HTTParty.get(url, format: :json)
+        if resp.success?
+          Topic.new(resp.parsed_response)
+        else
+          nil
         end
       end
     end
