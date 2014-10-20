@@ -39,7 +39,7 @@ module Hubspot
           end
         end
         raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
-        query = params.map{ |k,v| "#{k}=#{converted_value(v)}" }.join("&")
+        query = params.map{ |k,v| param_string(k,v) }.join("&")
         path += "?" if query.present?
         base_url + path + query
       end
@@ -52,6 +52,15 @@ module Hubspot
           (value.to_i * 1000) # convert into milliseconds since epoch
         else
           value
+        end
+      end
+
+      def param_string(key,value)
+        if (key =~ /range/)
+          raise "Value must be a range" unless value.is_a?(Range)
+          "#{key}=#{converted_value(value.begin)}&#{key}=#{converted_value(value.end)}"
+        else
+          "#{key}=#{converted_value(value)}"
         end
       end
     end
