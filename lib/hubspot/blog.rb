@@ -83,6 +83,18 @@ module Hubspot
   end
 
   class BlogPost
+    GET_BLOG_POST_BY_ID_PATH = "/content/api/v2/blog-posts/:blog_post_id"
+
+    def self.find_by_blog_post_id(id)
+      url = Hubspot::Utils.generate_url(GET_BLOG_POST_BY_ID_PATH, blog_post_id: id)
+      resp = HTTParty.get(url, format: :json)
+      if resp.success?
+        BlogPost.new(resp.parsed_response)
+      else
+        nil
+      end
+    end
+
     def initialize(response_hash)
       @properties = response_hash #no need to parse anything, we have properties
     end
@@ -93,6 +105,16 @@ module Hubspot
 
     def created_at
       Time.at(@properties['created'] / 1000)
+    end
+
+    def topics
+      @topics ||= begin
+        if @properties['topic_ids'].empty?
+          []
+        else
+          [1]
+        end
+      end
     end
   end
 

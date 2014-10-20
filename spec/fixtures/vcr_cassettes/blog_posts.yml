@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts/422192866?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 20 Oct 2014 02:21:22 GMT
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6Nyw1O3NldDoyLDE7c2V0X21hbnk6MSwxO2dldDo2LDE0
+      Content-Length:
+      - '2431'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"archived": false, "attached_stylesheets": [], "author_user_id": 100307,
+        "blog_author": {"avatar": "", "bio": "", "body": {}, "created": 1387404442000,
+        "deleted_at": 0, "email": "test11+11@mangotreemedia.com", "facebook": "",
+        "full_name": "Levi Test", "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        "||", "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387580494000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387580592000, "head_html": "", "html_title": "mypostasfsdf", "id": 422192866,
+        "include_default_custom_css": null, "is_draft": true, "is_instant_email_enabled":
+        false, "is_social_publishing_enabled": false, "keywords": [], "legacy_blog_tabid":
+        null, "meta_description": "dfsdf", "meta_keywords": null, "name": "mypostasfsdf",
+        "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "dfssadf", "post_summary":
+        "<p>dfssadf</p>", "preview_image_src": null, "preview_key": "4hrUQgP7", "processing_status":
+        "published", "publish_date": 1387580592000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/mypostasfsdf", "rss_body": "<p>dfssadf</p>",
+        "rss_email_by_text": "By", "rss_email_click_through_text": "Read more &raquo;",
+        "rss_email_comment_text": "Comment &raquo;", "rss_summary": "<p>dfssadf</p>",
+        "scheduled_update_date": null, "slug": "blog/mypostasfsdf", "state": "PUBLISHED",
+        "style_override_id": null, "subcategory": "normal_blog_post", "topic_ids":
+        [349001328], "unpublished_at": null, "updated": 1387580594000, "url": "http://62515.hs-sites.com/blog/mypostasfsdf",
+        "use_featured_image": false, "views": 0, "widget_containers": {}, "widgets":
+        {"blog_comments": {"body": {}, "name": "blog_comments", "child_css": {}, "meta":
+        {}, "type": "blog_comments", "id": "blog_comments", "css": {}}}}'
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 11:00:00 GMT
+recorded_with: VCR 2.4.0

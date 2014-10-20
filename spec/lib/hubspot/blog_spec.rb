@@ -87,6 +87,8 @@ describe Hubspot do
   end
 
   describe Hubspot::BlogPost do
+    cassette "blog_posts"
+
     let(:example_blog_post) do
       VCR.use_cassette("one_month_blog_posts_filter_state", record: :none) do
         blog = Hubspot::Blog.new(example_blog_hash)
@@ -96,6 +98,20 @@ describe Hubspot do
 
     it "should have a created_at value specific method" do
       expect(example_blog_post.created_at).to eq(Time.at(example_blog_post['created'] / 1000))
+    end
+
+    it "can find by blog_post_id" do
+      blog = Hubspot::BlogPost.find_by_blog_post_id(422192866)
+      expect(blog['id']).to eq(422192866)
+    end
+
+    context 'containing a topic' do
+      # 422192866 contains a topic
+      let(:blog_with_topic) { Hubspot::BlogPost.find_by_blog_post_id(422192866) }
+
+      it "should return topic objects" do
+        expect(blog_with_topic.topics.length).to eq(1)
+      end
     end
   end
 end
