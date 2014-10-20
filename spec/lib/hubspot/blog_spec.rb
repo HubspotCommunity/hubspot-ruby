@@ -28,6 +28,15 @@ describe Hubspot::Blog do
     end
   end
 
+  describe ".find_by_id" do
+    cassette "blog_list"
+
+    it "should have a list of blogs" do
+      blog = Hubspot::Blog.find_by_id(351076997)
+      blog["id"].should eq(351076997)
+    end
+  end
+
   describe "#initialize" do
     subject{ Hubspot::Blog.new(example_blog_hash) }
     its(["name"]) { should == "API Demonstration Blog" }

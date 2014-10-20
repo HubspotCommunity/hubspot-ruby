@@ -13,6 +13,7 @@ module Hubspot
 
     BLOG_LIST_PATH = "/content/api/v2/blogs"
     BLOG_POSTS_PATH = "/content/api/v2/blog-posts"
+    GET_BLOG_BY_ID_PATH = "/content/api/v2/blogs/:blog_id"
 
     class << self
       # Lists the blogs
@@ -28,6 +29,16 @@ module Hubspot
           end
         else
           []
+        end
+      end
+
+      def find_by_id(id)
+        url = Hubspot::Utils.generate_url(GET_BLOG_BY_ID_PATH, blog_id: id)
+        resp = HTTParty.get(url, format: :json)
+        if resp.success?
+          Blog.new(resp.parsed_response)
+        else
+          nil
         end
       end
     end
