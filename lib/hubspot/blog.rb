@@ -66,7 +66,7 @@ module Hubspot
       raise InvalidParams.new('params must be passed as a hash') unless params.is_a?(Hash)
       params = default_params.merge(params)
       raise InvalidParams.new('State parameter was invalid') unless [false, 'PUBLISHED', 'DRAFT'].include?(params[:state])
-      params.delete(:state) if params[:state] == false
+      params.each { |k, v| params.delete(k) if v == false }
 
       url = Hubspot::Utils.generate_url(BLOG_POSTS_PATH, params)
       puts url

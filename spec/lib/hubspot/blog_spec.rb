@@ -9,6 +9,7 @@ describe Hubspot do
       resp.parsed_response["objects"].first
     end
   end
+  let(:created_range_params) { { created__gt: false, created__range: (Time.now..Time.now + 2.years)  } }
 
   before do
     Hubspot.configure(hapikey: "demo")
@@ -52,7 +53,6 @@ describe Hubspot do
       describe "can be filtered by state" do
 
         it "should filter the posts to published by default" do
-          # in our date range they are all draft, hence no items
           blog.posts.length.should be(13)
         end
 
@@ -61,27 +61,24 @@ describe Hubspot do
         end
 
         it "should allow draft posts if specified" do
-          # in our date range they are all draft, hence no item
-          blog.posts({ state: false }).length.should be > 0
+          blog.posts({ state: false }.merge(created_range_params)).length.should be > 0
         end
       end
 
       describe "can be ordered" do
         it "created at descending is default" do
-          # in our date range they are all draft, hence no item
-          created_timestamps = blog.posts.map { |post| post['created'] }
+          created_timestamps = blog.posts(created_range_params).map { |post| post['created'] }
           expect(created_timestamps.sort.reverse).to eq(created_timestamps)
         end
 
         it "by created ascending" do
-          # in our date range they are all draft, hence no item
-          created_timestamps = blog.posts({order_by: '+created'}).map { |post| post['created'] }
+          created_timestamps = blog.posts({order_by: '+created'}.merge(created_range_params)).map { |post| post['created'] }
           expect(created_timestamps.sort).to eq(created_timestamps)
         end
       end
 
       it "can set a page size" do
-        blog.posts({limit: 10}).length.should be(10)
+        blog.posts({limit: 10}.merge(created_range_params)).length.should be(10)
       end
     end
   end
@@ -92,7 +89,7 @@ describe Hubspot do
     let(:example_blog_post) do
       VCR.use_cassette("one_month_blog_posts_filter_state", record: :none) do
         blog = Hubspot::Blog.new(example_blog_hash)
-        blog.posts.first
+        blog.posts(created_range_params).first
       end
     end
 
