@@ -7309,4 +7309,337 @@ http_interactions:
         field", "errors": [], "succeeded": false}'
     http_version: 
   recorded_at: Tue, 09 Oct 2012 11:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=351076997&created__gt=1344513600000&hapikey=demo&limit=10&order_by=-created&state=PUBLISHED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 20 Oct 2014 00:29:55 GMT
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MTYsMTM7c2V0OjIsMztzZXRfbWFueToxLDA7Z2V0OjE1LDEz
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 13, "objects": [{"archived": false, "attached_stylesheets":
+        [], "author_user_id": 215482, "blog_author": {"avatar": "", "bio": "", "body":
+        {}, "created": 1377856983000, "deleted_at": 0, "email": "testapi@hubspot.com",
+        "facebook": "", "full_name": "Hub Spot", "google_plus": "", "gravatar_url":
+        "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "id": 284839243, "linkedin": "", "portal_id": 62515, "slug": "hub-spot", "twitter":
+        "", "updated": 1377856983000, "user_id": 215482, "username": "testapi@hubspot.com",
+        "website": ""}, "blog_author_id": 284839243, "blueprint_type_id": 0, "campaign":
+        "7ff4cdd8-e000-4f34-86a5-3f549cceaf0b", "campaign_name": "Johnnys Campaign",
+        "category_id": 3, "cloned_from": null, "comment_count": 0, "content_group_id":
+        351076997, "created": 1390295344000, "css": {}, "css_text": "", "deleted_at":
+        0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1390295773000, "head_html": "", "html_title": "First try of API", "id": 467185591,
+        "include_default_custom_css": null, "is_draft": false, "is_instant_email_enabled":
+        false, "is_social_publishing_enabled": false, "keywords": [], "legacy_blog_tabid":
+        null, "meta_description": "meta", "meta_keywords": null, "name": "First try
+        of API", "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "zrsxdcyfuvgybihujeqarwsetdryhcfbv&nbsp;",
+        "post_summary": "<p>zrsxdcyfuvgybihujeqarwsetdryhcfbv&nbsp;</p>", "preview_image_src":
+        null, "preview_key": "ZaH4BIil", "processing_status": "published", "publish_date":
+        1390295773000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/url2",
+        "rss_body": "<p>zrsxdcyfuvgybihujeqarwsetdryhcfbv&nbsp;</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_summary": "<p>zrsxdcyfuvgybihujeqarwsetdryhcfbv&nbsp;</p>",
+        "scheduled_update_date": null, "slug": "blog/url2", "state": "PUBLISHED",
+        "style_override_id": null, "subcategory": "normal_blog_post", "topic_ids":
+        [], "unpublished_at": null, "updated": 1390295774000, "url": "http://62515.hs-sites.com/blog/url2",
+        "use_featured_image": false, "views": 0, "widget_containers": {}, "widgets":
+        {"blog_comments": {"body": {}, "name": "blog_comments", "child_css": {}, "meta":
+        {}, "type": "blog_comments", "id": "blog_comments", "css": {}}}}, {"archived":
+        false, "attached_stylesheets": [], "author_user_id": null, "blog_author":
+        {"avatar": "", "bio": "", "body": {}, "created": 1377856983000, "deleted_at":
+        0, "email": "testapi@hubspot.com", "facebook": "", "full_name": "Hub Spot",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "id": 284839243, "linkedin": "", "portal_id": 62515, "slug": "hub-spot", "twitter":
+        "", "updated": 1377856983000, "user_id": 215482, "username": "testapi@hubspot.com",
+        "website": ""}, "blog_author_id": 284839243, "blueprint_type_id": 0, "campaign":
+        "43a0c102-4e62-4527-849a-21c9bc40c908", "campaign_name": "Fall 2013 Season
+        End Clearance", "category_id": 3, "cloned_from": null, "comment_count": 0,
+        "content_group_id": 351076997, "created": 1389892525000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1389892537000, "head_html": "", "html_title": "Testing the blog API first
+        API blog post!", "id": 456273714, "include_default_custom_css": null, "is_draft":
+        false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "A post
+        about posts", "meta_keywords": null, "name": "Testing the blog API first API
+        blog post!", "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "<p>Hey guys! I''m
+        using the <b>API</b>! Woohoo!</p>", "post_summary": "<p>Hey guys!</p>", "preview_image_src":
+        null, "preview_key": "vqrkfSmt", "processing_status": "published", "publish_date":
+        1389892537000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/2013/10/api-blog-post-1389892531",
+        "rss_body": "<p>Hey guys! I''m using the <b>API</b>! Woohoo!</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_summary": "<p>Hey guys!</p>", "scheduled_update_date":
+        null, "slug": "blog/2013/10/api-blog-post-1389892531", "state": "PUBLISHED",
+        "style_override_id": null, "subcategory": "normal_blog_post", "topic_ids":
+        [], "unpublished_at": null, "updated": 1389892543000, "url": "http://62515.hs-sites.com/blog/2013/10/api-blog-post-1389892531",
+        "use_featured_image": true, "views": 0, "widget_containers": {}, "widgets":
+        {}}, {"archived": false, "attached_stylesheets": [], "author_user_id": null,
+        "blog_author": {"avatar": "", "bio": "", "body": {}, "created": 1377856983000,
+        "deleted_at": 0, "email": "testapi@hubspot.com", "facebook": "", "full_name":
+        "Hub Spot", "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "id": 284839243, "linkedin": "", "portal_id": 62515, "slug": "hub-spot", "twitter":
+        "", "updated": 1377856983000, "user_id": 215482, "username": "testapi@hubspot.com",
+        "website": ""}, "blog_author_id": 284839243, "blueprint_type_id": 0, "campaign":
+        "43a0c102-4e62-4527-849a-21c9bc40c908", "campaign_name": "Fall 2013 Season
+        End Clearance", "category_id": 3, "cloned_from": null, "comment_count": 1,
+        "content_group_id": 351076997, "created": 1389892369000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1389892400000, "head_html": "", "html_title": "Testing the blog API first
+        API blog post!", "id": 461745602, "include_default_custom_css": null, "is_draft":
+        true, "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "A post about
+        posts", "meta_keywords": null, "name": "Testing the blog API first API blog
+        post!", "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "<p>Hey guys! I''m
+        using the <b>API</b>! Woohoo!</p>", "post_summary": "<p>Hey guys!</p>", "preview_image_src":
+        null, "preview_key": "XrmVy8ae", "processing_status": "published", "publish_date":
+        1389892400000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/2013/10/api-blog-post-1389892372",
+        "rss_body": "<p>Hey guys! I''m using the <b>API</b>! Woohoo!</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_summary": "<p>Hey guys!</p>", "scheduled_update_date":
+        null, "slug": "blog/2013/10/api-blog-post-1389892372", "state": "PUBLISHED",
+        "style_override_id": null, "subcategory": "normal_blog_post", "topic_ids":
+        [], "unpublished_at": null, "updated": 1389892402000, "url": "http://62515.hs-sites.com/blog/2013/10/api-blog-post-1389892372",
+        "use_featured_image": true, "views": 0, "widget_containers": {}, "widgets":
+        {}}, {"archived": false, "attached_stylesheets": [], "author_user_id": 100307,
+        "blog_author": {"avatar": "", "bio": "", "body": {}, "created": 1387404442000,
+        "deleted_at": 0, "email": "test11+11@mangotreemedia.com", "facebook": "",
+        "full_name": "Levi Test", "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387582144000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387582171000, "head_html": "", "html_title": "Post at 2013-12-20 18:29:04.686059
+        ", "id": 419305979, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:29:04.686059 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387582152.36", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "vOOfwv4J", "processing_status":
+        "published", "publish_date": 1387582171000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387582152.36", "rss_body": "<p>My
+        body 1387582152.36</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387582152.36",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387582173000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387582152.36", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}, {"archived": false,
+        "attached_stylesheets": [], "author_user_id": 100307, "blog_author": {"avatar":
+        "", "bio": "", "body": {}, "created": 1387404442000, "deleted_at": 0, "email":
+        "test11+11@mangotreemedia.com", "facebook": "", "full_name": "Levi Test",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387581851000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387581861000, "head_html": "", "html_title": "Post at 2013-12-20 18:24:11.258271
+        ", "id": 419290839, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:24:11.258271 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387581854.54", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "AmCGdbNo", "processing_status":
+        "published", "publish_date": 1387581861000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387581854.54", "rss_body": "<p>My
+        body 1387581854.54</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387581854.54",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387581864000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387581854.54", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}, {"archived": false,
+        "attached_stylesheets": [], "author_user_id": 100307, "blog_author": {"avatar":
+        "", "bio": "", "body": {}, "created": 1387404442000, "deleted_at": 0, "email":
+        "test11+11@mangotreemedia.com", "facebook": "", "full_name": "Levi Test",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387581814000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387581825000, "head_html": "", "html_title": "Post at 2013-12-20 18:23:34.781675
+        ", "id": 419290714, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:23:34.781675 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387581817.65", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "LkWavDzV", "processing_status":
+        "published", "publish_date": 1387581825000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387581817.65", "rss_body": "<p>My
+        body 1387581817.65</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387581817.65",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387581827000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387581817.65", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}, {"archived": false,
+        "attached_stylesheets": [], "author_user_id": 100307, "blog_author": {"avatar":
+        "", "bio": "", "body": {}, "created": 1387404442000, "deleted_at": 0, "email":
+        "test11+11@mangotreemedia.com", "facebook": "", "full_name": "Levi Test",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387581751000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387581767000, "head_html": "", "html_title": "Post at 2013-12-20 18:22:31.007586
+        ", "id": 419284839, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:22:31.007586 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387581753.81", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "T4di7o8a", "processing_status":
+        "published", "publish_date": 1387581767000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387581753.81", "rss_body": "<p>My
+        body 1387581753.81</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387581753.81",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387581770000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387581753.81", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}, {"archived": false,
+        "attached_stylesheets": [], "author_user_id": 100307, "blog_author": {"avatar":
+        "", "bio": "", "body": {}, "created": 1387404442000, "deleted_at": 0, "email":
+        "test11+11@mangotreemedia.com", "facebook": "", "full_name": "Levi Test",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387581458000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387581513000, "head_html": "", "html_title": "Post at 2013-12-20 18:17:37.781500
+        ", "id": 419284714, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:17:37.781500 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387581467.54", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "Wx3fI14C", "processing_status":
+        "published", "publish_date": 1387581513000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387581467.54", "rss_body": "<p>My
+        body 1387581467.54</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387581467.54",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387581558000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387581467.54", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}, {"archived": false,
+        "attached_stylesheets": [], "author_user_id": 100307, "blog_author": {"avatar":
+        "", "bio": "", "body": {}, "created": 1387404442000, "deleted_at": 0, "email":
+        "test11+11@mangotreemedia.com", "facebook": "", "full_name": "Levi Test",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387581166000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387581176000, "head_html": "", "html_title": "Post at 2013-12-20 18:12:46.230370
+        ", "id": 420823943, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:12:46.230370 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387581169.08", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "IZpHGO2Z", "processing_status":
+        "published", "publish_date": 1387581176000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387581169.08", "rss_body": "<p>My
+        body 1387581169.08</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387581169.08",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387581178000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387581169.08", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}, {"archived": false,
+        "attached_stylesheets": [], "author_user_id": 100307, "blog_author": {"avatar":
+        "", "bio": "", "body": {}, "created": 1387404442000, "deleted_at": 0, "email":
+        "test11+11@mangotreemedia.com", "facebook": "", "full_name": "Levi Test",
+        "google_plus": "", "gravatar_url": "https://app.hubspot.com/settings/avatar/caf1c7f4155541edb39b6f5d9566afe9",
+        "id": 418560336, "linkedin": "", "portal_id": 62515, "slug": "levi-test",
+        "twitter": "", "updated": 1387404442000, "user_id": null, "username": null,
+        "website": ""}, "blog_author_id": 418560336, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1387581116000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "folder_id": null, "footer_html": "", "freeze_date":
+        1387581129000, "head_html": "", "html_title": "Post at 2013-12-20 18:11:54.958724
+        ", "id": 420823843, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "My meta",
+        "meta_keywords": null, "name": "Post at 2013-12-20 18:11:54.958724 ", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "My body 1387581124.29", "post_summary": "My summary",
+        "preview_image_src": null, "preview_key": "kpoV88tF", "processing_status":
+        "published", "publish_date": 1387581129000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/myslug-1387581124.29", "rss_body": "<p>My
+        body 1387581124.29</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_summary":
+        "My summary", "scheduled_update_date": null, "slug": "blog/myslug-1387581124.29",
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "topic_ids": [], "unpublished_at": null, "updated": 1387581132000, "url":
+        "http://62515.hs-sites.com/blog/myslug-1387581124.29", "use_featured_image":
+        false, "views": 0, "widget_containers": {}, "widgets": {}}], "limit": 10,
+        "offset": 0}'
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 11:00:00 GMT
 recorded_with: VCR 2.4.0

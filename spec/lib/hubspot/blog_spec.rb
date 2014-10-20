@@ -68,20 +68,9 @@ describe Hubspot::Blog do
         expect(created_timestamps.sort).to eq(created_timestamps)
       end
     end
-    it "should find the most recent posts" do
-      # doesn't seem to be much of an upper limit to the number
-      # of posts you can request.  In testing against the DEMO
-      # api you can request 200 blog posts (and you get them!)
-      #
-      # So, to get the most recent posts I think it best to
-      # page in chunks of 20, and just keep on iterating from
-      # the last page down until we get the number of published
-      # posts we want, or hit rock bottom.
-      #
-      # Perhaps taking a larger amount (as the API is responsive
-      # and ideally we would be caching this somewhere clientside
-      # and doing it as a background job) would make the procedure
-      # a bit simpler
+
+    it "can set a page size" do
+      blog.posts({limit: 10}).length.should be(10)
     end
   end
 end
