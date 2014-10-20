@@ -5,14 +5,13 @@ module Hubspot
   #
   # HubSpot Topics API
   #
-  # {https://developers.hubspot.com/docs/methods/blogv2/get_topics)
-  #
   class Topic
     TOPIC_LIST_PATH = "/content/api/v2/topics"
     GET_TOPIC_BY_ID_PATH = "/content/api/v2/topics/:topic_id"
 
     class << self
       # Lists the topics
+      # {https://developers.hubspot.com/docs/methods/blogv2/get_topics)
       # @return [Hubspot::Topic, []] array of topics or empty_array
       def list
         url = Hubspot::Utils.generate_url(TOPIC_LIST_PATH)
@@ -25,6 +24,10 @@ module Hubspot
           []
         end
       end
+
+      # Finds the details for a specific topic_id
+      # {https://developers.hubspot.com/docs/methods/blogv2/get_topics_topic_id }
+      # @return Hubspot::Topic or nil
 
       def find_by_topic_id(id)
         url = Hubspot::Utils.generate_url(GET_TOPIC_BY_ID_PATH, topic_id: id)

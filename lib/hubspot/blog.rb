@@ -32,6 +32,9 @@ module Hubspot
         end
       end
 
+      # Finds a specific blog by its ID
+      # {https://developers.hubspot.com/docs/methods/blogv2/get_blogs_blog_id}
+      # @return Hubspot::Blog or nil
       def find_by_id(id)
         url = Hubspot::Utils.generate_url(GET_BLOG_BY_ID_PATH, blog_id: id)
         resp = HTTParty.get(url, format: :json)
@@ -54,8 +57,11 @@ module Hubspot
     end
 
 
-    # defaults to returning the last 2 months worth of published blog posts
-    # in date descending order (i.e. most recent first)
+    # Returns the posts for this blog instance.
+    #   defaults to returning the last 2 months worth of published blog posts
+    #   in date descending order (i.e. most recent first)
+    # {https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts}
+    # @return [Hubspot::BlogPost] or []
     def posts(params = {})
       default_params = {
         content_group_id: self["id"],
@@ -65,11 +71,12 @@ module Hubspot
       }
       raise InvalidParams.new('params must be passed as a hash') unless params.is_a?(Hash)
       params = default_params.merge(params)
+
       raise InvalidParams.new('State parameter was invalid') unless [false, 'PUBLISHED', 'DRAFT'].include?(params[:state])
       params.each { |k, v| params.delete(k) if v == false }
 
       url = Hubspot::Utils.generate_url(BLOG_POSTS_PATH, params)
-      puts url
+
       resp = HTTParty.get(url, format: :json)
       if resp.success?
         blog_post_objects = resp.parsed_response['objects']
@@ -85,6 +92,9 @@ module Hubspot
   class BlogPost
     GET_BLOG_POST_BY_ID_PATH = "/content/api/v2/blog-posts/:blog_post_id"
 
+    # Returns a specific blog post by ID
+    # {https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts_blog_post_id}
+    # @return [Hubspot::BlogPost] or nil
     def self.find_by_blog_post_id(id)
       url = Hubspot::Utils.generate_url(GET_BLOG_POST_BY_ID_PATH, blog_post_id: id)
       resp = HTTParty.get(url, format: :json)
