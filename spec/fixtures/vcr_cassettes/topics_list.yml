@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/topics?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 20 Oct 2014 02:55:54 GMT
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MSwyO2dldDoyLDQ=
+      Content-Length:
+      - '584'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 3, "objects": [{"created": 1381896200000, "deleted_at":
+        0, "description": "", "id": 349001328, "name": "api-docs", "portal_id": 62515,
+        "slug": "api-docs", "updated": 1381896200000}, {"created": 1389388053000,
+        "deleted_at": 0, "description": "", "id": 447332568, "name": "Test Topic 20140110160733",
+        "portal_id": 62515, "slug": "test-topic-20140110160733", "updated": 1389388053000},
+        {"created": 1389387669000, "deleted_at": 0, "description": "", "id": 450113517,
+        "name": "Test", "portal_id": 62515, "slug": "test", "updated": 1389387669000}],
+        "limit": 20, "offset": 0}'
+    http_version: 
+  recorded_at: Mon, 20 Oct 2014 02:55:54 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/topics/349001328?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 20 Oct 2014 03:37:14 GMT
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MiwzO3NldDoxLDE7Z2V0OjIsMg==
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"created": 1381896200000, "deleted_at": 0, "description": "", "id":
+        349001328, "name": "api-docs", "portal_id": 62515, "slug": "api-docs", "updated":
+        1381896200000}'
+    http_version: 
+  recorded_at: Mon, 20 Oct 2014 03:37:14 GMT
+recorded_with: VCR 2.4.0

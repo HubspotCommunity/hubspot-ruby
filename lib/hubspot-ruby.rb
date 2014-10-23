@@ -4,6 +4,8 @@ require 'hubspot/exceptions'
 require 'hubspot/config'
 require 'hubspot/contact'
 require 'hubspot/form'
+require 'hubspot/blog'
+require 'hubspot/topic'
 
 module Hubspot
   def self.configure(config={})

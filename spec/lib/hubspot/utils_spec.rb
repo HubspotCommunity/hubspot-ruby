@@ -76,6 +76,19 @@ describe Hubspot::Utils do
     context "with query params" do
       let(:params){{email: "email@address.com", id: 1234}}
       it{ should == "https://api.hubapi.com/test/email@address.com/profile?id=1234&hapikey=demo" }
+
+      context "containing a time" do
+        let(:start_time) { Time.now }
+        let(:params){{email: "email@address.com", id: 1234, start: start_time}}
+        it{ should == "https://api.hubapi.com/test/email@address.com/profile?id=1234&start=#{start_time.to_i * 1000}&hapikey=demo" }
+      end
+
+      context "containing a range" do
+        let(:start_time) { Time.now }
+        let(:end_time) { Time.now + 1.year }
+        let(:params){{email: "email@address.com", id: 1234, created__range: start_time..end_time }}
+        it{ should == "https://api.hubapi.com/test/email@address.com/profile?id=1234&created__range=#{start_time.to_i * 1000}&created__range=#{end_time.to_i * 1000}&hapikey=demo" }
+      end
     end
 
     context "with options" do
