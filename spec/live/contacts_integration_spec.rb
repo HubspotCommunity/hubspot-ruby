@@ -26,7 +26,7 @@ describe "Contacts API Live test", live: true do
     contact.should_not be_present
   end
 
-  it "finds a contact by utk" do
-    Hubspot::Contact.find_by_utk("f844d2217850188692f2610c717c2e9b").should be_present
-  end
+  # it "finds a contact by utk" do
+  #   Hubspot::Contact.find_by_utk("f844d2217850188692f2610c717c2e9b").should be_present
+  # end
 end

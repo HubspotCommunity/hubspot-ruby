@@ -6,6 +6,7 @@ require 'hubspot/contact'
 require 'hubspot/form'
 require 'hubspot/blog'
 require 'hubspot/topic'
+require 'hubspot/deal'
 
 module Hubspot
   def self.configure(config={})
