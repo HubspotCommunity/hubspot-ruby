@@ -3,9 +3,9 @@ require 'httparty'
 
 module Hubspot
   #
-  # HubSpot Contacts API
+  # HubSpot Deals API
   #
-  # {https://developers.hubspot.com/docs/endpoints#contacts-api}
+  # {http://developers.hubspot.com/docs/methods/deals/deals_overview}
   #
   class Deal
 
