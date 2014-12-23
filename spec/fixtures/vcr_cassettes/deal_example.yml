@@ -1,0 +1,166 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/deals/v1/deal/3?hapikey=demo&portalId=62515
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Fri, 22 Feb 2013 20:31:02 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Content-Length:
+      - '5094'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{
+                  "associations": {
+                    "associatedCompanyIds": [],
+                    "associatedDealIds": [],
+                    "associatedVids": [
+                      1
+                    ]
+                  },
+                  "dealId": 3,
+                  "isDeleted": false,
+                  "portalId": 62515,
+                  "properties": {
+                    "createdate": {
+                      "source": null,
+                      "sourceId": null,
+                      "timestamp": 1395436454893,
+                      "value": "1395436449463",
+                      "versions": [
+                        {
+                          "name": "createdate",
+                          "sourceVid": [],
+                          "timestamp": 1395436454893,
+                          "value": "1395436449463"
+                        }
+                      ]
+                    },
+                    "dealname": {
+                        "source": "API",
+                        "sourceId": null,
+                        "timestamp": 1395783871770,
+                        "value": "My Deal!",
+                        "versions": [
+                {
+                    "name": "dealname",
+                    "source": "API",
+                    "sourceVid": [],
+                    "timestamp": 1395783871770,
+                    "value": "My Deal!"
+                }
+            ]
+        },
+        "dealstage": {
+            "source": "API",
+            "sourceId": "userId=100263",
+            "timestamp": 1397487812494,
+            "value": "closedwon",
+            "versions": [
+                {
+                    "name": "dealstage",
+                    "source": "API",
+                    "sourceId": "userId=100263",
+                    "sourceVid": [],
+                    "timestamp": 1397487812494,
+                    "value": "closedwon"
+                }
+            ]
+        },
+        "hubspot_owner_assigneddate": {
+            "source": "API",
+            "sourceId": "PopulateHubspotOwnerAssignedDate",
+            "timestamp": 1404916626079,
+            "value": "1397487780732",
+            "versions": [
+                {
+                    "name": "hubspot_owner_assigneddate",
+                    "source": "API",
+                    "sourceId": "PopulateHubspotOwnerAssignedDate",
+                    "sourceVid": [],
+                    "timestamp": 1404916626079,
+                    "value": "1397487780732"
+                }
+            ]
+        },
+        "hubspot_owner_id": {
+            "source": "API",
+            "sourceId": "userId=100263",
+            "timestamp": 1397487780732,
+            "value": "24",
+            "versions": [
+                {
+                    "name": "hubspot_owner_id",
+                    "source": "API",
+                    "sourceId": "userId=100263",
+                    "sourceVid": [],
+                    "timestamp": 1397487780732,
+                    "value": "24"
+                }
+            ]
+        },
+        "notes_last_contacted": {
+            "source": "API",
+            "sourceId": null,
+            "timestamp": 1408397443789,
+            "value": "1408397443247",
+            "versions": [
+                {
+                    "name": "notes_last_contacted",
+                    "source": "API",
+                    "sourceVid": [],
+                    "timestamp": 1408397443789,
+                    "value": "1408397443247"
+                }
+            ]
+        },
+        "notes_last_updated": {
+            "source": "API",
+            "sourceId": null,
+            "timestamp": 1408397443789,
+            "value": "1408397443247",
+            "versions": [
+                {
+                    "name": "notes_last_updated",
+                    "source": "API",
+                    "sourceVid": [],
+                    "timestamp": 1408397443789,
+                    "value": "1408397443247"
+                }
+            ]
+        },
+        "num_associated_contacts": {
+            "source": "CALCULATED",
+            "sourceId": null,
+            "timestamp": 0,
+            "value": "1",
+            "versions": [
+                {
+                    "name": "num_associated_contacts",
+                    "source": "CALCULATED",
+                    "sourceVid": [],
+                    "value": "1"
+                }
+            ]
+        }
+    }
+}'
+    http_version:
+  recorded_at: Fri, 22 Feb 2013 20:31:02 GMT
+recorded_with: VCR 2.4.0
