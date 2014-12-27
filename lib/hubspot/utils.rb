@@ -9,8 +9,9 @@ module Hubspot
       end
 
       # Turns a hash into the hubspot properties format
-      def hash_to_properties(hash)
-        hash.map{ |k,v| {"property" => k.to_s, "value" => v}}
+      def hash_to_properties(hash, opts = {})
+        key_name = opts[:key_name] || "property"
+        hash.map{ |k,v| { key_name => k.to_s, "value" => v}}
       end
 
       # Generate the API URL for the request
