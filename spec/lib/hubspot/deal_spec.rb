@@ -27,12 +27,12 @@ describe Hubspot::Deal do
 
   describe ".find" do
     cassette "deal_find"
-    let(:deal) {Hubspot::Deal.create!(62515, [8954037], [27136], {})}
+    let(:deal) {Hubspot::Deal.create!(62515, [8954037], [27136], { amount: 30})}
 
     it 'must find by the deal id' do
       find_deal = Hubspot::Deal.find(deal.deal_id)
       find_deal.deal_id.should eql deal.deal_id
+      find_deal.properties["amount"].should eql "30"
     end
   end
-
 end

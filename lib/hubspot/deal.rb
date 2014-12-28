@@ -30,7 +30,7 @@ module Hubspot
       def create!(portal_id, company_ids, vids, params={})
         url = Hubspot::Utils.generate_url(CREATE_DEAL_PATH).concat("&portalId=#{portal_id}")
         associations_hash = {"portalId" => portal_id, "associations" => { "associatedCompanyIds" => company_ids, "associatedVids" => vids}}
-        post_data = associations_hash.merge({ properties: Hubspot::Utils.hash_to_properties(params) })
+        post_data = associations_hash.merge({ properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") })
         resp = HTTParty.post(url, body: post_data.to_json, headers: {"Content-Type" => "application/json"})
         Hubspot::Deal.new(resp.parsed_response)
       end
