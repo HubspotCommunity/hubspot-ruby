@@ -40,3 +40,9 @@ pkg
 .rvmrc
 
 tmp
+
+# RVM setup
+.ruby-*
+
+# Generaged gem files
+*.gem
