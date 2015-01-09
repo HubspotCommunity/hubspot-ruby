@@ -7,26 +7,20 @@ describe "Contacts API Live test", live: true do
     Hubspot.configure hapikey: "demo"
   end
 
-  it "finds and updates a contact" do
-    contact = Hubspot::Contact.find_by_email "testingapis@hubspot.com"
-    contact.update! firstname: "Clint", lastname: "Eastwood"
-    contact = Hubspot::Contact.find_by_id contact.vid
-    contact["firstname"].should == "Clint"
-    contact["lastname"].should == "Eastwood"
-  end
-
-  it "creates and destroys a contact" do
+  it 'find, update and destroy a contact' do
     contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
     contact.destroy! if contact
-    Hubspot::Contact.create!("create_delete_test@hsgemtest.com")
-    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
-    contact.should be_present
-    contact.destroy!
-    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
-    contact.should_not be_present
-  end
 
-  # it "finds a contact by utk" do
-  #   Hubspot::Contact.find_by_utk("f844d2217850188692f2610c717c2e9b").should be_present
-  # end
+    contact = Hubspot::Contact.create!("create_delete_test@hsgemtest.com")
+    expect(contact).to be_present
+
+    contact.update! firstname: "Clint", lastname: "Eastwood"
+    contact = Hubspot::Contact.find_by_id(contact.vid)
+
+    expect(contact["firstname"]).to eql "Clint"
+    expect(contact["lastname"]).to eql "Eastwood"
+
+    expect(contact.destroy!).to be_true
+    expect(Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")).to be_nil
+  end
 end
