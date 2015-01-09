@@ -17,6 +17,7 @@ module Hubspot
 
     CREATE_DEAL_PATH = "/deals/v1/deal"
     GET_DEAL_PATH = "/deals/v1/deal/:deal_id"
+    RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
 
     def initialize(response_hash)
       @portal_id = response_hash["portalId"]
@@ -43,6 +44,16 @@ module Hubspot
         else
           nil
         end
+      end
+
+      def recent(opts = {})
+        url = Hubspot::Utils.generate_url(RECENT_UPDATED_PATH, opts)
+        request = HTTParty.get(url, format: :json)
+
+        return unless request.success?
+
+        found = request.parsed_response['results']
+        return found.map{|h| new(h) }
       end
     end
   end

@@ -35,4 +35,35 @@ describe Hubspot::Deal do
       find_deal.properties["amount"].should eql "30"
     end
   end
+
+  describe '.recent' do
+    cassette 'find_all_recent_updated_deals'
+
+    it 'must get the recents updated deals' do
+      deals = Hubspot::Deal.recent
+
+      first = deals.first
+      last = deals.last
+
+      expect(first).to be_a Hubspot::Deal
+      expect(first.properties['amount']).to eql '0'
+      expect(first.properties['dealname']).to eql '1420787916-gou2rzdgjzx2@u2rzdgjzx2.com'
+      expect(first.properties['dealstage']).to eql 'closedwon'
+
+      expect(last).to be_a Hubspot::Deal
+      expect(last.properties['amount']).to eql '250'
+      expect(last.properties['dealname']).to eql '1420511993-U9862RD9XR@U9862RD9XR.com'
+      expect(last.properties['dealstage']).to eql 'closedwon'
+    end
+
+    it 'must filter only 2 deals' do
+      deals = Hubspot::Deal.recent(count: 2)
+      expect(deals.size).to eql 2
+    end
+
+    it 'it must offset the deals' do
+      deal = Hubspot::Deal.recent(count: 1, offset: 1).first
+      expect(deal.properties['dealname']).to eql '1420704406-goy6v83a97nr@y6v83a97nr.com'  # the third deal
+    end
+  end
 end
