@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot::Contact do
   let(:example_contact_hash) do
     VCR.use_cassette("contact_example", record: :none) do

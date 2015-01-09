@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot do
   describe "#configure" do
     it "delegates a call to Hubspot::Config.configure" do

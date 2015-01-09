@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot::Form do
   describe "#url" do
     let(:form_guid){ "abcd-efgh-1234-5678" }

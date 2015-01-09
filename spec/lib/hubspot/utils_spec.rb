@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot::Utils do
   describe ".properties_to_hash" do
     let(:properties) do

@@ -16,7 +16,8 @@ module Hubspot
     attr_reader :vids
 
     CREATE_DEAL_PATH = "/deals/v1/deal"
-    GET_DEAL_PATH = "/deals/v1/deal/:deal_id"
+    DEAL_PATH = "/deals/v1/deal/:deal_id"
+    RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
 
     def initialize(response_hash)
       @portal_id = response_hash["portalId"]
@@ -36,7 +37,7 @@ module Hubspot
       end
 
       def find(deal_id)
-        url = Hubspot::Utils.generate_url(GET_DEAL_PATH, {deal_id: deal_id})
+        url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
         resp = HTTParty.get(url, format: :json)
         if resp.success?
           Hubspot::Deal.new(resp.parsed_response)
@@ -44,6 +45,34 @@ module Hubspot
           nil
         end
       end
+
+      # Find recent updated deals.
+      # {http://developers.hubspot.com/docs/methods/deals/get_deals_modified}
+      # @param count [Integer] the amount of deals to return.
+      # @param offset [Integer] pages back through recent contacts.
+      def recent(opts = {})
+        url = Hubspot::Utils.generate_url(RECENT_UPDATED_PATH, opts)
+        request = HTTParty.get(url, format: :json)
+
+        raise(Hubspot::RequestError.new(request)) unless request.success?
+
+        found = request.parsed_response['results']
+        return found.map{|h| new(h) }
+      end
+    end
+
+    # Archives the contact in hubspot
+    # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
+    # @return [TrueClass] true
+    def destroy!
+      url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
+      request = HTTParty.delete(url, format: :json)
+      raise(Hubspot::RequestError.new(request)) unless request.success?
+      @destroyed = true
+    end
+
+    def destroyed?
+      !!@destroyed
     end
   end
 end
