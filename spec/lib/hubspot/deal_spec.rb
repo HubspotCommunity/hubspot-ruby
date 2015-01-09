@@ -66,4 +66,19 @@ describe Hubspot::Deal do
       expect(deal.properties['dealname']).to eql '1420704406-goy6v83a97nr@y6v83a97nr.com'  # the third deal
     end
   end
+
+  describe '#destroy!' do
+    cassette 'destroy_deal'
+
+    let(:deal) {Hubspot::Deal.create!(62515, [8954037], [27136], {amount: 30})}
+
+    it 'should remove from hubspot' do
+      expect(Hubspot::Deal.find(deal.deal_id)).to_not be_nil
+
+      expect(deal.destroy!).to be_true
+      expect(deal.destroyed?).to be_true
+
+      expect(Hubspot::Deal.find(deal.deal_id)).to be_nil
+    end
+  end
 end
