@@ -46,6 +46,10 @@ module Hubspot
         end
       end
 
+      # Find recent updated deals.
+      # {http://developers.hubspot.com/docs/methods/deals/get_deals_modified}
+      # @param count [Integer] the amount of deals to return.
+      # @param offset [Integer] pages back through recent contacts.
       def recent(opts = {})
         url = Hubspot::Utils.generate_url(RECENT_UPDATED_PATH, opts)
         request = HTTParty.get(url, format: :json)
