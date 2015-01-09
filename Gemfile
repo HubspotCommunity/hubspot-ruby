@@ -11,7 +11,7 @@ gem "httparty", ">=0.10.0"
 group :development do
   gem "rspec"
   gem "rr"
-  gem "webmock"
+  gem "webmock", '< 1.10'
   gem "vcr"
   gem "rdoc"
   gem "bundler"
