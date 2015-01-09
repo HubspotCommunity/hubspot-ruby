@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot::Config do
   describe "#configure" do
     let(:config){ {hapikey: "demo", base_url: "http://api.hubapi.com/v2", portal_id: "62515"} }

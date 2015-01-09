@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe "Contacts API Live test", live: true do
   # Let's try to hit all the API endpoints at least once
 

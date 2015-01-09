@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot::Deal do
   let(:example_deal_hash) do
     VCR.use_cassette("deal_example") do

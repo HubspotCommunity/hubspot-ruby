@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Hubspot::Topic do
   before do
     Hubspot.configure(hapikey: "demo")
