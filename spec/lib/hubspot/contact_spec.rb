@@ -99,6 +99,45 @@ describe Hubspot::Contact do
     end
   end
 
+
+  describe '.all' do
+    cassette 'find_all_contacts'
+
+    it 'must get the contacts list' do
+      contacts = Hubspot::Contact.all
+
+      expect(contacts.size).to eql 20 # defautl page size
+
+      first = contacts.first
+      last = contacts.last
+
+      expect(first.vid).to eql 154835
+      expect(first['firstname']).to eql 'HubSpot'
+      expect(first['lastname']).to eql 'Test'
+
+      expect(last).to be_a Hubspot::Contact
+      expect(last.vid).to eql 196199
+      expect(last['firstname']).to eql 'Eleanor'
+      expect(last['lastname']).to eql 'Morgan'
+    end
+
+    it 'must filter only 2 contacts' do
+      contacts = Hubspot::Contact.all(count: 2)
+      expect(contacts.size).to eql 2
+    end
+
+    it 'it must offset the contacts' do
+      single_list = Hubspot::Contact.all(count: 1)
+      expect(single_list.size).to eql 1
+      first = single_list.first
+
+      second = Hubspot::Contact.all(count: 1, 'vidOffset': first.vid).first
+      expect(second.vid).to eql 196181
+      expect(second['firstname']).to eql 'Charles'
+      expect(second['lastname']).to eql 'Gowland'
+    end
+  end
+
   describe "#update!" do
     cassette "contact_update"
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }

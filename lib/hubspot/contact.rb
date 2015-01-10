@@ -14,6 +14,7 @@ module Hubspot
     GET_CONTACT_BY_UTK_PATH = "/contacts/v1/contact/utk/:contact_utk/profile"
     UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
     DESTROY_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id"
+    CONTACTS_PATH = "/contacts/v1/lists/all/contacts/all"
 
     class << self
       # Creates a new contact
@@ -74,10 +75,17 @@ module Hubspot
 
       # TODO: Get all contacts
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
-      # @param count [Fixnum] number of contacts per page; max 100
+      # @param count [Fixnum] number of contacts per page; default 20; max 100
+      # @param vidOffset [Fixnum] page through the contacts
       # @return [Hubspot::ContactCollection] the paginated collection of contacts
-      def all(count=100)
-        raise NotImplementedError
+      def all(opts = {})
+        url = Hubspot::Utils.generate_url(CONTACTS_PATH, opts)
+        request = HTTParty.get(url, format: :json)
+
+        raise(Hubspot::RequestError.new(request)) unless request.success?
+
+        found = request.parsed_response['contacts']
+        return found.map{|h| new(h) }
       end
 
       # TODO: Get recently updated and created contacts
