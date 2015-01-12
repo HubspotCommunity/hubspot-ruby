@@ -1,8 +1,12 @@
 module Hubspot
   class RequestError < StandardError
+    attr_accessor :response
+
     def initialize(response, message=nil)
       message += "\n" if message
-      super("#{message}Response body: #{response.body}")
+      me = super("#{message}Response body: #{response.body}",)
+      me.response = response
+      return me
     end
   end
 
