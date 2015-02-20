@@ -52,7 +52,7 @@ describe Hubspot do
       describe "can be filtered by state" do
 
         it "should filter the posts to published by default" do
-          blog.posts.length.should be(13)
+          blog.posts.length.should be(14)
         end
 
         it "should validate the state is a valid one" do
