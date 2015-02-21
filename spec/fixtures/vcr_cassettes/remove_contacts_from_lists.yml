@@ -1,0 +1,315 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/static?count=2&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:32:57 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '709'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1336673990262,"lastSizeChangeAt":1424559295352,"error":"","size":0},"dynamic":false,"portalId":62515,"createdAt":1336673951299,"updatedAt":1336673951299,"listId":2,"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"internalListId":2,"name":"HubSpot-HootSuite
+        App"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1344891893390,"lastSizeChangeAt":1424561205790,"error":"","size":2},"dynamic":false,"portalId":62515,"createdAt":1344891893390,"listType":"STATIC","updatedAt":1344891893390,"listId":3,"filters":[],"internalListId":5,"name":"staticTest"}],"offset":2,"has-more":true}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:32:57 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/3/contacts/all?count=2&hapikey=demo&property=email
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:32:58 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1887'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"contacts":[{"addedAt":1405720281340,"vid":233443,"canonical-vid":233443,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mPb8t4UMyhKYuCYQn5-imBRBo9BDjXQZ8Du3oj2bc29H3WXKC3HCkANkFR7pyr73O37uRg6W2nvihx652BOcXd8SBWt772Z4W_NVPWNbrejPFyiik3humvniib1NqstlYsVqZ4r","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mPb8t4UMyhKYuCYQn5-imBRBo9BDjXQZ8Du3oj2bc29H3WXKC3HCkANkFR7pyr73O37uRg6W2nvihx652BOcXd8SBWt772Z4W_NVPWNbrejPFyiik3humvniib1NqstlYsVqZ4r/","properties":{"lastmodifieddate":{"value":"1423206192349"},"email":{"value":"test@123456789test.com"}},"form-submissions":[],"identity-profiles":[{"vid":233443,"saved-at-timestamp":1405720240435,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"test@123456789test.com","timestamp":1405720240352},{"type":"LEAD_GUID","value":"c5d75e47-8abe-4977-a494-d6a5243dd6bc","timestamp":1405720240369}]}],"merge-audits":[]},{"addedAt":1406676072454,"vid":234368,"canonical-vid":234368,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mPsanEOa85h8HlhRpZ-_cfVVkU55CswfPRsIejQiqOZVYiEPg2hPDdKj_s3RM8n5cjxuiPPd5e3jRrdJ8R41C7NCYSXJABeC_LtToznJDSmpDJnFdRIrzZi9Q23j0x7Q2WOMZsz","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mPsanEOa85h8HlhRpZ-_cfVVkU55CswfPRsIejQiqOZVYiEPg2hPDdKj_s3RM8n5cjxuiPPd5e3jRrdJ8R41C7NCYSXJABeC_LtToznJDSmpDJnFdRIrzZi9Q23j0x7Q2WOMZsz/","properties":{"lastmodifieddate":{"value":"1423206205727"},"email":{"value":"osmond@azuqua.com"}},"form-submissions":[],"identity-profiles":[{"vid":234368,"saved-at-timestamp":1406666653355,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"osmond@azuqua.com","timestamp":1406666653316},{"type":"LEAD_GUID","value":"68f561be-6908-4e97-880f-b372d3bb11a8","timestamp":1406666653342}]}],"merge-audits":[]}],"has-more":false,"vid-offset":234368}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:32:58 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/3/remove?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[233443,234368]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:32:59 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '42'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"updated":[233443,234368],"discarded":[]}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:32:59 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/dynamic?count=1&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:33:00 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '421'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"dynamic":true,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1335448864306,"error":"","lastSizeChangeAt":1424402567742,"size":3355},"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"portalId":62515,"createdAt":1335448813688,"listId":1,"updatedAt":1335448813688,"listType":"DYNAMIC","internalListId":1,"name":"twitterers"}],"offset":1,"has-more":true}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:33:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/1/contacts/recent?count=1&hapikey=demo&property=email
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:33:02 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1021'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"contacts":[{"addedAt":1424402567710,"vid":263687,"canonical-vid":263687,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mOLQAb6JByotsEJIGvfPTBqk3_9vvz3ee2-Q9su_4UEimZcZdxTwYjMp0qZuqFqmaOFhHtul-HVvM6-J83RtYrGl0x37FyQZhpiH28TMzUq8MPqWsFNNQp3ZKTnmTeG4oLnHYhU","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mOLQAb6JByotsEJIGvfPTBqk3_9vvz3ee2-Q9su_4UEimZcZdxTwYjMp0qZuqFqmaOFhHtul-HVvM6-J83RtYrGl0x37FyQZhpiH28TMzUq8MPqWsFNNQp3ZKTnmTeG4oLnHYhU/","properties":{"lastmodifieddate":{"value":"1424402575285"},"email":{"value":"andrewglover+pivotdesk@gmail.com"}},"form-submissions":[],"identity-profiles":[{"vid":263687,"saved-at-timestamp":1424379142579,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"andrewglover+pivotdesk@gmail.com","timestamp":1424379142521},{"type":"LEAD_GUID","value":"95df8bed-3940-4f27-af69-076db8cd0d72","timestamp":1424379142525}]}],"merge-audits":[]}],"has-more":true,"vid-offset":263687,"time-offset":1424402567710}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:33:02 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/1/remove?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[263687]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:33:29 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '124'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Can not operate manually on a dynamic
+        list","requestId":"10ad0135-43f1-4c8d-bf84-16d1dbb83ec4"}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:33:29 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/3/add?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[82325]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:43:36 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '29'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"updated":[],"discarded":[]}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:43:36 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/static?count=3&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:53:00 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1013'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"metaData":{"size":0,"error":"","processing":"DONE","lastProcessingStateChangeAt":1336673990262,"lastSizeChangeAt":1424559295352},"name":"HubSpot-HootSuite
+        App","dynamic":false,"filters":[[{"property":"twitterhandle","withinTimeMode":"PAST","operator":"IS_NOT_EMPTY"}]],"portalId":62515,"createdAt":1336673951299,"listId":2,"updatedAt":1336673951299,"internalListId":2},{"metaData":{"size":0,"error":"","processing":"DONE","lastProcessingStateChangeAt":1344891893390,"lastSizeChangeAt":1424561579485},"name":"staticTest","dynamic":false,"filters":[],"portalId":62515,"createdAt":1344891893390,"listId":3,"updatedAt":1344891893390,"listType":"STATIC","internalListId":5},{"metaData":{"size":2,"error":"","processing":"DONE","lastProcessingStateChangeAt":1345057450679,"lastSizeChangeAt":1421930685051},"name":"Workface
+        Leads","dynamic":false,"filters":[],"portalId":62515,"createdAt":1345057450679,"listId":4,"updatedAt":1345057450679,"listType":"STATIC","internalListId":6}],"offset":3,"has-more":true}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:53:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/4/contacts/all?count=2&hapikey=demo&property=email
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:53:00 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1887'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"contacts":[{"addedAt":1410377496034,"vid":240665,"canonical-vid":240665,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mO5qqTDBdnw_I_JbldGAIgeB8U3qtUH69ihLg_M8d4xhcp4fC8R_sFqvnYTZN2NEooIsX3i9HKLBy18vtrja6mAlfukTGxvdrUzqpYrVjfBJDGDFaa2sTI4f7xjv-oZMAJVbz4I","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mO5qqTDBdnw_I_JbldGAIgeB8U3qtUH69ihLg_M8d4xhcp4fC8R_sFqvnYTZN2NEooIsX3i9HKLBy18vtrja6mAlfukTGxvdrUzqpYrVjfBJDGDFaa2sTI4f7xjv-oZMAJVbz4I/","properties":{"lastmodifieddate":{"value":"1423206291283"},"email":{"value":"jimmy@jack.com"}},"form-submissions":[],"identity-profiles":[{"vid":240665,"saved-at-timestamp":1410370949852,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"jimmy@jack.com","timestamp":1410370949831},{"type":"LEAD_GUID","value":"17af62d8-4228-4033-976d-ce9bad8b3fb4","timestamp":1410370949840}]}],"merge-audits":[]},{"addedAt":1421930684995,"vid":261954,"canonical-vid":261954,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mNkRvHRVrSIalWLdVC12ZNilrVAtNlJZj5LHSc40rCrbA5SU5AHrYXFNzW26yrCUh9PsxeMY7pubavabTl2CFEGsWWfnSYlmDjaBFn4awtbT8tovxCcmPOu4zvWLNrgNDbWTgzx","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mNkRvHRVrSIalWLdVC12ZNilrVAtNlJZj5LHSc40rCrbA5SU5AHrYXFNzW26yrCUh9PsxeMY7pubavabTl2CFEGsWWfnSYlmDjaBFn4awtbT8tovxCcmPOu4zvWLNrgNDbWTgzx/","properties":{"lastmodifieddate":{"value":"1423206602823"},"email":{"value":"joelstephen11@stripes.com"}},"form-submissions":[],"identity-profiles":[{"vid":261954,"saved-at-timestamp":1421928766400,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"joelstephen11@stripes.com","timestamp":1421928766277},{"type":"LEAD_GUID","value":"3afe6c95-7e83-4a48-a55d-17af2eab05b5","timestamp":1421928766360}]}],"merge-audits":[]}],"has-more":false,"vid-offset":261954}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:53:00 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/4/remove?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[240665,261954]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:53:00 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '42'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"updated":[261954,240665],"discarded":[]}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:53:00 GMT
+recorded_with: VCR 2.4.0

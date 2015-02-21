@@ -1,23 +1,26 @@
 require 'hubspot/utils'
 require 'httparty'
 
-#TODO: 
-# http://developers.hubspot.com/docs/methods/lists/create_list
-# http://developers.hubspot.com/docs/methods/lists/update_list
-# http://developers.hubspot.com/docs/methods/lists/delete_list
-# http://developers.hubspot.com/docs/methods/lists/refresh_list
-# http://developers.hubspot.com/docs/methods/lists/add_contact_to_list
-# http://developers.hubspot.com/docs/methods/lists/remove_contact_from_list
+# TODO: Refactor all the code generate_url + HTTParty get, post + error raised with a connection class
+#       to avoid headers configuration for posts + read as JSON format etc...
+
 module Hubspot
   #
   # HubSpot Contact lists API
   #
+  # NOTE: api endpoints not yet implemented:
+  # http://developers.hubspot.com/docs/methods/lists/create_list
+  # http://developers.hubspot.com/docs/methods/lists/update_list
+  # http://developers.hubspot.com/docs/methods/lists/delete_list
+  # http://developers.hubspot.com/docs/methods/lists/refresh_list
   class ContactList
     LISTS_PATH = '/contacts/v1/lists'
     LIST_PATH = '/contacts/v1/lists/:list_id'
     LIST_BATCH_PATH = '/contacts/v1/lists/batch'
     CONTACTS_PATH = LIST_PATH + '/contacts/all'
     RECENT_CONTACTS_PATH = LIST_PATH + '/contacts/recent'
+    ADD_CONTACT_PATH = LIST_PATH + '/add'
+    REMOVE_CONTACT_PATH = LIST_PATH + '/remove'
 
     class << self
       # {http://developers.hubspot.com/docs/methods/lists/get_lists}
@@ -92,6 +95,34 @@ module Hubspot
       else
         @contacts
       end 
+    end
+
+    # {http://developers.hubspot.com/docs/methods/lists/add_contact_to_list}
+    def add(contacts) 
+      contact_ids = [contacts].flatten.uniq.compact.map(&:vid)
+      post_data = { vids: contact_ids }
+
+      url = Hubspot::Utils.generate_url(ADD_CONTACT_PATH, { list_id: @id })
+      response = HTTParty.post(url, body: post_data.to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
+     
+      raise(Hubspot::RequestError.new(response)) unless response.success?
+
+      response = response.parsed_response
+      response['updated'].sort == contact_ids.sort
+    end
+ 
+    # {http://developers.hubspot.com/docs/methods/lists/remove_contact_from_list}
+    def remove(contacts)
+      contact_ids = [contacts].flatten.uniq.compact.map(&:vid)
+      post_data = { vids: contact_ids }
+
+      url = Hubspot::Utils.generate_url(REMOVE_CONTACT_PATH, { list_id: @id })
+      response = HTTParty.post(url, body: post_data.to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
+     
+      raise(Hubspot::RequestError.new(response)) unless response.success?
+
+      response = response.parsed_response
+      response['updated'].sort == contact_ids.sort
     end
   end
 end

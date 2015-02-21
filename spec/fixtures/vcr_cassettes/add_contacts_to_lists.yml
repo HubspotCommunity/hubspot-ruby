@@ -1,0 +1,190 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/static?count=3&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:44:56 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1013'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"metaData":{"size":0,"error":"","processing":"DONE","lastProcessingStateChangeAt":1336673990262,"lastSizeChangeAt":1424559295352},"name":"HubSpot-HootSuite
+        App","dynamic":false,"filters":[[{"property":"twitterhandle","withinTimeMode":"PAST","operator":"IS_NOT_EMPTY"}]],"portalId":62515,"createdAt":1336673951299,"listId":2,"updatedAt":1336673951299,"internalListId":2},{"metaData":{"size":0,"error":"","processing":"DONE","lastProcessingStateChangeAt":1344891893390,"lastSizeChangeAt":1424561579485},"name":"staticTest","dynamic":false,"filters":[],"portalId":62515,"createdAt":1344891893390,"listId":3,"updatedAt":1344891893390,"listType":"STATIC","internalListId":5},{"metaData":{"size":2,"error":"","processing":"DONE","lastProcessingStateChangeAt":1345057450679,"lastSizeChangeAt":1421930685051},"name":"Workface
+        Leads","dynamic":false,"filters":[],"portalId":62515,"createdAt":1345057450679,"listId":4,"updatedAt":1345057450679,"listType":"STATIC","internalListId":6}],"offset":3,"has-more":true}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:44:56 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/4/add?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[82325]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:44:56 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '29'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"updated":[],"discarded":[]}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:44:56 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/4/contacts/all?count=1&hapikey=demo&property=email
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:44:56 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '957'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"contacts":[{"addedAt":1410377496034,"vid":240665,"canonical-vid":240665,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mNsNODXC4cCiO1rRF5kyLVGEzhXV_HMmNlQFhtWelfM4TLn-3ue7pRoiEYvv12LuuHq3RfETobGBrMa-UxZSM_MWm650qp0oRonwZeiWcXzoAUCMOknG2A4KJR9IBdCOP3T1Ur7","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mNsNODXC4cCiO1rRF5kyLVGEzhXV_HMmNlQFhtWelfM4TLn-3ue7pRoiEYvv12LuuHq3RfETobGBrMa-UxZSM_MWm650qp0oRonwZeiWcXzoAUCMOknG2A4KJR9IBdCOP3T1Ur7/","properties":{"lastmodifieddate":{"value":"1423206291283"},"email":{"value":"jimmy@jack.com"}},"form-submissions":[],"identity-profiles":[{"vid":240665,"saved-at-timestamp":1410370949852,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"jimmy@jack.com","timestamp":1410370949831},{"type":"LEAD_GUID","value":"17af62d8-4228-4033-976d-ce9bad8b3fb4","timestamp":1410370949840}]}],"merge-audits":[]}],"has-more":true,"vid-offset":240665}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:44:56 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/dynamic?count=1&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:44:57 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '421'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"dynamic":true,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1335448864306,"error":"","lastSizeChangeAt":1424402567742,"size":3355},"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"portalId":62515,"createdAt":1335448813688,"listId":1,"updatedAt":1335448813688,"listType":"DYNAMIC","internalListId":1,"name":"twitterers"}],"offset":1,"has-more":true}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:44:56 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/1/add?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[82325]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:44:57 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '124'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Can not operate manually on a dynamic
+        list","requestId":"3b34806d-ad9e-405d-b0b6-4f5a02b16b10"}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:44:57 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/1/profile?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 23:46:15 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"contact does not exist","requestId":"e101ec44-b2f6-40d1-a634-167d2dd5d3f7"}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 23:46:15 GMT
+recorded_with: VCR 2.4.0

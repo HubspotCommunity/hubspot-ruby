@@ -5,6 +5,15 @@ describe Hubspot::ContactList do
     end
   end
 
+  let(:static_list) { Hubspot::ContactList.all(static: true, count: 3).last }
+  let(:dynamic_list) { Hubspot::ContactList.all(dynamic: true, count: 1).first }
+
+  let(:example_contact_hash) do
+    VCR.use_cassette("contact_example", record: :none) do
+      HTTParty.get("https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo").parsed_response
+    end
+  end
+    
   describe '#initialize' do
     subject { Hubspot::ContactList.new(example_contact_list_hash) }
   	
@@ -111,6 +120,52 @@ describe Hubspot::ContactList do
       	expect(list.id).to be == 2
       	expect(lists.second.id).to be == 3
       	expect(lists.last.id).to be == 4
+      end
+    end
+  end
+
+  describe '.add' do 
+  	cassette "add_contacts_to_lists"
+  
+  	context 'static list' do
+  	  it 'returns true if contacts have been added to the list' do
+      	contact = Hubspot::Contact.find_by_id(1) 
+      	expect(static_list.add(contact)).to be true
+  	  end
+
+      it 'returns false if the contact already exists in the list' do 
+        contact = static_list.contacts(count: 1).first
+        expect(static_list.add(contact)).to be false
+      end
+  	end
+    
+    context 'dynamic list' do 
+      it 'raises error if try to add a contact to a dynamic list' do 
+        contact = Hubspot::Contact.new(example_contact_hash) 
+        expect { dynamic_list.add(contact) }.to raise_error(Hubspot::RequestError)
+      end
+    end
+  end
+
+  describe '.remove' do
+  	cassette "remove_contacts_from_lists"
+
+    context 'static list' do
+      it 'returns true if removes all contacts in batch mode' do 
+      	contacts = static_list.contacts(count: 2)
+        expect(static_list.remove([contacts.first, contacts.last])).to be true
+      end
+
+      it 'returns false if the contact cannot be removed' do 
+        contact_not_present_in_list = Hubspot::Contact.new(example_contact_hash) 
+        expect(static_list.remove(contact_not_present_in_list)).to be false
+      end
+    end  
+
+    context 'dynamic list' do 
+      it 'raises error if try to remove a contact from a dynamic list' do 
+      	contact = dynamic_list.contacts(recent: true, count: 1).first
+        expect { dynamic_list.remove(contact) }.to raise_error(Hubspot::RequestError) 
       end
     end
   end
