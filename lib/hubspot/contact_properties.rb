@@ -1,6 +1,3 @@
-require 'hubspot/utils'
-require 'httparty'
-
 module Hubspot
   class ContactProperties
     class << self    

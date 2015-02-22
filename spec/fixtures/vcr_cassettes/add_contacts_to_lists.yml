@@ -187,4 +187,65 @@ http_interactions:
       string: '{"status":"error","message":"contact does not exist","requestId":"e101ec44-b2f6-40d1-a634-167d2dd5d3f7"}'
     http_version: 
   recorded_at: Sat, 21 Feb 2015 23:46:15 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/4/profile?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 19:54:20 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"contact does not exist","requestId":"ac145de3-e950-49bf-ac3e-0b842c6df1a3"}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 19:54:20 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/all/contacts/all?count=1&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 19:55:34 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1290'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"contacts":[{"addedAt":1405347851360,"vid":154835,"canonical-vid":154835,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mOjbX1LstSdcbofAXxlASdeCjS9HRg20tm1ulyNHjfcLp9-B3chMI9VqXuHnxQ5FY6VdS9KRsIaaOJxRbsCkf7XmvSI1dEV17_yblF_iklHItsX-vQvFVMhxumtCI5zaoZ-c4_r","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mOjbX1LstSdcbofAXxlASdeCjS9HRg20tm1ulyNHjfcLp9-B3chMI9VqXuHnxQ5FY6VdS9KRsIaaOJxRbsCkf7XmvSI1dEV17_yblF_iklHItsX-vQvFVMhxumtCI5zaoZ-c4_r/","properties":{"firstname":{"value":"HubSpot"},"lastmodifieddate":{"value":"1423205608157"},"lastname":{"value":"Test"}},"form-submissions":[{"conversion-id":"b18f9fd8-b8d3-49e5-898a-ac301fac93e9","timestamp":1405347851180,"form-id":"b844ad5e-32bd-41e1-b0e6-ed990c5f3d1b","portal-id":62515,"page-url":"http://demo.hubapi.com/your-stunning-headline-30","page-title":"Your
+        stunning headline!","page-id":"324527","title":"My New Form","meta-data":[]}],"identity-profiles":[{"vid":154835,"saved-at-timestamp":1405347851237,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"test@hubspot.com","timestamp":1405347851180},{"type":"LEAD_GUID","value":"c8f20860-d3d6-4b57-b092-86a07cebdcbc","timestamp":1405347851237}]}],"merge-audits":[]}],"has-more":true,"vid-offset":154835}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 19:55:34 GMT
 recorded_with: VCR 2.4.0

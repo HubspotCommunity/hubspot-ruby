@@ -1,5 +1,4 @@
 require 'hubspot/utils'
-require 'httparty'
 
 module Hubspot
   #
@@ -8,16 +7,15 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/deals/deals_overview}
   #
   class Deal
+    CREATE_DEAL_PATH = "/deals/v1/deal"
+    DEAL_PATH = "/deals/v1/deal/:deal_id"
+    RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
 
     attr_reader :properties
     attr_reader :portal_id
     attr_reader :deal_id
     attr_reader :company_ids
     attr_reader :vids
-
-    CREATE_DEAL_PATH = "/deals/v1/deal"
-    DEAL_PATH = "/deals/v1/deal/:deal_id"
-    RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
 
     def initialize(response_hash)
       @portal_id = response_hash["portalId"]
@@ -29,21 +27,17 @@ module Hubspot
 
     class << self
       def create!(portal_id, company_ids, vids, params={})
-        url = Hubspot::Utils.generate_url(CREATE_DEAL_PATH).concat("&portalId=#{portal_id}")
+        #TODO: clean following hash, Hubspot::Utils should do the trick
         associations_hash = {"portalId" => portal_id, "associations" => { "associatedCompanyIds" => company_ids, "associatedVids" => vids}}
         post_data = associations_hash.merge({ properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") })
-        resp = HTTParty.post(url, body: post_data.to_json, headers: {"Content-Type" => "application/json"})
-        Hubspot::Deal.new(resp.parsed_response)
+       
+        response = Hubspot::Connection.post_json(CREATE_DEAL_PATH, params: {}, body: post_data )
+        new(response)
       end
 
       def find(deal_id)
-        url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Deal.new(resp.parsed_response)
-        else
-          nil
-        end
+        response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
+        new(response)
       end
 
       # Find recent updated deals.
@@ -51,13 +45,8 @@ module Hubspot
       # @param count [Integer] the amount of deals to return.
       # @param offset [Integer] pages back through recent contacts.
       def recent(opts = {})
-        url = Hubspot::Utils.generate_url(RECENT_UPDATED_PATH, opts)
-        request = HTTParty.get(url, format: :json)
-
-        raise(Hubspot::RequestError.new(request)) unless request.success?
-
-        found = request.parsed_response['results']
-        return found.map{|h| new(h) }
+        response = Hubspot::Connection.get_json(RECENT_UPDATED_PATH, opts)
+        response['results'].map { |d| new(d) }
       end
     end
 
@@ -65,9 +54,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
-      request = HTTParty.delete(url, format: :json)
-      raise(Hubspot::RequestError.new(request)) unless request.success?
+      response = Hubspot::Connection.delete_json(DEAL_PATH, {deal_id: deal_id})
       @destroyed = true
     end
 

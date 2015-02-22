@@ -38,8 +38,8 @@ describe Hubspot::Contact do
     context "with an existing email" do
       cassette "contact_create_existing_email"
       let(:email){ "testingapis@hubspot.com" }
-      it "raises a ContactExistsError" do
-        expect{ subject }.to raise_error Hubspot::ContactExistsError
+      it "raises a RequestError" do
+        expect{ subject }.to raise_error Hubspot::RequestError
       end
     end
     context "with an invalid email" do
@@ -62,8 +62,9 @@ describe Hubspot::Contact do
     end
 
     context "when the contact cannot be found" do
-      let(:email){ "notacontact@test.com" }
-      it{ should be_nil }
+      it 'raises an error' do 
+        expect { Hubspot::Contact.find_by_email('notacontact@test.com') }.to raise_error(Hubspot::RequestError)
+      end
     end
   end
 
@@ -78,8 +79,9 @@ describe Hubspot::Contact do
     end
 
     context "when the contact cannot be found" do
-      let(:vid){ 9999999 }
-      it{ should be_nil }
+      it 'raises an error' do
+        expect { Hubspot::Contact.find_by_id(9999999) }.to raise_error(Hubspot::RequestError) 
+      end
     end
   end
 
@@ -94,8 +96,9 @@ describe Hubspot::Contact do
     end
 
     context "when the contact cannot be found" do
-      let(:utk){ "invalid" }
-      it{ should be_nil }
+      it 'raises an error' do 
+        expect { Hubspot::Contact.find_by_utk("invalid") }.to raise_error(Hubspot::RequestError) 
+      end
     end
   end
 

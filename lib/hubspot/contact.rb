@@ -1,11 +1,8 @@
-require 'hubspot/utils'
-require 'httparty'
-
 module Hubspot
   #
   # HubSpot Contacts API
   #
-  # {https://developers.hubspot.com/docs/endpoints#contacts-api}
+  # {https://developers.hubspot.com/docs/methods/contacts/contacts-overview}
   #
   class Contact
     CREATE_CONTACT_PATH = "/contacts/v1/contact"
@@ -24,53 +21,35 @@ module Hubspot
       # @return [Hubspot::Contact] the newly created contact
       def create!(email, params={})
         params_with_email = params.stringify_keys.merge("email" => email)
-        url = Hubspot::Utils.generate_url(CREATE_CONTACT_PATH)
         post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_email)}
-        resp = HTTParty.post(url, body: post_data.to_json, format: :json)
-        raise(Hubspot::ContactExistsError.new(resp, "Contact already exists with email: #{email}")) if resp.code == 409
-        raise(Hubspot::RequestError.new(resp, "Cannot create contact with email: #{email}")) unless resp.success?
-        Hubspot::Contact.new(resp.parsed_response)
+        response = Hubspot::Connection.post_json(CREATE_CONTACT_PATH, params: {}, body: post_data )
+        new(response)
       end
 
       # Finds a contact by email
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email}
       # @param email [String] the email of the contact to find
-      # @return [Hubspot::Contact, nil] the contact found or nil
+      # @return Hubspot::Contact, the contact found or raises error
       def find_by_email(email)
-        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_EMAIL_PATH, {contact_email: email})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Contact.new(resp.parsed_response)
-        else
-          nil
-        end
+        response = Hubspot::Connection.get_json(GET_CONTACT_BY_EMAIL_PATH, { contact_email: email })
+        new(response)
       end
 
       # Finds a contact by vid
       # @param vid [String] the vid of the contact to find
-      # @return [Hubspot::Contact, nil] the contact found or nil
+      # @return Hubspot::Contact, the contact found or raises error
       def find_by_id(vid)
-        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_ID_PATH, {contact_id: vid})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Contact.new(resp.parsed_response)
-        else
-          nil
-        end
+        response = Hubspot::Connection.get_json(GET_CONTACT_BY_ID_PATH, { contact_id: vid })
+        new(response)
       end
 
       # Finds a contact by its User Token (hubspotutk cookie value)
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
       # @param utk [String] hubspotutk cookie value
-      # @return [Hubspot::Contact, nil] the contact found or nil
+      # @return Hubspot::Contact, the contact found or raises error
       def find_by_utk(utk)
-        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_UTK_PATH, {contact_utk: utk})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Contact.new(resp.parsed_response)
-        else
-          nil
-        end
+        response = Hubspot::Connection.get_json(GET_CONTACT_BY_UTK_PATH, { contact_utk: utk })
+        new(response)
       end
 
       # TODO: Get all contacts
@@ -79,13 +58,8 @@ module Hubspot
       # @param vidOffset [Fixnum] page through the contacts
       # @return [Hubspot::ContactCollection] the paginated collection of contacts
       def all(opts = {})
-        url = Hubspot::Utils.generate_url(CONTACTS_PATH, opts)
-        request = HTTParty.get(url, format: :json)
-
-        raise(Hubspot::RequestError.new(request)) unless request.success?
-
-        found = request.parsed_response['contacts']
-        return found.map{|h| new(h) }
+        response = Hubspot::Connection.get_json(CONTACTS_PATH, opts)
+        response['contacts'].map { |c| new(c) }
       end
 
       # TODO: Get recently updated and created contacts
@@ -138,11 +112,8 @@ module Hubspot
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Contact] self
     def update!(params)
-      params.stringify_keys!
-      url = Hubspot::Utils.generate_url(UPDATE_CONTACT_PATH, {contact_id: vid})
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params)}
-      resp = HTTParty.post(url, body: query.to_json, format: :json)
-      raise(Hubspot::RequestError.new(resp)) unless resp.success?
+      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
+      response = Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
       @properties.merge!(params)
       self
     end
@@ -151,9 +122,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      url = Hubspot::Utils.generate_url(DESTROY_CONTACT_PATH, {contact_id: vid})
-      resp = HTTParty.delete(url, format: :json)
-      raise(Hubspot::RequestError.new(resp)) unless resp.success?
+      response = Hubspot::Connection.delete_json(DESTROY_CONTACT_PATH, { contact_id: vid })
       @destroyed = true
     end
 

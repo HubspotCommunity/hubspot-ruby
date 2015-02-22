@@ -29,4 +29,33 @@ http_interactions:
       string: '{"portalId":62515,"dealId":1169756,"isDeleted":false,"associations":{"associatedVids":[27136],"associatedCompanyIds":[8954037],"associatedDealIds":[]},"properties":{"createdate":{"value":"1418044235821","timestamp":1418044235821,"source":null,"sourceId":null,"versions":[{"name":"createdate","value":"1418044235821","timestamp":1418044235821,"sourceVid":[]}]},"hs_createdate":{"value":"1418044235821","timestamp":1418044235821,"source":null,"sourceId":null,"versions":[{"name":"hs_createdate","value":"1418044235821","timestamp":1418044235821,"sourceVid":[]}]}}}'
     http_version: 
   recorded_at: Mon, 08 Dec 2014 13:11:06 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/deals/v1/deal?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"associations":{"associatedCompanyIds":[8954037],"associatedVids":[27136]},"properties":[]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 16:16:53 GMT
+      Content-Length:
+      - '562'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":2153357,"isDeleted":false,"associations":{"associatedVids":[27136],"associatedCompanyIds":[8954037],"associatedDealIds":[]},"properties":{"hs_createdate":{"value":"1424621813221","timestamp":1424621813221,"source":null,"sourceId":null,"versions":[{"name":"hs_createdate","value":"1424621813221","timestamp":1424621813221,"sourceVid":[]}]},"createdate":{"value":"1424621813221","timestamp":1424621813221,"source":null,"sourceId":null,"versions":[{"name":"createdate","value":"1424621813221","timestamp":1424621813221,"sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 16:16:53 GMT
 recorded_with: VCR 2.4.0
