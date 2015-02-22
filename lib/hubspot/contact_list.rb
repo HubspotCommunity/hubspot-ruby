@@ -1,28 +1,28 @@
-require 'hubspot/utils'
-require 'httparty'
-
-# TODO: Refactor all the code generate_url + HTTParty get, post + error raised with a connection class
-#       to avoid headers configuration for posts + read as JSON format etc...
-
 module Hubspot
   #
   # HubSpot Contact lists API
   #
-  # NOTE: api endpoints not yet implemented:
-  # http://developers.hubspot.com/docs/methods/lists/create_list
-  # http://developers.hubspot.com/docs/methods/lists/update_list
-  # http://developers.hubspot.com/docs/methods/lists/delete_list
-  # http://developers.hubspot.com/docs/methods/lists/refresh_list
   class ContactList
     LISTS_PATH = '/contacts/v1/lists'
     LIST_PATH = '/contacts/v1/lists/:list_id'
-    LIST_BATCH_PATH = '/contacts/v1/lists/batch'
+    LIST_BATCH_PATH = LISTS_PATH + '/batch'
     CONTACTS_PATH = LIST_PATH + '/contacts/all'
     RECENT_CONTACTS_PATH = LIST_PATH + '/contacts/recent'
     ADD_CONTACT_PATH = LIST_PATH + '/add'
     REMOVE_CONTACT_PATH = LIST_PATH + '/remove'
+    REFRESH_PATH = LIST_PATH + '/refresh'
 
     class << self
+      # {http://developers.hubspot.com/docs/methods/lists/create_list}
+      def create!(opts={})
+      	dynamic = opts.delete(:dynamic) { false } 
+      	portal_id = opts.delete(:portal_id) { Hubspot::Config.portal_id }
+      	# TODO: test if can accept a list without filters
+
+      	response = Hubspot::Connection.post_json(LISTS_PATH, params: {}, body: opts.merge({ dynamic: dynamic, portal_id: portal_id}) )
+        new(response)
+      end
+
       # {http://developers.hubspot.com/docs/methods/lists/get_lists}
       # {http://developers.hubspot.com/docs/methods/lists/get_static_lists}
       # {http://developers.hubspot.com/docs/methods/lists/get_dynamic_lists}
@@ -32,13 +32,8 @@ module Hubspot
 
         # NOTE: As opposed of what the documentation says, getting the static or dynamic lists returns all the list
       	path = LISTS_PATH + (static ? '/static' : dynamic ? '/dynamic' : '') 
-
-        url = Hubspot::Utils.generate_url(path, opts)
-        response = HTTParty.get(url, format: :json)
-
-        raise(Hubspot::RequestError.new(response)) unless response.success?
-        
-        response.parsed_response['lists'].map { |l| new(l) }
+        response = Hubspot::Connection.get_json(path, opts)
+        response['lists'].map { |l| new(l) }
       end
 
       # {http://developers.hubspot.com/docs/methods/lists/get_list}
@@ -49,16 +44,8 @@ module Hubspot
         when Array then [true, LIST_BATCH_PATH, { batch_list_id: ids }]
       	end
 
-        url = Hubspot::Utils.generate_url(path, params)
-        response = HTTParty.get(url, format: :json)
-
-        return nil unless response.success?
-        
-        if batch_mode
-          response.parsed_response['lists'].map { |l| new(l) }
-        else
-          new(response.parsed_response)
-        end
+        response = Hubspot::Connection.get_json(path, params)
+        batch_mode ? response['lists'].map { |l| new(l) } : new(response)
       end
     end
 
@@ -68,12 +55,21 @@ module Hubspot
     attr_reader :dynamic
     attr_reader :properties
 
-    def initialize(response_hash)
-      @id = response_hash['listId']
-      @portal_id = response_hash['portalId']
-      @name = response_hash['name']
-      @dynamic = response_hash['dynamic']
-      @properties = response_hash
+    def initialize(hash)
+      self.send(:assign_properties, hash)
+    end
+
+    # {http://developers.hubspot.com/docs/methods/lists/update_list}
+    def update!(opts={})
+      response = Hubspot::Connection.post_json(LIST_PATH, params: { list_id: @id }, body: opts)
+      self.send(:assign_properties, response)
+      self
+    end
+
+    # {http://developers.hubspot.com/docs/methods/lists/delete_list}
+    def destroy!
+      response = Hubspot::Connection.delete_json(LIST_PATH, { list_id: @id })
+      @destroyed = (response.code == 204)
     end
 
     # {http://developers.hubspot.com/docs/methods/lists/get_list_contacts}
@@ -86,43 +82,45 @@ module Hubspot
         path = recent ? RECENT_CONTACTS_PATH : CONTACTS_PATH
         opts[:list_id] = @id
       	
-        url = Hubspot::Utils.generate_url(path, Hubspot::ContactProperties.add_default_parameters(opts))
-        response = HTTParty.get(url, format: :json)
-
-        raise(Hubspot::RequestError.new(response)) unless response.success?
-
-        @contacts = response.parsed_response['contacts'].map { |c| Hubspot::Contact.new(c) }
+        response = Hubspot::Connection.get_json(path, Hubspot::ContactProperties.add_default_parameters(opts))
+        @contacts = response['contacts'].map { |c| Hubspot::Contact.new(c) }
       else
         @contacts
       end 
     end
 
+    # {http://developers.hubspot.com/docs/methods/lists/refresh_list}
+    def refresh
+      response = Hubspot::Connection.post_json(REFRESH_PATH, params: { list_id: @id, no_parse: true }, body: {})
+      response.code == 204
+    end
+
     # {http://developers.hubspot.com/docs/methods/lists/add_contact_to_list}
     def add(contacts) 
       contact_ids = [contacts].flatten.uniq.compact.map(&:vid)
-      post_data = { vids: contact_ids }
-
-      url = Hubspot::Utils.generate_url(ADD_CONTACT_PATH, { list_id: @id })
-      response = HTTParty.post(url, body: post_data.to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
-     
-      raise(Hubspot::RequestError.new(response)) unless response.success?
-
-      response = response.parsed_response
+      response = Hubspot::Connection.post_json(ADD_CONTACT_PATH, params: { list_id: @id }, body: { vids: contact_ids })
       response['updated'].sort == contact_ids.sort
     end
  
     # {http://developers.hubspot.com/docs/methods/lists/remove_contact_from_list}
     def remove(contacts)
       contact_ids = [contacts].flatten.uniq.compact.map(&:vid)
-      post_data = { vids: contact_ids }
-
-      url = Hubspot::Utils.generate_url(REMOVE_CONTACT_PATH, { list_id: @id })
-      response = HTTParty.post(url, body: post_data.to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
-     
-      raise(Hubspot::RequestError.new(response)) unless response.success?
-
-      response = response.parsed_response
+      response = Hubspot::Connection.post_json(REMOVE_CONTACT_PATH, params: { list_id: @id }, body: { vids: contact_ids })
       response['updated'].sort == contact_ids.sort
+    end
+
+    def destroyed?
+      !!@destroyed
+    end
+
+    private
+
+    def assign_properties(hash)
+      @id = hash['listId']
+      @portal_id = hash['portalId']
+      @name = hash['name']
+      @dynamic = hash['dynamic']
+      @properties = hash
     end
   end
 end

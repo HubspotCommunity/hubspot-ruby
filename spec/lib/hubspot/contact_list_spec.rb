@@ -50,6 +50,28 @@ describe Hubspot::ContactList do
     end
   end
 
+  describe '.create' do
+    subject{ Hubspot::ContactList.create!({ name: name }) }
+    
+    context 'with all required parameters' do 
+      cassette 'create_list'
+
+      let(:name) { 'testing list' }
+      it { should be_an_instance_of Hubspot::ContactList }
+      its(:id) { should be_an(Integer) }
+      its(:portal_id) { should be_an(Integer) }
+      its(:dynamic) { should be false }
+    end
+
+    context 'without all required parameters' do
+      cassette 'fail_to_create_list'
+
+      it 'raises an error' do 
+        expect { Hubspot::ContactList.create!({ name: nil }) }.to raise_error(Hubspot::RequestError)
+      end
+    end
+  end
+
   describe '.all' do
   	#TODO: add support method to test generic offsets and count options for each context + refactor spec
 
@@ -105,8 +127,9 @@ describe Hubspot::ContactList do
       end
 
       context 'when the contact list is not found' do
-        let(:id) { -1 }
-        it { should be_nil }
+        it 'raises an error' do 
+          expect { Hubspot::ContactList.find(-1) }.to raise_error(Hubspot::RequestError) 
+        end
       end
     end
 
@@ -124,7 +147,7 @@ describe Hubspot::ContactList do
     end
   end
 
-  describe '.add' do 
+  describe '#add' do 
   	cassette "add_contacts_to_lists"
   
   	context 'static list' do
@@ -147,7 +170,7 @@ describe Hubspot::ContactList do
     end
   end
 
-  describe '.remove' do
+  describe '#remove' do
   	cassette "remove_contacts_from_lists"
 
     context 'static list' do
@@ -168,5 +191,38 @@ describe Hubspot::ContactList do
         expect { dynamic_list.remove(contact) }.to raise_error(Hubspot::RequestError) 
       end
     end
+  end
+
+  describe '#update!' do 
+    cassette "contact_list_update"
+
+    let(:contact_list) { Hubspot::ContactList.new(example_contact_list_hash) }
+    let(:params) { { name: "update list name" } }
+    subject { contact_list.update!(params) }
+
+    it { should be_an_instance_of Hubspot::ContactList }
+    its(:name){ should == "update list name" }
+  end
+
+  describe '#delete!' do 
+    cassette "contact_list_destroy"
+
+    let(:contact_list) { Hubspot::ContactList.create!({ name: "newcontactlist_#{Time.now.to_i}"}) }
+    subject{ contact_list.destroy! }
+    it { should be_true }
+    
+    it "should be destroyed" do
+      subject
+      contact_list.destroyed?.should be_true
+    end
+  end
+
+  describe '#refresh' do
+    cassette "contact_list_refresh" 
+
+    let(:contact_list) { Hubspot::ContactList.new(example_contact_list_hash) }
+    subject { contact_list.refresh }
+
+    it { should be true }
   end
 end
