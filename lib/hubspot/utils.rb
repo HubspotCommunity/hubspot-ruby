@@ -40,11 +40,14 @@ module Hubspot
           end
         end
         raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
-        query = params.map{ |k,v| param_string(k,v) }.join("&")
+
+        query = params.map do |k,v| 
+          v.is_a?(Array) ? v.map { |value| param_string(k,value) } : param_string(k,v) 
+        end.join("&")
+        
         path += "?" if query.present?
         base_url + path + query
       end
-
 
       private
 
@@ -57,9 +60,13 @@ module Hubspot
       end
 
       def param_string(key,value)
-        if (key =~ /range/)
+        if key =~ /range/
           raise "Value must be a range" unless value.is_a?(Range)
           "#{key}=#{converted_value(value.begin)}&#{key}=#{converted_value(value.end)}"
+        elsif key =~ /^batch_(.*)$/
+          # keys tranformed to accept batch mode syntax
+          key = $1.gsub(/(_.)/) { |w| w.last.upcase }
+          "#{key}=#{converted_value(value)}"
         else
           "#{key}=#{converted_value(value)}"
         end

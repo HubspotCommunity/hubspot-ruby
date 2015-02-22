@@ -131,7 +131,7 @@ describe Hubspot::Contact do
       expect(single_list.size).to eql 1
       first = single_list.first
 
-      second = Hubspot::Contact.all(count: 1, 'vidOffset': first.vid).first
+      second = Hubspot::Contact.all(count: 1, vidOffset: first.vid).first
       expect(second.vid).to eql 196181
       expect(second['firstname']).to eql 'Charles'
       expect(second['lastname']).to eql 'Gowland'

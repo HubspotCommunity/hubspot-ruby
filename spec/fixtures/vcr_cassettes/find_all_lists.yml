@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 20 Feb 2015 20:17:59 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '7358'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1335448864306,"error":"","lastSizeChangeAt":1424402567742,"size":3355},"dynamic":true,"listType":"DYNAMIC","listId":1,"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"portalId":62515,"createdAt":1335448813688,"updatedAt":1335448813688,"internalListId":1,"name":"twitterers"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1336673990262,"error":"","lastSizeChangeAt":1418738702960,"size":4},"dynamic":false,"listId":2,"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"portalId":62515,"createdAt":1336673951299,"updatedAt":1336673951299,"internalListId":2,"name":"HubSpot-HootSuite
+        App"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1344891893390,"error":"","lastSizeChangeAt":1422468593853,"size":5},"dynamic":false,"listType":"STATIC","listId":3,"filters":[],"portalId":62515,"createdAt":1344891893390,"updatedAt":1344891893390,"internalListId":5,"name":"staticTest"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1345057450679,"error":"","lastSizeChangeAt":1421930685051,"size":2},"dynamic":false,"listType":"STATIC","listId":4,"filters":[],"portalId":62515,"createdAt":1345057450679,"updatedAt":1345057450679,"internalListId":6,"name":"Workface
+        Leads"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1352457865767,"error":"","lastSizeChangeAt":1356047577025,"size":0},"dynamic":true,"listType":"DYNAMIC","listId":5,"filters":[[{"type":"string","operator":"EQ","withinTimeMode":"PAST","property":"email","value":"venky10596@gmail.com"}]],"portalId":62515,"createdAt":1345150315056,"updatedAt":1352457795448,"internalListId":111,"name":"stuff"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1412965644048,"error":"","lastSizeChangeAt":1412965644007,"size":1134},"dynamic":false,"listType":"STATIC","deleted":false,"listId":106,"filters":[],"portalId":62515,"createdAt":1348730165681,"updatedAt":1348730165681,"internalListId":108,"name":"test1.csv"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1353112579422,"error":"","lastSizeChangeAt":1379278698150,"size":0},"dynamic":true,"listType":"DYNAMIC","listId":123,"filters":[[{"type":"enumeration","operator":"SET_EQ","withinTimeMode":"PAST","property":"created_from_learning_studio","value":"true"}]],"portalId":62515,"createdAt":1353112478149,"updatedAt":1353448496108,"internalListId":128,"name":"VP
+        From LS"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1353435356844,"error":"","lastSizeChangeAt":1379278698143,"size":0},"dynamic":true,"listType":"DYNAMIC","listId":124,"filters":[[{"type":"enumeration","operator":"SET_EQ","withinTimeMode":"PAST","property":"created_from_learning_studio","value":"true"},{"operator":"IS_EMPTY","withinTimeMode":"PAST","property":"system_generated_password"}]],"portalId":62515,"createdAt":1353435268894,"updatedAt":1353435268894,"internalListId":129,"name":"VP
+        Self Signed Up"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1353448911950,"error":"","lastSizeChangeAt":1379278604544,"size":0},"dynamic":true,"listType":"DYNAMIC","listId":125,"filters":[[{"type":"enumeration","operator":"SET_EQ","withinTimeMode":"PAST","property":"created_from_learning_studio","value":"true"},{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"system_generated_password"}]],"portalId":62515,"createdAt":1353435309254,"updatedAt":1353448679894,"internalListId":137,"name":"VP
+        User Created By Admin"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1354183186104,"error":"","lastSizeChangeAt":1379278698138,"size":0},"dynamic":true,"listType":"DYNAMIC","listId":126,"filters":[[{"type":"enumeration","operator":"SET_EQ","withinTimeMode":"PAST","property":"test_user","value":"true"}]],"portalId":62515,"createdAt":1353445432440,"updatedAt":1353445432440,"internalListId":141,"name":"VP
+        Test Users"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1353956891525,"error":"","lastSizeChangeAt":1379278879425,"size":0},"dynamic":false,"listType":"STATIC","listId":127,"filters":[],"portalId":62515,"createdAt":1353956891525,"updatedAt":1353956891525,"internalListId":139,"name":"Enter
+        Photo Contest"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1354047260466,"error":"","lastSizeChangeAt":1379278348398,"size":0},"dynamic":false,"listType":"STATIC","listId":128,"filters":[],"portalId":62515,"createdAt":1354047260466,"updatedAt":1354047260466,"internalListId":140,"name":"Win
+        Golf Stand Bag"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1358762885859,"error":"","lastSizeChangeAt":1358762885860,"size":0},"dynamic":true,"listType":"DYNAMIC","listId":132,"filters":[[{"operator":"HAS_FILLED_OUT_FORM","form":"c900bc7334de4ec7921d688c5444e445","withinTimeMode":"PAST"},{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"country"}]],"portalId":62515,"createdAt":1358415795285,"updatedAt":1358762858893,"internalListId":154,"name":"US
+        Person"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1379965841604,"error":"","lastSizeChangeAt":1422554891450,"size":27},"dynamic":true,"listType":"DYNAMIC","listId":137,"filters":[[{"type":"number","operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"annualrevenue","value":0}]],"portalId":62515,"createdAt":1358866329333,"updatedAt":1379965836651,"deleteable":true,"internalListId":273,"name":"Klpz"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360391773728,"error":"","lastSizeChangeAt":1409867632129,"size":0},"dynamic":false,"listType":"STATIC","listId":140,"filters":[],"portalId":62515,"createdAt":1360391773728,"updatedAt":1360391773728,"internalListId":158,"name":"pooja.arora@utsavfashion.biz"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360714782028,"error":"","lastSizeChangeAt":1416868964666,"size":25},"dynamic":false,"listType":"STATIC","listId":145,"filters":[],"portalId":62515,"createdAt":1360714782028,"updatedAt":1360714782028,"internalListId":163,"name":"tweeters"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360714845104,"error":"","lastSizeChangeAt":0,"size":0},"dynamic":false,"listType":"STATIC","listId":146,"filters":[],"portalId":62515,"createdAt":1360714845104,"updatedAt":1360714845104,"internalListId":164,"name":"tweeters2"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360714853388,"error":"","lastSizeChangeAt":1399965262559,"size":2},"dynamic":false,"listType":"STATIC","listId":147,"filters":[],"portalId":62515,"createdAt":1360714853388,"updatedAt":1360714853388,"internalListId":165,"name":"tweeters3"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360715752360,"error":"","lastSizeChangeAt":0,"size":0},"dynamic":false,"listType":"STATIC","listId":148,"filters":[],"portalId":62515,"createdAt":1360715752360,"updatedAt":1360715752360,"internalListId":166,"name":"tweetersasdf"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360718454238,"error":"","lastSizeChangeAt":0,"size":0},"dynamic":false,"listType":"STATIC","listId":149,"filters":[],"portalId":62515,"createdAt":1360718454238,"updatedAt":1360718454238,"internalListId":167,"name":"tweeterszzzzz"}],"offset":20,"has-more":true}'
+    http_version: 
+  recorded_at: Fri, 20 Feb 2015 20:17:59 GMT
+recorded_with: VCR 2.4.0

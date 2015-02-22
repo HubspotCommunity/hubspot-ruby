@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/1?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"update list name"}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 03:21:02 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '435'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1335448864306,"error":"","lastSizeChangeAt":1424566814058,"size":3357},"dynamic":true,"listType":"DYNAMIC","filters":[[{"type":"string","filterFamily":"PropertyValue","operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"portalId":62515,"createdAt":1335448813688,"updatedAt":1424575262863,"listId":1,"internalListId":1,"name":"update
+        list name"}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 03:21:02 GMT
+recorded_with: VCR 2.4.0

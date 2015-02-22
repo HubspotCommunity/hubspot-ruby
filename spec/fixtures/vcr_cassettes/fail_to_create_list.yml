@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":null,"dynamic":false,"portal_id":null}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 02:29:50 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '110'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Every list must have a name.","requestId":"dc5b8484-32b4-42a5-8422-9e1ff097ed31"}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 02:29:50 GMT
+recorded_with: VCR 2.4.0

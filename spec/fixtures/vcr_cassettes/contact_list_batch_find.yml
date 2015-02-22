@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/batch?hapikey=demo&listId=4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 13:17:19 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '986'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1336673990262,"lastSizeChangeAt":1418738702960,"error":"","size":4},"dynamic":false,"portalId":62515,"createdAt":1336673951299,"updatedAt":1336673951299,"listId":2,"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"internalListId":2,"name":"HubSpot-HootSuite
+        App"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1344891893390,"lastSizeChangeAt":1422468593853,"error":"","size":5},"dynamic":false,"portalId":62515,"createdAt":1344891893390,"listType":"STATIC","updatedAt":1344891893390,"listId":3,"filters":[],"internalListId":5,"name":"staticTest"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1345057450679,"lastSizeChangeAt":1421930685051,"error":"","size":2},"dynamic":false,"portalId":62515,"createdAt":1345057450679,"listType":"STATIC","updatedAt":1345057450679,"listId":4,"filters":[],"internalListId":6,"name":"Workface
+        Leads"}]}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 13:17:19 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists/batch?hapikey=demo&list_id=4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 21 Feb 2015 13:20:29 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '12'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[]}'
+    http_version: 
+  recorded_at: Sat, 21 Feb 2015 13:20:29 GMT
+recorded_with: VCR 2.4.0

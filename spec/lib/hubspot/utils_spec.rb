@@ -94,5 +94,11 @@ describe Hubspot::Utils do
       let(:options){ {base_url: "https://cool.com", hapikey: false} }
       it{ should == "https://cool.com/test/test/profile"}
     end
+
+    context "passing Array as parameters for batch mode, key is prefixed with batch_" do 
+      let(:path) { Hubspot::ContactList::LIST_BATCH_PATH }
+      let(:params) { { batch_list_id: [1,2,3] } }
+      it{ should == "https://api.hubapi.com/contacts/v1/lists/batch?listId=1&listId=2&listId=3&hapikey=demo" }
+    end
   end
 end
