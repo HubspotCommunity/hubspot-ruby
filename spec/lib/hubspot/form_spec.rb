@@ -13,7 +13,7 @@ describe Hubspot::Form do
     its(:properties) { should be_a(Hash) }
   end 
 
-  before { Hubspot.configure(hapikey: "demo") }
+  before { Hubspot.configure(hapikey: "demo", portal_id: '62515') }
 
   describe '.all' do
     cassette 'find_all_forms'
@@ -118,7 +118,22 @@ describe Hubspot::Form do
   end
 
   describe '#submit' do 
-    pending
+    cassette 'form_submit_data'
+
+    let(:form) { Hubspot::Form.find('561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0') }
+
+    it 'returns true if the form submission is successfull' do 
+      params = { }
+      result = form.submit(params)
+      result.should be true
+    end
+
+    it 'returns false in case of errors' do 
+      Hubspot.configure(hapikey: "demo", portal_id: '62514')
+      params = { }
+      result = form.submit(params)
+      result.should be false
+    end
   end
 
   describe '#update!' do 

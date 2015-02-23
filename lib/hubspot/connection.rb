@@ -27,9 +27,10 @@ module Hubspot
         response
       end
 
-      private
-
+      protected
+    
       #TODO: refactor the following methods
+      #      the base url pb can be solved using HTTParty base_uri option
 
       # Generate the API URL for the request
       #
@@ -88,4 +89,13 @@ module Hubspot
       end
     end
   end
+
+  class FormsConnection < Connection
+    follow_redirects false
+
+    def self.submit(path, opts)
+      url = generate_url(path, opts[:params], { base_url: 'https://forms.hubspot.com' })
+      post(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
+    end
+  end      
 end

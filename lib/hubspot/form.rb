@@ -9,6 +9,7 @@ module Hubspot
   	FORM_PATH = '/contacts/v1/forms/:form_guid'
   	FIELDS_PATH = '/contacts/v1/fields/:form_guid'
   	FIELD_PATH = FIELDS_PATH + '/:field_name'
+  	SUBMIT_DATA_PATH = '/uploads/form/v2/:portal_id/:form_guid'
 
     class << self
       # {https://developers.hubspot.com/docs/methods/forms/create_form}
@@ -61,8 +62,9 @@ module Hubspot
     end
  
     # {https://developers.hubspot.com/docs/methods/forms/submit_form}
-    def submit(opts={})
-      raise NotImplementedError
+    def submit(opts={})    
+      response = Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
+      [204, 302].include?(response.code)
     end
 
     # {https://developers.hubspot.com/docs/methods/forms/update_form}
