@@ -1,11 +1,93 @@
 module Hubspot
+  #
+  # HubSpot Form API
+  #
+  # {https://developers.hubspot.com/docs/methods/forms/forms_overview}
+  #
   class Form
-    def initialize(form_guid)
-      @form_guid = form_guid
+  	FORMS_PATH = '/contacts/v1/forms'
+  	FORM_PATH = '/contacts/v1/forms/:form_guid'
+  	FIELDS_PATH = '/contacts/v1/fields/:form_guid'
+  	FIELD_PATH = FIELDS_PATH + '/:field_name'
+
+    class << self
+      # {https://developers.hubspot.com/docs/methods/forms/create_form}
+      def create!(opts={})
+      	response = Hubspot::Connection.post_json(FORMS_PATH, params: {}, body: opts)
+        new(response)
+      end
+
+      def all
+        response = Hubspot::Connection.get_json(FORMS_PATH, {})
+        response.map { |f| new(f) }
+      end
+
+      # {https://developers.hubspot.com/docs/methods/forms/get_form}
+      def find(guid)
+        response = Hubspot::Connection.get_json(FORM_PATH, { form_guid: guid })
+        new(response)
+      end
     end
 
-    def url
-      Hubspot::Connection.send(:generate_url, "/uploads/form/v2/:portal_id/:form_guid", {form_guid: @form_guid}, {base_url: "https://forms.hubspot.com", hapikey: false})
+    attr_reader :guid
+    attr_reader :fields
+    attr_reader :properties
+
+    def initialize(hash)
+      self.send(:assign_properties, hash)	
+    end
+
+    # {https://developers.hubspot.com/docs/methods/forms/get_fields}
+    # {https://developers.hubspot.com/docs/methods/forms/get_field}
+    def fields(opts={})
+      bypass_cache = opts.delete(:bypass_cache) { false }
+      field_name = opts.delete(:only) { nil }
+
+      if field_name
+      	field_name = field_name.to_s
+      	if bypass_cache || @fields.nil? || @fields.empty?
+      	  response = Hubspot::Connection.get_json(FIELD_PATH, { form_guid: @guid, field_name: field_name })
+      	  response
+      	else
+      	  @fields.detect { |f| f['name'] == field_name }	
+      	end
+      else
+      	if bypass_cache || @fields.nil? || @fields.empty?
+          response = Hubspot::Connection.get_json(FIELDS_PATH, { form_guid: @guid })
+          @fields = response
+        end
+        @fields
+      end
+    end
+ 
+    # {https://developers.hubspot.com/docs/methods/forms/submit_form}
+    def submit(opts={})
+      raise NotImplementedError
+    end
+
+    # {https://developers.hubspot.com/docs/methods/forms/update_form}
+    def update!(opts={})
+      response = Hubspot::Connection.post_json(FORM_PATH, params: { form_guid: @guid }, body: opts)
+      self.send(:assign_properties, response)
+      self
+    end
+
+    # {https://developers.hubspot.com/docs/methods/forms/delete_form}
+    def destroy!
+      response = Hubspot::Connection.delete_json(FORM_PATH, { form_guid: @guid })
+      @destroyed = (response.code == 204)
+    end
+
+    def destroyed?
+      !!@destroyed
+    end
+
+    private
+
+    def assign_properties(hash)
+      @guid = hash['guid']
+      @fields = hash['fields']
+      @properties = hash
     end
   end
 end

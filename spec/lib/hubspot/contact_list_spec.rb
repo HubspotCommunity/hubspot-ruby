@@ -205,7 +205,7 @@ describe Hubspot::ContactList do
     its(:name){ should == "update list name" }
   end
 
-  describe '#delete!' do 
+  describe '#destroy!' do 
     cassette "contact_list_destroy"
 
     let(:contact_list) { Hubspot::ContactList.create!({ name: "newcontactlist_#{Time.now.to_i}"}) }
