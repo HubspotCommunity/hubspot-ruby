@@ -14,4 +14,5 @@ module Hubspot
   class MissingInterpolation < StandardError; end
   class ContactExistsError < RequestError; end
   class InvalidParams < StandardError; end
+  class ApiError < StandardError; end
 end
