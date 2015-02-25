@@ -3,22 +3,21 @@ module Hubspot
   # HubSpot Contact lists API
   #
   class ContactList
-    LISTS_PATH = '/contacts/v1/lists'
-    LIST_PATH = '/contacts/v1/lists/:list_id'
-    LIST_BATCH_PATH = LISTS_PATH + '/batch'
-    CONTACTS_PATH = LIST_PATH + '/contacts/all'
+    LISTS_PATH           = '/contacts/v1/lists'
+    LIST_PATH            = '/contacts/v1/lists/:list_id'
+    LIST_BATCH_PATH      = LISTS_PATH + '/batch'
+    CONTACTS_PATH        = LIST_PATH + '/contacts/all'
     RECENT_CONTACTS_PATH = LIST_PATH + '/contacts/recent'
-    ADD_CONTACT_PATH = LIST_PATH + '/add'
-    REMOVE_CONTACT_PATH = LIST_PATH + '/remove'
-    REFRESH_PATH = LIST_PATH + '/refresh'
+    ADD_CONTACT_PATH     = LIST_PATH + '/add'
+    REMOVE_CONTACT_PATH  = LIST_PATH + '/remove'
+    REFRESH_PATH         = LIST_PATH + '/refresh'
 
     class << self
       # {http://developers.hubspot.com/docs/methods/lists/create_list}
       def create!(opts={})
       	dynamic = opts.delete(:dynamic) { false } 
       	portal_id = opts.delete(:portal_id) { Hubspot::Config.portal_id }
-      	# TODO: test if can accept a list without filters
-
+ 
       	response = Hubspot::Connection.post_json(LISTS_PATH, params: {}, body: opts.merge({ dynamic: dynamic, portal_id: portal_id}) )
         new(response)
       end
@@ -30,7 +29,7 @@ module Hubspot
       	static = opts.delete(:static) { false } 
       	dynamic = opts.delete(:dynamic) { false } 
 
-        # NOTE: As opposed of what the documentation says, getting the static or dynamic lists returns all the list
+        # NOTE: As opposed of what the documentation says, getting the static or dynamic lists returns all the lists, not only 20 lists
       	path = LISTS_PATH + (static ? '/static' : dynamic ? '/dynamic' : '') 
         response = Hubspot::Connection.get_json(path, opts)
         response['lists'].map { |l| new(l) }
@@ -41,7 +40,9 @@ module Hubspot
       def find(ids)
       	batch_mode, path, params = case ids
         when Integer then [false, LIST_PATH, { list_id: ids }]
-        when Array then [true, LIST_BATCH_PATH, { batch_list_id: ids }]
+        when String then [false, LIST_PATH, { list_id: ids.to_i }]  
+        when Array then [true, LIST_BATCH_PATH, { batch_list_id: ids.map(&:to_i) }]
+        else raise Hubspot::InvalidParams, 'expecting Integer or Array of Integers parameter'
       	end
 
         response = Hubspot::Connection.get_json(path, params)

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
     body:
       encoding: US-ASCII
-      string: ! '{"properties":[{"property":"email","value":"newcontact_y_1362339049@hsgem.com"}]}'
+      string: '{"properties":[{"property":"email","value":"newcontact_y_1362339049@hsgem.com"}]}'
     headers: {}
   response:
     status:
@@ -26,7 +26,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"vid":163808,"portal-id":62515,"profile-token":"AO_T-mMji2Iv1oSx0LuXtcLlejNz0naS-l00tAfVhctds-q3zsMUlISjDLHGNObWRvyaRtQtErwRE8c5KRae9_tRCUhKqLXFCnbQsXpzZndlsY0j5uTCQWIeYGG9i1REd183fSyDgspc","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mMji2Iv1oSx0LuXtcLlejNz0naS-l00tAfVhctds-q3zsMUlISjDLHGNObWRvyaRtQtErwRE8c5KRae9_tRCUhKqLXFCnbQsXpzZndlsY0j5uTCQWIeYGG9i1REd183fSyDgspc/","properties":{"email":{"value":"newcontact_y_1362339049@hsgem.com","versions":[{"value":"newcontact_y_1362339049@hsgem.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1362339050201,"selected":false}]},"createdate":{"value":"1362339050201","versions":[{"value":"1362339050201","source-type":"API","source-id":null,"source-label":null,"timestamp":1362339050201,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":163808,"identities":[{"type":"EMAIL","value":"newcontact_y_1362339049@hsgem.com","timestamp":1362339050201},{"type":"LEAD_GUID","value":"cbad3425-1495-4680-b267-162b11bc240f","timestamp":1362339050235}]}]}'
+      string: '{"vid":163808,"portal-id":62515,"profile-token":"AO_T-mMji2Iv1oSx0LuXtcLlejNz0naS-l00tAfVhctds-q3zsMUlISjDLHGNObWRvyaRtQtErwRE8c5KRae9_tRCUhKqLXFCnbQsXpzZndlsY0j5uTCQWIeYGG9i1REd183fSyDgspc","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mMji2Iv1oSx0LuXtcLlejNz0naS-l00tAfVhctds-q3zsMUlISjDLHGNObWRvyaRtQtErwRE8c5KRae9_tRCUhKqLXFCnbQsXpzZndlsY0j5uTCQWIeYGG9i1REd183fSyDgspc/","properties":{"email":{"value":"newcontact_y_1362339049@hsgem.com","versions":[{"value":"newcontact_y_1362339049@hsgem.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1362339050201,"selected":false}]},"createdate":{"value":"1362339050201","versions":[{"value":"1362339050201","source-type":"API","source-id":null,"source-label":null,"timestamp":1362339050201,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":163808,"identities":[{"type":"EMAIL","value":"newcontact_y_1362339049@hsgem.com","timestamp":1362339050201},{"type":"LEAD_GUID","value":"cbad3425-1495-4680-b267-162b11bc240f","timestamp":1362339050235}]}]}'
     http_version: 
   recorded_at: Sun, 03 Mar 2013 19:30:50 GMT
 - request:
@@ -55,7 +55,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"vid":163808,"deleted":true}'
+      string: '{"vid":163808,"deleted":true}'
     http_version: 
   recorded_at: Sun, 03 Mar 2013 19:30:51 GMT
 - request:
@@ -82,7 +82,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '<html><head><title>Apache Tomcat/6.0.30 - Error report</title><style><!--H1
+      string: '<html><head><title>Apache Tomcat/6.0.30 - Error report</title><style><!--H1
         {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;}
         H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;}
         H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;}
@@ -96,4 +96,36 @@ http_interactions:
         Tomcat/6.0.30</h3></body></html>'
     http_version: 
   recorded_at: Sun, 03 Mar 2013 19:30:51 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/all/contacts/all?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"newcontact_y_1424888103@hsgem.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 405
+      message: Method Not Allowed
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Allow:
+      - HEAD,GET,OPTIONS
+      Date:
+      - Wed, 25 Feb 2015 18:15:04 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 18:15:03 GMT
 recorded_with: VCR 2.4.0

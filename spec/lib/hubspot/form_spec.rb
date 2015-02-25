@@ -67,11 +67,7 @@ describe Hubspot::Form do
       it { should be_an_instance_of Hubspot::Form }
       its(:guid) { should be_a(String) }
     end 
-
-    context 'adding form fields optional parameters' do 
-      pending
-    end
-
+    
     context 'without all required parameters' do
       cassette 'fail_to_create_form'
 

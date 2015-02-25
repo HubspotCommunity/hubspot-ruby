@@ -40,4 +40,5 @@ RSpec.configure do |config|
   end
 
   config.extend CassetteHelper
+  config.extend TestsHelper
 end

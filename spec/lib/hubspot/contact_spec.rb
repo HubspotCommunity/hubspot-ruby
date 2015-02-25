@@ -77,26 +77,6 @@ describe Hubspot::Contact do
         contacts = Hubspot::Contact.find_by_email(emails)
         pending
       end
-
-      it 'returns contact properties if specified as parameters' do
-        pending
-      end
-
-      it 'returns property mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns form submission mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns list memberships if specified as parameters' do
-        pending
-      end
-
-      it 'returns deleted contact information if specified as parameters' do
-        pending
-      end
     end
   end
 
@@ -124,30 +104,6 @@ describe Hubspot::Contact do
       # NOTE: error currently appends on API endpoint
       it 'find lists of contacts' do
         expect { Hubspot::Contact.find_by_id([82325]) }.to raise_error(Hubspot::ApiError)
-        #expect(contacts.count).to be == 1
-        #contact = contacts.first
-        #expect(contact).to be_a(Hubspot::Contact)
-        #expect(contact.vid).to be == 82325
-      end
-
-      it 'returns contact properties if specified as parameters' do
-        pending
-      end
-
-      it 'returns property mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns form submission mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns list memberships if specified as parameters' do
-        pending
-      end
-
-      it 'returns deleted contact information if specified as parameters' do
-        pending
       end
     end
   end
@@ -176,26 +132,6 @@ describe Hubspot::Contact do
       it 'find lists of contacts' do
         utks = ['f844d2217850188692f2610c717c2e9b', 'j94344d22178501692f2610c717c2e9b']
         expect { Hubspot::Contact.find_by_utk(utks) }.to raise_error(Hubspot::ApiError)
-      end
-
-      it 'returns contact properties if specified as parameters' do
-        pending
-      end
-
-      it 'returns property mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns form submission mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns list memberships if specified as parameters' do
-        pending
-      end
-
-      it 'returns deleted contact information if specified as parameters' do
-        pending
       end
     end
   end
@@ -254,22 +190,6 @@ describe Hubspot::Contact do
 
         expect(last).to be_a Hubspot::Contact
         expect(last.vid).to eql 263776
-      end
-
-      it 'returns contact properties if specified as parameters' do
-        pending
-      end
-
-      it 'returns property mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns form submission mode if specified as parameters' do
-        pending
-      end
-
-      it 'returns list memberships if specified as parameters' do
-        pending
       end
     end
   end

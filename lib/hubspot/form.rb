@@ -5,10 +5,10 @@ module Hubspot
   # {https://developers.hubspot.com/docs/methods/forms/forms_overview}
   #
   class Form
-  	FORMS_PATH = '/contacts/v1/forms'
-  	FORM_PATH = '/contacts/v1/forms/:form_guid'
-  	FIELDS_PATH = '/contacts/v1/fields/:form_guid'
-  	FIELD_PATH = FIELDS_PATH + '/:field_name'
+  	FORMS_PATH       = '/contacts/v1/forms'
+  	FORM_PATH        = '/contacts/v1/forms/:form_guid'
+  	FIELDS_PATH      = '/contacts/v1/fields/:form_guid'
+  	FIELD_PATH       = FIELDS_PATH + '/:field_name'
   	SUBMIT_DATA_PATH = '/uploads/form/v2/:portal_id/:form_guid'
 
     class << self

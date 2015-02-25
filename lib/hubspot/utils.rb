@@ -1,4 +1,3 @@
-# TODO: that class should be used to remove the activesupport dependency
 module Hubspot
   class Utils
     class << self
@@ -13,7 +12,7 @@ module Hubspot
       def hash_to_properties(hash, opts = {})
         key_name = opts[:key_name] || "property"
         hash.map{ |k,v| { key_name => k.to_s, "value" => v}}
-      end 
+      end
     end
   end
 end

@@ -248,4 +248,34 @@ http_interactions:
         stunning headline!","page-id":"324527","title":"My New Form","meta-data":[]}],"identity-profiles":[{"vid":154835,"saved-at-timestamp":1405347851237,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"test@hubspot.com","timestamp":1405347851180},{"type":"LEAD_GUID","value":"c8f20860-d3d6-4b57-b092-86a07cebdcbc","timestamp":1405347851237}]}],"merge-audits":[]}],"has-more":true,"vid-offset":154835}'
     http_version: 
   recorded_at: Sun, 22 Feb 2015 19:55:34 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/2/profile?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 25 Feb 2015 18:02:43 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"contact does not exist","requestId":"eb80c0ec-fe1e-49f7-8007-69ab7fc6ab57"}'
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 18:02:42 GMT
 recorded_with: VCR 2.4.0

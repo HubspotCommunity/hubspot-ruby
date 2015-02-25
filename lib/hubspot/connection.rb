@@ -28,17 +28,7 @@ module Hubspot
       end
 
       protected
-    
-      #TODO: refactor the following methods
-      #      the base url pb can be solved using HTTParty base_uri option
 
-      # Generate the API URL for the request
-      #
-      # @param path [String] The path of the request with leading "/". Parts starting with a ":" will be interpolated
-      # @param params [Hash] params to be included in the query string or interpolated into the url.
-      #
-      # @return [String]
-      #
       def generate_url(path, params={}, options={})
         Hubspot::Config.ensure! :hapikey
         path = path.clone
@@ -67,20 +57,17 @@ module Hubspot
         base_url + path + query
       end
 
+      # convert into milliseconds since epoch
       def converted_value(value)
-        if (value.is_a?(Time))
-          (value.to_i * 1000) # convert into milliseconds since epoch
-        else
-          value
-        end
+        value.is_a?(Time) ? (value.to_i * 1000) : value
       end
 
       def param_string(key,value)
-        if key =~ /range/
+        case key 
+        when /range/
           raise "Value must be a range" unless value.is_a?(Range)
           "#{key}=#{converted_value(value.begin)}&#{key}=#{converted_value(value.end)}"
-        elsif key =~ /^batch_(.*)$/
-          # keys tranformed to accept batch mode syntax
+        when /^batch_(.*)$/
           key = $1.gsub(/(_.)/) { |w| w.last.upcase }
           "#{key}=#{converted_value(value)}"
         else

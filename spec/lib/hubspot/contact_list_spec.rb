@@ -38,15 +38,13 @@ describe Hubspot::ContactList do
       expect(contact).to be_a(Hubspot::Contact)
     end
 
-    #TODO: add support method to test generic offsets and count options + refactor specs
-
     it 'add default properties to the contacts returned' do
       contact = list.contacts.first
       expect(contact.email).to_not be_empty 
     end
 
-    it 'caches the result if not explicitely bypassed' do
-      pending 'that feature can be removed + cf. refresh api endpoint'
+    expect_count_and_offset do |params| 
+      Hubspot::ContactList.find(1).contacts(params) 
     end
   end
 
@@ -61,6 +59,18 @@ describe Hubspot::ContactList do
       its(:id) { should be_an(Integer) }
       its(:portal_id) { should be_an(Integer) }
       its(:dynamic) { should be false }
+
+      context 'adding filters parameters' do
+        cassette 'create_list_with_filters'
+
+        it 'returns a ContactList object with filters set' do 
+          name = 'list with filters'
+          filters_param = [[{ operator: "EQ", value: "@hubspot", property: "twitterhandle", type: "string"}]]
+          list_with_filters = Hubspot::ContactList.create!({ name: name, filters: filters_param })
+          expect(list_with_filters).to be_a(Hubspot::ContactList)
+          expect(list_with_filters.properties['filters']).to_not be_empty
+        end
+      end
     end
 
     context 'without all required parameters' do
@@ -73,8 +83,6 @@ describe Hubspot::ContactList do
   end
 
   describe '.all' do
-  	#TODO: add support method to test generic offsets and count options for each context + refactor spec
-
     context 'all list types' do
       cassette 'find_all_lists'
 
@@ -86,6 +94,8 @@ describe Hubspot::ContactList do
         expect(list).to be_a(Hubspot::ContactList) 	
         expect(list.id).to be_an(Integer)
   	  end
+
+      expect_count_and_offset { |params| Hubspot::ContactList.all(params) }
     end
 
     context 'static lists' do 
@@ -124,6 +134,15 @@ describe Hubspot::ContactList do
         let(:id) { 1 }
         it { should be_an_instance_of Hubspot::ContactList }
         its(:name) { should == 'twitterers' }
+
+        let(:id) { '1' }
+        it { should be_an_instance_of Hubspot::ContactList }
+      end
+
+      context 'Wrong parameter type given' do
+        it 'raises an error' do 
+          expect { Hubspot::ContactList.find(static_list) }.to raise_error(Hubspot::InvalidParams)
+        end 
       end
 
       context 'when the contact list is not found' do
@@ -152,8 +171,9 @@ describe Hubspot::ContactList do
   
   	context 'static list' do
   	  it 'returns true if contacts have been added to the list' do
-      	pending
-        contact = Hubspot::Contact.find_by_id(1) 
+        contact = Hubspot::Contact.all(count: 1).first 
+        mock(Hubspot::Connection).post_json("/contacts/v1/lists/:list_id/add", {:params=>{:list_id=>4}, :body=>{:vids=>[contact.vid]}}) { { 'updated' => [contact.vid] } }
+        
       	expect(static_list.add(contact)).to be true
   	  end
 

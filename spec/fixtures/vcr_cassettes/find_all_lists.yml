@@ -39,4 +39,100 @@ http_interactions:
         Person"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1379965841604,"error":"","lastSizeChangeAt":1422554891450,"size":27},"dynamic":true,"listType":"DYNAMIC","listId":137,"filters":[[{"type":"number","operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"annualrevenue","value":0}]],"portalId":62515,"createdAt":1358866329333,"updatedAt":1379965836651,"deleteable":true,"internalListId":273,"name":"Klpz"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360391773728,"error":"","lastSizeChangeAt":1409867632129,"size":0},"dynamic":false,"listType":"STATIC","listId":140,"filters":[],"portalId":62515,"createdAt":1360391773728,"updatedAt":1360391773728,"internalListId":158,"name":"pooja.arora@utsavfashion.biz"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360714782028,"error":"","lastSizeChangeAt":1416868964666,"size":25},"dynamic":false,"listType":"STATIC","listId":145,"filters":[],"portalId":62515,"createdAt":1360714782028,"updatedAt":1360714782028,"internalListId":163,"name":"tweeters"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360714845104,"error":"","lastSizeChangeAt":0,"size":0},"dynamic":false,"listType":"STATIC","listId":146,"filters":[],"portalId":62515,"createdAt":1360714845104,"updatedAt":1360714845104,"internalListId":164,"name":"tweeters2"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360714853388,"error":"","lastSizeChangeAt":1399965262559,"size":2},"dynamic":false,"listType":"STATIC","listId":147,"filters":[],"portalId":62515,"createdAt":1360714853388,"updatedAt":1360714853388,"internalListId":165,"name":"tweeters3"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360715752360,"error":"","lastSizeChangeAt":0,"size":0},"dynamic":false,"listType":"STATIC","listId":148,"filters":[],"portalId":62515,"createdAt":1360715752360,"updatedAt":1360715752360,"internalListId":166,"name":"tweetersasdf"},{"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1360718454238,"error":"","lastSizeChangeAt":0,"size":0},"dynamic":false,"listType":"STATIC","listId":149,"filters":[],"portalId":62515,"createdAt":1360718454238,"updatedAt":1360718454238,"internalListId":167,"name":"tweeterszzzzz"}],"offset":20,"has-more":true}'
     http_version: 
   recorded_at: Fri, 20 Feb 2015 20:17:59 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists?count=2&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 25 Feb 2015 17:47:27 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '849'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"dynamic":true,"metaData":{"lastProcessingStateChangeAt":1424576267785,"lastSizeChangeAt":1424834705600,"error":"","processing":"DONE","size":3363},"listType":"DYNAMIC","updatedAt":1424575262863,"filters":[[{"type":"string","operator":"IS_NOT_EMPTY","filterFamily":"PropertyValue","withinTimeMode":"PAST","property":"twitterhandle"}]],"listId":1,"portalId":62515,"createdAt":1335448813688,"internalListId":97398,"name":"update
+        list name"},{"dynamic":false,"metaData":{"lastProcessingStateChangeAt":1336673990262,"lastSizeChangeAt":1424559295352,"error":"","processing":"DONE","size":0},"updatedAt":1336673951299,"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"listId":2,"portalId":62515,"createdAt":1336673951299,"internalListId":2,"name":"HubSpot-HootSuite
+        App"}],"offset":2,"has-more":true}'
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 17:47:26 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists?count=4&hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 25 Feb 2015 17:49:50 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1453'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"dynamic":true,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1424576267785,"lastSizeChangeAt":1424834705600,"error":"","size":3363},"createdAt":1335448813688,"portalId":62515,"listId":1,"listType":"DYNAMIC","updatedAt":1424575262863,"filters":[[{"type":"string","operator":"IS_NOT_EMPTY","filterFamily":"PropertyValue","withinTimeMode":"PAST","property":"twitterhandle"}]],"internalListId":97398,"name":"update
+        list name"},{"dynamic":false,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1336673990262,"lastSizeChangeAt":1424559295352,"error":"","size":0},"createdAt":1336673951299,"portalId":62515,"listId":2,"updatedAt":1336673951299,"filters":[[{"operator":"IS_NOT_EMPTY","withinTimeMode":"PAST","property":"twitterhandle"}]],"internalListId":2,"name":"HubSpot-HootSuite
+        App"},{"dynamic":false,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1344891893390,"lastSizeChangeAt":1424561579485,"error":"","size":0},"createdAt":1344891893390,"portalId":62515,"listId":3,"listType":"STATIC","updatedAt":1344891893390,"filters":[],"internalListId":5,"name":"staticTest"},{"dynamic":false,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1345057450679,"lastSizeChangeAt":1424562780944,"error":"","size":0},"createdAt":1345057450679,"portalId":62515,"listId":4,"listType":"STATIC","updatedAt":1424574658753,"filters":[],"internalListId":6,"name":"Workface
+        Leads"}],"offset":4,"has-more":true}'
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 17:49:49 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/lists?count=2&hapikey=demo&offset=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 25 Feb 2015 17:52:40 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '642'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"lists":[{"dynamic":false,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1344891893390,"error":"","lastSizeChangeAt":1424561579485,"size":0},"listType":"STATIC","updatedAt":1344891893390,"filters":[],"portalId":62515,"createdAt":1344891893390,"listId":3,"internalListId":5,"name":"staticTest"},{"dynamic":false,"metaData":{"processing":"DONE","lastProcessingStateChangeAt":1345057450679,"error":"","lastSizeChangeAt":1424562780944,"size":0},"listType":"STATIC","updatedAt":1424574658753,"filters":[],"portalId":62515,"createdAt":1345057450679,"listId":4,"internalListId":6,"name":"Workface
+        Leads"}],"offset":4,"has-more":true}'
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 17:52:39 GMT
 recorded_with: VCR 2.4.0

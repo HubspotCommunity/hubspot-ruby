@@ -6,17 +6,17 @@ module Hubspot
   #
   # TODO: work on all endpoints that can specify contact properties, property mode etc... as params. cf pending specs
   class Contact
-    CREATE_CONTACT_PATH = "/contacts/v1/contact"
-    GET_CONTACT_BY_EMAIL_PATH = "/contacts/v1/contact/email/:contact_email/profile"
+    CREATE_CONTACT_PATH        = "/contacts/v1/contact"
+    GET_CONTACT_BY_EMAIL_PATH  = "/contacts/v1/contact/email/:contact_email/profile"
     GET_CONTACTS_BY_EMAIL_PATH = "/contacts/v1/contact/emails/batch"
-    GET_CONTACT_BY_ID_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
-    CONTACT_BATCH_PATH = '/contacts/v1/contact/vids/batch'
-    GET_CONTACT_BY_UTK_PATH = "/contacts/v1/contact/utk/:contact_utk/profile"
-    GET_CONTACTS_BY_UTK_PATH = '/contacts/v1/contact/utks/batch'
-    UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
-    DESTROY_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id"
-    CONTACTS_PATH = "/contacts/v1/lists/all/contacts/all"
-    RECENT_CONTACTS_PATH = '/contacts/v1/lists/recently_updated/contacts/recent'
+    GET_CONTACT_BY_ID_PATH     = "/contacts/v1/contact/vid/:contact_id/profile"
+    CONTACT_BATCH_PATH         = '/contacts/v1/contact/vids/batch'
+    GET_CONTACT_BY_UTK_PATH    = "/contacts/v1/contact/utk/:contact_utk/profile"
+    GET_CONTACTS_BY_UTK_PATH   = '/contacts/v1/contact/utks/batch'
+    UPDATE_CONTACT_PATH        = "/contacts/v1/contact/vid/:contact_id/profile"
+    DESTROY_CONTACT_PATH       = "/contacts/v1/contact/vid/:contact_id"
+    CONTACTS_PATH              = "/contacts/v1/lists/all/contacts/all"
+    RECENT_CONTACTS_PATH       = '/contacts/v1/lists/recently_updated/contacts/recent'
 
     class << self
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
@@ -47,13 +47,14 @@ module Hubspot
       # API endpoint: https://developers.hubspot.com/docs/methods/contacts/create_or_update
       # + batch mode: https://developers.hubspot.com/docs/methods/contacts/batch_create_or_update
 
-      # TODO: problem with batch api endpoint
+      # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_vid}
       def find_by_id(vids)
         batch_mode, path, params = case vids
         when Integer then [false, GET_CONTACT_BY_ID_PATH, { contact_id: vids }]
         when Array then [true, CONTACT_BATCH_PATH, { batch_vid: vids }]
+        else raise Hubspot::InvalidParams, 'expecting Integer or Array of Integers parameter'
         end
 
         response = Hubspot::Connection.get_json(path, params)
@@ -67,6 +68,7 @@ module Hubspot
         batch_mode, path, params = case emails
         when String then [false, GET_CONTACT_BY_EMAIL_PATH, { contact_email: emails }]
         when Array then [true, GET_CONTACTS_BY_EMAIL_PATH, { batch_email: emails }]
+        else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
         end
 
         response = Hubspot::Connection.get_json(path, params)
@@ -78,13 +80,14 @@ module Hubspot
         end
       end
 
-      # TODO: problem with batch api endpoint
+      # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_utk} 
       def find_by_utk(utks)
         batch_mode, path, params = case utks
         when String then [false, GET_CONTACT_BY_UTK_PATH, { contact_utk: utks }]
         when Array then [true, GET_CONTACTS_BY_UTK_PATH, { batch_utk: utks }]
+        else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
         end
 
         response = Hubspot::Connection.get_json(path, params)
