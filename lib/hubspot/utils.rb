@@ -14,6 +14,16 @@ module Hubspot
         hash.map{ |k,v| { key_name => k.to_s, "value" => v}}
       end
 
+      # Transform hash keys to underscore
+      def underscore_hash(hash)
+        hash.map { |k,v| [k.underscore, v] }.to_h
+      end
+
+      # Transform hash keys to camelcase
+      def camelize_hash(hash)
+        hash.map { |k,v| [k.camelize(:lower), v] }.to_h
+      end
+
       # Generate the API URL for the request
       #
       # @param path [String] The path of the request with leading "/". Parts starting with a ":" will be interpolated

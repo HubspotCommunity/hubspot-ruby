@@ -38,7 +38,7 @@ module Hubspot
         # Merge in sensible defaults so we don't have to specify everything
         params_with_name.reverse_merge! default_creation_params
         # Transform keys to Hubspot's silly camelcase format
-        params_with_name = params_with_name.map { |k,v| [k.camelize(:lower), v] }.to_h
+        params_with_name = Hubspot::Utils.camelize_hash(params_with_name)
         url = Hubspot::Utils.generate_url(PROPERTY_PATH, {name: name})
         resp = HTTParty.put(url, body: params_with_name.to_json, format: :json,
           headers: {"Content-Type" => "application/json"})
@@ -63,8 +63,8 @@ module Hubspot
       :form_field, :display_order, :options
 
     def initialize(hash)
-      # Transform the hash keys into ruby friendly names
-      hash = hash.map { |k,v| [k.underscore, v] }.to_h
+      # Transform hubspot keys into ruby friendly names
+      hash = Hubspot::Utils.underscore_hash(hash)
       # Assign anything we have an accessor for with the same name
       hash.each do |key, value|
         self.send(:"#{key}=", value) if self.respond_to?(:"#{key}=")
