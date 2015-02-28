@@ -37,8 +37,8 @@ module Hubspot
         params_with_name.reverse_merge! default_creation_params
         # Transform keys to Hubspot's silly camelcase format
         params_with_name = Hubspot::Utils.camelize_hash(params_with_name)
-        url = Hubspot::Utils.generate_url(instance_path, {name: name})
-        resp = HTTParty.put(url, body: params_with_name.to_json, format: :json,
+        url  = Hubspot::Utils.generate_url(creation_path, {name: name})
+        resp = HTTParty.send(create_method, url, body: params_with_name.to_json, format: :json,
           headers: {"Content-Type" => "application/json"})
         raise(Hubspot::PropertyExistsError.new(resp, "#{self.name} already exists with name: #{name}")) if resp.code == 409
         raise(Hubspot::RequestError.new(resp, "Cannot create #{self.name} with name: #{name}")) unless resp.success?
@@ -47,12 +47,20 @@ module Hubspot
 
       protected
 
+      def create_method
+        :post
+      end
+
       def collection_path
         raise NotImplementedError
       end
 
       def instance_path
         raise NotImplementedError
+      end
+
+      def creation_path
+        collection_path
       end
 
       def default_creation_params

@@ -14,7 +14,7 @@ module Hubspot
     # Class Methods
     class << self
       def collection_path; PROPERTIES_PATH; end
-      def instance_path;   PROPERTY_PATH;   end
+      def instance_path;   PROPERTIES_PATH; end
     end
 
   end
