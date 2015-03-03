@@ -31,11 +31,12 @@ module Hubspot
       # @raise [Hubspot::PropertyExistsError] if a property already exists with the given name
       # @raise [Hubspot::RequestError] if the creation fails
       def create!(name, params = {})
+        name = name.to_s.camelize(:lower)
         # Merge the name with the rest of the params
         params_with_name = params.stringify_keys.merge("name" => name)
         # Merge in sensible defaults so we don't have to specify everything
         params_with_name.reverse_merge! default_creation_params
-        # Transform keys to Hubspot's silly camelcase format
+        # Transform keys to Hubspot's camelcase format
         params_with_name = Hubspot::Utils.camelize_hash(params_with_name)
         url  = Hubspot::Utils.generate_url(creation_path, {name: name})
         resp = HTTParty.send(create_method, url, body: params_with_name.to_json, format: :json,
@@ -43,6 +44,15 @@ module Hubspot
         raise(Hubspot::PropertyExistsError.new(resp, "#{self.name} already exists with name: #{name}")) if resp.code == 409
         raise(Hubspot::RequestError.new(resp, "Cannot create #{self.name} with name: #{name}")) unless resp.success?
         new(resp.parsed_response)
+      end
+
+      # Sometimes it's easier to delete things by name than instantiating them
+      def destroy!(name)
+        name = name.to_s.camelize(:lower)
+        url = Hubspot::Utils.generate_url(deletion_path, {name: name})
+        resp = HTTParty.delete(url, format: :json)
+        raise(Hubspot::RequestError.new(resp)) unless resp.success?
+        true
       end
 
       protected
@@ -61,6 +71,10 @@ module Hubspot
 
       def creation_path
         collection_path
+      end
+
+      def deletion_path
+        instance_path
       end
 
       def default_creation_params
@@ -91,10 +105,7 @@ module Hubspot
     # {http://developers.hubspot.com/docs/methods/contacts/delete_property}
     # @return [TrueClass] true
     def destroy!
-      url = Hubspot::Utils.generate_url(instance_path, {name: name})
-      resp = HTTParty.delete(url, format: :json)
-      raise(Hubspot::RequestError.new(resp)) unless resp.success?
-      @destroyed = true
+      @destroyed = self.class.destroy! self.name
     end
 
     def destroyed?
