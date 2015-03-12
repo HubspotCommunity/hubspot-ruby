@@ -28,10 +28,10 @@ module Hubspot
       # Creates a new Property
       # {http://developers.hubspot.com/docs/methods/contacts/create_property}
       # @return [Hubspot::Property] the created property
-      # @raise [Hubspot::PropertyExistsError] if a property already exists with the given name
+      # @raise [Hubspot::PropertyExistsError] if a property already exists with
+      #   the given name
       # @raise [Hubspot::RequestError] if the creation fails
       def create!(name, params = {})
-        name = name.to_s.camelize(:lower)
         # Merge the name with the rest of the params
         params_with_name = params.stringify_keys.merge("name" => name)
         # Merge in sensible defaults so we don't have to specify everything
@@ -48,7 +48,6 @@ module Hubspot
 
       # Sometimes it's easier to delete things by name than instantiating them
       def destroy!(name)
-        name = name.to_s.camelize(:lower)
         url = Hubspot::Utils.generate_url(deletion_path, {name: name})
         resp = HTTParty.delete(url, format: :json)
         raise(Hubspot::RequestError.new(resp)) unless resp.success?
