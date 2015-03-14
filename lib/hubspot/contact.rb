@@ -1,114 +1,102 @@
-require 'hubspot/utils'
-require 'httparty'
-
 module Hubspot
   #
   # HubSpot Contacts API
   #
-  # {https://developers.hubspot.com/docs/endpoints#contacts-api}
+  # {https://developers.hubspot.com/docs/methods/contacts/contacts-overview}
   #
+  # TODO: work on all endpoints that can specify contact properties, property mode etc... as params. cf pending specs
   class Contact
-    CREATE_CONTACT_PATH = "/contacts/v1/contact"
-    GET_CONTACT_BY_EMAIL_PATH = "/contacts/v1/contact/email/:contact_email/profile"
-    GET_CONTACT_BY_ID_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
-    GET_CONTACT_BY_UTK_PATH = "/contacts/v1/contact/utk/:contact_utk/profile"
-    UPDATE_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id/profile"
-    DESTROY_CONTACT_PATH = "/contacts/v1/contact/vid/:contact_id"
-    CONTACTS_PATH = "/contacts/v1/lists/all/contacts/all"
+    CREATE_CONTACT_PATH        = "/contacts/v1/contact"
+    GET_CONTACT_BY_EMAIL_PATH  = "/contacts/v1/contact/email/:contact_email/profile"
+    GET_CONTACTS_BY_EMAIL_PATH = "/contacts/v1/contact/emails/batch"
+    GET_CONTACT_BY_ID_PATH     = "/contacts/v1/contact/vid/:contact_id/profile"
+    CONTACT_BATCH_PATH         = '/contacts/v1/contact/vids/batch'
+    GET_CONTACT_BY_UTK_PATH    = "/contacts/v1/contact/utk/:contact_utk/profile"
+    GET_CONTACTS_BY_UTK_PATH   = '/contacts/v1/contact/utks/batch'
+    UPDATE_CONTACT_PATH        = "/contacts/v1/contact/vid/:contact_id/profile"
+    DESTROY_CONTACT_PATH       = "/contacts/v1/contact/vid/:contact_id"
+    CONTACTS_PATH              = "/contacts/v1/lists/all/contacts/all"
+    RECENT_CONTACTS_PATH       = '/contacts/v1/lists/recently_updated/contacts/recent'
 
     class << self
-      # Creates a new contact
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
-      # @param email [Hash] unique email of the new contact
-      # @param params [Hash] hash of properties to set on the contact
-      # @return [Hubspot::Contact] the newly created contact
       def create!(email, params={})
         params_with_email = params.stringify_keys.merge("email" => email)
-        url = Hubspot::Utils.generate_url(CREATE_CONTACT_PATH)
         post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_email)}
-        resp = HTTParty.post(url, body: post_data.to_json, format: :json)
-        raise(Hubspot::ContactExistsError.new(resp, "Contact already exists with email: #{email}")) if resp.code == 409
-        raise(Hubspot::RequestError.new(resp, "Cannot create contact with email: #{email}")) unless resp.success?
-        Hubspot::Contact.new(resp.parsed_response)
+        response = Hubspot::Connection.post_json(CREATE_CONTACT_PATH, params: {}, body: post_data )
+        new(response)
       end
 
-      # Finds a contact by email
-      # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email}
-      # @param email [String] the email of the contact to find
-      # @return [Hubspot::Contact, nil] the contact found or nil
-      def find_by_email(email)
-        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_EMAIL_PATH, {contact_email: email})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Contact.new(resp.parsed_response)
-        else
-          nil
-        end
-      end
-
-      # Finds a contact by vid
-      # @param vid [String] the vid of the contact to find
-      # @return [Hubspot::Contact, nil] the contact found or nil
-      def find_by_id(vid)
-        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_ID_PATH, {contact_id: vid})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Contact.new(resp.parsed_response)
-        else
-          nil
-        end
-      end
-
-      # Finds a contact by its User Token (hubspotutk cookie value)
-      # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
-      # @param utk [String] hubspotutk cookie value
-      # @return [Hubspot::Contact, nil] the contact found or nil
-      def find_by_utk(utk)
-        url = Hubspot::Utils.generate_url(GET_CONTACT_BY_UTK_PATH, {contact_utk: utk})
-        resp = HTTParty.get(url, format: :json)
-        if resp.success?
-          Hubspot::Contact.new(resp.parsed_response)
-        else
-          nil
-        end
-      end
-
-      # TODO: Get all contacts
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
-      # @param count [Fixnum] number of contacts per page; default 20; max 100
-      # @param vidOffset [Fixnum] page through the contacts
-      # @return [Hubspot::ContactCollection] the paginated collection of contacts
-      def all(opts = {})
-        url = Hubspot::Utils.generate_url(CONTACTS_PATH, opts)
-        request = HTTParty.get(url, format: :json)
-
-        raise(Hubspot::RequestError.new(request)) unless request.success?
-
-        found = request.parsed_response['contacts']
-        return found.map{|h| new(h) }
-      end
-
-      # TODO: Get recently updated and created contacts
       # {https://developers.hubspot.com/docs/methods/contacts/get_recently_updated_contacts}
-      # @param count [Fixnum] number of contacts per page; max 100
-      # @return [Hubspot::ContactCollection] the paginated collection of contacts
-      def recent(count=100)
-        raise NotImplementedError
+      def all(opts={})
+        recent = opts.delete(:recent) { false } 
+        path, opts = 
+        if recent 
+          [RECENT_CONTACTS_PATH, Hubspot::ContactProperties.add_default_parameters(opts)] 
+        else 
+          [CONTACTS_PATH, opts]
+        end
+
+        response = Hubspot::Connection.get_json(path, opts)
+        response['contacts'].map { |c| new(c) }
       end
 
-      # TODO: Search for contacts by various crieria
+      # TODO: create or update a contact
+      # PATH /contacts/v1/contact/createOrUpdate/email/:contact_email
+      # API endpoint: https://developers.hubspot.com/docs/methods/contacts/create_or_update
+      # + batch mode: https://developers.hubspot.com/docs/methods/contacts/batch_create_or_update
+
+      # NOTE: problem with batch api endpoint
+      # {https://developers.hubspot.com/docs/methods/contacts/get_contact}
+      # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_vid}
+      def find_by_id(vids)
+        batch_mode, path, params = case vids
+        when Integer then [false, GET_CONTACT_BY_ID_PATH, { contact_id: vids }]
+        when Array then [true, CONTACT_BATCH_PATH, { batch_vid: vids }]
+        else raise Hubspot::InvalidParams, 'expecting Integer or Array of Integers parameter'
+        end
+
+        response = Hubspot::Connection.get_json(path, params)
+        raise Hubspot::ApiError if batch_mode
+        new(response)
+      end
+
+      # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email}
+      # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_email}
+      def find_by_email(emails)
+        batch_mode, path, params = case emails
+        when String then [false, GET_CONTACT_BY_EMAIL_PATH, { contact_email: emails }]
+        when Array then [true, GET_CONTACTS_BY_EMAIL_PATH, { batch_email: emails }]
+        else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
+        end
+
+        response = Hubspot::Connection.get_json(path, params)
+        if batch_mode
+          #TODO: transform response
+          response
+        else 
+          new(response)
+        end
+      end
+
+      # NOTE: problem with batch api endpoint
+      # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
+      # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_utk} 
+      def find_by_utk(utks)
+        batch_mode, path, params = case utks
+        when String then [false, GET_CONTACT_BY_UTK_PATH, { contact_utk: utks }]
+        when Array then [true, GET_CONTACTS_BY_UTK_PATH, { batch_utk: utks }]
+        else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
+        end
+
+        response = Hubspot::Connection.get_json(path, params)
+        raise Hubspot::ApiError if batch_mode
+        new(response)
+      end
+
       # {https://developers.hubspot.com/docs/methods/contacts/search_contacts}
-      # @param query [String] The search term for what you're searching for
-      # @param count [Fixnum] number of contacts per page; max 100
-      # @return [Hubspot::ContactCollection] the collection of contacts; no pagination
       def search(query, count=100)
-        raise NotImplementedError
-      end
-
-      # TODO: Get statistics about all contacts
-      # {https://developers.hubspot.com/docs/methods/contacts/get_contact_statistics}
-      # @return [Hash] hash of statistics
-      def statistics
         raise NotImplementedError
       end
     end
@@ -138,11 +126,8 @@ module Hubspot
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Contact] self
     def update!(params)
-      params.stringify_keys!
-      url = Hubspot::Utils.generate_url(UPDATE_CONTACT_PATH, {contact_id: vid})
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params)}
-      resp = HTTParty.post(url, body: query.to_json, format: :json)
-      raise(Hubspot::RequestError.new(resp)) unless resp.success?
+      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
+      response = Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
       @properties.merge!(params)
       self
     end
@@ -151,9 +136,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      url = Hubspot::Utils.generate_url(DESTROY_CONTACT_PATH, {contact_id: vid})
-      resp = HTTParty.delete(url, format: :json)
-      raise(Hubspot::RequestError.new(resp)) unless resp.success?
+      response = Hubspot::Connection.delete_json(DESTROY_CONTACT_PATH, { contact_id: vid })
       @destroyed = true
     end
 

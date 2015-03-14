@@ -7,6 +7,7 @@ require 'simplecov'
 SimpleCov.root GEM_ROOT
 SimpleCov.start do
   add_filter "/spec/"
+  add_filter "/.bundle/"
 end
 
 require 'rspec'
@@ -39,4 +40,5 @@ RSpec.configure do |config|
   end
 
   config.extend CassetteHelper
+  config.extend TestsHelper
 end

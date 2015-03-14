@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
     body:
       encoding: US-ASCII
-      string: ! '{"properties":[{"property":"email","value":"newcontact1361564912@hsgem.com"}]}'
+      string: '{"properties":[{"property":"email","value":"newcontact1361564912@hsgem.com"}]}'
     headers: {}
   response:
     status:
@@ -26,7 +26,39 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"vid":154963,"portal-id":62515,"profile-token":"AO_T-mO_ghCK-Ia-VTb9_2r9z6sSvJu1gQkVT4Y0GmhKxIP-e3PyPRBHyhh4qeC-yu-5881gXoLArqPN2BvJu9MSJLXCSyJNZjyX0hkD2yvbnkrKBZtpXjS1XtQL2R8VinrL5AZAQ073","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mO_ghCK-Ia-VTb9_2r9z6sSvJu1gQkVT4Y0GmhKxIP-e3PyPRBHyhh4qeC-yu-5881gXoLArqPN2BvJu9MSJLXCSyJNZjyX0hkD2yvbnkrKBZtpXjS1XtQL2R8VinrL5AZAQ073/","properties":{"email":{"value":"newcontact1361564912@hsgem.com","versions":[{"value":"newcontact1361564912@hsgem.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1361564913945,"selected":false}]},"createdate":{"value":"1361564913945","versions":[{"value":"1361564913945","source-type":"API","source-id":null,"source-label":null,"timestamp":1361564913945,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":154963,"identities":[{"type":"EMAIL","value":"newcontact1361564912@hsgem.com","timestamp":1361564913945},{"type":"LEAD_GUID","value":"b8c6e48e-e5b3-4322-b192-27ec5629175e","timestamp":1361564913954}]}]}'
+      string: '{"vid":154963,"portal-id":62515,"profile-token":"AO_T-mO_ghCK-Ia-VTb9_2r9z6sSvJu1gQkVT4Y0GmhKxIP-e3PyPRBHyhh4qeC-yu-5881gXoLArqPN2BvJu9MSJLXCSyJNZjyX0hkD2yvbnkrKBZtpXjS1XtQL2R8VinrL5AZAQ073","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mO_ghCK-Ia-VTb9_2r9z6sSvJu1gQkVT4Y0GmhKxIP-e3PyPRBHyhh4qeC-yu-5881gXoLArqPN2BvJu9MSJLXCSyJNZjyX0hkD2yvbnkrKBZtpXjS1XtQL2R8VinrL5AZAQ073/","properties":{"email":{"value":"newcontact1361564912@hsgem.com","versions":[{"value":"newcontact1361564912@hsgem.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1361564913945,"selected":false}]},"createdate":{"value":"1361564913945","versions":[{"value":"1361564913945","source-type":"API","source-id":null,"source-label":null,"timestamp":1361564913945,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":154963,"identities":[{"type":"EMAIL","value":"newcontact1361564912@hsgem.com","timestamp":1361564913945},{"type":"LEAD_GUID","value":"b8c6e48e-e5b3-4322-b192-27ec5629175e","timestamp":1361564913954}]}]}'
     http_version: 
   recorded_at: Fri, 22 Feb 2013 20:28:34 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/all/contacts/all?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"newcontact1424888102@hsgem.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 405
+      message: Method Not Allowed
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Allow:
+      - HEAD,GET,OPTIONS
+      Date:
+      - Wed, 25 Feb 2015 18:15:03 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 18:15:02 GMT
 recorded_with: VCR 2.4.0

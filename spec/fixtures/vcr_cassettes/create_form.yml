@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/forms?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"Demo Form 1424708546","action":"","method":"POST","cssClass":"hs-form
+        stacked","redirect":"","submitText":"Sign Up","followUpId":"","leadNurturingCampaignId":"","notifyRecipients":"","embeddedCode":""}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 23 Feb 2015 16:22:26 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '649'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"guid":"8291bdd1-0681-4d99-b5f7-76ffffb4f98d","name":"Demo Form 1424708546","action":"","method":"POST","cssClass":"hs-form
+        stacked","redirect":"","fields":[],"submitText":"Sign Up","followUpId":"","notifyRecipients":"","leadNurturingCampaignId":"","formFieldGroups":[],"createdAt":1424708546415,"updatedAt":1424708546415,"performableHtml":"","migratedFrom":"","ignoreCurrentValues":false,"metaData":[],"deletable":true,"embeddedCode":"<script
+        charset=\"utf-8\" src=\"http://js.hubspot.com/forms/current.js\"></script>\n<script>\n  hbspt.forms.create({\n    portalId:
+        ''62515'',\n    formId: ''8291bdd1-0681-4d99-b5f7-76ffffb4f98d''\n  });\n</script>"}'
+    http_version: 
+  recorded_at: Mon, 23 Feb 2015 16:22:26 GMT
+recorded_with: VCR 2.4.0

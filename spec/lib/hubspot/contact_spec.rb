@@ -38,8 +38,8 @@ describe Hubspot::Contact do
     context "with an existing email" do
       cassette "contact_create_existing_email"
       let(:email){ "testingapis@hubspot.com" }
-      it "raises a ContactExistsError" do
-        expect{ subject }.to raise_error Hubspot::ContactExistsError
+      it "raises a RequestError" do
+        expect{ subject }.to raise_error Hubspot::RequestError
       end
     end
     context "with an invalid email" do
@@ -52,89 +52,145 @@ describe Hubspot::Contact do
   end
 
   describe ".find_by_email" do
-    cassette "contact_find_by_email"
-    subject{ Hubspot::Contact.find_by_email(email) }
+    context 'given an uniq email' do
+      cassette "contact_find_by_email"
+      subject{ Hubspot::Contact.find_by_email(email) }
 
-    context "when the contact is found" do
-      let(:email){ "testingapis@hubspot.com" }
-      it{ should be_an_instance_of Hubspot::Contact }
-      its(:vid){ should == 82325 }
+      context "when the contact is found" do
+        let(:email){ "testingapis@hubspot.com" }
+        it{ should be_an_instance_of Hubspot::Contact }
+        its(:vid){ should == 82325 }
+      end
+
+      context "when the contact cannot be found" do
+        it 'raises an error' do 
+          expect { Hubspot::Contact.find_by_email('notacontact@test.com') }.to raise_error(Hubspot::RequestError)
+        end
+      end
     end
 
-    context "when the contact cannot be found" do
-      let(:email){ "notacontact@test.com" }
-      it{ should be_nil }
+    context 'batch mode' do 
+      cassette "contact_find_by_email_batch_mode"
+
+      it 'find lists of contacts' do
+        emails = ['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']
+        contacts = Hubspot::Contact.find_by_email(emails)
+        pending
+      end
     end
   end
 
   describe ".find_by_id" do
-    cassette "contact_find_by_id"
-    subject{ Hubspot::Contact.find_by_id(vid) }
+    context 'given an uniq id' do 
+      cassette "contact_find_by_id"
+      subject{ Hubspot::Contact.find_by_id(vid) }
 
-    context "when the contact is found" do
-      let(:vid){ 82325 }
-      it{ should be_an_instance_of Hubspot::Contact }
-      its(:email){ should == "testingapis@hubspot.com" }
+      context "when the contact is found" do
+        let(:vid){ 82325 }
+        it{ should be_an_instance_of Hubspot::Contact }
+        its(:email){ should == "testingapis@hubspot.com" }
+      end
+
+      context "when the contact cannot be found" do
+        it 'raises an error' do
+          expect { Hubspot::Contact.find_by_id(9999999) }.to raise_error(Hubspot::RequestError) 
+        end
+      end
     end
 
-    context "when the contact cannot be found" do
-      let(:vid){ 9999999 }
-      it{ should be_nil }
+    context 'batch mode' do 
+      cassette "contact_find_by_id_batch_mode"
+
+      # NOTE: error currently appends on API endpoint
+      it 'find lists of contacts' do
+        expect { Hubspot::Contact.find_by_id([82325]) }.to raise_error(Hubspot::ApiError)
+      end
     end
   end
 
   describe ".find_by_utk" do
-    cassette "contact_find_by_utk"
-    subject{ Hubspot::Contact.find_by_utk(utk) }
+    context 'given an uniq utk' do 
+      cassette "contact_find_by_utk"
+      subject{ Hubspot::Contact.find_by_utk(utk) }
 
-    context "when the contact is found" do
-      let(:utk){ "f844d2217850188692f2610c717c2e9b" }
-      it{ should be_an_instance_of Hubspot::Contact }
-      its(:utk){ should == "f844d2217850188692f2610c717c2e9b" }
+      context "when the contact is found" do
+        let(:utk){ "f844d2217850188692f2610c717c2e9b" }
+        it{ should be_an_instance_of Hubspot::Contact }
+        its(:utk){ should == "f844d2217850188692f2610c717c2e9b" }
+      end
+
+      context "when the contact cannot be found" do
+        it 'raises an error' do 
+          expect { Hubspot::Contact.find_by_utk("invalid") }.to raise_error(Hubspot::RequestError) 
+        end
+      end
     end
 
-    context "when the contact cannot be found" do
-      let(:utk){ "invalid" }
-      it{ should be_nil }
+    context 'batch mode' do 
+      cassette "contact_find_by_utk_batch_mode"
+
+      it 'find lists of contacts' do
+        utks = ['f844d2217850188692f2610c717c2e9b', 'j94344d22178501692f2610c717c2e9b']
+        expect { Hubspot::Contact.find_by_utk(utks) }.to raise_error(Hubspot::ApiError)
+      end
     end
   end
 
 
   describe '.all' do
-    cassette 'find_all_contacts'
+    context 'all contacts' do 
+      cassette 'find_all_contacts'
 
-    it 'must get the contacts list' do
-      contacts = Hubspot::Contact.all
+      it 'must get the contacts list' do
+        contacts = Hubspot::Contact.all
 
-      expect(contacts.size).to eql 20 # defautl page size
+        expect(contacts.size).to eql 20 # default page size
 
-      first = contacts.first
-      last = contacts.last
+        first = contacts.first
+        last = contacts.last
 
-      expect(first.vid).to eql 154835
-      expect(first['firstname']).to eql 'HubSpot'
-      expect(first['lastname']).to eql 'Test'
+        expect(first).to be_a Hubspot::Contact
+        expect(first.vid).to eql 154835
+        expect(first['firstname']).to eql 'HubSpot'
+        expect(first['lastname']).to eql 'Test'
 
-      expect(last).to be_a Hubspot::Contact
-      expect(last.vid).to eql 196199
-      expect(last['firstname']).to eql 'Eleanor'
-      expect(last['lastname']).to eql 'Morgan'
+        expect(last).to be_a Hubspot::Contact
+        expect(last.vid).to eql 196199
+        expect(last['firstname']).to eql 'Eleanor'
+        expect(last['lastname']).to eql 'Morgan'
+      end
+
+      it 'must filter only 2 contacts' do
+        contacts = Hubspot::Contact.all(count: 2)
+        expect(contacts.size).to eql 2
+      end
+
+      it 'it must offset the contacts' do
+        single_list = Hubspot::Contact.all(count: 1)
+        expect(single_list.size).to eql 1
+        first = single_list.first
+
+        second = Hubspot::Contact.all(count: 1, vidOffset: first.vid).first
+        expect(second.vid).to eql 196181
+        expect(second['firstname']).to eql 'Charles'
+        expect(second['lastname']).to eql 'Gowland'
+      end
     end
 
-    it 'must filter only 2 contacts' do
-      contacts = Hubspot::Contact.all(count: 2)
-      expect(contacts.size).to eql 2
-    end
+    context 'recent contacts' do 
+      cassette 'find_all_recent_contacts'
 
-    it 'it must offset the contacts' do
-      single_list = Hubspot::Contact.all(count: 1)
-      expect(single_list.size).to eql 1
-      first = single_list.first
+      it 'must get the contacts list' do
+        contacts = Hubspot::Contact.all(recent: true)
+        expect(contacts.size).to eql 20
 
-      second = Hubspot::Contact.all(count: 1, 'vidOffset': first.vid).first
-      expect(second.vid).to eql 196181
-      expect(second['firstname']).to eql 'Charles'
-      expect(second['lastname']).to eql 'Gowland'
+        first, last = contacts.first, contacts.last
+        expect(first).to be_a Hubspot::Contact
+        expect(first.vid).to eql 263794
+
+        expect(last).to be_a Hubspot::Contact
+        expect(last.vid).to eql 263776
+      end
     end
   end
 

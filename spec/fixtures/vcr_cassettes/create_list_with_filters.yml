@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"list with filters","filters":[[{"operator":"EQ","value":"@hubspot","property":"twitterhandle","type":"string"}]],"dynamic":false,"portal_id":null}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 25 Feb 2015 15:20:55 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '446'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"metaData":{"processing":"INITIALIZING","error":"","lastProcessingStateChangeAt":1424877655355,"lastSizeChangeAt":0,"size":0},"dynamic":false,"filters":[[{"operator":"EQ","type":"string","filterFamily":"PropertyValue","withinTimeMode":"PAST","property":"twitterhandle","value":"@hubspot"}]],"listId":97909,"portalId":62515,"createdAt":1424877655355,"updatedAt":1424877655355,"listType":"STATIC","internalListId":97963,"name":"list
+        with filters"}'
+    http_version: 
+  recorded_at: Wed, 25 Feb 2015 15:20:55 GMT
+recorded_with: VCR 2.4.0

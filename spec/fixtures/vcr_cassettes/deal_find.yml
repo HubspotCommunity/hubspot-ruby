@@ -56,4 +56,60 @@ http_interactions:
       string: '{"portalId":62515,"dealId":1146647,"isDeleted":false,"associations":{"associatedVids":[27136],"associatedCompanyIds":[8954037],"associatedDealIds":[]},"properties":{"amount":{"value":"30","timestamp":1419698207401,"source":"API","sourceId":null,"versions":[{"name":"amount","value":"30","timestamp":1419698207401,"source":"API","sourceVid":[]}]},"num_associated_contacts":{"value":"1","timestamp":0,"source":"CALCULATED","sourceId":null,"versions":[{"name":"num_associated_contacts","value":"1","source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1419698207374","timestamp":1419698207401,"source":null,"sourceId":null,"versions":[{"name":"hs_createdate","value":"1419698207374","timestamp":1419698207401,"sourceVid":[]}]},"createdate":{"value":"1419698207374","timestamp":1419698207401,"source":null,"sourceId":null,"versions":[{"name":"createdate","value":"1419698207374","timestamp":1419698207401,"sourceVid":[]}]}}}'
     http_version: 
   recorded_at: Sat, 27 Dec 2014 16:36:48 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/deals/v1/deal?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"associations":{"associatedCompanyIds":[8954037],"associatedVids":[27136]},"properties":[{"name":"amount","value":30}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 16:16:53 GMT
+      Content-Length:
+      - '986'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":2153362,"isDeleted":false,"associations":{"associatedVids":[27136],"associatedCompanyIds":[8954037],"associatedDealIds":[]},"properties":{"amount":{"value":"30","timestamp":1424621813405,"source":"API","sourceId":null,"versions":[{"name":"amount","value":"30","timestamp":1424621813405,"source":"API","sourceVid":[]}]},"hs_lastmodifieddate":{"value":"1424621813411","timestamp":1424621813411,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1424621813411","timestamp":1424621813411,"source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1424621813411","timestamp":1424621813411,"source":null,"sourceId":null,"versions":[{"name":"hs_createdate","value":"1424621813411","timestamp":1424621813411,"sourceVid":[]}]},"createdate":{"value":"1424621813411","timestamp":1424621813411,"source":null,"sourceId":null,"versions":[{"name":"createdate","value":"1424621813411","timestamp":1424621813411,"sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 16:16:53 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/deals/v1/deal/2153362?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 22 Feb 2015 16:16:53 GMT
+      Content-Length:
+      - '1175'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":2153362,"isDeleted":false,"associations":{"associatedVids":[27136],"associatedCompanyIds":[8954037],"associatedDealIds":[]},"properties":{"amount":{"value":"30","timestamp":1424621813414,"source":"API","sourceId":null,"versions":[{"name":"amount","value":"30","timestamp":1424621813414,"source":"API","sourceVid":[]}]},"hs_lastmodifieddate":{"value":"1424621813411","timestamp":1424621813414,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1424621813411","timestamp":1424621813414,"source":"CALCULATED","sourceVid":[]}]},"num_associated_contacts":{"value":"1","timestamp":0,"source":"CALCULATED","sourceId":null,"versions":[{"name":"num_associated_contacts","value":"1","source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1424621813411","timestamp":1424621813414,"source":null,"sourceId":null,"versions":[{"name":"hs_createdate","value":"1424621813411","timestamp":1424621813414,"sourceVid":[]}]},"createdate":{"value":"1424621813411","timestamp":1424621813414,"source":null,"sourceId":null,"versions":[{"name":"createdate","value":"1424621813411","timestamp":1424621813414,"sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 16:16:53 GMT
 recorded_with: VCR 2.4.0

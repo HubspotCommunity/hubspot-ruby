@@ -1,0 +1,130 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/forms/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 23 Feb 2015 17:33:43 GMT
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1834'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"guid":"561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0","name":"updated form
+        name 1424709912","action":"","method":"POST","cssClass":"hs-form stacked","redirect":"http://hubspot.com","fields":[{"name":"firstname","label":"First
+        Name","type":"string","fieldType":"text","description":"","groupName":"contactinformation","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":""},{"name":"lastname","label":"Last
+        Name","type":"string","fieldType":"text","description":"","groupName":"contactinformation","displayOrder":1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":""},{"name":"email","label":"Email","type":"string","fieldType":"text","description":"","groupName":"contactinformation","displayOrder":2,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"email","message":"Please
+        enter a valid email address","data":"","useDefaultBlockList":false},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":""}],"submitText":"Submit","followUpId":"","notifyRecipients":"","leadNurturingCampaignId":"","formFieldGroups":[],"createdAt":1366835347235,"updatedAt":1424709913018,"performableHtml":"","migratedFrom":"","ignoreCurrentValues":false,"metaData":[],"deletable":true,"embeddedCode":"<script
+        charset=\"utf-8\" src=\"http://js.hubspot.com/forms/current.js\"></script>\n<script>\n  hbspt.forms.create({\n    portalId:
+        ''62515'',\n    formId: ''561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0''\n  });\n</script>"}'
+    http_version: 
+  recorded_at: Mon, 23 Feb 2015 17:33:43 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/uploads/form/v2/62515/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Mon, 23 Feb 2015 17:54:18 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '162'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Mon, 23 Feb 2015 17:54:18 GMT
+- request:
+    method: post
+    uri: https://forms.hubspot.com/uploads/form/v2/62515/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Date:
+      - Mon, 23 Feb 2015 18:03:21 GMT
+      Location:
+      - http://hubspot.com?submissionGuid=c455a2dd-3a9d-47ee-8392-2830ff3a0294
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 23 Feb 2015 18:03:21 GMT
+- request:
+    method: post
+    uri: https://forms.hubspot.com/uploads/form/v2/62514/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 23 Feb 2015 18:40:51 GMT
+      Content-Length:
+      - '130'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"This portal is inactive and may not submit
+        forms","requestId":"942f8af0-d7ee-41a3-8a87-c84198a1b9ec"}'
+    http_version: 
+  recorded_at: Mon, 23 Feb 2015 18:40:52 GMT
+recorded_with: VCR 2.4.0
