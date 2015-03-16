@@ -40,6 +40,14 @@ module Hubspot
         Hubspot::Deal.new(resp.parsed_response)
       end
 
+      def update!(deal_id, params)
+        url = Hubspot::Utils.generate_url(DEAL_PATH, deal_id: deal_id)
+        post_data = { properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") }
+        resp = HTTParty.put(url, body: post_data.to_json, headers: {"Content-Type" => "application/json"})
+        raise(Hubspot::RequestError.new(resp, "Could not update deal.")) unless resp.success?
+        new(resp.parsed_response)
+      end
+
       def find(deal_id)
         url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
         resp = HTTParty.get(url, format: :json)
@@ -63,6 +71,10 @@ module Hubspot
         found = request.parsed_response['results']
         return found.map{|h| new(h) }
       end
+    end
+
+    def update!(params={})
+      self.class.update! self.deal_id, params
     end
 
     # Archives the contact in hubspot
