@@ -58,6 +58,13 @@ module Hubspot
         end
       end
 
+      def destroy!(deal_id)
+        url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
+        request = HTTParty.delete(url, format: :json)
+        raise(Hubspot::RequestError.new(request)) unless request.success?
+        true
+      end
+
       # Find recent updated deals.
       # {http://developers.hubspot.com/docs/methods/deals/get_deals_modified}
       # @param count [Integer] the amount of deals to return.
@@ -81,9 +88,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      url = Hubspot::Utils.generate_url(DEAL_PATH, {deal_id: deal_id})
-      request = HTTParty.delete(url, format: :json)
-      raise(Hubspot::RequestError.new(request)) unless request.success?
+      self.class.destroy!(deal_id)
       @destroyed = true
     end
 
