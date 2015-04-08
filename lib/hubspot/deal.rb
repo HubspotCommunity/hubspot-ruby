@@ -22,8 +22,11 @@ module Hubspot
     def initialize(response_hash)
       @portal_id = response_hash["portalId"]
       @deal_id = response_hash["dealId"]
-      @company_ids = response_hash["associations"]["associatedCompanyIds"]
-      @vids = response_hash["associations"]["associatedVids"]
+      associations = response_hash["associations"]
+      if associations.present?
+        @company_ids = associations["associatedCompanyIds"]
+        @vids = associations["associatedVids"]
+      end
       @properties = Hubspot::Utils.properties_to_hash(response_hash["properties"])
     end
 
@@ -45,6 +48,7 @@ module Hubspot
         post_data = { properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") }
         resp = HTTParty.put(url, body: post_data.to_json, headers: {"Content-Type" => "application/json"})
         raise(Hubspot::RequestError.new(resp, "Could not update deal.")) unless resp.success?
+        binding.pry
         new(resp.parsed_response)
       end
 
