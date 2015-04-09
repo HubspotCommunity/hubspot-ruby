@@ -48,7 +48,6 @@ module Hubspot
         post_data = { properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") }
         resp = HTTParty.put(url, body: post_data.to_json, headers: {"Content-Type" => "application/json"})
         raise(Hubspot::RequestError.new(resp, "Could not update deal.")) unless resp.success?
-        binding.pry
         new(resp.parsed_response)
       end
 
