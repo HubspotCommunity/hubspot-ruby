@@ -16,8 +16,15 @@ module Hubspot
         url = generate_url(path, opts[:params])
         response = post(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
         raise(Hubspot::RequestError.new(response)) unless response.success?
-        
+
         no_parse ? response : response.parsed_response
+      end
+
+      def put_json(path, opts)
+        url = generate_url(path, opts[:params])
+        response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
+        raise(Hubspot::RequestError.new(response)) unless response.success?
+        response.parsed_response
       end
 
       def delete_json(path, opts)
@@ -49,10 +56,10 @@ module Hubspot
         end
         raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
 
-        query = params.map do |k,v| 
-          v.is_a?(Array) ? v.map { |value| param_string(k,value) } : param_string(k,v) 
+        query = params.map do |k,v|
+          v.is_a?(Array) ? v.map { |value| param_string(k,value) } : param_string(k,v)
         end.join("&")
-        
+
         path += "?" if query.present?
         base_url + path + query
       end
@@ -63,7 +70,7 @@ module Hubspot
       end
 
       def param_string(key,value)
-        case key 
+        case key
         when /range/
           raise "Value must be a range" unless value.is_a?(Range)
           "#{key}=#{converted_value(value.begin)}&#{key}=#{converted_value(value.end)}"
@@ -84,5 +91,5 @@ module Hubspot
       url = generate_url(path, opts[:params], { base_url: 'https://forms.hubspot.com' })
       post(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
     end
-  end      
+  end
 end
