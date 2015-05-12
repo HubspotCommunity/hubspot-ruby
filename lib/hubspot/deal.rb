@@ -10,6 +10,7 @@ module Hubspot
     CREATE_DEAL_PATH = "/deals/v1/deal"
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
+    UPDATE_DEAL_PATH = '/deals/v1/deal/:deal_id'
 
     attr_reader :properties
     attr_reader :portal_id
@@ -48,6 +49,7 @@ module Hubspot
         response = Hubspot::Connection.get_json(RECENT_UPDATED_PATH, opts)
         response['results'].map { |d| new(d) }
       end
+
     end
 
     # Archives the contact in hubspot
@@ -64,6 +66,17 @@ module Hubspot
 
     def [](property)
       @properties[property]
+    end
+
+    # Updates the properties of a deal
+    # {https://developers.hubspot.com/docs/methods/deals/update_deal}
+    # @param params [Hash] hash of properties to update
+    # @return [Hubspot::Deal] self
+    def update!(params)
+      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
+      response = Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
+      @properties.merge!(params)
+      self
     end
   end
 end
