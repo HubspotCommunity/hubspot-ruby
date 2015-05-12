@@ -30,7 +30,7 @@ module Hubspot
         #TODO: clean following hash, Hubspot::Utils should do the trick
         associations_hash = {"portalId" => portal_id, "associations" => { "associatedCompanyIds" => company_ids, "associatedVids" => vids}}
         post_data = associations_hash.merge({ properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") })
-       
+
         response = Hubspot::Connection.post_json(CREATE_DEAL_PATH, params: {}, body: post_data )
         new(response)
       end
@@ -60,6 +60,10 @@ module Hubspot
 
     def destroyed?
       !!@destroyed
+    end
+
+    def [](property)
+      @properties[property]
     end
   end
 end

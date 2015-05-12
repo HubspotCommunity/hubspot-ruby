@@ -80,4 +80,14 @@ describe Hubspot::Deal do
       expect(Hubspot::Deal.find(deal.deal_id)).to be_nil
     end
   end
+
+  describe '#[]' do
+    subject{ Hubspot::Deal.new(example_deal_hash) }
+
+    it 'should get a property' do
+      subject.properties.each do |property, value|
+        expect(subject[property]).to eql value
+      end
+    end
+  end
 end
