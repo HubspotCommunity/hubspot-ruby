@@ -73,7 +73,7 @@ module Hubspot
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Deal] self
     def update!(params)
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
+      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
       response = Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
       @properties.merge!(params)
       self

@@ -21,7 +21,6 @@ module Hubspot
       end
 
       def put_json(path, opts)
-        require 'pry'; binding.pry
         url = generate_url(path, opts[:params])
         response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
         raise(Hubspot::RequestError.new(response)) unless response.success?

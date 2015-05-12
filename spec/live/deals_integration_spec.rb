@@ -4,8 +4,8 @@ describe "Deals API Live test", live: true do
     Hubspot.configure hapikey: "demo"
   end
 
-  it 'create.....' do
-    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
+  it 'should create, find, update and destroy' do
+    contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com") rescue nil
     contact ||= Hubspot::Contact.create!("create_delete_test@hsgemtest.com")
 
     expect(contact).to be_present
@@ -18,26 +18,18 @@ describe "Deals API Live test", live: true do
     deal.update!({dealstage: 'closedlost'})
 
     expect(deal['dealstage']).to eql 'closedlost'
+    expect(deal['amount']).to eql '30'
 
-    #to be sure it was updates
+    #to be sure it was updated
     updated_deal = Hubspot::Deal.find(deal.deal_id)
+
+    expect(updated_deal['dealstage']).to eql 'closedlost'
+    expect(updated_deal['amount']).to eql '30'
+
+    expect(deal.destroy!).to be true
+    expect(contact.destroy!).to be true
+
+    # cant find anymore
+    expect { Hubspot::Deal.find(deal.deal_id) }.to raise_error
   end
-
-
-  # it 'find, update and destroy a contact' do
-  #   contact = Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")
-  #   contact.destroy! if contact
-
-  #   contact = Hubspot::Contact.create!("create_delete_test@hsgemtest.com")
-  #   expect(contact).to be_present
-
-  #   contact.update! firstname: "Clint", lastname: "Eastwood"
-  #   contact = Hubspot::Contact.find_by_id(contact.vid)
-
-  #   expect(contact["firstname"]).to eql "Clint"
-  #   expect(contact["lastname"]).to eql "Eastwood"
-
-  #   expect(contact.destroy!).to be_true
-  #   expect(Hubspot::Contact.find_by_email("create_delete_test@hsgemtest.com")).to be_nil
-  # end
 end
