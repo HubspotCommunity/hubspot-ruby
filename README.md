@@ -29,7 +29,13 @@ For now, this library only supports authentication with a HubSpot API key (aka "
 
 ## Usage
 
-Not much is supported yet, but that will change. Here's what you can do for now:
+Here's what you can do for now:
+
+### Create a contact
+
+```ruby
+Hubspot::Contact.create!("email@address.com", {firstname: "First", lastname: "Last"})
+```
 
 ### Find a contact
 
@@ -49,7 +55,7 @@ contact.update!({firstname: "First", lastname: "Last"})
 ```
 
 ## Contributing to hubspot-ruby
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
