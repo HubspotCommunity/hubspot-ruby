@@ -3,7 +3,7 @@ module Hubspot
     class << self
       # Parses the hubspot properties format into a key-value hash
       def properties_to_hash(props)
-        newprops = {}
+        newprops = HashWithIndifferentAccess.new
         props.each{ |k,v| newprops[k] = v["value"] }
         newprops
       end
