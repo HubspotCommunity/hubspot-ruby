@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"New Company 1434405222"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 15 Jun 2015 21:53:42 GMT
+      Content-Length:
+      - '500'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":43137784,"isDeleted":false,"properties":{"name":{"value":"New
+        Company 1434405222","timestamp":1434405222565,"source":"API","sourceId":null,"versions":[{"name":"name","value":"New
+        Company 1434405222","timestamp":1434405222565,"source":"API","sourceVid":[]}]},"createdate":{"value":"1434405222565","timestamp":1434405222565,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1434405222565","timestamp":1434405222565,"source":"API","sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Mon, 15 Jun 2015 21:53:42 GMT
+recorded_with: VCR 2.4.0
