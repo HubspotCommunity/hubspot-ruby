@@ -6,7 +6,7 @@
 
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.1.8"
+  s.version = "0.1.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "hubspot-ruby.gemspec",
     "lib/hubspot-ruby.rb",
     "lib/hubspot/blog.rb",
+    "lib/hubspot/company.rb",
     "lib/hubspot/config.rb",
     "lib/hubspot/connection.rb",
     "lib/hubspot/contact.rb",
