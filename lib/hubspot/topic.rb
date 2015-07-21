@@ -3,8 +3,8 @@ module Hubspot
   # HubSpot Topics API
   #
   class Topic
-    TOPICS_PATH = "/content/api/v2/topics"
-    TOPIC_PATH = "/content/api/v2/topics/:topic_id"
+    TOPICS_PATH = "/blogs/v3/topics"
+    TOPIC_PATH = "/blogs/v3/topics/:topic_id"
 
     class << self
       # Lists the topics
