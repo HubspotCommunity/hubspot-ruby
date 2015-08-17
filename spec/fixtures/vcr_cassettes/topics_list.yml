@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.hubapi.com/content/api/v2/topics?hapikey=demo
+    uri: https://api.hubapi.com/blogs/v3/topics?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
@@ -47,7 +47,7 @@ http_interactions:
   recorded_at: Mon, 20 Oct 2014 02:55:54 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/content/api/v2/topics/349001328?hapikey=demo
+    uri: https://api.hubapi.com/blogs/v3/topics/349001328?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''

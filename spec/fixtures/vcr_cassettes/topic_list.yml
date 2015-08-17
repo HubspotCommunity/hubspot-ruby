@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.hubapi.com/content/api/v2/topics?hapikey=demo
+    uri: https://api.hubapi.com/blogs/v3/topics?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
