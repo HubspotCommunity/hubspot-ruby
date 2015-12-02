@@ -104,4 +104,31 @@ http_interactions:
         1381896200000}'
     http_version: 
   recorded_at: Tue, 09 Oct 2012 11:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/blogs/v3/topics/349001328?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '148'
+      Date:
+      - Wed, 02 Dec 2015 19:34:04 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"created":1381896200000,"deletedAt":0,"description":"","id":349001328,"name":"api-docs","portalId":62515,"slug":"api-docs","updated":1381896200000}'
+    http_version: 
+  recorded_at: Wed, 10 Oct 2012 07:00:00 GMT
 recorded_with: VCR 2.4.0

@@ -127,4 +127,36 @@ http_interactions:
         forms","requestId":"942f8af0-d7ee-41a3-8a87-c84198a1b9ec"}'
     http_version: 
   recorded_at: Mon, 23 Feb 2015 18:40:52 GMT
+- request:
+    method: post
+    uri: https://forms.hubspot.com/uploads/form/v2/62514/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Dec 2015 19:34:12 GMT
+      X-Trace:
+      - 1BF4ED2036773FC99AC27CE9DD4A8EAAF472651CA97DDDE9F769495017
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"This portal is inactive and may not submit
+        forms","correlationId":"020c258a-3e3d-41bd-8e2d-ea9f9f65f402","requestId":"8dc1f96d-47b8-4e41-b946-251f88f574a6"}'
+    http_version: 
+  recorded_at: Wed, 02 Dec 2015 19:34:11 GMT
 recorded_with: VCR 2.4.0
