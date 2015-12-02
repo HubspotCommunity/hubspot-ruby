@@ -71,12 +71,16 @@ module Hubspot
         else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
         end
 
-        response = Hubspot::Connection.get_json(path, params)
-        if batch_mode
-          #TODO: transform response
-          response
-        else 
-          new(response)
+        begin
+          response = Hubspot::Connection.get_json(path, params)
+          if batch_mode
+            response.map{|_, contact| new(contact)}
+          else
+            new(response)
+          end
+        rescue => e
+          raise e unless e.message =~ /not exist/ # 404 / handle the error and kindly return nil
+          nil
         end
       end
 
