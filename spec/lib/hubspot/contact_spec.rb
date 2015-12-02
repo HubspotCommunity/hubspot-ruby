@@ -81,6 +81,11 @@ describe Hubspot::Contact do
   end
 
   describe ".find_by_id" do
+    before do
+      @s = StringIO.new
+      Hubspot::Config.logger = Logger.new(@s)
+    end
+
     context 'given an uniq id' do 
       cassette "contact_find_by_id"
       subject{ Hubspot::Contact.find_by_id(vid) }
@@ -93,7 +98,8 @@ describe Hubspot::Contact do
 
       context "when the contact cannot be found" do
         it 'raises an error' do
-          expect { Hubspot::Contact.find_by_id(9999999) }.to raise_error(Hubspot::RequestError) 
+          expect { Hubspot::Contact.find_by_id(9999999) }.to raise_error(Hubspot::RequestError)
+          expect(@s.string).to include 'Response: 404'
         end
       end
     end
@@ -104,6 +110,7 @@ describe Hubspot::Contact do
       # NOTE: error currently appends on API endpoint
       it 'find lists of contacts' do
         expect { Hubspot::Contact.find_by_id([82325]) }.to raise_error(Hubspot::ApiError)
+        expect(@s.string).to include('Response: 200')
       end
     end
   end
