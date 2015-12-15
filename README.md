@@ -43,6 +43,7 @@ These methods will return a `Hubspot::Contact` object if successful, `nil` other
 
 ```ruby
 Hubspot::Contact.find_by_email("email@address.com")
+Hubspot::Contact.find_by_email(["email1@address.com","email2@address.com"])
 Hubspot::Contact.find_by_id(12345) # Pass the contact VID
 ```
 
@@ -81,4 +82,3 @@ This project and the code therein was not created by and is not supported by Hub
 ## Copyright
 
 Copyright (c) 2013 Omada Health Inc. See LICENSE.txt for further details.
-

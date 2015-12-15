@@ -73,9 +73,8 @@ module Hubspot
 
         response = Hubspot::Connection.get_json(path, params)
         if batch_mode
-          #TODO: transform response
-          response
-        else 
+          response.map { |_vid, contact| new(contact) }
+        else
           new(response)
         end
       end
