@@ -37,13 +37,11 @@ module Hubspot
       def update!(property_name, params={})
         post_data = params.stringify_keys
         return nil unless valid_property_params(post_data)
-        path      = UPDATE_PROPERTY_PATH.gsub(/:property_name/, property_name)
-        Hubspot::Connection.put_json(path, params: {}, body: post_data)
+        Hubspot::Connection.put_json(UPDATE_PROPERTY_PATH, params: { property_name: property_name }, body: post_data)
       end
 
       def delete!(property_name)
-        path = DELETE_PROPERTY_PATH.gsub(/:property_name/, property_name)
-        response = Hubspot::Connection.delete_json(path, propertyName: property_name)
+        response = Hubspot::Connection.delete_json(DELETE_PROPERTY_PATH, property_name: property_name)
         response.parsed_response
       end
 
@@ -57,13 +55,11 @@ module Hubspot
         # PUT
         post_data = params.stringify_keys
         return nil unless valid_group_params(post_data)
-        path      = UPDATE_GROUP_PATH.gsub(/:group_name/, group_name)
-        Hubspot::Connection.put_json(path, params: {}, body: post_data)
+        Hubspot::Connection.put_json(UPDATE_GROUP_PATH, params: { group_name: group_name }, body: post_data)
       end
 
       def delete_group!(group_name)
-        path = DELETE_GROUP_PATH.gsub(/:group_name/, group_name)
-        response = Hubspot::Connection.delete_json(path, groupName: group_name)
+        response = Hubspot::Connection.delete_json(DELETE_GROUP_PATH, group_name: group_name)
         response.parsed_response
       end
 
