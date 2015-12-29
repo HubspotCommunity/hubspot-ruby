@@ -52,7 +52,7 @@ describe Hubspot do
       describe "can be filtered by state" do
 
         it "should filter the posts to published by default" do
-          pending 'This test does not pass reliably'
+          # pending 'This test does not pass reliably'
           blog.posts.length.should be(14)
         end
 
