@@ -22,7 +22,7 @@ namespace :contact_properties do
     end
     file = File.read(args[:file])
     props = JSON.parse(file)
-    Hubspot::Utils.restore_properties(hapikey, props, args[:dry_run])
+    Hubspot::Utils.restore_properties(hapikey, props, args[:dry_run] != 'false')
   end
 
   private

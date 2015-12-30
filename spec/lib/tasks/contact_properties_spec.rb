@@ -28,7 +28,7 @@ describe 'contact_properties rake tasks', live: true do
   describe 'contact_properties:restore' do
     let :run_rake_task do
       Rake::Task['contact_properties:restore'].reenable
-      Rake.application.invoke_task "contact_properties:restore[#{file},#{hapikey},true]"
+      Rake.application.invoke_task "contact_properties:restore[#{file},#{hapikey}]"
     end
 
     it 'should not need to make any changes' do
