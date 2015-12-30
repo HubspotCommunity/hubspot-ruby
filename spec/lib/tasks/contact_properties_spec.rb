@@ -33,11 +33,6 @@ describe 'contact_properties rake tasks', live: true do
 
     it 'should not need to make any changes' do
       results = capture_stdout { run_rake_task }
-      expect(results.include?('Creating new groups
-
-Creating new properties
-
-Updating existing properties')).to be_true
       expect(results.include?('Created: ')).to be_false
       expect(results.include?('Updated: ')).to be_false
     end
