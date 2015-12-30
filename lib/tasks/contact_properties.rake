@@ -5,12 +5,12 @@ namespace :contact_properties do
   task :dump, [:file, :hapikey, :include, :exclude] do |_, args|
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     props = Hubspot::Utils::dump_properties(hapikey, build_filter(args))
-    if args[:file]
+    if args[:file].blank?
+      puts JSON.pretty_generate(props)
+    else
       File.open(args[:file], 'w') do |f|
         f.write(JSON.pretty_generate(props))
       end
-    else
-      puts JSON.pretty_generate(props)
     end
   end
 
