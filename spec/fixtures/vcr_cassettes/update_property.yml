@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.hubapi.com/contacts/v2/properties/named/my_new_property?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"my_new_property","label":"This is my new property","description":"What
+        is their favorite flavor?","groupName":"contactinformation","type":"string","fieldType":"text","options":[],"displayOrder":0,"formField":true}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '397'
+      Date:
+      - Thu, 31 Dec 2015 23:28:28 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"name":"my_new_property","label":"This is my new property","description":"What
+        is their favorite flavor?","groupName":"contactinformation","type":"string","fieldType":"text","hidden":false,"displayOrder":0,"options":[],"formField":true,"readOnlyValue":false,"readOnlyDefinition":false,"mutableDefinitionNotDeletable":false,"calculated":false,"externalOptions":false,"displayMode":"current_value"}'
+    http_version: 
+  recorded_at: Thu, 31 Dec 2015 23:28:28 GMT
+recorded_with: VCR 2.4.0
