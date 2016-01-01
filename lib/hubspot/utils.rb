@@ -79,7 +79,7 @@ module Hubspot
 
         src_props.each do |src|
           group = find_by_name(src['groupName'], src_groups)
-          if src['createdUserId'].blank? then
+          if src['createdUserId'].blank? && src['updatedUserId'].blank? then
             skip << { prop: src, reason: 'Not user created' }
           else
             dst = find_by_name(src['name'], dst_props)
@@ -89,11 +89,11 @@ module Hubspot
               elsif ContactProperties.same?(src, dst)
                 skip << { prop: src, reason: 'No change' }
               else
-                new_groups << group unless find_by_name(group['name'], dst_groups)
+                new_groups << group unless group.blank? || find_by_name(group['name'], dst_groups)
                 update_props << src
               end
             else
-              new_groups << group unless find_by_name(group['name'], dst_groups)
+              new_groups << group unless group.blank? || find_by_name(group['name'], dst_groups)
               new_props << src
             end
           end
