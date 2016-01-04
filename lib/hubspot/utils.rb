@@ -14,30 +14,31 @@ module Hubspot
         hash.map { |k, v| { key_name => k.to_s, "value" => v } }
       end
 
-      def dump_properties(hapikey=ENV['HUBSPOT_API_KEY'], filter={})
+      def dump_properties(klass, hapikey=ENV['HUBSPOT_API_KEY'], filter={})
         with_hapikey(hapikey) do
-          { 'groups'     => Hubspot::ContactProperties.groups({}, filter),
-            'properties' => Hubspot::ContactProperties.all({}, filter).select { |p| !p['hubspotDefined'] }
+          { 'groups'     => klass.groups({}, filter),
+            'properties' => klass.all({}, filter).select { |p| !p['hubspotDefined'] }
           }
         end
       end
 
-      def restore_properties(hapikey=ENV['HUPSPOT_API_KEY'], properties={}, dry_run=false)
-        existing_properties                       = dump_properties(hapikey)
-        skip, new_groups, new_props, update_props = compare_property_lists(properties, existing_properties)
+      def restore_properties(klass, hapikey=ENV['HUPSPOT_API_KEY'], properties={}, dry_run=false)
+        existing_properties                       = dump_properties(klass, hapikey)
+        skip, new_groups, new_props, update_props = compare_property_lists(klass, properties, existing_properties)
+        puts '', 'Dry Run - Changes will not be applied' if dry_run
         puts '','Skipping'
         skip.each { |h| puts "#{h[:reason]} - #{h[:prop]['groupName']}:#{h[:prop]['name']}" }
         with_hapikey(hapikey) do
-          create_groups new_groups, dry_run
-          create_properties new_props, dry_run
-          update_properties update_props, dry_run
+          create_groups(klass, new_groups, dry_run)
+          create_properties(klass, new_props, dry_run)
+          update_properties(klass, update_props, dry_run)
         end
       end
 
-      def create_groups(groups, dry_run=false)
+      def create_groups(klass, groups, dry_run=false)
         puts '','Creating new groups'
         groups.each do |g|
-          if dry_run || ContactProperties.create_group!(g)
+          if dry_run || klass.create_group!(g)
             puts "Created: #{g['name']}"
           else
             puts "Failed: #{g['name']}"
@@ -45,10 +46,10 @@ module Hubspot
         end
       end
 
-      def create_properties(props, dry_run=false)
+      def create_properties(klass, props, dry_run=false)
         puts '','Creating new properties'
         props.each do |p|
-          if dry_run || ContactProperties.create!(p)
+          if dry_run || klass.create!(p)
             puts "Created: #{p['groupName']}:#{p['name']}"
           else
             puts "Failed: #{p['groupName']}:#{p['name']}"
@@ -56,10 +57,10 @@ module Hubspot
         end
       end
 
-      def update_properties(props, dry_run=false)
+      def update_properties(klass, props, dry_run=false)
         puts '','Updating existing properties'
         props.each do |p|
-          if dry_run || ContactProperties.update!(p['name'], p)
+          if dry_run || klass.update!(p['name'], p)
             puts "Updated: #{p['groupName']}:#{p['name']}"
           else
             puts "Failed: #{p['groupName']}:#{p['name']}"
@@ -67,7 +68,7 @@ module Hubspot
         end
       end
 
-      def compare_property_lists(source, target)
+      def compare_property_lists(klass, source, target)
         skip         = [] # Array of skipped properties and the reason
         new_groups   = Set.new # Array of groups to create
         new_props    = [] # Array of properties to add
@@ -86,7 +87,7 @@ module Hubspot
             if dst
               if dst['readOnlyDefinition']
                 skip << { prop: src, reason: 'Definition is read-only' }
-              elsif ContactProperties.same?(src, dst)
+              elsif klass.same?(src, dst)
                 skip << { prop: src, reason: 'No change' }
               else
                 new_groups << group unless group.blank? || find_by_name(group['name'], dst_groups)
