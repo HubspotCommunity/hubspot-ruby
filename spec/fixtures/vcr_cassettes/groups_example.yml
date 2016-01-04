@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v2/groups?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '4077'
+      Date:
+      - Thu, 31 Dec 2015 23:50:37 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"name":"contactinformation","displayName":"Contact","displayOrder":1},{"name":"doba_signup","displayName":"Doba
+        Signup","displayOrder":1},{"name":"shopifyinformation_teleport","displayName":"Shopify
+        Information","displayOrder":2},{"name":"calltrackinginfo","displayName":"Call
+        Tracking Information","displayOrder":4},{"name":"emailinformation","displayName":"Email","displayOrder":4},{"name":"conversioninformation","displayName":"Conversion
+        Information","displayOrder":5},{"name":"ff_test_group","displayName":"ff_test_group
+        Used for FF testing","displayOrder":5},{"name":"aoigroup","displayName":"Areas
+        of Interest77","displayOrder":6},{"name":"analyticsinformation","displayName":"Analytics","displayOrder":8},{"name":"salesforceinformation","displayName":"Salesforce","displayOrder":9},{"name":"docalyticsdata","displayName":"docalyticsdata","displayOrder":10},{"name":"mojaba","displayName":"Mojaba
+        Visit Properties","displayOrder":13},{"name":"proform_fields","displayName":"ProForm
+        Fields","displayOrder":99},{"name":"web_contract_fields","displayName":"Web
+        Contract Fields","displayOrder":99},{"name":"ff_group23","displayName":"","displayOrder":100},{"name":"agiloneabandonedcart","displayName":"AgilOne
+        Abandoned Cart","displayOrder":100},{"name":"agilonelastbrowsedproduct","displayName":"AgilOne
+        Last Browsed Product","displayOrder":100},{"name":"crm","displayName":"CRM","displayOrder":100},{"name":"group1","displayName":"Group
+        One","displayOrder":100},{"name":"ff_group2","displayName":"Test Group TwoA","displayOrder":100},{"name":"improveit360","displayName":"improveit!
+        360","displayOrder":101},{"name":"email_sends","displayName":"email sends","displayOrder":102},{"name":"mohith_testing","displayName":"Mohith
+        Testing","displayOrder":104},{"name":"customer_attributes","displayName":"Customer
+        Attributes","displayOrder":107},{"name":"purchase_data","displayName":"Purchase
+        Data","displayOrder":108},{"name":"ifbyphone","displayName":"Ifbyphone","displayOrder":110},{"name":"new_property_group","displayName":"New
+        Property Group","displayOrder":111},{"name":"eebproperties","displayName":"eebproperties","displayOrder":113},{"name":"office365","displayName":"Office365","displayOrder":114},{"name":"vk","displayName":"VK","displayOrder":115},{"name":"discoverorg_testing","displayName":"DiscoverOrg
+        Testing","displayOrder":116},{"name":"qualaroo","displayName":"Qualaroo","displayOrder":117},{"name":"leads","displayName":"Leads","displayOrder":118},{"name":"dt_test","displayName":"DT_Test","displayOrder":119},{"name":"cartodb","displayName":"CartoDB","displayOrder":120},{"name":"feeder_group","displayName":"feeder_group","displayOrder":121},{"name":"venzee_contact_form","displayName":"venzee
+        contact form","displayOrder":122},{"name":"sample_property_group","displayName":"sample_property_group","displayOrder":123},{"name":"fff_properties","displayName":"fff_properties","displayOrder":124},{"name":"converstation_information","displayName":"Converstation
+        Information","displayOrder":125},{"name":"my_custom_group","displayName":"My
+        Custom Group","displayOrder":126},{"name":"opportunities","displayName":"Opportunities","displayOrder":127},{"name":"xxx_group","displayName":"xxx
+        group","displayOrder":128},{"name":"me_tests","displayName":"ME/tests","displayOrder":129},{"name":"workflowmax","displayName":"WorkflowMAX","displayOrder":130},{"name":"dialogtech","displayName":"DialogTech","displayOrder":131},{"name":"mytestgroup","displayName":"MyTestGroup","displayOrder":132},{"name":"book2meet","displayName":"book2meet","displayOrder":133},{"name":"purchase_history","displayName":"Purchase
+        History","displayOrder":134},{"name":"video","displayName":"video","displayOrder":135},{"name":"gro_test","displayName":"gro
+        test","displayOrder":136},{"name":"bsmg_content_library","displayName":"Bsmg
+        Content Library","displayOrder":137},{"name":"careerquizproperties","displayName":"CareerQuizProperties","displayOrder":138},{"name":"base","displayName":"Base","displayOrder":139},{"name":"group3","displayName":"Test
+        Group Three","displayOrder":140}]'
+    http_version: 
+  recorded_at: Thu, 31 Dec 2015 23:50:37 GMT
+recorded_with: VCR 2.4.0
