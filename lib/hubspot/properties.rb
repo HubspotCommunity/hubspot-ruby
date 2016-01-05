@@ -5,7 +5,8 @@ module Hubspot
       group_field_names: %w(name displayName displayOrder properties),
       field_names:       %w(name groupName description fieldType formField type displayOrder label options),
       valid_field_types: %w(textarea select text date file number radio checkbox),
-      valid_types:       %w(string number bool datetime enumeration)
+      valid_types:       %w(string number bool datetime enumeration),
+      options:           %w(description value label hidden displayOrder)
     }
 
     class << self
@@ -61,7 +62,14 @@ module Hubspot
       end
 
       def same?(src, dst)
-        valid_property_params(src).eql?(valid_property_params(dst))
+        src_params = valid_params(src)
+        dst_params = valid_params(dst)
+        src_params.eql?(dst_params)
+        # hash_same?(src_params, dst_params)
+      end
+
+      def valid_params(params={})
+        valid_property_params(params)
       end
 
       private
@@ -75,43 +83,36 @@ module Hubspot
       end
 
       def valid_property_params(params)
-        params.select { |key, val|
-          if PROPERTY_SPECS[:field_names].include?(key)
-            case key
-              when 'fieldType'
-                check_field_type(val)
-              when 'type'
-                check_type(val)
-              else
-                true
-            end
-          end
-        }
+        return {} if params.blank?
+        result = params.slice(*PROPERTY_SPECS[:field_names])
+        result.delete('fieldType') unless check_field_type(result['fieldType'])
+        result.delete('type') unless check_type(result['type'])
+        result['options'] = valid_option_params(result['options'])
+        result
       end
 
       def valid_group_params(params)
-        params.select do |key, val|
-          if PROPERTY_SPECS[:group_field_names].include?(key)
-            case key
-              when 'properties'
-                valid_property_params(val)
-              else
-                true
-            end
-          end
-        end
+        return {} if params.blank?
+        result = params.slice(*PROPERTY_SPECS[:group_field_names])
+        result['properties'] = valid_property_params(result['properties']) unless result['properties'].blank?
+        result
       end
 
       def check_field_type(val)
         return true if PROPERTY_SPECS[:valid_field_types].include?(val)
         puts "Invalid field type: #{val}"
-        nil
+        false
       end
 
       def check_type(val)
         return true if PROPERTY_SPECS[:valid_types].include?(val)
         puts "Invalid type: #{val}"
-        nil
+        false
+      end
+
+      def valid_option_params(options)
+        return [] if options.blank?
+        options.map { |o| o.slice(*PROPERTY_SPECS[:options]) }
       end
 
     end

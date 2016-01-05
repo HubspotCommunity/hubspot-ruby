@@ -51,6 +51,9 @@ module Hubspot
         superclass.same?(src, dst)
       end
 
+      def valid_params(params)
+        superclass.valid_params(params)
+      end
     end
   end
 end

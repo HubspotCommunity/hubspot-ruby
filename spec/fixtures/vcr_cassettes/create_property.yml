@@ -5,8 +5,9 @@ http_interactions:
     uri: https://api.hubapi.com/contacts/v2/properties/?hapikey=demo
     body:
       encoding: UTF-8
-      string: '{"name":"my_new_property","label":"This is my new property","description":"What
-        kind of x would you like?","groupName":"contactinformation","type":"string","fieldType":"text","options":[],"displayOrder":0,"formField":true}'
+      string: '{"name":"my_new_property","groupName":"contactinformation","description":"What
+        kind of x would you like?","fieldType":"text","formField":true,"type":"string","displayOrder":0,"label":"This
+        is my new property","options":[]}'
     headers:
       Content-Type:
       - application/json
@@ -23,15 +24,15 @@ http_interactions:
       - Accept-Encoding
       - Accept-Encoding
       Content-Length:
-      - '397'
+      - '413'
       Date:
-      - Thu, 31 Dec 2015 23:10:51 GMT
+      - Tue, 05 Jan 2016 22:51:32 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"name":"my_new_property","label":"This is my new property","description":"What
-        kind of x would you like?","groupName":"contactinformation","type":"string","fieldType":"text","hidden":false,"options":[],"displayOrder":0,"readOnlyDefinition":false,"formField":true,"readOnlyValue":false,"mutableDefinitionNotDeletable":false,"calculated":false,"externalOptions":false,"displayMode":"current_value"}'
+        kind of x would you like?","groupName":"contactinformation","type":"string","fieldType":"text","hidden":false,"options":[],"deleted":false,"displayOrder":0,"formField":true,"readOnlyValue":false,"readOnlyDefinition":false,"mutableDefinitionNotDeletable":false,"calculated":false,"externalOptions":false,"displayMode":"current_value"}'
     http_version: 
-  recorded_at: Thu, 31 Dec 2015 23:10:51 GMT
+  recorded_at: Tue, 05 Jan 2016 22:51:32 GMT
 recorded_with: VCR 2.4.0

@@ -18,46 +18,18 @@ http_interactions:
       - application/json; charset=UTF-8
       X-Hubspot-Notfound:
       - 'true'
+      X-Trace:
+      - 1B41F22567BAE9B8C25CFB9119D6288D57041F0FFD6E9486A26FC614EA
       Content-Length:
       - '191'
       Date:
-      - Mon, 04 Jan 2016 18:40:47 GMT
+      - Tue, 05 Jan 2016 22:51:41 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"status":"error","message":"Couldn''t find a Group with the given
-        name ''ff_group1''.","correlationId":"1bd89f55-1cb6-46ff-9fbf-ee28246ee92d","requestId":"4c4b6a90-02fc-47df-84f7-67432e188366"}'
+        name ''ff_group1''.","correlationId":"962b3684-ab95-4aee-8c14-540437dbfa7a","requestId":"61f33c20-757b-4cdd-a86b-eab29f915e11"}'
     http_version: 
-  recorded_at: Mon, 04 Jan 2016 18:40:47 GMT
-- request:
-    method: delete
-    uri: https://api.hubapi.com/deals/v1/groups/named/ff_group23?hapikey=demo
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers: {}
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Hubspot-Notfound:
-      - 'true'
-      Content-Length:
-      - '192'
-      Date:
-      - Mon, 04 Jan 2016 18:51:58 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"status":"error","message":"Couldn''t find a Group with the given
-        name ''ff_group23''.","correlationId":"2c83171d-1d10-4be5-adb0-297c3398016c","requestId":"2c31b58d-130d-4ebb-b2ff-6cebbdf24d88"}'
-    http_version: 
-  recorded_at: Mon, 04 Jan 2016 18:51:58 GMT
+  recorded_at: Tue, 05 Jan 2016 22:51:41 GMT
 recorded_with: VCR 2.4.0

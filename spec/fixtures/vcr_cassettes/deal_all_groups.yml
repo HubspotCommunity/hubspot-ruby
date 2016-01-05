@@ -17,14 +17,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '146'
+      - '204'
       Date:
-      - Mon, 04 Jan 2016 18:40:45 GMT
+      - Tue, 05 Jan 2016 22:51:39 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '[{"name":"dealinformation","displayName":"Deal Information","displayOrder":0},{"name":"workflowmax","displayName":"WorkflowMAX","displayOrder":1}]'
+      string: '[{"name":"dealinformation","displayName":"Deal Information","displayOrder":0},{"name":"workflowmax","displayName":"WorkflowMAX","displayOrder":1},{"name":"ff_group23","displayName":"","displayOrder":100}]'
     http_version: 
-  recorded_at: Mon, 04 Jan 2016 18:40:45 GMT
+  recorded_at: Tue, 05 Jan 2016 22:51:39 GMT
 recorded_with: VCR 2.4.0

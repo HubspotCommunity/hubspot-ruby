@@ -19,7 +19,7 @@ http_interactions:
       Content-Length:
       - '18465'
       Date:
-      - Mon, 04 Jan 2016 18:47:51 GMT
+      - Tue, 05 Jan 2016 22:51:37 GMT
       Connection:
       - keep-alive
     body:
@@ -79,5 +79,5 @@ http_interactions:
         Renewal Date","description":"","groupName":"dealinformation","type":"datetime","fieldType":"date","formField":false,"displayOrder":12,"readOnlyDefinition":false,"hidden":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","deleted":false,"options":[],"calculated":false,"readOnlyValue":false,"externalOptions":false},{"name":"deal_id","label":"Deal
         Id","description":"","groupName":"dealinformation","type":"string","fieldType":"text","formField":true,"displayOrder":13,"readOnlyDefinition":false,"hidden":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","deleted":false,"createdUserId":215482,"options":[],"updatedUserId":215482,"calculated":false,"readOnlyValue":false,"externalOptions":false},{"name":"source","label":"source","description":"","groupName":"dealinformation","type":"string","fieldType":"text","formField":true,"displayOrder":14,"readOnlyDefinition":false,"hidden":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","deleted":false,"createdUserId":215482,"options":[],"updatedUserId":215482,"calculated":false,"readOnlyValue":false,"externalOptions":false},{"name":"contact_number","label":"contact_number","description":"","groupName":"dealinformation","type":"string","fieldType":"text","formField":true,"displayOrder":15,"readOnlyDefinition":false,"hidden":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","showCurrencySymbol":false,"deleted":false,"createdUserId":215482,"options":[],"updatedUserId":215482,"calculated":false,"readOnlyValue":false,"externalOptions":false},{"name":"email","label":"email","description":"","groupName":"dealinformation","type":"string","fieldType":"text","formField":true,"displayOrder":16,"readOnlyDefinition":false,"hidden":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","deleted":false,"createdUserId":215482,"options":[],"updatedUserId":215482,"calculated":false,"readOnlyValue":false,"externalOptions":false},{"name":"email_address","label":"email_address","description":"","groupName":"dealinformation","type":"string","fieldType":"text","formField":true,"displayOrder":17,"readOnlyDefinition":false,"hidden":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","deleted":false,"createdUserId":215482,"options":[],"updatedUserId":215482,"calculated":false,"readOnlyValue":false,"externalOptions":false}]'
     http_version: 
-  recorded_at: Mon, 04 Jan 2016 18:47:51 GMT
+  recorded_at: Tue, 05 Jan 2016 22:51:37 GMT
 recorded_with: VCR 2.4.0

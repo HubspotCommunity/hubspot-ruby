@@ -35,14 +35,14 @@ describe 'Contact Properties API Live test', live: true do
     result = Hubspot::ContactProperties.groups
 
     expect(result.count).to be > 0
-    expect(result[0].keys).to eql(%w(name displayName displayOrder))
+    expect(result[0].slice(*%w(name displayName displayOrder)).count).to eq(3)
   end
 
   it 'should return  list of groups and their properties' do
     result = Hubspot::ContactProperties.groups({ includeProperties: true })
 
     expect(result.count).to be > 0
-    expect(result[0].keys).to eql(%w(name displayName displayOrder properties))
+    expect(result[0].slice(*%w(name displayName displayOrder properties)).count).to eq(4)
   end
 
   it 'should return only the requested groups' do

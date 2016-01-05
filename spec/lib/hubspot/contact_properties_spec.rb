@@ -7,13 +7,13 @@ describe Hubspot::ContactProperties do
   end
 
   let(:example_groups) do
-    VCR.use_cassette('groups_example', record: :none) do
+    VCR.use_cassette('groups_example', record: :once) do
       HTTParty.get('https://api.hubapi.com/contacts/v2/groups?hapikey=demo').parsed_response
     end
   end
 
   let(:example_properties) do
-    VCR.use_cassette('properties_example', record: :none) do
+    VCR.use_cassette('properties_example', record: :once) do
       HTTParty.get('https://api.hubapi.com/contacts/v2/properties?hapikey=demo').parsed_response
     end
   end
@@ -37,7 +37,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return properties for the specified group[s]' do
           response = Hubspot::ContactProperties.all({}, { include: groups })
-          response.each{ |p| expect(groups.include?(p['groupName'])).to be_true }
+          response.each { |p| expect(groups.include?(p['groupName'])).to be_true }
         end
       end
 
@@ -46,7 +46,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return properties for the non-specified group[s]' do
           response = Hubspot::ContactProperties.all({}, { exclude: groups })
-          response.each{ |p| expect(groups.include?(p['groupName'])).to be_false }
+          response.each { |p| expect(groups.include?(p['groupName'])).to be_false }
         end
       end
     end
@@ -150,7 +150,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return the specified groups' do
           response = Hubspot::ContactProperties.groups({}, { include: groups })
-          response.each{ |p| expect(groups.include?(p['name'])).to be_true }
+          response.each { |p| expect(groups.include?(p['name'])).to be_true }
         end
       end
 
@@ -159,13 +159,12 @@ describe Hubspot::ContactProperties do
 
         it 'should return groups that were not excluded' do
           response = Hubspot::ContactProperties.groups({}, { exclude: groups })
-          response.each{ |p| expect(groups.include?(p['name'])).to be_false }
+          response.each { |p| expect(groups.include?(p['name'])).to be_false }
         end
       end
     end
 
     let(:params) { { 'name' => 'ff_group1', 'displayName' => 'Test Group One', 'displayOrder' => 100, 'badParam' => 99 } }
-    let(:valid_params) { params.select { |k, _| Hubspot::ContactProperties::PROPERTY_SPECS[:group_field_names].include?(k) } }
 
     describe '.create_group!' do
       context 'with no valid parameters' do
@@ -178,7 +177,8 @@ describe Hubspot::ContactProperties do
         cassette 'create_group'
 
         it 'should return the valid parameters' do
-          expect(Hubspot::ContactProperties.create_group!(params)).to eql(valid_params)
+          response = Hubspot::ContactProperties.create_group!(params)
+          expect(Hubspot::ContactProperties.same?(response, params)).to be_true
         end
       end
 
@@ -188,9 +188,9 @@ describe Hubspot::ContactProperties do
         let(:sub_params) { params.select { |k, _| k != 'displayName' } }
 
         it 'should return the valid parameters' do
-          params['name']              = 'ff_group23'
-          valid_params['displayName'] = ''
-          expect(Hubspot::ContactProperties.create_group!(sub_params)).to eql(valid_params)
+          params['name'] = 'ff_group234'
+          response       = Hubspot::ContactProperties.create_group!(sub_params)
+          expect(Hubspot::ContactProperties.same?(response, sub_params)).to be_true
         end
       end
     end
@@ -207,10 +207,10 @@ describe Hubspot::ContactProperties do
         cassette 'update_group'
 
         it 'should return the valid parameters' do
-          params['displayName']       = 'Test Group OneA'
-          valid_params['displayName'] = 'Test Group OneA'
+          params['displayName'] = 'Test Group OneA'
 
-          expect(Hubspot::ContactProperties.update_group!(params['name'], params)).to eql(valid_params)
+          response = Hubspot::ContactProperties.update_group!(params['name'], params)
+          expect(Hubspot::ContactProperties.same?(response, params)).to be_true
         end
       end
 
