@@ -1,20 +1,20 @@
-describe Hubspot::ContactProperties do
+describe Hubspot::DealProperties do
   describe '.add_default_parameters' do
-    subject { Hubspot::ContactProperties.add_default_parameters({}) }
+    subject { Hubspot::DealProperties.add_default_parameters({}) }
     context 'default parameters' do
       its([:property]) { should == 'email' }
     end
   end
 
   let(:example_groups) do
-    VCR.use_cassette('groups_example', record: :once) do
-      HTTParty.get('https://api.hubapi.com/contacts/v2/groups?hapikey=demo').parsed_response
+    VCR.use_cassette('deal_groups_example', record: :once) do
+      HTTParty.get('https://api.hubapi.com/deals/v1/groups?hapikey=demo').parsed_response
     end
   end
 
   let(:example_properties) do
-    VCR.use_cassette('properties_example', record: :once) do
-      HTTParty.get('https://api.hubapi.com/contacts/v2/properties?hapikey=demo').parsed_response
+    VCR.use_cassette('deal_properties_example', record: :once) do
+      HTTParty.get('https://api.hubapi.com/deals/v1/properties?hapikey=demo').parsed_response
     end
   end
 
@@ -23,29 +23,29 @@ describe Hubspot::ContactProperties do
   describe 'Properties' do
     describe '.all' do
       context 'with no filter' do
-        cassette 'all_properties'
+        cassette 'deal_all_properties'
 
         it 'should return all properties' do
-          expect(Hubspot::ContactProperties.all).to eql(example_properties)
+          expect(Hubspot::DealProperties.all).to eql(example_properties)
         end
       end
 
       let(:groups) { %w(calltrackinginfo emailinformation) }
 
       context 'with included groups' do
-        cassette 'properties_in_groups'
+        cassette 'deal_properties_in_groups'
 
         it 'should return properties for the specified group[s]' do
-          response = Hubspot::ContactProperties.all({}, { include: groups })
+          response = Hubspot::DealProperties.all({}, { include: groups })
           response.each { |p| expect(groups.include?(p['groupName'])).to be_true }
         end
       end
 
       context 'with excluded groups' do
-        cassette 'properties_not_in_groups'
+        cassette 'deal_properties_not_in_groups'
 
         it 'should return properties for the non-specified group[s]' do
-          response = Hubspot::ContactProperties.all({}, { exclude: groups })
+          response = Hubspot::DealProperties.all({}, { exclude: groups })
           response.each { |p| expect(groups.include?(p['groupName'])).to be_false }
         end
       end
@@ -54,12 +54,29 @@ describe Hubspot::ContactProperties do
     let(:params) { {
       'name'                          => 'my_new_property',
       'label'                         => 'This is my new property',
-      'description'                   => 'What kind of x would you like?',
-      'groupName'                     => 'contactinformation',
+      'description'                   => 'How much money do you have?',
+      'groupName'                     => 'dealinformation',
       'type'                          => 'string',
       'fieldType'                     => 'text',
       'hidden'                        => false,
-      'options'                       => [],
+      'options'                       => [{
+                                            'description'  => '',
+                                            'value'        => 'Over $50K',
+                                            'readOnly'     => false,
+                                            'label'        => 'Over $50K',
+                                            'displayOrder' => 0,
+                                            'hidden'       => false,
+                                            'doubleData'   => 0.0
+                                          },
+                                          {
+                                            'description'  => '',
+                                            'value'        => 'Under $50K',
+                                            'readOnly'     => false,
+                                            'label'        => 'Under $50K',
+                                            'displayOrder' => 1,
+                                            'hidden'       => false,
+                                            'doubleData'   => 0.0
+                                          }],
       'deleted'                       => false,
       'displayOrder'                  => 0,
       'formField'                     => true,
@@ -70,23 +87,22 @@ describe Hubspot::ContactProperties do
       'externalOptions'               => false,
       'displayMode'                   => 'current_value'
     } }
-    let(:valid_params) { params.select { |k, _| Hubspot::ContactProperties::PROPERTY_SPECS[:field_names].include?(k) } }
 
     describe '.create!' do
       context 'with no valid parameters' do
-        cassette 'fail_to_create_property'
+        cassette 'deal_fail_to_create_property'
 
         it 'should return nil' do
-          expect(Hubspot::ContactProperties.create!({})).to be(nil)
+          expect(Hubspot::DealProperties.create!({})).to be(nil)
         end
       end
 
       context 'with all valid parameters' do
-        cassette 'create_property'
+        cassette 'deal_create_property'
 
         it 'should return the valid parameters' do
-          response = Hubspot::ContactProperties.create!(params)
-          valid_params.each { |k, v| expect(response[k]).to eq(v) }
+          response = Hubspot::DealProperties.create!(params)
+          expect(Hubspot::DealProperties.same?(params, response)).to be_true
         end
       end
     end
@@ -95,19 +111,18 @@ describe Hubspot::ContactProperties do
       context 'with no valid parameters' do
 
         it 'should return nil ' do
-          expect(Hubspot::ContactProperties.update!(params['name'], {})).to be(nil)
+          expect(Hubspot::DealProperties.update!(params['name'], {})).to be(nil)
         end
       end
 
       context 'with mixed parameters' do
-        cassette 'update_property'
+        cassette 'deal_update_property'
 
         it 'should return the valid parameters' do
-          params['description']       = 'What is their favorite flavor?'
-          valid_params['description'] = params['description']
+          params['description'] = 'What is their favorite flavor?'
 
-          response = Hubspot::ContactProperties.update!(params['name'], params)
-          valid_params.each { |k, v| expect(response[k]).to eq(v) }
+          response = Hubspot::DealProperties.update!(params['name'], params)
+          expect(Hubspot::DealProperties.same?(response, params)).to be_true
         end
       end
     end
@@ -116,18 +131,18 @@ describe Hubspot::ContactProperties do
       let(:name) { params['name'] }
 
       context 'with existing property' do
-        cassette 'delete_property'
+        cassette 'deal_delete_property'
 
         it 'should return nil' do
-          expect(Hubspot::ContactProperties.delete!(name)).to eq(nil)
+          expect(Hubspot::DealProperties.delete!(name)).to eq(nil)
         end
       end
 
       context 'with non-existent property' do
-        cassette 'delete_non_property'
+        cassette 'deal_delete_non_property'
 
         it 'should raise an error' do
-          expect { Hubspot::ContactProperties.delete!(name) }.to raise_error(Hubspot::RequestError)
+          expect { Hubspot::DealProperties.delete!(name) }.to raise_error(Hubspot::RequestError)
         end
       end
     end
@@ -136,29 +151,29 @@ describe Hubspot::ContactProperties do
   describe 'Groups' do
     describe '.groups' do
       context 'with no filter' do
-        cassette 'all_groups'
+        cassette 'deal_all_groups'
 
         it 'should return all groups' do
-          expect(Hubspot::ContactProperties.groups).to eql(example_groups)
+          expect(Hubspot::DealProperties.groups).to eql(example_groups)
         end
       end
 
       let(:groups) { %w(calltrackinginfo emailinformation) }
 
       context 'with included groups' do
-        cassette 'groups_included'
+        cassette 'deal_groups_included'
 
         it 'should return the specified groups' do
-          response = Hubspot::ContactProperties.groups({}, { include: groups })
+          response = Hubspot::DealProperties.groups({}, { include: groups })
           response.each { |p| expect(groups.include?(p['name'])).to be_true }
         end
       end
 
       context 'with excluded groups' do
-        cassette 'groups_not_excluded'
+        cassette 'deal_groups_not_excluded'
 
         it 'should return groups that were not excluded' do
-          response = Hubspot::ContactProperties.groups({}, { exclude: groups })
+          response = Hubspot::DealProperties.groups({}, { exclude: groups })
           response.each { |p| expect(groups.include?(p['name'])).to be_false }
         end
       end
@@ -169,28 +184,28 @@ describe Hubspot::ContactProperties do
     describe '.create_group!' do
       context 'with no valid parameters' do
         it 'should return nil' do
-          expect(Hubspot::ContactProperties.create_group!({})).to be(nil)
+          expect(Hubspot::DealProperties.create_group!({})).to be(nil)
         end
       end
 
       context 'with mixed parameters' do
-        cassette 'create_group'
+        cassette 'deal_create_group'
 
         it 'should return the valid parameters' do
-          response = Hubspot::ContactProperties.create_group!(params)
-          expect(Hubspot::ContactProperties.same?(response, params)).to be_true
+          response = Hubspot::DealProperties.create_group!(params)
+          expect(Hubspot::DealProperties.same?(response, params)).to be_true
         end
       end
 
       context 'with some valid parameters' do
-        cassette 'create_group_some_params'
+        cassette 'deal_create_group_some_params'
 
         let(:sub_params) { params.select { |k, _| k != 'displayName' } }
 
         it 'should return the valid parameters' do
           params['name'] = 'ff_group234'
-          response       = Hubspot::ContactProperties.create_group!(sub_params)
-          expect(Hubspot::ContactProperties.same?(response, sub_params)).to be_true
+          response       = Hubspot::DealProperties.create_group!(sub_params)
+          expect(Hubspot::DealProperties.same?(response, sub_params)).to be_true
         end
       end
     end
@@ -199,18 +214,18 @@ describe Hubspot::ContactProperties do
       context 'with no valid parameters' do
 
         it 'should return nil ' do
-          expect(Hubspot::ContactProperties.update_group!(params['name'], {})).to be(nil)
+          expect(Hubspot::DealProperties.update_group!(params['name'], {})).to be(nil)
         end
       end
 
       context 'with mixed parameters' do
-        cassette 'update_group'
+        cassette 'deal_update_group'
 
         it 'should return the valid parameters' do
           params['displayName'] = 'Test Group OneA'
 
-          response = Hubspot::ContactProperties.update_group!(params['name'], params)
-          expect(Hubspot::ContactProperties.same?(response, params)).to be_true
+          response = Hubspot::DealProperties.update_group!(params['name'], params)
+          expect(Hubspot::DealProperties.same?(response, params)).to be_true
         end
       end
 
@@ -220,18 +235,18 @@ describe Hubspot::ContactProperties do
       let(:name) { params['name'] }
 
       context 'with existing group' do
-        cassette 'delete_group'
+        cassette 'deal_delete_group'
 
         it 'should return nil' do
-          expect(Hubspot::ContactProperties.delete_group!(name)).to eq(nil)
+          expect(Hubspot::DealProperties.delete_group!(name)).to eq(nil)
         end
       end
 
       context 'with non-existent group' do
-        cassette 'delete_non_group'
+        cassette 'deal_delete_non_group'
 
         it 'should raise an error' do
-          expect { Hubspot::ContactProperties.delete_group!(name) }.to raise_error(Hubspot::RequestError)
+          expect { Hubspot::DealProperties.delete_group!(name) }.to raise_error(Hubspot::RequestError)
         end
       end
     end

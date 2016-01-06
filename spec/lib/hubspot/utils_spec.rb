@@ -29,15 +29,15 @@ describe Hubspot::Utils do
     it { should include({ "property" => "lastname", "value" => "Smith" }) }
   end
 
-  describe '.compare_property_lists' do
+  describe '.compare_property_lists for ContactProperties' do
     let(:example_groups) do
-      VCR.use_cassette('groups_example', record: :none) do
+      VCR.use_cassette('groups_example', record: :once) do
         HTTParty.get('https://api.hubapi.com/contacts/v2/groups?hapikey=demo').parsed_response
       end
     end
 
     let(:example_properties) do
-      VCR.use_cassette('properties_example', record: :none) do
+      VCR.use_cassette('properties_example', record: :once) do
         HTTParty.get('https://api.hubapi.com/contacts/v2/properties?hapikey=demo').parsed_response
       end
     end
@@ -47,7 +47,7 @@ describe Hubspot::Utils do
 
     context 'with no changes' do
       it 'should report no changes' do
-        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(source, target)
+        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::ContactProperties, source, target)
         expect(skip.count).to be > 0
         expect(new_groups.count).to be(0)
         expect(new_props.count).to be(0)
@@ -69,7 +69,56 @@ describe Hubspot::Utils do
           end
         end
 
-        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(source, target)
+        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::ContactProperties, source, target)
+        expect(skip.count).to be > 0
+        expect(new_groups.count).to be(0)
+        expect(new_props.count).to be(0)
+        expect(update_props.count).to be(count)
+      end
+    end
+  end
+
+  describe '.compare_property_lists for DealProperties' do
+    let(:example_groups) do
+      VCR.use_cassette('deal_groups_example', record: :once) do
+        HTTParty.get('https://api.hubapi.com/deals/v1/groups?hapikey=demo').parsed_response
+      end
+    end
+
+    let(:example_properties) do
+      VCR.use_cassette('deal_properties_example', record: :once) do
+        HTTParty.get('https://api.hubapi.com/deals/v1/properties?hapikey=demo').parsed_response
+      end
+    end
+
+    let(:source) { { 'groups' => example_groups, 'properties' => example_properties } }
+    let!(:target) { Marshal.load(Marshal.dump(source)) }
+
+    context 'with no changes' do
+      it 'should report no changes' do
+        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::DealProperties, source, target)
+        expect(skip.count).to be > 0
+        expect(new_groups.count).to be(0)
+        expect(new_props.count).to be(0)
+        expect(update_props.count).to be(0)
+      end
+    end
+
+    context 'with changes' do
+      let(:description) { "#{source['properties'][0]['description']}_XXX" }
+
+      count = 0
+
+      it 'should report the changes' do
+        10.times do |i|
+          if !source['properties'][i]['readOnlyDefinition']
+            source['properties'][i]['description']   = description
+            source['properties'][i]['createdUserId'] = 2500
+            count                                    += 1
+          end
+        end
+
+        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::DealProperties, source, target)
         expect(skip.count).to be > 0
         expect(new_groups.count).to be(0)
         expect(new_props.count).to be(0)

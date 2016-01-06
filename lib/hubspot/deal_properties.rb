@@ -1,14 +1,14 @@
 module Hubspot
-  class ContactProperties < Properties
+  class DealProperties < Properties
 
-    ALL_PROPERTIES_PATH  = '/contacts/v2/properties'
-    ALL_GROUPS_PATH      = '/contacts/v2/groups'
-    CREATE_PROPERTY_PATH = '/contacts/v2/properties/'
-    UPDATE_PROPERTY_PATH = '/contacts/v2/properties/named/:property_name'
-    DELETE_PROPERTY_PATH = '/contacts/v2/properties/named/:property_name'
-    CREATE_GROUP_PATH    = '/contacts/v2/groups/'
-    UPDATE_GROUP_PATH    = '/contacts/v2/groups/named/:group_name'
-    DELETE_GROUP_PATH    = '/contacts/v2/groups/named/:group_name'
+    ALL_PROPERTIES_PATH  = '/deals/v1/properties'
+    ALL_GROUPS_PATH      = '/deals/v1/groups'
+    CREATE_PROPERTY_PATH = '/deals/v1/properties/'
+    UPDATE_PROPERTY_PATH = '/deals/v1/properties/named/:property_name'
+    DELETE_PROPERTY_PATH = '/deals/v1/properties/named/:property_name'
+    CREATE_GROUP_PATH    = '/deals/v1/groups/'
+    UPDATE_GROUP_PATH    = '/deals/v1/groups/named/:group_name'
+    DELETE_GROUP_PATH    = '/deals/v1/groups/named/:group_name'
 
     class << self
       def add_default_parameters(opts={})
@@ -55,5 +55,6 @@ module Hubspot
         superclass.valid_params(params)
       end
     end
+
   end
 end

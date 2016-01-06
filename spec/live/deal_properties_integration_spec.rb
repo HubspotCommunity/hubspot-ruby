@@ -1,4 +1,4 @@
-describe 'Contact Properties API Live test', live: true do
+describe 'Deal Properties API Live test', live: true do
   # Let's try to hit all the API endpoints at least once
 
   before do
@@ -6,15 +6,15 @@ describe 'Contact Properties API Live test', live: true do
   end
 
   it 'should return a list of properties' do
-    result = Hubspot::ContactProperties.all
+    result = Hubspot::DealProperties.all
 
     expect(result.count).to be > 0
   end
 
   it 'should return a list of properties for the specified groups' do
-    group_names = %w(contactinformation salesforceinformation)
+    group_names = %w(dealinformation)
 
-    result = Hubspot::ContactProperties.all({}, { include: group_names })
+    result = Hubspot::DealProperties.all({}, { include: group_names })
     expect(result.count).to be > 0
     result.each do |entry|
       expect(group_names.include?(entry['groupName']))
@@ -22,9 +22,9 @@ describe 'Contact Properties API Live test', live: true do
   end
 
   it 'should return a list of properties except for the specified groups' do
-    group_names = %w(contactinformation salesforceinformation)
+    group_names = %w(dealinformation)
 
-    result = Hubspot::ContactProperties.all({}, { exclude: group_names })
+    result = Hubspot::DealProperties.all({}, { exclude: group_names })
     expect(result.count).to be > 0
     result.each do |entry|
       expect(group_names.include?(entry['groupName'])).to be_false
@@ -32,22 +32,22 @@ describe 'Contact Properties API Live test', live: true do
   end
 
   it 'should return a list of groups' do
-    result = Hubspot::ContactProperties.groups
+    result = Hubspot::DealProperties.groups
 
     expect(result.count).to be > 0
-    expect(result[0].slice(*%w(name displayName displayOrder)).count).to eq(3)
+    expect(result[0].keys).to eql(%w(name displayName displayOrder))
   end
 
   it 'should return  list of groups and their properties' do
-    result = Hubspot::ContactProperties.groups({ includeProperties: true })
+    result = Hubspot::DealProperties.groups({ includeProperties: true })
 
     expect(result.count).to be > 0
-    expect(result[0].slice(*%w(name displayName displayOrder properties)).count).to eq(4)
+    expect(result[0].keys).to eql(%w(name displayName displayOrder properties))
   end
 
   it 'should return only the requested groups' do
-    group_names = %w(contactinformation salesforceinformation)
-    result      = Hubspot::ContactProperties.groups({}, { include: group_names })
+    group_names = %w(dealinformation)
+    result      = Hubspot::DealProperties.groups({}, { include: group_names })
 
     expect(result.count).to eq(group_names.count)
     result.each do |entry|
@@ -56,8 +56,8 @@ describe 'Contact Properties API Live test', live: true do
   end
 
   it 'should filter out the excluded groups' do
-    group_names = %w(contactinformation salesforceinformation)
-    result      = Hubspot::ContactProperties.groups({}, { exclude: group_names })
+    group_names = %w(dealinformation)
+    result      = Hubspot::DealProperties.groups({}, { exclude: group_names })
 
     result.each do |entry|
       expect(group_names.include?(entry['name'])).to be_false
@@ -69,26 +69,26 @@ describe 'Contact Properties API Live test', live: true do
       { 'name'        => 'testfield909',
         'label'       => 'A test property',
         'description' => 'This is a test property',
-        'groupName'   => 'contactinformation',
+        'groupName'   => 'dealinformation',
         'type'        => 'string',
         'fieldType'   => 'text',
         'formField'   => false }
     }
 
     it 'should create a new property' do
-      response = Hubspot::ContactProperties.create!(data)
+      response = Hubspot::DealProperties.create!(data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should update an existing property' do
       data['label'] = 'An updated test property'
 
-      response = Hubspot::ContactProperties.update!(data['name'], data)
+      response = Hubspot::DealProperties.update!(data['name'], data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should delete an existing property' do
-      response = Hubspot::ContactProperties.delete!(data['name'])
+      response = Hubspot::DealProperties.delete!(data['name'])
       expect(response).to be nil
     end
   end
@@ -101,19 +101,19 @@ describe 'Contact Properties API Live test', live: true do
     }
 
     it 'should create a new property group' do
-      response = Hubspot::ContactProperties.create_group!(data)
+      response = Hubspot::DealProperties.create_group!(data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should update an existing property group' do
       data['displayName'] = 'Test Group 99 Modified'
 
-      response = Hubspot::ContactProperties.update_group!(data['name'], data)
+      response = Hubspot::DealProperties.update_group!(data['name'], data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should delete an existing property group' do
-      response = Hubspot::ContactProperties.delete_group!(data['name'])
+      response = Hubspot::DealProperties.delete_group!(data['name'])
       expect(response).to be nil
     end
   end

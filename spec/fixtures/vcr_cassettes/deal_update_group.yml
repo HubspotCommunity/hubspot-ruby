@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.hubapi.com/contacts/v2/groups/named/ff_group1?hapikey=demo
+    uri: https://api.hubapi.com/deals/v1/groups/named/ff_group1?hapikey=demo
     body:
       encoding: UTF-8
       string: '{"name":"ff_group1","displayName":"Test Group OneA","displayOrder":100}'
@@ -18,18 +18,15 @@ http_interactions:
       - 'false'
       Content-Type:
       - application/json; charset=UTF-8
-      Vary:
-      - Accept-Encoding
-      - Accept-Encoding
       Content-Length:
-      - '94'
+      - '71'
       Date:
-      - Tue, 05 Jan 2016 22:51:36 GMT
+      - Tue, 05 Jan 2016 22:51:41 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"name":"ff_group1","displayName":"Test Group OneA","displayOrder":100,"hubspotDefined":false}'
+      string: '{"name":"ff_group1","displayName":"Test Group OneA","displayOrder":100}'
     http_version: 
-  recorded_at: Tue, 05 Jan 2016 22:51:36 GMT
+  recorded_at: Tue, 05 Jan 2016 22:51:41 GMT
 recorded_with: VCR 2.4.0

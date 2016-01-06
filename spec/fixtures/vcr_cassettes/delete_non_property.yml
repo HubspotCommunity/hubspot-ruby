@@ -24,13 +24,13 @@ http_interactions:
       Content-Length:
       - '199'
       Date:
-      - Thu, 31 Dec 2015 23:30:21 GMT
+      - Tue, 05 Jan 2016 22:51:33 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"status":"error","message":"Couldn''t find a Property with the given
-        name ''my_new_property''","correlationId":"628a4acd-45b5-48f5-a4f4-15b6e500c90a","requestId":"00224518-40b3-42a3-adfb-32b0b303d3bc"}'
+        name ''my_new_property''","correlationId":"0f4ca9a2-b8ae-4c1d-902c-f7a64d5a7cb1","requestId":"6fc4226a-5216-46af-b31a-da880922efd3"}'
     http_version: 
-  recorded_at: Thu, 31 Dec 2015 23:30:21 GMT
+  recorded_at: Tue, 05 Jan 2016 22:51:33 GMT
 recorded_with: VCR 2.4.0
