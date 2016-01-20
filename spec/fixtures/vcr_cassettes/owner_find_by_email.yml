@@ -1,0 +1,30 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/owners/v2/owners?email=aaron@unbounce.com&hapikey=demo&includeInactive=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '283'
+      Date:
+      - Wed, 20 Jan 2016 20:14:06 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"portalId":62515,"ownerId":72,"type":"PERSON","firstName":"Aaron","lastName":"Oman","email":"aaron@unbounce.com","createdAt":1405605859739,"updatedAt":1446764930941,"remoteList":[{"id":29619,"portalId":62515,"ownerId":72,"remoteId":"254556","remoteType":"HUBSPOT","active":true}]}]'
+    http_version: 
+  recorded_at: Wed, 20 Jan 2016 20:14:06 GMT
+recorded_with: VCR 2.4.0
