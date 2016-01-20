@@ -14,6 +14,7 @@ require 'hubspot/blog'
 require 'hubspot/topic'
 require 'hubspot/deal'
 require 'hubspot/deal_properties'
+require 'hubspot/owner'
 
 module Hubspot
   def self.configure(config={})
