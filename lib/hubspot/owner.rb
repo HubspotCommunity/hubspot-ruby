@@ -38,11 +38,11 @@ module Hubspot
         path     = GET_OWNERS_PATH
         params   = { email: email, includeInactive: include_inactive }
         response = Hubspot::Connection.get_json(path, params)
-        new(response.blank? ? {} : response.first)
+        response.blank? ? nil : new(response.first)
       end
 
       def find_by_emails(emails, include_inactive=false)
-        emails.map { |email| find_by_email(email, include_inactive) }
+        emails.map { |email| find_by_email(email, include_inactive) }.reject(&:blank?)
       end
 
     end
