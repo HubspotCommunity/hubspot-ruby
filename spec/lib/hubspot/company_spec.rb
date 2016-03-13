@@ -152,6 +152,22 @@ describe Hubspot::Contact do
     end
   end
 
+  describe "#add_contact" do
+    cassette "add_contact_to_company"
+    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
+    let(:contact){ Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
+    subject { Hubspot::Company.all(recent: true).last }
+    context "with Hubspot::Contact instance" do
+      before { company.add_contact contact }
+      its(['num_associated_contacts']) { should eql '1' }
+    end
+
+    context "with vid" do
+      before { company.add_contact contact.vid }
+      its(['num_associated_contacts']) { should eql '1' }
+    end
+  end
+
   describe "#destroyed?" do
     let(:company){ Hubspot::Company.new(example_company_hash) }
     subject{ company }
