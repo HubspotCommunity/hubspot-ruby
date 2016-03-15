@@ -69,14 +69,13 @@ describe Hubspot::Contact do
       end
     end
 
-    context 'batch mode' do 
+    context 'batch mode' do
       cassette "contact_find_by_email_batch_mode"
-
-      it 'find lists of contacts' do
-        emails = ['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']
-        contacts = Hubspot::Contact.find_by_email(emails)
-        pending
-      end
+      subject { Hubspot::Contact.find_by_email(['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']) }
+      it { should be_a Array }
+      its(:count) { should eql 1 }
+      its(:first) { should be_a Hubspot::Contact }
+      its('first.email') { should eql 'testingapis@hubspot.com' }
     end
   end
 
