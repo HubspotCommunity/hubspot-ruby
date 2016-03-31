@@ -13,6 +13,7 @@ module Hubspot
     UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
     ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
     DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
+    GET_CONTACT_IDS_PATH             = "/companies/v2/companies/:company_id/vids"
 
     class << self
       # Find all companies by created date (descending)
@@ -121,6 +122,16 @@ module Hubspot
                                    },
                                    body: nil)
       self
+    end
+
+    # Gets the contact vids associated with a company
+    # {http://developers.hubspot.com/docs/methods/companies/get_company_contacts_by_id}
+    # @return Array of integers
+    def get_contact_ids(portal_id)
+      path = GET_CONTACT_IDS_PATH
+      params = { company_id: vid, portal_id: portal_id }
+      response = Hubspot::Connection.get_json(path, params)
+      response
     end
 
     # Archives the company in hubspot

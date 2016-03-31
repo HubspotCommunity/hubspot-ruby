@@ -15,6 +15,10 @@ describe Hubspot::Contact do
     its(:vid){ should == 21827084 }
   end
 
+  describe ".get_contact_ids" do
+
+  end
+
   describe ".create!" do
     cassette "company_create"
     let(:params){{}}

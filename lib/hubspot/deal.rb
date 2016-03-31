@@ -11,6 +11,8 @@ module Hubspot
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
     UPDATE_DEAL_PATH = '/deals/v1/deal/:deal_id'
+    ADD_COMPANY_TO_DEAL_PATH = '/deals/v1/deal/:deal_id/associations/COMPANY?id=:company_id'
+    ADD_CONTACT_TO_DEAL_PATH = '/deals/v1/deal/:deal_id/associations/CONTACT?id=:contact_id'
 
     attr_reader :properties
     attr_reader :portal_id
@@ -76,6 +78,44 @@ module Hubspot
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
       response = Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
       @properties.merge!(params)
+      self
+    end
+
+    #Associates a company to a deal
+    # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
+    # @param company_or_vid Company or id to add
+    # @return [Hubspot::Deal] self
+    def associate_company!(company_or_vid)
+      company_vid = if company_or_vid.is_a?(Hubspot::Company)
+                      company_or_vid.vid
+                    else
+                      company_or_vid
+                    end
+      Hubspot::Connection.put_json(ADD_COMPANY_TO_DEAL_PATH,
+                                   params: {
+                                     deal_id: vid,
+                                     company_id: company_vid,
+                                   },
+                                   body: nil)
+      self
+    end
+
+    #Associates a contact to a deal
+    # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
+    # @param contact_or_vid Contact or id to add
+    # @return [Hubspot::Deal] self
+    def associate_company!(contact_or_vid)
+      contact_vid = if contact_or_vid.is_a?(Hubspot::Contact)
+                      contact_or_vid.vid
+                    else
+                      contact_or_vid
+                    end
+      Hubspot::Connection.put_json(ADD_CONTACT_TO_DEAL_PATH,
+                                   params: {
+                                     deal_id: vid,
+                                     contact_id: contact_vid,
+                                   },
+                                   body: nil)
       self
     end
   end
