@@ -14,6 +14,14 @@ describe Hubspot::Deal do
     its (:deal_id) { should == 3 }
   end
 
+  describe ".associate_company!" do
+
+  end
+
+  describe ".associate_contact!" do
+
+  end
+
   describe ".create!" do
     cassette "deal_create"
     subject { Hubspot::Deal.create!(62515, [8954037], [27136], {}) }
