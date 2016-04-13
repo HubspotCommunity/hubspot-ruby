@@ -103,9 +103,11 @@ module Hubspot
 
     attr_reader :properties
     attr_reader :vid
+    attr_reader :is_contact
 
     def initialize(response_hash)
       @properties = Hubspot::Utils.properties_to_hash(response_hash["properties"])
+      @is_contact = response_hash["is-contact"]
       @vid = response_hash["vid"]
     end
 
