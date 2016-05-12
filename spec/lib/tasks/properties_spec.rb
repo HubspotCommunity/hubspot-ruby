@@ -10,10 +10,10 @@ describe 'properties rake tasks', live: true do
     let(:file) { '/tmp/contact-demo-props.json' }
     let(:hapikey) { 'demo' }
 
-    describe 'properties:dump' do
+    describe 'hubspot:dump_properties' do
       let :run_rake_task do
-        Rake::Task['properties:dump'].reenable
-        Rake.application.invoke_task "properties:dump[contact,#{file},#{hapikey}]"
+        Rake::Task['hubspot:dump_properties'].reenable
+        Rake.application.invoke_task "hubspot:dump_properties[contact,#{file},#{hapikey}]"
       end
 
       it 'saves the properties to a file' do
@@ -26,10 +26,10 @@ describe 'properties rake tasks', live: true do
       end
     end
 
-    describe 'properties:restore' do
+    describe 'hubspot:restore_properties' do
       let :run_rake_task do
-        Rake::Task['properties:restore'].reenable
-        Rake.application.invoke_task "properties:restore[contact,#{file},#{hapikey}]"
+        Rake::Task['hubspot:restore_properties'].reenable
+        Rake.application.invoke_task "hubspot:restore_properties[contact,#{file},#{hapikey}]"
       end
 
       it 'should not need to make any changes' do
@@ -45,13 +45,15 @@ describe 'properties rake tasks', live: true do
     let(:file) { '/tmp/deal-demo-props.json' }
     let(:hapikey) { 'demo' }
 
-    describe 'properties:dump' do
+    describe 'hubspot:dump_properties' do
       let :run_rake_task do
-        Rake::Task['properties:dump'].reenable
-        Rake.application.invoke_task "properties:dump[deal,#{file},#{hapikey}]"
+        Rake::Task['hubspot:dump_properties'].reenable
+        Rake.application.invoke_task "hubspot:dump_properties[deal,#{file},#{hapikey}]"
       end
 
       it 'saves the properties to a file' do
+        pending 'Hubspot disabled this call using the demo hapikey'
+
         run_rake_task
 
         props = JSON.parse(File.read(file))
@@ -61,13 +63,15 @@ describe 'properties rake tasks', live: true do
       end
     end
 
-    describe 'properties:restore' do
+    describe 'hubspot:restore_properties' do
       let :run_rake_task do
-        Rake::Task['properties:restore'].reenable
-        Rake.application.invoke_task "properties:restore[deal,#{file},#{hapikey}]"
+        Rake::Task['hubspot:restore_properties'].reenable
+        Rake.application.invoke_task "hubspot:restore_properties[deal,#{file},#{hapikey}]"
       end
 
       it 'should not need to make any changes' do
+        pending 'Hubspot disabled this call using the demo hapikey'
+
         results = capture_stdout { run_rake_task }
         expect(results.include?('Created: ')).to be_false
         expect(results.include?('Updated: ')).to be_false
