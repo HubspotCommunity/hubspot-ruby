@@ -20,4 +20,6 @@ module Hubspot
   def self.configure(config={})
     Hubspot::Config.configure(config)
   end
+
+  require 'hubspot/railtie' if defined?(Rails)
 end

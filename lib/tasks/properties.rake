@@ -1,8 +1,8 @@
 require 'hubspot-ruby'
 
-namespace :properties do
+namespace :hubspot do
   desc 'Dump properties to file'
-  task :dump, [:kind, :file, :hapikey, :include, :exclude] do |_, args|
+  task :dump_properties, [:kind, :file, :hapikey, :include, :exclude] do |_, args|
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     kind = args[:kind]
     unless %w(contact deal).include?(kind)
@@ -20,7 +20,7 @@ namespace :properties do
   end
 
   desc 'Restore properties from file'
-  task :restore, [:kind, :file, :hapikey, :dry_run] do |_, args|
+  task :restore_properties, [:kind, :file, :hapikey, :dry_run] do |_, args|
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     if args[:file].blank?
       raise ArgumentError, ':file is a required parameter'
