@@ -37,6 +37,8 @@ Gem::Specification.new do |s|
     "lib/hubspot/contact.rb",
     "lib/hubspot/contact_list.rb",
     "lib/hubspot/contact_properties.rb",
+    "lib/hubspot/engagement.rb",
+    "lib/hubspot/event.rb",
     "lib/hubspot/deal.rb",
     "lib/hubspot/exceptions.rb",
     "lib/hubspot/form.rb",
