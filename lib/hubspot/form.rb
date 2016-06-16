@@ -5,9 +5,9 @@ module Hubspot
   # {https://developers.hubspot.com/docs/methods/forms/forms_overview}
   #
   class Form
-  	FORMS_PATH       = '/contacts/v1/forms'
-  	FORM_PATH        = '/contacts/v1/forms/:form_guid'
-  	FIELDS_PATH      = '/contacts/v1/fields/:form_guid'
+  	FORMS_PATH       = '/forms/v2/forms' # '/contacts/v1/forms'
+  	FORM_PATH        = '/forms/v2/forms/:form_guid' # '/contacts/v1/forms/:form_guid'
+  	FIELDS_PATH      = '/forms/v2/fields/:form_guid' # '/contacts/v1/fields/:form_guid'
   	FIELD_PATH       = FIELDS_PATH + '/:field_name'
   	SUBMIT_DATA_PATH = '/uploads/form/v2/:portal_id/:form_guid'
 
@@ -64,7 +64,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/forms/submit_form}
     def submit(opts={})    
       response = Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
-      [204, 302].include?(response.code)
+      [204, 302, 200].include?(response.code)
     end
 
     # {https://developers.hubspot.com/docs/methods/forms/update_form}
@@ -88,7 +88,7 @@ module Hubspot
 
     def assign_properties(hash)
       @guid = hash['guid']
-      @fields = hash['fields']
+      @fields = hash['formFieldGroups'].inject([]){ |result, fg| result | fg['fields'] }
       @properties = hash
     end
   end

@@ -66,4 +66,163 @@ http_interactions:
       string: '{"status":"error","message":"No form found with guid ''-1''","type":"NOT_FOUND","requestId":"e319b127-f054-485f-bb76-15ddd69f7286"}'
     http_version: 
   recorded_at: Mon, 23 Feb 2015 14:32:27 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/forms/v2/forms/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '603'
+      Date:
+      - Thu, 16 Jun 2016 22:44:09 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"guid":"561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0","name":"updated
+        form name 1424709912","action":"","method":"","cssClass":"","redirect":"http://hubspot.com","submitText":"","followUpId":"","notifyRecipients":"","leadNurturingCampaignId":"","formFieldGroups":[],"createdAt":0,"updatedAt":1466116632531,"performableHtml":"","migratedFrom":"","ignoreCurrentValues":false,"metaData":[],"deletable":true,"inlineMessage":"","socialLoginEnabled":false,"socialLoginTypes":[],"tmsId":"","captchaEnabled":false,"campaignGuid":"","cloneable":true,"editable":true,"visible":true,"formType":"HUBSPOT"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 22:44:09 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/forms/v2/fields/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '2'
+      Date:
+      - Thu, 16 Jun 2016 22:44:09 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 22:44:09 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/forms/v2/forms/-1?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Hubspot-Notfound:
+      - 'true'
+      Content-Length:
+      - '184'
+      Date:
+      - Thu, 16 Jun 2016 22:44:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"No form found with guid ''-1''","correlationId":"6490817e-7708-4bab-aae1-e6e1bfe8f8d6","type":"NOT_FOUND","requestId":"768d826e-8424-42bb-b1fd-a8b3e9b537cc"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 22:44:10 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/forms/v2/forms/78c2891f-ebdd-44c0-bd94-15c012bbbfbf?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '8652'
+      Date:
+      - Thu, 16 Jun 2016 23:14:09 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"guid":"78c2891f-ebdd-44c0-bd94-15c012bbbfbf","name":"excedalogic
+        form","action":"excedalogic.com/default.aspx?test=test","method":"POST","cssClass":"classic
+        stacked","redirect":"excedalogic.com","submitText":"","followUpId":"","notifyRecipients":"","leadNurturingCampaignId":"","formFieldGroups":[{"fields":[{"name":"sb_pres_name","label":"SlideBear
+        Presentation Name","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"campaignid","label":"AudienceCampaignID","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"abandonedproducturl1","label":"AbandonedProductURL1","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"campaignextractid","label":"AudienceCampaignExtractID","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"abandonedproducturl3","label":"AbandonedProductURL3","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"babufield","label":"babu
+        field","type":"string","fieldType":"text","description":"test","groupName":"","displayOrder":0,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"babu
+        field is valid","message":"babufieldvalidation","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"abandonedproducturl2","label":"AbandonedProductURL2","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"field2","label":"field
+        2","type":"string","fieldType":"text","description":"test","groupName":"","displayOrder":1,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"field2
+        is required","message":"field2valid","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"requested_live_demo_date","label":"Requested
+        Live Demo Date","type":"datetime","fieldType":"date","description":"","groupName":"contactinformation","displayOrder":2,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"adress_1","label":"Adress
+        1","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"currency","label":"Currency","type":"enumeration","fieldType":"select","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[{"label":"USD","value":"USD","displayOrder":0,"doubleData":0.0,"hidden":false,"description":"","readOnly":false},{"label":"CAD","value":"CAD","displayOrder":1,"doubleData":0.0,"hidden":false,"description":"","readOnly":false}],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"-
+        Please Select -","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"address2mt","label":"Address
+        2","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"asdsad","label":"asdsad","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"contact_me_checkbox2","label":"contact
+        me checkbox","type":"enumeration","fieldType":"booleancheckbox","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[{"label":"Yes","value":"true","displayOrder":-1,"doubleData":0.0,"hidden":false,"description":"","readOnly":false},{"label":"No","value":"false","displayOrder":-1,"doubleData":0.0,"hidden":false,"description":"","readOnly":false}],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}},{"fields":[{"name":"course_id","label":"course_id","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}],"default":true,"isSmartGroup":false,"richText":{"content":""}}],"createdAt":1339599565041,"updatedAt":1457076568480,"performableHtml":"","migratedFrom":"","ignoreCurrentValues":false,"metaData":[],"deletable":true,"inlineMessage":"","socialLoginEnabled":false,"socialLoginTypes":[],"tmsId":"","captchaEnabled":false,"campaignGuid":"","cloneable":true,"editable":true,"visible":true,"formType":"HUBSPOT"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 23:14:09 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/forms/v2/fields/78c2891f-ebdd-44c0-bd94-15c012bbbfbf?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '7247'
+      Date:
+      - Thu, 16 Jun 2016 23:14:09 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"name":"sb_pres_name","label":"SlideBear Presentation Name","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"campaignid","label":"AudienceCampaignID","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"abandonedproducturl1","label":"AbandonedProductURL1","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"campaignextractid","label":"AudienceCampaignExtractID","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"abandonedproducturl3","label":"AbandonedProductURL3","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"babufield","label":"babu
+        field","type":"string","fieldType":"text","description":"test","groupName":"","displayOrder":0,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"babu
+        field is valid","message":"babufieldvalidation","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"abandonedproducturl2","label":"AbandonedProductURL2","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":-1,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"field2","label":"field
+        2","type":"string","fieldType":"text","description":"test","groupName":"","displayOrder":1,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"field2
+        is required","message":"field2valid","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"requested_live_demo_date","label":"Requested
+        Live Demo Date","type":"datetime","fieldType":"date","description":"","groupName":"contactinformation","displayOrder":2,"required":true,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"adress_1","label":"Adress
+        1","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"currency","label":"Currency","type":"enumeration","fieldType":"select","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[{"label":"USD","value":"USD","displayOrder":0,"doubleData":0.0,"hidden":false,"description":"","readOnly":false},{"label":"CAD","value":"CAD","displayOrder":1,"doubleData":0.0,"hidden":false,"description":"","readOnly":false}],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"-
+        Please Select -","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"address2mt","label":"Address
+        2","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"asdsad","label":"asdsad","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"contact_me_checkbox2","label":"contact
+        me checkbox","type":"enumeration","fieldType":"booleancheckbox","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[{"label":"Yes","value":"true","displayOrder":-1,"doubleData":0.0,"hidden":false,"description":"","readOnly":false},{"label":"No","value":"false","displayOrder":-1,"doubleData":0.0,"hidden":false,"description":"","readOnly":false}],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false},{"name":"course_id","label":"course_id","type":"string","fieldType":"text","description":"","groupName":"","displayOrder":0,"required":false,"selectedOptions":[],"options":[],"validation":{"name":"","message":"","data":"","useDefaultBlockList":false,"blockedEmailAddresses":[]},"enabled":true,"hidden":false,"defaultValue":"","isSmartField":false,"unselectedLabel":"","placeholder":"","dependentFieldFilters":[],"labelHidden":false}]'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 23:14:09 GMT
 recorded_with: VCR 2.4.0
