@@ -32,4 +32,33 @@ http_interactions:
       string: '{"status":"error","message":"Form name is required, form guid ''e218aaae-2783-4b7f-b072-4e8f5163e44b''","type":"MISSING_NAME","requestId":"696220a7-8411-421f-8945-3c0cd370a8a5"}'
     http_version: 
   recorded_at: Mon, 23 Feb 2015 16:16:41 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/forms/v2/forms?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '230'
+      Date:
+      - Thu, 16 Jun 2016 22:44:10 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Form name is required, form guid ''00a537bf-1389-4e3a-af2a-b27868fd04fa''","correlationId":"b1a2939a-e18b-4594-8357-c18e11c818d1","type":"MISSING_NAME","requestId":"494cdd03-fa33-44ad-8346-d31430031769"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 22:44:10 GMT
 recorded_with: VCR 2.4.0
