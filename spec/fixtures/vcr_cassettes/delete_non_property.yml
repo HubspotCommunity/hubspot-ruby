@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.hubapi.com/contacts/v2/properties/named/my_new_property?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Hubspot-Notfound:
+      - 'true'
+      Content-Length:
+      - '199'
+      Date:
+      - Tue, 05 Jan 2016 22:51:33 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Couldn''t find a Property with the given
+        name ''my_new_property''","correlationId":"0f4ca9a2-b8ae-4c1d-902c-f7a64d5a7cb1","requestId":"6fc4226a-5216-46af-b31a-da880922efd3"}'
+    http_version: 
+  recorded_at: Tue, 05 Jan 2016 22:51:33 GMT
+recorded_with: VCR 2.4.0

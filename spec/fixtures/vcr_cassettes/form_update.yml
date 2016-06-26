@@ -74,4 +74,62 @@ http_interactions:
         ''62515'',\n    formId: ''561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0''\n  });\n</script>"}'
     http_version: 
   recorded_at: Mon, 23 Feb 2015 16:45:12 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/forms/v2/forms/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '603'
+      Date:
+      - Thu, 16 Jun 2016 22:44:11 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"guid":"561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0","name":"updated
+        form name 1424709912","action":"","method":"","cssClass":"","redirect":"http://hubspot.com","submitText":"","followUpId":"","notifyRecipients":"","leadNurturingCampaignId":"","formFieldGroups":[],"createdAt":0,"updatedAt":1466116632531,"performableHtml":"","migratedFrom":"","ignoreCurrentValues":false,"metaData":[],"deletable":true,"inlineMessage":"","socialLoginEnabled":false,"socialLoginTypes":[],"tmsId":"","captchaEnabled":false,"campaignGuid":"","cloneable":true,"editable":true,"visible":true,"formType":"HUBSPOT"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 22:44:11 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/forms/v2/forms/561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"updated form name 1424709912","redirect":"http://hubspot.com"}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '603'
+      Date:
+      - Thu, 16 Jun 2016 22:44:11 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"guid":"561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0","name":"updated
+        form name 1424709912","action":"","method":"","cssClass":"","redirect":"http://hubspot.com","submitText":"","followUpId":"","notifyRecipients":"","leadNurturingCampaignId":"","formFieldGroups":[],"createdAt":0,"updatedAt":1466117051419,"performableHtml":"","migratedFrom":"","ignoreCurrentValues":false,"metaData":[],"deletable":true,"inlineMessage":"","socialLoginEnabled":false,"socialLoginTypes":[],"tmsId":"","captchaEnabled":false,"campaignGuid":"","cloneable":true,"editable":true,"visible":true,"formType":"HUBSPOT"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 22:44:11 GMT
 recorded_with: VCR 2.4.0
