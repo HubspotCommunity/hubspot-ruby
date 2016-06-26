@@ -6,22 +6,23 @@ module Hubspot
   #
   # TODO: work on all endpoints that can specify contact properties, property mode etc... as params. cf pending specs
   class Contact
-    CREATE_CONTACT_PATH        = "/contacts/v1/contact"
-    GET_CONTACT_BY_EMAIL_PATH  = "/contacts/v1/contact/email/:contact_email/profile"
-    GET_CONTACTS_BY_EMAIL_PATH = "/contacts/v1/contact/emails/batch"
-    GET_CONTACT_BY_ID_PATH     = "/contacts/v1/contact/vid/:contact_id/profile"
+    CREATE_CONTACT_PATH        = '/contacts/v1/contact'
+    GET_CONTACT_BY_EMAIL_PATH  = '/contacts/v1/contact/email/:contact_email/profile'
+    GET_CONTACTS_BY_EMAIL_PATH = '/contacts/v1/contact/emails/batch'
+    GET_CONTACT_BY_ID_PATH     = '/contacts/v1/contact/vid/:contact_id/profile'
     CONTACT_BATCH_PATH         = '/contacts/v1/contact/vids/batch'
-    GET_CONTACT_BY_UTK_PATH    = "/contacts/v1/contact/utk/:contact_utk/profile"
+    GET_CONTACT_BY_UTK_PATH    = '/contacts/v1/contact/utk/:contact_utk/profile'
     GET_CONTACTS_BY_UTK_PATH   = '/contacts/v1/contact/utks/batch'
-    UPDATE_CONTACT_PATH        = "/contacts/v1/contact/vid/:contact_id/profile"
-    DESTROY_CONTACT_PATH       = "/contacts/v1/contact/vid/:contact_id"
-    CONTACTS_PATH              = "/contacts/v1/lists/all/contacts/all"
+    UPDATE_CONTACT_PATH        = '/contacts/v1/contact/vid/:contact_id/profile'
+    DESTROY_CONTACT_PATH       = '/contacts/v1/contact/vid/:contact_id'
+    CONTACTS_PATH              = '/contacts/v1/lists/all/contacts/all'
     RECENT_CONTACTS_PATH       = '/contacts/v1/lists/recently_updated/contacts/recent'
+    CREATE_OR_UPDATE_PATH      = '/contacts/v1/contact/createOrUpdate/email/:contact_email'
 
     class << self
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
       def create!(email, params={})
-        params_with_email = params.stringify_keys.merge("email" => email)
+        params_with_email = params.stringify_keys.merge('email' => email)
         post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_email)}
         response = Hubspot::Connection.post_json(CREATE_CONTACT_PATH, params: {}, body: post_data )
         new(response)
@@ -46,6 +47,13 @@ module Hubspot
       # PATH /contacts/v1/contact/createOrUpdate/email/:contact_email
       # API endpoint: https://developers.hubspot.com/docs/methods/contacts/create_or_update
       # + batch mode: https://developers.hubspot.com/docs/methods/contacts/batch_create_or_update
+      def createOrUpdate(email, params={})
+        post_data = {properties: Hubspot::Utils.hash_to_properties(params.stringify_keys)}
+        response = Hubspot::Connection.post_json(CREATE_OR_UPDATE_PATH, params: { contact_email: email }, body: post_data )
+        contact = find_by_id(response['vid'])
+        contact.is_new = response['isNew']
+        contact
+      end
 
       # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact}
@@ -71,12 +79,16 @@ module Hubspot
         else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
         end
 
-        response = Hubspot::Connection.get_json(path, params)
-        if batch_mode
-          #TODO: transform response
-          response
-        else 
-          new(response)
+        begin
+          response = Hubspot::Connection.get_json(path, params)
+          if batch_mode
+            response.map{|_, contact| new(contact)}
+          else
+            new(response)
+          end
+        rescue => e
+          raise e unless e.message =~ /not exist/ # 404 / handle the error and kindly return nil
+          nil
         end
       end
 
@@ -101,12 +113,12 @@ module Hubspot
       end
     end
 
-    attr_reader :properties
-    attr_reader :vid
+    attr_reader :properties, :vid, :is_new
 
     def initialize(response_hash)
-      @properties = Hubspot::Utils.properties_to_hash(response_hash["properties"])
-      @vid = response_hash["vid"]
+      props = response_hash['properties']
+      @properties = Hubspot::Utils.properties_to_hash(props) unless props.blank?
+      @vid = response_hash['vid']
     end
 
     def [](property)
@@ -114,11 +126,15 @@ module Hubspot
     end
 
     def email
-      @properties["email"]
+      @properties['email']
     end
 
     def utk
-      @properties["usertoken"]
+      @properties['usertoken']
+    end
+
+    def is_new=(val)
+      @is_new = val
     end
 
     # Updates the properties of a contact
