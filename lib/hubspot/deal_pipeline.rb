@@ -8,7 +8,7 @@ module Hubspot
   #
   class DealPipeline
 	PIPELINES_PATH = "/deals/v1/pipelines"
-    PIPELINE_PATH = "/deals/v1/pipeline/:pipeline_id"
+    PIPELINE_PATH = "/deals/v1/pipelines/:pipeline_id"
 
     attr_reader :active
     attr_reader :display_order
@@ -29,7 +29,7 @@ module Hubspot
         response = Hubspot::Connection.get_json(PIPELINE_PATH, { pipeline_id: pipeline_id })
         new(response)
       end
-	  
+
 	  def all
         response = Hubspot::Connection.get_json(PIPELINES_PATH, {})
 		response.map { |p| new(p) }
