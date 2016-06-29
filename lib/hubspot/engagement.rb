@@ -59,10 +59,10 @@ module Hubspot
       @properties[property]
     end
 
-    # Updates the properties of a deal
+    # Updates the properties of an engagement
     # {http://developers.hubspot.com/docs/methods/engagements/update_engagement}
     # @param params [Hash] hash of properties to update
-    # @return [Hubspot::Deal] self
+    # @return [Hubspot::Engagement] self
     def update!(params)
       data = {
         engagement: engagement,

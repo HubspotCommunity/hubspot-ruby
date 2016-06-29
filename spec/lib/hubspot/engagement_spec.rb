@@ -26,7 +26,7 @@ describe Hubspot::Engagement do
     cassette "engagement_find"
     let(:engagement) {Hubspot::EngagementNote.new(example_engagement_hash)}
 
-    it 'must find by the deal id' do
+    it 'must find by the engagement id' do
       find_engagement = Hubspot::EngagementNote.find(engagement.id)
       find_engagement.id.should eql engagement.id
       find_engagement.body.should eql engagement.body
