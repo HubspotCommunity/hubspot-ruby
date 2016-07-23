@@ -78,6 +78,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/vcr_cassettes/contact_list_find.yml",
     "spec/fixtures/vcr_cassettes/contact_list_refresh.yml",
     "spec/fixtures/vcr_cassettes/contact_list_update.yml",
+    "spec/fixtures/vcr_cassettes/contact_search.yml",
     "spec/fixtures/vcr_cassettes/contact_update.yml",
     "spec/fixtures/vcr_cassettes/contacts_among_list.yml",
     "spec/fixtures/vcr_cassettes/create_form.yml",
