@@ -4,45 +4,45 @@ describe Hubspot::Connection do
     @http_response = mock('http_response')
   end
 
-  describe '.get_json' do 
-  	it 'delegates url format to Hubspot::Utils, call HTTParty get and returns response' do 
-  	  @http_response.success? { true }
+  describe '.get_json' do
+    it 'delegates url format to Hubspot::Utils, call HTTParty get and returns response' do
+      @http_response.success? { true }
       @http_response.parsed_response { {} }
       @http_response.code { 200 }
       @http_response.body { 'mocked response' }
 
-  	  mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-  	  mock(Hubspot::Connection).get(@url, format: :json) { @http_response }
+      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
+      mock(Hubspot::Connection).get(@url, format: :json) { @http_response }
       Hubspot::Connection.get_json(@url, {})
-  	end
+    end
   end
 
-  describe '.post_json' do 
-  	it 'delegates url format to Hubspot::Utils, call HTTParty post and returns response' do 
-  	  @http_response.success? { true }
+  describe '.post_json' do
+    it 'delegates url format to Hubspot::Utils, call HTTParty post and returns response' do
+      @http_response.success? { true }
       @http_response.parsed_response { {} }
       @http_response.code { 200 }
       @http_response.body { 'mocked response' }
 
-  	  mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-  	  mock(Hubspot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json) { @http_response }
+      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
+      mock(Hubspot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json) { @http_response }
       Hubspot::Connection.post_json(@url, params: {}, body: {})
-  	end
+    end
   end
 
-  describe '.delete_json' do 
-  	it 'delegates url format to Hubspot::Utils, call HTTParty delete and returns response' do 
-  	  @http_response.success? { true }
+  describe '.delete_json' do
+    it 'delegates url format to Hubspot::Utils, call HTTParty delete and returns response' do
+      @http_response.success? { true }
       @http_response.code { 200 }
       @http_response.body { 'mocked response' }
 
-  	  mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-  	  mock(Hubspot::Connection).delete(@url, format: :json) { @http_response }
+      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
+      mock(Hubspot::Connection).delete(@url, format: :json) { @http_response }
       Hubspot::Connection.delete_json(@url, {})
-  	end
+    end
   end
 
-  context 'private methods' do 
+  context 'private methods' do
     describe ".generate_url" do
       let(:path){ "/test/:email/profile" }
       let(:params){{email: "test"}}
@@ -108,7 +108,7 @@ describe Hubspot::Connection do
         it{ should == "https://cool.com/test/test/profile"}
       end
 
-      context "passing Array as parameters for batch mode, key is prefixed with batch_" do 
+      context "passing Array as parameters for batch mode, key is prefixed with batch_" do
         let(:path) { Hubspot::ContactList::LIST_BATCH_PATH }
         let(:params) { { batch_list_id: [1,2,3] } }
         it{ should == "https://api.hubapi.com/contacts/v1/lists/batch?listId=1&listId=2&listId=3&hapikey=demo" }

@@ -21,4 +21,3 @@ describe Hubspot::Topic do
     end
   end
 end
-

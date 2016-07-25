@@ -134,6 +134,5 @@ module Hubspot
     def destroyed?
       !!@destroyed
     end
-
   end
 end

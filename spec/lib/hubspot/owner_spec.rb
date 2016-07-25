@@ -54,4 +54,3 @@ def compare_owners(owners, examples)
     end
   end
 end
-

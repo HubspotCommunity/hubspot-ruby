@@ -7,20 +7,20 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/deal-pipelines/overview}
   #
   class DealPipeline
-	PIPELINES_PATH = "/deals/v1/pipelines"
+    PIPELINES_PATH = "/deals/v1/pipelines"
     PIPELINE_PATH = "/deals/v1/pipelines/:pipeline_id"
 
     attr_reader :active
     attr_reader :display_order
     attr_reader :label
     attr_reader :pipeline_id
-	attr_reader :stages
+    attr_reader :stages
 
     def initialize(response_hash)
-	  @active = response_hash["active"]
-	  @display_order = response_hash["displayOrder"]
-	  @label = response_hash["label"]
-	  @pipeline_id = response_hash["pipelineId"]
+      @active = response_hash["active"]
+      @display_order = response_hash["displayOrder"]
+      @label = response_hash["label"]
+      @pipeline_id = response_hash["pipelineId"]
       @stages = response_hash["stages"]
     end
 
@@ -30,10 +30,10 @@ module Hubspot
         new(response)
       end
 
-	  def all
+      def all
         response = Hubspot::Connection.get_json(PIPELINES_PATH, {})
-		response.map { |p| new(p) }
-	  end
+        response.map { |p| new(p) }
+      end
     end
 
     def [](stage)
