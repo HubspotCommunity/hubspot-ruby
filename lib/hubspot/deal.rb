@@ -56,7 +56,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      response = Hubspot::Connection.delete_json(DEAL_PATH, {deal_id: deal_id})
+      Hubspot::Connection.delete_json(DEAL_PATH, {deal_id: deal_id})
       @destroyed = true
     end
 
@@ -74,7 +74,7 @@ module Hubspot
     # @return [Hubspot::Deal] self
     def update!(params)
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
-      response = Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
+      Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
       @properties.merge!(params)
       self
     end

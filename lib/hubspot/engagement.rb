@@ -47,7 +47,7 @@ module Hubspot
     # {http://developers.hubspot.com/docs/methods/engagements/delete-engagement}
     # @return [TrueClass] true
     def destroy!
-      response = Hubspot::Connection.delete_json(ENGAGEMENT_PATH, {engagement_id: id})
+      Hubspot::Connection.delete_json(ENGAGEMENT_PATH, {engagement_id: id})
       @destroyed = true
     end
 
@@ -70,7 +70,7 @@ module Hubspot
         metadata: metadata
       }
 
-      response = Hubspot::Connection.put_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
+      Hubspot::Connection.put_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
       self
     end
   end
