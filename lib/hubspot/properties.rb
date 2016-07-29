@@ -114,7 +114,6 @@ module Hubspot
         return [] if options.blank?
         options.map { |o| o.slice(*PROPERTY_SPECS[:options]) }
       end
-
     end
   end
 end

@@ -55,6 +55,5 @@ module Hubspot
         superclass.valid_params(params)
       end
     end
-
   end
 end

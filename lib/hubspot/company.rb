@@ -99,7 +99,7 @@ module Hubspot
     # @return [Hubspot::Company] self
     def update!(params)
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: "name")}
-      response = Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
+      Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
       @properties.merge!(params)
       self
     end
@@ -127,13 +127,12 @@ module Hubspot
     # {http://developers.hubspot.com/docs/methods/companies/delete_company}
     # @return [TrueClass] true
     def destroy!
-      response = Hubspot::Connection.delete_json(DESTROY_COMPANY_PATH, { company_id: vid })
+      Hubspot::Connection.delete_json(DESTROY_COMPANY_PATH, { company_id: vid })
       @destroyed = true
     end
 
     def destroyed?
       !!@destroyed
     end
-
   end
 end
