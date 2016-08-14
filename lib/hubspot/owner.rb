@@ -44,7 +44,6 @@ module Hubspot
       def find_by_emails(emails, include_inactive=false)
         emails.map { |email| find_by_email(email, include_inactive) }.reject(&:blank?)
       end
-
     end
   end
 end

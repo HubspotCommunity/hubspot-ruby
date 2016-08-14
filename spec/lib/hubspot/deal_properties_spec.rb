@@ -251,5 +251,4 @@ describe Hubspot::DealProperties do
       end
     end
   end
-
 end

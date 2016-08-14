@@ -116,7 +116,6 @@ module Hubspot
       def find_by_name(name, set)
         set.detect { |item| item['name'] == name }
       end
-
     end
   end
 end

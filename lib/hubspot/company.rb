@@ -11,6 +11,7 @@ module Hubspot
     GET_COMPANY_BY_ID_PATH            = "/companies/v2/companies/:company_id"
     GET_COMPANY_BY_DOMAIN_PATH        = "/companies/v2/companies/domain/:domain"
     UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
+    ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
     DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
 
     class << self
@@ -98,8 +99,27 @@ module Hubspot
     # @return [Hubspot::Company] self
     def update!(params)
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: "name")}
-      response = Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
+      Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
       @properties.merge!(params)
+      self
+    end
+
+    # Adds contact to a company
+    # {http://developers.hubspot.com/docs/methods/companies/add_contact_to_company}
+    # @param id [Integer] contact id to add
+    # @return [Hubspot::Company] self
+    def add_contact(contact_or_vid)
+      contact_vid = if contact_or_vid.is_a?(Hubspot::Contact)
+                      contact_or_vid.vid
+                    else
+                      contact_or_vid
+                    end
+      Hubspot::Connection.put_json(ADD_CONTACT_TO_COMPANY_PATH,
+                                   params: {
+                                     company_id: vid,
+                                     vid: contact_vid,
+                                   },
+                                   body: nil)
       self
     end
 
@@ -107,13 +127,12 @@ module Hubspot
     # {http://developers.hubspot.com/docs/methods/companies/delete_company}
     # @return [TrueClass] true
     def destroy!
-      response = Hubspot::Connection.delete_json(DESTROY_COMPANY_PATH, { company_id: vid })
+      Hubspot::Connection.delete_json(DESTROY_COMPANY_PATH, { company_id: vid })
       @destroyed = true
     end
 
     def destroyed?
       !!@destroyed
     end
-
   end
 end

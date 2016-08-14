@@ -236,5 +236,4 @@ describe Hubspot::ContactProperties do
       end
     end
   end
-
 end

@@ -87,5 +87,4 @@ describe 'properties rake tasks', live: true do
   ensure
     $stdout = previous
   end
-
 end

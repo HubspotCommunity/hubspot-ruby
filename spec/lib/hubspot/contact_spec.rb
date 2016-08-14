@@ -96,13 +96,13 @@ describe Hubspot::Contact do
       end
 
       context 'when the contact cannot be found' do
-        it 'raises an error' do 
+        it 'raises an error' do
           expect { Hubspot::Contact.find_by_email('notacontact@test.com') }.to raise_error(Hubspot::RequestError)
         end
       end
     end
 
-    context 'batch mode' do 
+    context 'batch mode' do
       cassette 'contact_find_by_email_batch_mode'
 
       it 'find lists of contacts' do
@@ -119,7 +119,7 @@ describe Hubspot::Contact do
       Hubspot::Config.logger = Logger.new(@s)
     end
 
-    context 'given an uniq id' do 
+    context 'given an uniq id' do
       cassette 'contact_find_by_id'
       subject{ Hubspot::Contact.find_by_id(vid) }
 
@@ -137,7 +137,7 @@ describe Hubspot::Contact do
       end
     end
 
-    context 'batch mode' do 
+    context 'batch mode' do
       cassette 'contact_find_by_id_batch_mode'
 
       # NOTE: error currently appends on API endpoint
@@ -149,7 +149,7 @@ describe Hubspot::Contact do
   end
 
   describe '.find_by_utk' do
-    context 'given an uniq utk' do 
+    context 'given an uniq utk' do
       cassette 'contact_find_by_utk'
       subject{ Hubspot::Contact.find_by_utk(utk) }
 
@@ -160,13 +160,13 @@ describe Hubspot::Contact do
       end
 
       context 'when the contact cannot be found' do
-        it 'raises an error' do 
-          expect { Hubspot::Contact.find_by_utk('invalid') }.to raise_error(Hubspot::RequestError) 
+        it 'raises an error' do
+          expect { Hubspot::Contact.find_by_utk('invalid') }.to raise_error(Hubspot::RequestError)
         end
       end
     end
 
-    context 'batch mode' do 
+    context 'batch mode' do
       cassette 'contact_find_by_utk_batch_mode'
 
       it 'find lists of contacts' do
@@ -176,9 +176,38 @@ describe Hubspot::Contact do
     end
   end
 
+  describe '.search' do
+    subject { Hubspot::Contact.search(query, options) }
+
+    cassette 'contact_search'
+
+    let(:options) { {} }
+
+    context 'when query returns contacts' do
+      let(:query) { '@hubspot.com' }
+
+      it { expect(subject['has-more']).to eq(true) }
+      it { subject['contacts'].each { |contact| expect(contact).to be_an_instance_of(Hubspot::Contact) } }
+
+      context 'when query finds more than count, but is limited' do
+        let(:options) { { count: 1 } }
+
+        it { expect(subject['has-more']).to eq(true) }
+        it { expect(subject['total'] > 1).to eq(true) }
+      end
+    end
+
+    context 'when the query returns no results' do
+      let(:query) { 'something_that_does_not_exist' }
+
+      it { expect(subject['total']).to eq(0) }
+      it { expect(subject['has-more']).to eq(false) }
+      it { expect(subject['contacts']).to be_empty }
+    end
+  end
 
   describe '.all' do
-    context 'all contacts' do 
+    context 'all contacts' do
       cassette 'find_all_contacts'
 
       it 'must get the contacts list' do
@@ -217,7 +246,7 @@ describe Hubspot::Contact do
       end
     end
 
-    context 'recent contacts' do 
+    context 'recent contacts' do
       cassette 'find_all_recent_contacts'
 
       it 'must get the contacts list' do

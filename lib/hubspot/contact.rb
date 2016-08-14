@@ -18,6 +18,7 @@ module Hubspot
     CONTACTS_PATH              = '/contacts/v1/lists/all/contacts/all'
     RECENT_CONTACTS_PATH       = '/contacts/v1/lists/recently_updated/contacts/recent'
     CREATE_OR_UPDATE_PATH      = '/contacts/v1/contact/createOrUpdate/email/:contact_email'
+    QUERY_PATH                 = '/contacts/v1/search/query'
 
     class << self
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
@@ -31,11 +32,11 @@ module Hubspot
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
       # {https://developers.hubspot.com/docs/methods/contacts/get_recently_updated_contacts}
       def all(opts={})
-        recent = opts.delete(:recent) { false } 
-        path, opts = 
-        if recent 
-          [RECENT_CONTACTS_PATH, Hubspot::ContactProperties.add_default_parameters(opts)] 
-        else 
+        recent = opts.delete(:recent) { false }
+        path, opts =
+        if recent
+          [RECENT_CONTACTS_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
+        else
           [CONTACTS_PATH, opts]
         end
 
@@ -94,7 +95,7 @@ module Hubspot
 
       # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
-      # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_utk} 
+      # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_utk}
       def find_by_utk(utks)
         batch_mode, path, params = case utks
         when String then [false, GET_CONTACT_BY_UTK_PATH, { contact_utk: utks }]
@@ -108,8 +109,12 @@ module Hubspot
       end
 
       # {https://developers.hubspot.com/docs/methods/contacts/search_contacts}
-      def search(query, count=100)
-        raise NotImplementedError
+      def search(query, options = {})
+        count   = options.fetch(:count, 100)
+        offset  = options.fetch(:offset, 0)
+
+        response = Hubspot::Connection.get_json(QUERY_PATH, { q: query, count: count, offset: offset })
+        response.merge("contacts" => response["contacts"].map { |contact_hash| new(contact_hash) })
       end
     end
 
@@ -143,7 +148,7 @@ module Hubspot
     # @return [Hubspot::Contact] self
     def update!(params)
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
-      response = Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
+      Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
       @properties.merge!(params)
       self
     end
@@ -152,7 +157,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      response = Hubspot::Connection.delete_json(DESTROY_CONTACT_PATH, { contact_id: vid })
+      Hubspot::Connection.delete_json(DESTROY_CONTACT_PATH, { contact_id: vid })
       @destroyed = true
     end
 
