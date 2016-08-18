@@ -32,4 +32,33 @@ http_interactions:
       string: '{"name":"ff_group1","displayName":"Test Group One","displayOrder":100,"hubspotDefined":false}'
     http_version: 
   recorded_at: Tue, 05 Jan 2016 22:51:35 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/groups/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"ff_group1","displayName":"Test Group One","displayOrder":100}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '93'
+      Date:
+      - Thu, 18 Aug 2016 14:05:14 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"name":"ff_group1","displayName":"Test Group One","displayOrder":100,"hubspotDefined":false}'
+    http_version: 
+  recorded_at: Thu, 18 Aug 2016 14:05:11 GMT
 recorded_with: VCR 2.4.0
