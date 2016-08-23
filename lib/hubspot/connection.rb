@@ -58,7 +58,7 @@ module Hubspot
 
         params.each do |k,v|
           if path.match(":#{k}")
-            path.gsub!(":#{k}",v.to_s)
+            path.gsub!(":#{k}", CGI.escape(v.to_s))
             params.delete(k)
           end
         end
@@ -74,7 +74,7 @@ module Hubspot
 
       # convert into milliseconds since epoch
       def converted_value(value)
-        value.is_a?(Time) ? (value.to_i * 1000) : value
+        value.is_a?(Time) ? (value.to_i * 1000) : CGI.escape(value.to_s)
       end
 
       def param_string(key,value)
