@@ -7,6 +7,7 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/deal-pipelines/overview}
   #
   class DealPipeline
+    CREATE_DEAL_PATH = "/deals/v1/pipelines"
     PIPELINES_PATH = "/deals/v1/pipelines"
     PIPELINE_PATH = "/deals/v1/pipelines/:pipeline_id"
 
@@ -25,6 +26,13 @@ module Hubspot
     end
 
     class << self
+      # {http://developers.hubspot.com/docs/methods/deal-pipelines/create-deal-pipeline}
+      def create!(params={})
+        post_data = params
+        response = Hubspot::Connection.post_json(CREATE_DEAL_PATH, params: {}, body: post_data )
+        new(response)
+      end
+
       def find(pipeline_id)
         response = Hubspot::Connection.get_json(PIPELINE_PATH, { pipeline_id: pipeline_id })
         new(response)
