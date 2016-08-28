@@ -10,6 +10,7 @@ module Hubspot
     CREATE_DEAL_PATH = "/deals/v1/pipelines"
     PIPELINES_PATH = "/deals/v1/pipelines"
     PIPELINE_PATH = "/deals/v1/pipelines/:pipeline_id"
+    UPDATE_PIPELINE_PATH = "/deals/v1/pipelines/:pipeline_id"
 
     attr_reader :active
     attr_reader :display_order
@@ -46,6 +47,19 @@ module Hubspot
 
     def [](stage)
       @stages[stage]
+    end
+
+    # {http://developers.hubspot.com/docs/methods/deal-pipelines/update-deal-pipeline}
+    def update!(opts={})
+      opts = {
+        pipelineId: @pipeline_id,
+        label: @label,
+        display_order: @display_order,
+        active: @active
+      }.merge(opts)
+
+      response = Hubspot::Connection.put_json(UPDATE_PIPELINE_PATH, params: { pipeline_id: @pipeline_id }, body: opts)
+      self.class.new(response)
     end
   end
 end
