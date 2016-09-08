@@ -78,6 +78,17 @@ module Hubspot
         response = Hubspot::Connection.post_json(CREATE_COMPANY_PATH, params: {}, body: post_data )
         new(response)
       end
+
+      # Updates the properties of a company
+      # {http://developers.hubspot.com/docs/methods/companies/update_company}
+      # @param params [Hash] hash of properties to update
+      # @return [Hubspot::Company] Company record
+      def update!(params)
+        params.stringify_keys!
+        query = {"properties" => Hubspot::Utils.hash_to_properties(params, key_name: "name")}
+        response = Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: params["vid"] }, body: query)
+        new(response)
+      end
     end
 
     attr_reader :properties
