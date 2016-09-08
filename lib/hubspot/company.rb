@@ -11,6 +11,7 @@ module Hubspot
     GET_COMPANY_BY_ID_PATH            = "/companies/v2/companies/:company_id"
     GET_COMPANY_BY_DOMAIN_PATH        = "/companies/v2/companies/domain/:domain"
     UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
+    GET_COMPANY_CONTACT_VIDS_PATH     = "/companies/v2/companies/:company_id/vids"
     ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
     DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
 
@@ -113,6 +114,25 @@ module Hubspot
       Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
       @properties.merge!(params)
       self
+    end
+
+    # Gets ALL contact vids of a company
+    # May make many calls if the company has a mega-ton of contacts
+    # {http://developers.hubspot.com/docs/methods/companies/get_company_contacts_by_id}
+    # @return [Array] contact vids
+    def get_contact_vids
+      # TODO: store result? Needs to be careful with add_contact
+      vid_offset = nil
+      vids = []
+      loop do
+        data = Hubspot::Connection.get_json(GET_COMPANY_CONTACT_VIDS_PATH,
+                                            company_id: vid,
+                                            vidOffset: vid_offset)
+        vids += data['vids']
+        return vids unless data['hasMore']
+        vid_offset = data['vidOffset']
+      end
+      vids # this statement will never be executed.
     end
 
     # Adds contact to a company
