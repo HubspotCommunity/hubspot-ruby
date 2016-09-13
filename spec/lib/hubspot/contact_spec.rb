@@ -84,6 +84,38 @@ describe Hubspot::Contact do
     end
   end
 
+  describe '.create_or_update!' do
+    cassette 'create_or_update'
+    let(:existing_contact) do
+      Hubspot::Contact.create!("morpheus@example.com", firstname: 'Morpheus')
+    end
+    before do
+      Hubspot::Contact.create_or_update!(params)
+    end
+
+    let(:params) do
+      [
+        {
+          vid: existing_contact.vid,
+          email: existing_contact.email,
+          firstname: 'Neo'
+        },
+        {
+          email: 'smith@example.com',
+          firstname: 'Smith'
+        }
+      ]
+    end
+
+    it 'creates and updates contacts' do
+      contact = Hubspot::Contact.find_by_id existing_contact.vid
+      expect(contact.properties['firstname']).to eql 'Neo'
+      latest_contact_email = Hubspot::Contact.all(recent: true).first.email
+      new_contact = Hubspot::Contact.find_by_email(latest_contact_email)
+      expect(new_contact.properties['firstname']).to eql 'Smith'
+    end
+  end
+
   describe '.find_by_email' do
     context 'given an uniq email' do
       cassette 'contact_find_by_email'

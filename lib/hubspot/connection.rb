@@ -56,9 +56,14 @@ module Hubspot
           params["portal_id"] = Hubspot::Config.portal_id if path =~ /:portal_id/
         end
 
+        if path =~ /:app_id/
+          Hubspot::Config.ensure! :portal_id
+          params["app_id"] = Hubspot::Config.app_id if path =~ /:app_id/
+        end
+
         params.each do |k,v|
           if path.match(":#{k}")
-            path.gsub!(":#{k}",v.to_s)
+            path.gsub!(":#{k}", CGI.escape(v.to_s))
             params.delete(k)
           end
         end
@@ -68,13 +73,13 @@ module Hubspot
           v.is_a?(Array) ? v.map { |value| param_string(k,value) } : param_string(k,v)
         end.join("&")
 
-        path += "?" if query.present?
+        path += path.include?('?') ? '&' : "?" if query.present?
         base_url + path + query
       end
 
       # convert into milliseconds since epoch
       def converted_value(value)
-        value.is_a?(Time) ? (value.to_i * 1000) : value
+        value.is_a?(Time) ? (value.to_i * 1000) : CGI.escape(value.to_s)
       end
 
       def param_string(key,value)
