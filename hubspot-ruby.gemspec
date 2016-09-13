@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
     "lib/hubspot/topic.rb",
     "lib/hubspot/utils.rb",
     "lib/hubspot/version.rb",
+    "lib/hubspot/webhook.rb",
     "lib/tasks/properties.rake",
     "spec/fixtures/vcr_cassettes/add_contacts_to_lists.yml",
     "spec/fixtures/vcr_cassettes/all_groups.yml",

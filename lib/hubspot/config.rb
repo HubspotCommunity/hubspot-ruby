@@ -3,7 +3,7 @@ require 'logger'
 module Hubspot
   class Config
 
-    CONFIG_KEYS = [:hapikey, :base_url, :portal_id, :logger]
+    CONFIG_KEYS = [:hapikey, :app_id, :base_url, :portal_id, :logger]
     DEFAULT_LOGGER = Logger.new('/dev/null')
 
     class << self
@@ -12,6 +12,7 @@ module Hubspot
       def configure(config)
         config.stringify_keys!
         @hapikey = config["hapikey"]
+        @app_id  = config["app_id"]
         @base_url = config["base_url"] || "https://api.hubapi.com"
         @portal_id = config["portal_id"]
         @logger = config['logger'] || DEFAULT_LOGGER
@@ -20,6 +21,7 @@ module Hubspot
 
       def reset!
         @hapikey = nil
+        @app_id  = nil
         @base_url = "https://api.hubapi.com"
         @portal_id = nil
         @logger = DEFAULT_LOGGER

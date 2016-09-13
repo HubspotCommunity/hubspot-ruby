@@ -56,6 +56,11 @@ module Hubspot
           params["portal_id"] = Hubspot::Config.portal_id if path =~ /:portal_id/
         end
 
+        if path =~ /:app_id/
+          Hubspot::Config.ensure! :portal_id
+          params["app_id"] = Hubspot::Config.app_id if path =~ /:app_id/
+        end
+
         params.each do |k,v|
           if path.match(":#{k}")
             path.gsub!(":#{k}", CGI.escape(v.to_s))
