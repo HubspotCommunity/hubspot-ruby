@@ -11,6 +11,7 @@ module Hubspot
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
     UPDATE_DEAL_PATH = '/deals/v1/deal/:deal_id'
+    ASSOCIATE_DEAL_PATH = '/deals/v1/deal/:deal_id/associations/:OBJECTTYPE?id=:objectId'
 
     attr_reader :properties
     attr_reader :portal_id
@@ -35,6 +36,17 @@ module Hubspot
         response = Hubspot::Connection.post_json(CREATE_DEAL_PATH, params: {}, body: post_data )
         new(response)
       end
+
+       # Associate a deal with a contact or company
+       # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
+       # Usage
+       # Hubspot::Deal.associate!(45146940, [], [52])
+       def associate!(deal_id, company_ids=[], vids=[])
+         objecttype = company_ids.any? ? 'COMPANY' : 'CONTACT'
+         object_ids = (company_ids.any? ? company_ids : vids).join('&id=')
+         Hubspot::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
+       end
+ 
 
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
