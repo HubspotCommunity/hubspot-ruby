@@ -30,6 +30,14 @@ module Hubspot
         new(response)
       end
 
+      # Updates the properties of a contact
+      # {https://developers.hubspot.com/docs/methods/contacts/update_contact}
+      # @param params [Hash] hash of properties to update
+      def update!(vid, params = {})
+        query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
+        Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
+      end
+
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
       # {https://developers.hubspot.com/docs/methods/contacts/get_recently_updated_contacts}
       def all(opts={})
