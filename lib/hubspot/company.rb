@@ -82,13 +82,13 @@ module Hubspot
 
       # Updates the properties of a company
       # {http://developers.hubspot.com/docs/methods/companies/update_company}
-      # @param params [Hash] hash of properties to update, including hubspot company id as "vid"
+      # @param vid [Integer] hubspot company vid
+      # @param params [Hash] hash of properties to update
       # @return [Hubspot::Company] Company record
-      def update!(params)
+      def update!(vid, params)
         params.stringify_keys!
-        company_id = params.delete "vid"
         query = {"properties" => Hubspot::Utils.hash_to_properties(params, key_name: "name")}
-        response = Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: company_id }, body: query)
+        response = Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
         new(response)
       end
 
