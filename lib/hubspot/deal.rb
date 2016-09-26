@@ -61,6 +61,17 @@ module Hubspot
         response['results'].map { |d| new(d) }
       end
 
+      # Updates the properties of a deal
+      # {http://developers.hubspot.com/docs/methods/deals/update_deal}
+      # @param deal_id [Integer] hubspot deal_id
+      # @param params [Hash] hash of properties to update
+      # @return [Hubspot::Deal] Deal record
+      def update!(deal_id, params)
+        params.stringify_keys!
+        query = {"properties" => Hubspot::Utils.hash_to_properties(params, key_name: "name")}
+        response = Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
+        new(response)
+      end
     end
 
     # Archives the contact in hubspot
@@ -83,6 +94,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/deals/update_deal}
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Deal] self
+    # @todo call self.class.update!
     def update!(params)
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
       Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
