@@ -9,6 +9,7 @@ module Hubspot
   class Engagement
     CREATE_ENGAGMEMENT_PATH = '/engagements/v1/engagements'
     ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id'
+    GET_ASSOCIATED_ENGAGEMENTS = '/engagements/v1/engagements/associated/:objectType/:objectId/paged'
 
     attr_reader :id
     attr_reader :engagement
@@ -40,6 +41,30 @@ module Hubspot
             raise ex
           end
         end
+      end
+
+      def find_by_company(company_id)
+        find_by_association company_id, 'COMPANY'
+      end
+
+      def find_by_contact(contact_id)
+        find_by_association contact_id, 'CONTACT'
+      end
+
+      def find_by_association(association_id, association_type)
+        path = GET_ASSOCIATED_ENGAGEMENTS
+        params = { objectType: association_type, objectId: association_id }
+        raise Hubspot::InvalidParams, 'expecting Integer parameter' unless association_id.try(:is_a?, Integer)
+        raise Hubspot::InvalidParams, 'expecting String parameter' unless association_type.try(:is_a?, String)
+
+        engagements = []
+        begin
+          response = Hubspot::Connection.get_json(path, params)
+          engagements = response["results"].try(:map) { |engagement| new(engagement) }
+        rescue => e
+          raise e unless e.message =~ /not found/
+        end
+        engagements
       end
     end
 

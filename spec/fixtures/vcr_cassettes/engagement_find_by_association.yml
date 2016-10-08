@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/engagements/v1/engagements/associated/FAKE_TYPE/1/paged?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, Accept-Charset, Accept-Encoding,
+        X-Override-Internal-Permissions, X-Properties-Source, X-Properties-SourceId,
+        X-Properties-Flag, X-Hubspot-User-Id, X-Hubspot-Trace, X-Hubspot-Callee, X-Hubspot-Offset,
+        X-Hubspot-No-Trace, X-HubSpot-Request-Source, X-HubSpot-Request-Reason, Subscription-Billing-Auth-Token,
+        X-App-CSRF, X-Tools-CSRF, Online-Payment-Signing-UUID, X-Source, X-SourceId
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, PUT, POST, DELETE, PATCH, HEAD
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '191'
+      Date:
+      - Sat, 08 Oct 2016 15:10:00 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - ak_bmsc=0751F5C9A2F9C3790FFD3FD632E43F8D0215F03442370000480CF95702A59E4F~plgDE6b1I1oKjAoJE+QFjRfXO428z6sPl50gT/0knnWoQY5Muk9PmyV7bWXbMyBauYnXF2gu7gR4EYQpE6LiE23m7jlq52Lp32DTTotre/GnLDW2dTMzmp89y9Ls8U1yRTx+4NeaLcfE7HkDnJjDop5x7d8G9iGqovfQiRED88AKmTRLAj/EF2VlTAjnTPS9qZTZzbQlQkcG9eYqTnxminDKzv9Rf4GVuajevCMYIPTng=;
+        expires=Sat, 08 Oct 2016 17:10:00 GMT; max-age=7200; path=/; domain=.hubapi.com;
+        HttpOnly
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Invalid enum constant ''FAKE_TYPE'' for
+        class ObjectType","correlationId":"583362b9-af33-403d-b2af-6e6d630a11c6","requestId":"b5fc03ad-5a7e-4500-9e3a-bd3371af2345"}'
+    http_version: 
+  recorded_at: Sat, 08 Oct 2016 15:10:00 GMT
+recorded_with: VCR 2.4.0
