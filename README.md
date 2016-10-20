@@ -78,7 +78,3 @@ order to disable VCR.
 
 This project and the code therein was not created by and is not supported by HubSpot, Inc or any of its affiliates.
 
-## Copyright
-
-Copyright (c) 2013 Omada Health Inc. See LICENSE.txt for further details.
-
