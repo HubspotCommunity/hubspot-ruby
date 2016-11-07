@@ -1,11 +1,12 @@
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
   s.require_paths = ["lib"]
   s.authors = ["Andrew DiMichele"]
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
   s.files = [".rspec", "Gemfile", "Gemfile.lock", "Guardfile", "LICENSE.txt", "README.md", "RELEASING.md", "Rakefile", "hubspot-ruby.gemspec"]
   s.files += Dir["lib/**/*.rb"]
+  s.files += Dir["lib/**/*.rake"]
   s.files += Dir["spec/**/*.rb"]
   s.homepage = "http://github.com/adimichele/hubspot-ruby"
   s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
