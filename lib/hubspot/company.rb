@@ -46,9 +46,7 @@ module Hubspot
       # {http://developers.hubspot.com/docs/methods/companies/get-all-companies}
       # @return [Array] Array of Hubspot::Company records
       def all_paged(opts={})
-        path = ALL_COMPANIES_PATH
-
-        response = Hubspot::Connection.get_json(path, opts)
+        response = Hubspot::Connection.get_json(ALL_COMPANIES_PATH, opts)
         response['companies'].map { |c| new(c) }
       end
 
