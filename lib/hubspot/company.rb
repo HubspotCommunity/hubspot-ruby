@@ -6,6 +6,7 @@ module Hubspot
   #
   class Company
     CREATE_COMPANY_PATH               = "/companies/v2/companies/"
+    ALL_COMPANIES_PATH                = "/companies/v2/companies/paged"
     RECENTLY_CREATED_COMPANIES_PATH   = "/companies/v2/companies/recent/created"
     RECENTLY_MODIFIED_COMPANIES_PATH  = "/companies/v2/companies/recent/modified"
     GET_COMPANY_BY_ID_PATH            = "/companies/v2/companies/:company_id"
@@ -36,6 +37,17 @@ module Hubspot
 
         response = Hubspot::Connection.get_json(path, opts)
         response['results'].map { |c| new(c) }
+      end
+
+      # Find all companies by created date (descending)
+      # @param opts [Hash] Possible options are:
+      #    count [Integer] for pagination
+      #    offset [Integer] for pagination
+      # {http://developers.hubspot.com/docs/methods/companies/get-all-companies}
+      # @return [Array] Array of Hubspot::Company records
+      def all_paged(opts={})
+        response = Hubspot::Connection.get_json(ALL_COMPANIES_PATH, opts)
+        response['companies'].map { |c| new(c) }
       end
 
       # Finds a list of companies by domain
