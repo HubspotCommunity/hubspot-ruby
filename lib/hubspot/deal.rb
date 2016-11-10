@@ -8,6 +8,7 @@ module Hubspot
   #
   class Deal
     CREATE_DEAL_PATH = "/deals/v1/deal"
+    ALL_DEALS_PATH = "/deals/v1/deal/paged"
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
     UPDATE_DEAL_PATH = '/deals/v1/deal/:deal_id'
@@ -28,6 +29,19 @@ module Hubspot
     end
 
     class << self
+      # Find all deals by created date (descending)
+      # @param opts [Hash] Possible options are:
+      #    count [Integer] for pagination
+      #    offset [Integer] for pagination
+      # {http://developers.hubspot.com/docs/methods/deals/get-all-deals}
+      # @return [Array] Array of Hubspot::Deal records
+      #
+      # ex: `Hubspot::Deal.all_paged(includeAssociations: true)`
+      def all_paged(opts={})
+        response = Hubspot::Connection.get_json(ALL_DEALS_PATH, opts)
+        response['deals'].map { |c| new(c) }
+      end
+
       def create!(portal_id, company_ids, vids, params={})
         #TODO: clean following hash, Hubspot::Utils should do the trick
         associations_hash = {"portalId" => portal_id, "associations" => { "associatedCompanyIds" => company_ids, "associatedVids" => vids}}
