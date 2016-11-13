@@ -23,8 +23,8 @@ module Hubspot
     def initialize(response_hash)
       @portal_id = response_hash["portalId"]
       @deal_id = response_hash["dealId"]
-      @company_ids = response_hash["associations"]["associatedCompanyIds"]
-      @vids = response_hash["associations"]["associatedVids"]
+      @company_ids = response_hash["associations"] ? response_hash["associations"]["associatedCompanyIds"] : nil
+      @vids = response_hash["associations"] ? response_hash["associations"]["associatedVids"] : nil
       @properties = Hubspot::Utils.properties_to_hash(response_hash["properties"])
     end
 
