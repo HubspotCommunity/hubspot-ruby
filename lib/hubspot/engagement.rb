@@ -130,4 +130,45 @@ module Hubspot
       end
     end
   end
+
+  class EngagementCall < Engagement
+    def body
+      metadata['body']
+    end
+
+    def contact_ids
+      associations['contactIds']
+    end
+
+    def company_ids
+      associations['companyIds']
+    end
+
+    def deal_ids
+      associations['dealIds']
+    end
+
+    class << self
+      def create!(contact_vid, body, duration, owner_id = nil, deal_id = nil, status = 'COMPLETED')
+        data = {
+          engagement: {
+            type: 'CALL'
+          },
+          associations: {
+            contactIds: [contact_vid],
+            dealIds: [deal_id]
+          },
+          metadata: {
+            body: body,
+            status: status
+          }
+        }
+
+        # if the owner id has been provided, append it to the engagement
+        data[:engagement][:owner_id] = owner_id if owner_id
+
+        super(data)
+      end
+    end
+  end
 end
