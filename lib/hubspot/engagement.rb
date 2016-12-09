@@ -156,15 +156,17 @@ module Hubspot
           },
           associations: {
             contactIds: [contact_vid],
-            dealIds: [deal_id]
+            dealIds: [deal_id],
+            ownerIds: [owner_id]
           },
           metadata: {
             body: body,
-            status: status
+            status: status,
+            durationMilliseconds: duration
           }
         }
 
-        # if the owner id has been provided, append it to the engagement
+        # copypasta from NoteEngagement, seems wrong
         data[:engagement][:owner_id] = owner_id if owner_id
 
         super(data)
