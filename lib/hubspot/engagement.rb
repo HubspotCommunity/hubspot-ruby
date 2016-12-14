@@ -149,7 +149,7 @@ module Hubspot
     end
 
     class << self
-      def create!(contact_vid, body, duration, owner_id = nil, deal_id = nil, status = 'COMPLETED')
+      def create!(contact_vid, body, duration, owner_id = nil, deal_id = nil, status = 'COMPLETED', time = nil)
         data = {
           engagement: {
             type: 'CALL'
@@ -166,6 +166,7 @@ module Hubspot
           }
         }
 
+        data[:engagement][:timestamp] = (time.to_i) * 1000 if time
         # copypasta from NoteEngagement, seems wrong
         data[:engagement][:owner_id] = owner_id if owner_id
 
