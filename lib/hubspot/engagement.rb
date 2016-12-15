@@ -33,7 +33,7 @@ module Hubspot
       def find(engagement_id)
         begin
           response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
-          new(HashWithIndifferentAccess.new(response))
+          response ? new(HashWithIndifferentAccess.new(response)) : nil
         rescue Hubspot::RequestError => ex
           if ex.response.code == 404
             return nil
@@ -167,7 +167,6 @@ module Hubspot
         }
 
         data[:engagement][:timestamp] = (time.to_i) * 1000 if time
-        # copypasta from NoteEngagement, seems wrong
         data[:engagement][:owner_id] = owner_id if owner_id
 
         super(data)

@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/engagements/v1/engagements?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"engagement":{"type":"CALL"},"associations":{"contactIds":[null],"dealIds":[null],"ownerIds":[null]},"metadata":{"body":"Test
+        call","status":"COMPLETED","durationMilliseconds":0}}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, Accept-Charset, Accept-Encoding,
+        X-Override-Internal-Permissions, X-Properties-Source, X-Properties-SourceId,
+        X-Properties-Flag, X-Hubspot-User-Id, X-Hubspot-Trace, X-Hubspot-Callee, X-Hubspot-Offset,
+        X-Hubspot-No-Trace, X-HubSpot-Request-Source, X-HubSpot-Request-Reason, Subscription-Billing-Auth-Token,
+        X-App-CSRF, X-Tools-CSRF, Online-Payment-Signing-UUID, X-Source, X-SourceId
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, PUT, POST, DELETE, PATCH, HEAD
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '327'
+      Date:
+      - Thu, 15 Dec 2016 14:25:08 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"engagement":{"id":185916081,"portalId":62515,"active":true,"createdAt":1481811908160,"lastUpdated":1481811908160,"type":"CALL","timestamp":1481811908160},"associations":{"contactIds":[],"companyIds":[],"dealIds":[],"ownerIds":[],"workflowIds":[]},"metadata":{"status":"COMPLETED","durationMilliseconds":0,"body":"Test
+        call"}}'
+    http_version: 
+  recorded_at: Thu, 15 Dec 2016 14:25:08 GMT
+recorded_with: VCR 2.4.0
