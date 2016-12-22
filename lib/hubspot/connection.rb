@@ -68,7 +68,7 @@ module Hubspot
           v.is_a?(Array) ? v.map { |value| param_string(k,value) } : param_string(k,v)
         end.join("&")
 
-        p path += path.include?('?') ? '&' : "?" if query.present?
+        path += path.include?('?') ? '&' : "?" if query.present?
         base_url + path + query
       end
 
