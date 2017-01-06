@@ -1,0 +1,28 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.hubapi.com/deals/v1/groups/named/ff_group1?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 05 Jan 2016 22:51:41 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Jan 2016 22:51:41 GMT
+recorded_with: VCR 2.4.0

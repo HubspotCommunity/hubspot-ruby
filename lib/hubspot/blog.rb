@@ -41,7 +41,7 @@ module Hubspot
     #   defaults to returning the last 2 months worth of published blog posts
     #   in date descending order (i.e. most recent first)
     # {https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts}
-    # @return [Hubspot::BlogPost] 
+    # @return [Hubspot::BlogPost]
     def posts(params = {})
       default_params = {
         content_group_id: self["id"],
@@ -95,5 +95,4 @@ module Hubspot
       end
     end
   end
-
 end

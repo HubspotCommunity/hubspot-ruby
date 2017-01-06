@@ -19124,4 +19124,1690 @@ http_interactions:
         0}'
     http_version: 
   recorded_at: Wed, 10 Oct 2012 04:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=351076997&created__gt=1344582000000&hapikey=demo&order_by=-created&state=PUBLISHED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MzYsMTM7c2V0OjMsNztnZXQ6MzUsMjM=
+      Date:
+      - Wed, 02 Dec 2015 19:34:02 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Transfer-Encoding
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 14, "objects": [{"analytics_page_id": "3440376758",
+        "archived": false, "attached_stylesheets": [], "author_user_id": 215482, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "slug":
+        "janusz", "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1444118086000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1444118087000, "head_html":
+        "", "html_title": "Theo Walcott Eager To Emulate Arsenal Legend Ian Wright",
+        "id": 3440376758, "include_default_custom_css": null, "is_draft": false, "is_instant_email_enabled":
+        false, "is_social_publishing_enabled": false, "keywords": [], "legacy_blog_tabid":
+        null, "meta_description": "arsenalnews.co.uk - We believe this site is the
+        fastest and best way to get Arsenal news for Gooners everywhere.\nAs a logged
+        in user of Arsenal News you can submit and comment on Arsenal stories and
+        even create your own Arsenal blog!\nGetting involved with other Gunners fans
+        has ...", "meta_keywords": "", "name": "Theo Walcott Eager To Emulate Arsenal
+        Legend Ian Wright", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "<p><span><a href=\"http://goo.gl/qhc1PA\" target=\"_blank\">arsenalnews.co.uk</a>
+        - </span>We believe this site is the fastest and best way to get Arsenal news
+        for Gooners everywhere.</p>\r\n<!--more--><p>As a logged in user of Arsenal
+        News you can submit and comment on Arsenal stories and even create your own
+        Arsenal blog!</p>\r\n<p>Getting involved with other Gunners fans has never
+        been easier, as you can register in seconds with your existing twitter, Facebook
+        or Google account.</p>\r\n<p>So start sharing your thoughts on the team with
+        tens of thousands of other Gooners now!</p>\r\n<p><img src=\"http://cdn.arsenalnews.co.uk/maintenance_logo.png\"
+        alt=\"\" /></p>\r\n<p>&nbsp;</p><p style=\"width: 0; height: 0; display: none
+        !important;\" data-opentopic-channelnews-id=\"46367\">&nbsp;</p>", "post_summary":
+        "<p><span><a href=\"http://goo.gl/qhc1PA\" target=\"_blank\">arsenalnews.co.uk</a>
+        - </span>We believe this site is the fastest and best way to get Arsenal news
+        for Gooners everywhere.</p>\r\n<p>As a logged in user of Arsenal News you
+        can submit and comment on Arsenal stories and even create your own Arsenal
+        blog!</p>\r\n<p>Getting involved with other Gunners fans has ...</p>", "preview_image_src":
+        null, "preview_key": "Bdb198Ab", "processing_status": "published", "publish_date":
+        1444118087000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/theo-walcott-eager-to-emulate-arsenal-legend-ian-wright-46367",
+        "rss_body": "<p><span><a href=\"http://goo.gl/qhc1PA\" target=\"_blank\">arsenalnews.co.uk</a>
+        - </span>We believe this site is the fastest and best way to get Arsenal news
+        for Gooners everywhere.</p>\n<!--more--><p>As a logged in user of Arsenal
+        News you can submit and comment on Arsenal stories and even create your own
+        Arsenal blog!</p>\n<p>Getting involved with other Gunners fans has never been
+        easier, as you can register in seconds with your existing twitter, Facebook
+        or Google account.</p>\n<p>So start sharing your thoughts on the team with
+        tens of thousands of other Gooners now!</p>\n<p><img alt=\"\" src=\"http://cdn.arsenalnews.co.uk/maintenance_logo.png\"/></p>\n<p>&nbsp;</p><p
+        data-opentopic-channelnews-id=\"46367\" style=\"width: 0; height: 0; display:
+        none !important;\">&nbsp;</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p><span><a href=\"http://goo.gl/qhc1PA\" target=\"_blank\">arsenalnews.co.uk</a>
+        - </span>We believe this site is the fastest and best way to get Arsenal news
+        for Gooners everywhere.</p>\r\n<p>As a logged in user of Arsenal News you
+        can submit and comment on Arsenal stories and even create your own Arsenal
+        blog!</p>\r\n<p>Getting involved with other Gunners fans has ...</p>", "scheduled_update_date":
+        null, "slug": "blog/theo-walcott-eager-to-emulate-arsenal-legend-ian-wright-46367",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [450113517], "unpublished_at":
+        null, "updated": 1444118089000, "url": "http://62515.hs-sites.com/blog/theo-walcott-eager-to-emulate-arsenal-legend-ian-wright-46367",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3369559727", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": null, "bio": "", "twitter": "", "updated":
+        1428425830905, "linkedin": "", "facebook": "", "full_name": "HubC SpotK",
+        "deleted_at": 0, "slug": "hubc-spotk", "portal_id": 62515, "user_id": null,
+        "created": 1428425830905, "gravatar_url": "https://app.hubspot.com/settings/avatar/6dd8fb942bf9cb3c6492211804ca0e02",
+        "google_plus": "", "id": 2691376256, "website": "", "avatar": "", "email":
+        "testck@hubspot.com"}, "blog_author_id": 2691376256, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443087260000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443087261000, "head_html":
+        "", "html_title": "Even Derek Jeter thinks cloud-hosted videoconferencing
+        is a good idea", "id": 3369559727, "include_default_custom_css": null, "is_draft":
+        false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "fortune.com
+        - Upstarts like Blue Jeans Network and Logitech&rsquo;s Lifesize unit are
+        pressuring market leaders like Cisco, Polycom, and Huawei.\nIt&rsquo;s time
+        to view corporate videoconferences through a different lens.\nWhile there&rsquo;s
+        still a place for sophisticated meeting-room equipment, such as the systems
+        sold by market leaders ...", "meta_keywords": "", "name": "Even Derek Jeter
+        thinks cloud-hosted videoconferencing is a good idea", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<p><span><a href=\"http://fortune.com/2015/09/23/cloud-videoconferencing/\"
+        target=\"_blank\">fortune.com</a> - </span>Upstarts like Blue Jeans Network
+        and Logitech&rsquo;s Lifesize unit are pressuring market leaders like Cisco,
+        Polycom, and Huawei.</p>\r\n<!--more--><p>It&rsquo;s time to view corporate
+        videoconferences through a different lens.</p>\r\n<p>While there&rsquo;s still
+        a place for sophisticated meeting-room equipment, such as the systems sold
+        by market leaders like Cisco, Polycom, or Huawei, fewer businesses willing
+        to make a capital investment in proprietary systems or commit to expensive
+        dedicated services. In face, close to one-third are actively moving toward
+        cloud-hosted services, according to recent Forrester Research data.</p>\r\n<p><img
+        src=\"https://fortunedotcom.files.wordpress.com/2015/09/blue-jeans-meeting-aug-2015.png?w=840&amp;h=485&amp;crop=1\"
+        alt=\"\" /></p>\r\n<p>&nbsp;</p><p style=\"width: 0; height: 0; display: none
+        !important;\" data-opentopic-channelnews-id=\"43598\">&nbsp;</p>", "post_summary":
+        "<p><span><a href=\"http://fortune.com/2015/09/23/cloud-videoconferencing/\"
+        target=\"_blank\">fortune.com</a> - </span>Upstarts like Blue Jeans Network
+        and Logitech&rsquo;s Lifesize unit are pressuring market leaders like Cisco,
+        Polycom, and Huawei.</p>\r\n<p>It&rsquo;s time to view corporate videoconferences
+        through a different lens.</p>\r\n<p>While there&rsquo;s still a place for
+        sophisticated meeting-room equipment, such as the systems sold by market leaders
+        ...</p>", "preview_image_src": null, "preview_key": "TEL_p4to", "processing_status":
+        "published", "publish_date": 1443087261000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/even-derek-jeter-thinks-cloud-hosted-videoconferencing-is-a-good-idea-43598",
+        "rss_body": "<p><span><a href=\"http://fortune.com/2015/09/23/cloud-videoconferencing/\"
+        target=\"_blank\">fortune.com</a> - </span>Upstarts like Blue Jeans Network
+        and Logitech&rsquo;s Lifesize unit are pressuring market leaders like Cisco,
+        Polycom, and Huawei.</p>\n<!--more--><p>It&rsquo;s time to view corporate
+        videoconferences through a different lens.</p>\n<p>While there&rsquo;s still
+        a place for sophisticated meeting-room equipment, such as the systems sold
+        by market leaders like Cisco, Polycom, or Huawei, fewer businesses willing
+        to make a capital investment in proprietary systems or commit to expensive
+        dedicated services. In face, close to one-third are actively moving toward
+        cloud-hosted services, according to recent Forrester Research data.</p>\n<p><img
+        alt=\"\" src=\"https://fortunedotcom.files.wordpress.com/2015/09/blue-jeans-meeting-aug-2015.png?w=840&amp;h=485&amp;crop=1\"/></p>\n<p>&nbsp;</p><p
+        data-opentopic-channelnews-id=\"43598\" style=\"width: 0; height: 0; display:
+        none !important;\">&nbsp;</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p><span><a href=\"http://fortune.com/2015/09/23/cloud-videoconferencing/\"
+        target=\"_blank\">fortune.com</a> - </span>Upstarts like Blue Jeans Network
+        and Logitech&rsquo;s Lifesize unit are pressuring market leaders like Cisco,
+        Polycom, and Huawei.</p>\r\n<p>It&rsquo;s time to view corporate videoconferences
+        through a different lens.</p>\r\n<p>While there&rsquo;s still a place for
+        sophisticated meeting-room equipment, such as the systems sold by market leaders
+        ...</p>", "scheduled_update_date": null, "slug": "blog/even-derek-jeter-thinks-cloud-hosted-videoconferencing-is-a-good-idea-43598",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [450113517], "unpublished_at":
+        null, "updated": 1443087262000, "url": "http://62515.hs-sites.com/blog/even-derek-jeter-thinks-cloud-hosted-videoconferencing-is-a-good-idea-43598",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3397276943", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443086553000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443086554000, "head_html":
+        "", "html_title": "Do You Need To Know Every Shiny New Thing in Content Marketing?",
+        "id": 3397276943, "include_default_custom_css": null, "is_draft": false, "is_instant_email_enabled":
+        false, "is_social_publishing_enabled": false, "keywords": [], "legacy_blog_tabid":
+        null, "meta_description": "crystalclearcomms.com - An interesting undercurrent
+        surfaced at Content Marketing World. Content marketers are increasingly driven
+        by the fear of missing out (FOMO) on the next shiny new thing.\nIt&rsquo;s
+        natural for marketers to fear missing out. We&rsquo;re curious and inventive
+        people. We want to explore each new thing ...", "meta_keywords": "", "name":
+        "Do You Need To Know Every Shiny New Thing in Content Marketing?", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<p><span><a href=\"http://crystalclearcomms.com/need-know-every-shiny-new-thing-content-marketing/\"
+        target=\"_blank\">crystalclearcomms.com</a> - </span>An interesting undercurrent
+        surfaced at Content Marketing World. Content marketers are increasingly driven
+        by the fear of missing out (FOMO) on the next shiny new thing.</p>\r\n<!--more--><p>It&rsquo;s
+        natural for marketers to fear missing out. We&rsquo;re curious and inventive
+        people. We want to explore each new thing that comes along.</p>\r\n<p>In burgeoning
+        fields such as content marketing and technology, so many new things come along
+        so fast that FOMO seems natural.</p>\r\n<p>FOMO leads to automatic thoughts
+        like: If you don&rsquo;t know all about this new topic, e.g., predictive analytics,
+        you are just so yesterday.</p>\r\n<p><img src=\"http://crystalclearcomms.com/wp-content/uploads/2015/09/shutterstock_318753503-300x199.jpg\"
+        alt=\"\" /></p>\r\n<p>&nbsp;</p><p style=\"width: 0; height: 0; display: none
+        !important;\" data-opentopic-channelnews-id=\"43596\">&nbsp;</p>", "post_summary":
+        "<p><span><a href=\"http://crystalclearcomms.com/need-know-every-shiny-new-thing-content-marketing/\"
+        target=\"_blank\">crystalclearcomms.com</a> - </span>An interesting undercurrent
+        surfaced at Content Marketing World. Content marketers are increasingly driven
+        by the fear of missing out (FOMO) on the next shiny new thing.</p>\r\n<p>It&rsquo;s
+        natural for marketers to fear missing out. We&rsquo;re curious and inventive
+        people. We want to explore each new thing ...</p>", "preview_image_src": null,
+        "preview_key": "s7qka233", "processing_status": "published", "publish_date":
+        1443086554000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/do-you-need-to-know-every-shiny-new-thing-in-content-marketing-43596",
+        "rss_body": "<p><span><a href=\"http://crystalclearcomms.com/need-know-every-shiny-new-thing-content-marketing/\"
+        target=\"_blank\">crystalclearcomms.com</a> - </span>An interesting undercurrent
+        surfaced at Content Marketing World. Content marketers are increasingly driven
+        by the fear of missing out (FOMO) on the next shiny new thing.</p>\n<!--more--><p>It&rsquo;s
+        natural for marketers to fear missing out. We&rsquo;re curious and inventive
+        people. We want to explore each new thing that comes along.</p>\n<p>In burgeoning
+        fields such as content marketing and technology, so many new things come along
+        so fast that FOMO seems natural.</p>\n<p>FOMO leads to automatic thoughts
+        like: If you don&rsquo;t know all about this new topic, e.g., predictive analytics,
+        you are just so yesterday.</p>\n<p><img alt=\"\" src=\"http://crystalclearcomms.com/wp-content/uploads/2015/09/shutterstock_318753503-300x199.jpg\"/></p>\n<p>&nbsp;</p><p
+        data-opentopic-channelnews-id=\"43596\" style=\"width: 0; height: 0; display:
+        none !important;\">&nbsp;</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p><span><a href=\"http://crystalclearcomms.com/need-know-every-shiny-new-thing-content-marketing/\"
+        target=\"_blank\">crystalclearcomms.com</a> - </span>An interesting undercurrent
+        surfaced at Content Marketing World. Content marketers are increasingly driven
+        by the fear of missing out (FOMO) on the next shiny new thing.</p>\r\n<p>It&rsquo;s
+        natural for marketers to fear missing out. We&rsquo;re curious and inventive
+        people. We want to explore each new thing ...</p>", "scheduled_update_date":
+        null, "slug": "blog/do-you-need-to-know-every-shiny-new-thing-in-content-marketing-43596",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [450113517], "unpublished_at":
+        null, "updated": 1443086556000, "url": "http://62515.hs-sites.com/blog/do-you-need-to-know-every-shiny-new-thing-in-content-marketing-43596",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3347413151", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443005910000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443005910000, "head_html":
+        "", "html_title": "Michael Brenner: The Future Of Content Marketing Is\u2026GIFs
+        + Taylor Swift", "id": 3347413151, "include_default_custom_css": null, "is_draft":
+        false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "blog.newscred.com
+        - Michael Brenner opened NewsCred&rsquo;s third-annual #ThinkContent Summit
+        with a stark challenge and call to action for content marketers: &ldquo;Your
+        audience wants stories. Will you give it to them?&rdquo;\nBounding onto the
+        stage at Manhattan&rsquo;s Metropolitan Pavilion to the pulse of Lil Jon&rsquo;s
+        &ldquo;Turn Down ...", "meta_keywords": "", "name": "Michael Brenner: The
+        Future Of Content Marketing Is\u2026GIFs + Taylor Swift", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<p><span><a href=\"http://goo.gl/n1D9lM\" target=\"_blank\">blog.newscred.com</a>
+        - </span>Michael Brenner opened NewsCred&rsquo;s third-annual #ThinkContent
+        Summit with a stark challenge and call to action for content marketers: &ldquo;Your
+        audience wants stories. Will you give it to them?&rdquo;</p>\r\n<!--more--><p>Bounding
+        onto the stage at Manhattan&rsquo;s Metropolitan Pavilion to the pulse of
+        Lil Jon&rsquo;s &ldquo;Turn Down for What&rdquo; (his preferred intro jam),
+        Brenner set up the theme of this year&rsquo;s summit &ndash; &ldquo;Creativity,
+        Technology, and the Future of Storytelling&rdquo; &ndash; on the premise that
+        traditional marketing is generally broken (a perspective he discussed recently
+        with &ldquo;Market Movers&rdquo; host Christine Crandell).</p>\r\n<p>&nbsp;</p><p
+        style=\"width: 0; height: 0; display: none !important;\" data-opentopic-channelnews-id=\"42456\">&nbsp;</p>",
+        "post_summary": "<p><span><a href=\"http://goo.gl/n1D9lM\" target=\"_blank\">blog.newscred.com</a>
+        - </span>Michael Brenner opened NewsCred&rsquo;s third-annual #ThinkContent
+        Summit with a stark challenge and call to action for content marketers: &ldquo;Your
+        audience wants stories. Will you give it to them?&rdquo;</p>\r\n<p>Bounding
+        onto the stage at Manhattan&rsquo;s Metropolitan Pavilion to the pulse of
+        Lil Jon&rsquo;s &ldquo;Turn Down ...</p>", "preview_image_src": null, "preview_key":
+        "6wboRerz", "processing_status": "published", "publish_date": 1443005910000,
+        "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/michael-brenner-the-future-of-content-marketing-isgifs-taylor-swift-42456",
+        "rss_body": "<p><span><a href=\"http://goo.gl/n1D9lM\" target=\"_blank\">blog.newscred.com</a>
+        - </span>Michael Brenner opened NewsCred&rsquo;s third-annual #ThinkContent
+        Summit with a stark challenge and call to action for content marketers: &ldquo;Your
+        audience wants stories. Will you give it to them?&rdquo;</p>\n<!--more--><p>Bounding
+        onto the stage at Manhattan&rsquo;s Metropolitan Pavilion to the pulse of
+        Lil Jon&rsquo;s &ldquo;Turn Down for What&rdquo; (his preferred intro jam),
+        Brenner set up the theme of this year&rsquo;s summit &ndash; &ldquo;Creativity,
+        Technology, and the Future of Storytelling&rdquo; &ndash; on the premise that
+        traditional marketing is generally broken (a perspective he discussed recently
+        with &ldquo;Market Movers&rdquo; host Christine Crandell).</p>\n<p>&nbsp;</p><p
+        data-opentopic-channelnews-id=\"42456\" style=\"width: 0; height: 0; display:
+        none !important;\">&nbsp;</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p><span><a href=\"http://goo.gl/n1D9lM\" target=\"_blank\">blog.newscred.com</a>
+        - </span>Michael Brenner opened NewsCred&rsquo;s third-annual #ThinkContent
+        Summit with a stark challenge and call to action for content marketers: &ldquo;Your
+        audience wants stories. Will you give it to them?&rdquo;</p>\r\n<p>Bounding
+        onto the stage at Manhattan&rsquo;s Metropolitan Pavilion to the pulse of
+        Lil Jon&rsquo;s &ldquo;Turn Down ...</p>", "scheduled_update_date": null,
+        "slug": "blog/michael-brenner-the-future-of-content-marketing-isgifs-taylor-swift-42456",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1443005914000, "url": "http://62515.hs-sites.com/blog/michael-brenner-the-future-of-content-marketing-isgifs-taylor-swift-42456",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3319231084", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443005706000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443005707000, "head_html":
+        "", "html_title": "test", "id": 3319231084, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "&nbsp;\n
+        SEO Sydney Company Called Top 10 SEO Launches New Search Optimization Services
+        SEO has become an important tool for businesses in Sydney who wants to stay
+        ahead in Search Engine Optimization. A leading Sydney SEO expert understands
+        the importance for Australian businesses ranking high locally, nationally,
+        and internationally, and that ...", "meta_keywords": "", "name": "test", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<p>&nbsp;</p>\r\n<!--more--><p><span style=\"font-size:
+        11px; display: block; text-decoration: none; font-style: normal; border: 1px
+        solid lightgrey; border-radius: 5px; padding: 5px;\"> <a style=\"text-decoration:
+        none; color: black;\" href=\"http://www.busbyway.com/2015/09/04/seo-sydney-company-called-top-10-seo-launches-new-search-optimization-services/\"><strong>SEO
+        Sydney Company Called Top 10 SEO Launches New Search Optimization Services</strong></a><br
+        /> SEO has become an important tool for businesses in Sydney who wants to
+        stay ahead in Search Engine Optimization. A leading Sydney SEO expert understands
+        the importance for Australian businesses ranking high locally, nationally,
+        and internationally, and that is why she has launched new services.<br />Sydney,
+        Australia &mdash; (SBWIRE) &mdash; 09/03/2015 &mdash; Top 10 SEO, located
+        in Sydney is a dedicated Search Engine Optimization Company and as such it
+        has become one of the leading companies in Australia to transform business
+        websites.<br /> Search engine optimization,Sydney,Pay per click,Marketing,Google<br
+        /> busbyway.com / 2&nbsp;weeks ago </span></p><p style=\"width: 0; height:
+        0; display: none !important;\" data-opentopic-channelnews-id=\"42453\">&nbsp;</p>",
+        "post_summary": "<p>&nbsp;</p>\r\n<p><span style=\"font-size: 11px; display:
+        block; text-decoration: none; font-style: normal; border: 1px solid lightgrey;
+        border-radius: 5px; padding: 5px;\"> <a style=\"text-decoration: none; color:
+        black;\" href=\"http://www.busbyway.com/2015/09/04/seo-sydney-company-called-top-10-seo-launches-new-search-optimization-services/\"><strong>SEO
+        Sydney Company Called Top 10 SEO Launches New Search Optimization Services</strong></a><br
+        /> SEO has become an important tool for businesses in Sydney who wants to
+        stay ahead in Search Engine Optimization. A leading Sydney SEO expert understands
+        the importance for Australian businesses ranking high locally, nationally,
+        and internationally, and that ...</span></p>", "preview_image_src": null,
+        "preview_key": "CYm7hi_b", "processing_status": "published", "publish_date":
+        1443005707000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/test-42453",
+        "rss_body": "<p>&nbsp;</p>\n<!--more--><p><span style=\"font-size: 11px; display:
+        block; text-decoration: none; font-style: normal; border: 1px solid lightgrey;
+        border-radius: 5px; padding: 5px;\"> <a href=\"http://www.busbyway.com/2015/09/04/seo-sydney-company-called-top-10-seo-launches-new-search-optimization-services/\"
+        style=\"text-decoration: none; color: black;\"><strong>SEO Sydney Company
+        Called Top 10 SEO Launches New Search Optimization Services</strong></a><br/>
+        SEO has become an important tool for businesses in Sydney who wants to stay
+        ahead in Search Engine Optimization. A leading Sydney SEO expert understands
+        the importance for Australian businesses ranking high locally, nationally,
+        and internationally, and that is why she has launched new services.<br/>Sydney,
+        Australia &mdash; (SBWIRE) &mdash; 09/03/2015 &mdash; Top 10 SEO, located
+        in Sydney is a dedicated Search Engine Optimization Company and as such it
+        has become one of the leading companies in Australia to transform business
+        websites.<br/> Search engine optimization,Sydney,Pay per click,Marketing,Google<br/>
+        busbyway.com / 2&nbsp;weeks ago </span></p><p data-opentopic-channelnews-id=\"42453\"
+        style=\"width: 0; height: 0; display: none !important;\">&nbsp;</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p>&nbsp;</p>\r\n<p><span
+        style=\"font-size: 11px; display: block; text-decoration: none; font-style:
+        normal; border: 1px solid lightgrey; border-radius: 5px; padding: 5px;\">
+        <a style=\"text-decoration: none; color: black;\" href=\"http://www.busbyway.com/2015/09/04/seo-sydney-company-called-top-10-seo-launches-new-search-optimization-services/\"><strong>SEO
+        Sydney Company Called Top 10 SEO Launches New Search Optimization Services</strong></a><br
+        /> SEO has become an important tool for businesses in Sydney who wants to
+        stay ahead in Search Engine Optimization. A leading Sydney SEO expert understands
+        the importance for Australian businesses ranking high locally, nationally,
+        and internationally, and that ...</span></p>", "scheduled_update_date": null,
+        "slug": "blog/test-42453", "staged_from": null, "state": "PUBLISHED", "style_override_id":
+        null, "subcategory": "normal_blog_post", "tms_id": null, "topic_ids": [],
+        "unpublished_at": null, "updated": 1443005709000, "url": "http://62515.hs-sites.com/blog/test-42453",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3319210194", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443005527000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443005529000, "head_html":
+        "", "html_title": "test", "id": 3319210194, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "test
+        post qait", "meta_keywords": "", "name": "test", "page_expiry_date": null,
+        "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<p>test post qait</p>", "post_summary": "<p>test post
+        qait</p>", "preview_image_src": null, "preview_key": "7t9ElqxH", "processing_status":
+        "published", "publish_date": 1443005529000, "publish_immediately": true, "published_url":
+        "http://62515.hs-sites.com/blog/test-42451", "rss_body": "<p>test post qait</p>",
+        "rss_email_by_text": "By", "rss_email_click_through_text": "Read more &raquo;",
+        "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p>test post qait</p>", "scheduled_update_date": null,
+        "slug": "blog/test-42451", "staged_from": null, "state": "PUBLISHED", "style_override_id":
+        null, "subcategory": "normal_blog_post", "tms_id": null, "topic_ids": [],
+        "unpublished_at": null, "updated": 1443005531000, "url": "http://62515.hs-sites.com/blog/test-42451",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3318992809", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443003636000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443003637000, "head_html":
+        "", "html_title": "Audi bersiap hadirkan R8 Spyder generasi kedua di 2016",
+        "id": 3318992809, "include_default_custom_css": null, "is_draft": false, "is_instant_email_enabled":
+        false, "is_social_publishing_enabled": false, "keywords": [], "legacy_blog_tabid":
+        null, "meta_description": "merdeka.com - Merdeka.com - Audi R8 Spyder generasi
+        kedua tertangkap kamera sedang dites jalan yang menandakan jika mobil satu
+        ini tak akan lama lagi dirilis di pasaran.\nTerjepret dengan stiker kamuflase,
+        Audi R8 Spyder yang hadir dengan atap berjenis open-top. Perbedaan dengan
+        generasi pertamanya terletak pada deck depan dan kaca ...", "meta_keywords":
+        "", "name": "Audi bersiap hadirkan R8 Spyder generasi kedua di 2016", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<p><span><a href=\"http://goo.gl/pJTjng\" target=\"_blank\">merdeka.com</a>
+        - </span>Merdeka.com - Audi R8 Spyder generasi kedua tertangkap kamera sedang
+        dites jalan yang menandakan jika mobil satu ini tak akan lama lagi dirilis
+        di pasaran.</p>\r\n<!--more--><p>Terjepret dengan stiker kamuflase, Audi R8
+        Spyder yang hadir dengan atap berjenis open-top. Perbedaan dengan generasi
+        pertamanya terletak pada deck depan dan kaca depan yang kini lebih rendah.</p>\r\n<p>Audi
+        R8 Spyder generasi kedua ini nantinya disebut sudah mengusung bodi berbahan
+        aluminium ringan yang dikombinasikan dengan bahan karbon fiber.</p>\r\n<p>Beralih
+        ke dapur pacunya, R8 Spyder generasi kedua ini masih mengusung mesin V10 berkapasitas
+        5.2 liter yang mampu menghasilkan tenaga hingga 533HP dan torsi maksimum berada
+        di 540 Nm.</p>\r\n<p>&nbsp;</p>", "post_summary": "<p><span><a href=\"http://goo.gl/pJTjng\"
+        target=\"_blank\">merdeka.com</a> - </span>Merdeka.com - Audi R8 Spyder generasi
+        kedua tertangkap kamera sedang dites jalan yang menandakan jika mobil satu
+        ini tak akan lama lagi dirilis di pasaran.</p>\r\n<p>Terjepret dengan stiker
+        kamuflase, Audi R8 Spyder yang hadir dengan atap berjenis open-top. Perbedaan
+        dengan generasi pertamanya terletak pada deck depan dan kaca ...</p>", "preview_image_src":
+        null, "preview_key": "1BRab-U2", "processing_status": "published", "publish_date":
+        1443003637000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/audi-bersiap-hadirkan-r8-spyder-generasi-kedua-di-2016-42449",
+        "rss_body": "<p><span><a href=\"http://goo.gl/pJTjng\" target=\"_blank\">merdeka.com</a>
+        - </span>Merdeka.com - Audi R8 Spyder generasi kedua tertangkap kamera sedang
+        dites jalan yang menandakan jika mobil satu ini tak akan lama lagi dirilis
+        di pasaran.</p>\n<!--more--><p>Terjepret dengan stiker kamuflase, Audi R8
+        Spyder yang hadir dengan atap berjenis open-top. Perbedaan dengan generasi
+        pertamanya terletak pada deck depan dan kaca depan yang kini lebih rendah.</p>\n<p>Audi
+        R8 Spyder generasi kedua ini nantinya disebut sudah mengusung bodi berbahan
+        aluminium ringan yang dikombinasikan dengan bahan karbon fiber.</p>\n<p>Beralih
+        ke dapur pacunya, R8 Spyder generasi kedua ini masih mengusung mesin V10 berkapasitas
+        5.2 liter yang mampu menghasilkan tenaga hingga 533HP dan torsi maksimum berada
+        di 540 Nm.</p>\n<p>&nbsp;</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p><span><a href=\"http://goo.gl/pJTjng\" target=\"_blank\">merdeka.com</a>
+        - </span>Merdeka.com - Audi R8 Spyder generasi kedua tertangkap kamera sedang
+        dites jalan yang menandakan jika mobil satu ini tak akan lama lagi dirilis
+        di pasaran.</p>\r\n<p>Terjepret dengan stiker kamuflase, Audi R8 Spyder yang
+        hadir dengan atap berjenis open-top. Perbedaan dengan generasi pertamanya
+        terletak pada deck depan dan kaca ...</p>", "scheduled_update_date": null,
+        "slug": "blog/audi-bersiap-hadirkan-r8-spyder-generasi-kedua-di-2016-42449",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1443003639000, "url": "http://62515.hs-sites.com/blog/audi-bersiap-hadirkan-r8-spyder-generasi-kedua-di-2016-42449",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3513734385", "archived": false, "attached_stylesheets": [], "author_user_id":
+        215482, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1443002091000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1443002092000, "head_html":
+        "", "html_title": "[QA] Ecommerce giant Flipkart to launch large-scale marketing
+        campaign in 20 small cities", "id": 3513734385, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "economictimes.indiatimes.com
+        - NEW DELHI: Punjabi singer Diljit Dosanjh or Assam''s latest pop sensation
+        may soon be singing praises for Flipkart. India''s largest online retailer
+        is gearing up to launch a large-scale campaign in 20 small cities, marking
+        the beginning of a change in the company''s approach ...", "meta_keywords":
+        "", "name": "[QA] Ecommerce giant Flipkart to launch large-scale marketing
+        campaign in 20 small cities", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "<p><span><a href=\"http://economictimes.indiatimes.com/industry/services/retail/ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities/articleshow/49068457.cms\"
+        target=\"_blank\">economictimes.indiatimes.com</a> - </span>NEW DELHI: Punjabi
+        singer Diljit Dosanjh or Assam''s latest pop sensation may soon be singing
+        praises for Flipkart. India''s largest online retailer is gearing up to launch
+        a large-scale campaign in 20 small cities, marking the beginning of a change
+        in the company''s approach in targeting shoppers.</p>\r\n<!--more--><p>All
+        its past marketing campaigns had a national focus. \"We realise that it''s
+        about time we take a regional approach to our marketing,\" Ankit Nagori, chief
+        business officer. \"A lot of these products are not available in these cities
+        and sometimes they don''t even know these can be bought online.\"</p>\r\n<p>&nbsp;</p><p
+        style=\"width: 0; height: 0; display: none !important;\" data-opentopic-channelnews-id=\"42424\">&nbsp;</p>",
+        "post_summary": "<p><span><a href=\"http://economictimes.indiatimes.com/industry/services/retail/ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities/articleshow/49068457.cms\"
+        target=\"_blank\">economictimes.indiatimes.com</a> - </span>NEW DELHI: Punjabi
+        singer Diljit Dosanjh or Assam''s latest pop sensation may soon be singing
+        praises for Flipkart. India''s largest online retailer is gearing up to launch
+        a large-scale campaign in 20 small cities, marking the beginning of a change
+        in the company''s approach ...</p>", "preview_image_src": null, "preview_key":
+        "zGqvvNHW", "processing_status": "published", "publish_date": 1443002092000,
+        "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/qa-ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities-42424",
+        "rss_body": "<p><span><a href=\"http://economictimes.indiatimes.com/industry/services/retail/ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities/articleshow/49068457.cms\"
+        target=\"_blank\">economictimes.indiatimes.com</a> - </span>NEW DELHI: Punjabi
+        singer Diljit Dosanjh or Assam''s latest pop sensation may soon be singing
+        praises for Flipkart. India''s largest online retailer is gearing up to launch
+        a large-scale campaign in 20 small cities, marking the beginning of a change
+        in the company''s approach in targeting shoppers.</p>\n<!--more--><p>All its
+        past marketing campaigns had a national focus. \"We realise that it''s about
+        time we take a regional approach to our marketing,\" Ankit Nagori, chief business
+        officer. \"A lot of these products are not available in these cities and sometimes
+        they don''t even know these can be bought online.\"</p>\n<p>&nbsp;</p><p data-opentopic-channelnews-id=\"42424\"
+        style=\"width: 0; height: 0; display: none !important;\">&nbsp;</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p><span><a
+        href=\"http://economictimes.indiatimes.com/industry/services/retail/ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities/articleshow/49068457.cms\"
+        target=\"_blank\">economictimes.indiatimes.com</a> - </span>NEW DELHI: Punjabi
+        singer Diljit Dosanjh or Assam''s latest pop sensation may soon be singing
+        praises for Flipkart. India''s largest online retailer is gearing up to launch
+        a large-scale campaign in 20 small cities, marking the beginning of a change
+        in the company''s approach ...</p>", "scheduled_update_date": null, "slug":
+        "blog/qa-ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities-42424",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1443002095000, "url": "http://62515.hs-sites.com/blog/qa-ecommerce-giant-flipkart-to-launch-large-scale-marketing-campaign-in-20-small-cities-42424",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "3296126619", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1442477160000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1442477160000, "head_html":
+        "", "html_title": "Google, Apple \u0438 Microsoft \u043e\u0442\u043a\u0430\u0437\u0430\u043b\u0438\u0441\u044c
+        \u0448\u043f\u0438\u043e\u043d\u0438\u0442\u044c \u0434\u043b\u044f \u0432\u043b\u0430\u0441\u0442\u0435\u0439
+        \u0421\u0428\u0410", "id": 3296126619, "include_default_custom_css": null,
+        "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "ridus.ru
+        -\n\u041a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0435 \u0441\u0435\u0442\u0435\u0432\u044b\u0435
+        \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u0438 \u0421\u0428\u0410
+        \u043e\u0442\u043a\u0430\u0437\u044b\u0432\u0430\u043b\u0438 \u0432\u043b\u0430\u0441\u0442\u044f\u043c
+        \u0441\u0442\u0440\u0430\u043d\u044b \u0432\u0441\u044f\u043a\u0438\u0439
+        \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430 \u0441\u043f\u0435\u0446\u0441\u043b\u0443\u0436\u0431\u044b
+        \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c \u0441 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\u043c\u0438
+        \u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0435 \u043a \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0435
+        \u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.
+        \u041e\u0431 \u044d\u0442\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0430\u0435\u0442
+        \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u0435
+        The New York Times.\n\u0412 \u0447\u0430\u0441\u0442\u043d\u043e\u0441\u0442\u0438,
+        \u0440\u0435\u0447\u044c \u0438\u0434\u0435\u0442 \u043e \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u044f\u0445
+        Microsoft, Google \u0438 Apple. \u041a\u0430\u043a \u043f\u0438\u0448\u0435\u0442
+        \u0438\u0437\u0434\u0430\u043d\u0438\u0435, \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435
+        \u043c\u0435\u0441\u044f\u0446\u044b \u041c\u0438\u043d\u0438\u0441\u0442\u0435\u0440\u0441\u0442\u0432\u043e
+        \u044e\u0441\u0442\u0438\u0446\u0438\u0438 ...", "meta_keywords": "", "name":
+        "Google, Apple \u0438 Microsoft \u043e\u0442\u043a\u0430\u0437\u0430\u043b\u0438\u0441\u044c
+        \u0448\u043f\u0438\u043e\u043d\u0438\u0442\u044c \u0434\u043b\u044f \u0432\u043b\u0430\u0441\u0442\u0435\u0439
+        \u0421\u0428\u0410", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "<p><a href=\"http://goo.gl/m8AQdJ\" target=\"_blank\">ridus.ru</a> -</p>\r\n<!--more--><p>\u041a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0435
+        \u0441\u0435\u0442\u0435\u0432\u044b\u0435 \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u0438
+        \u0421\u0428\u0410 \u043e\u0442\u043a\u0430\u0437\u044b\u0432\u0430\u043b\u0438
+        \u0432\u043b\u0430\u0441\u0442\u044f\u043c \u0441\u0442\u0440\u0430\u043d\u044b
+        \u0432\u0441\u044f\u043a\u0438\u0439 \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430
+        \u0441\u043f\u0435\u0446\u0441\u043b\u0443\u0436\u0431\u044b \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c
+        \u0441 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\u043c\u0438 \u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0435
+        \u043a \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0435 \u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c
+        \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.
+        \u041e\u0431 \u044d\u0442\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0430\u0435\u0442
+        \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u0435
+        The New York Times.</p>\r\n<p>\u0412 \u0447\u0430\u0441\u0442\u043d\u043e\u0441\u0442\u0438,
+        \u0440\u0435\u0447\u044c \u0438\u0434\u0435\u0442 \u043e \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u044f\u0445
+        Microsoft, Google \u0438 Apple. \u041a\u0430\u043a \u043f\u0438\u0448\u0435\u0442
+        \u0438\u0437\u0434\u0430\u043d\u0438\u0435, \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435
+        \u043c\u0435\u0441\u044f\u0446\u044b \u041c\u0438\u043d\u0438\u0441\u0442\u0435\u0440\u0441\u0442\u0432\u043e
+        \u044e\u0441\u0442\u0438\u0446\u0438\u0438 \u0421\u0428\u0410 \u0438 \u0424\u0411\u0420
+        \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c
+        \u043a \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u0433\u0438\u0433\u0430\u043d\u0442\u0430\u043c
+        \u0441 \u043f\u0440\u043e\u0441\u044c\u0431\u0430\u043c\u0438 \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0442\u044c
+        \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c
+        \u0441\u0432\u043e\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.</p>\r\n<p>%%%%%
+        <img src=\"http://www.ridus.ru/images/2015/9/8/322833/in_article_71b3086a55.jpg\"
+        alt=\"\" /></p>", "post_summary": "<p><a href=\"http://goo.gl/m8AQdJ\" target=\"_blank\">ridus.ru</a>
+        -</p>\r\n<p>\u041a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0435 \u0441\u0435\u0442\u0435\u0432\u044b\u0435
+        \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u0438 \u0421\u0428\u0410
+        \u043e\u0442\u043a\u0430\u0437\u044b\u0432\u0430\u043b\u0438 \u0432\u043b\u0430\u0441\u0442\u044f\u043c
+        \u0441\u0442\u0440\u0430\u043d\u044b \u0432\u0441\u044f\u043a\u0438\u0439
+        \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430 \u0441\u043f\u0435\u0446\u0441\u043b\u0443\u0436\u0431\u044b
+        \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c \u0441 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\u043c\u0438
+        \u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0435 \u043a \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0435
+        \u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.
+        \u041e\u0431 \u044d\u0442\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0430\u0435\u0442
+        \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u0435
+        The New York Times.</p>\r\n<p>\u0412 \u0447\u0430\u0441\u0442\u043d\u043e\u0441\u0442\u0438,
+        \u0440\u0435\u0447\u044c \u0438\u0434\u0435\u0442 \u043e \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u044f\u0445
+        Microsoft, Google \u0438 Apple. \u041a\u0430\u043a \u043f\u0438\u0448\u0435\u0442
+        \u0438\u0437\u0434\u0430\u043d\u0438\u0435, \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435
+        \u043c\u0435\u0441\u044f\u0446\u044b \u041c\u0438\u043d\u0438\u0441\u0442\u0435\u0440\u0441\u0442\u0432\u043e
+        \u044e\u0441\u0442\u0438\u0446\u0438\u0438 ...</p>", "preview_image_src":
+        null, "preview_key": "PWzPC7Tx", "processing_status": "published", "publish_date":
+        1442477160000, "publish_immediately": true, "published_url": "http://62515.hs-sites.com/blog/google-apple-i-microsoft-otkazalis-shpionit-dlia-vlastei-ssha-2124",
+        "rss_body": "<p><a href=\"http://goo.gl/m8AQdJ\" target=\"_blank\">ridus.ru</a>
+        -</p>\n<!--more--><p>\u041a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0435
+        \u0441\u0435\u0442\u0435\u0432\u044b\u0435 \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u0438
+        \u0421\u0428\u0410 \u043e\u0442\u043a\u0430\u0437\u044b\u0432\u0430\u043b\u0438
+        \u0432\u043b\u0430\u0441\u0442\u044f\u043c \u0441\u0442\u0440\u0430\u043d\u044b
+        \u0432\u0441\u044f\u043a\u0438\u0439 \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430
+        \u0441\u043f\u0435\u0446\u0441\u043b\u0443\u0436\u0431\u044b \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c
+        \u0441 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\u043c\u0438 \u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0435
+        \u043a \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0435 \u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c
+        \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.
+        \u041e\u0431 \u044d\u0442\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0430\u0435\u0442
+        \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u0435
+        The New York Times.</p>\n<p>\u0412 \u0447\u0430\u0441\u0442\u043d\u043e\u0441\u0442\u0438,
+        \u0440\u0435\u0447\u044c \u0438\u0434\u0435\u0442 \u043e \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u044f\u0445
+        Microsoft, Google \u0438 Apple. \u041a\u0430\u043a \u043f\u0438\u0448\u0435\u0442
+        \u0438\u0437\u0434\u0430\u043d\u0438\u0435, \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435
+        \u043c\u0435\u0441\u044f\u0446\u044b \u041c\u0438\u043d\u0438\u0441\u0442\u0435\u0440\u0441\u0442\u0432\u043e
+        \u044e\u0441\u0442\u0438\u0446\u0438\u0438 \u0421\u0428\u0410 \u0438 \u0424\u0411\u0420
+        \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c
+        \u043a \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u0433\u0438\u0433\u0430\u043d\u0442\u0430\u043c
+        \u0441 \u043f\u0440\u043e\u0441\u044c\u0431\u0430\u043c\u0438 \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0442\u044c
+        \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c
+        \u0441\u0432\u043e\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.</p>\n<p>%%%%%
+        <img alt=\"\" src=\"http://www.ridus.ru/images/2015/9/8/322833/in_article_71b3086a55.jpg\"/></p>",
+        "rss_email_by_text": "By", "rss_email_click_through_text": "Read more &raquo;",
+        "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p><a href=\"http://goo.gl/m8AQdJ\" target=\"_blank\">ridus.ru</a>
+        -</p>\r\n<p>\u041a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0435 \u0441\u0435\u0442\u0435\u0432\u044b\u0435
+        \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u0438 \u0421\u0428\u0410
+        \u043e\u0442\u043a\u0430\u0437\u044b\u0432\u0430\u043b\u0438 \u0432\u043b\u0430\u0441\u0442\u044f\u043c
+        \u0441\u0442\u0440\u0430\u043d\u044b \u0432\u0441\u044f\u043a\u0438\u0439
+        \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430 \u0441\u043f\u0435\u0446\u0441\u043b\u0443\u0436\u0431\u044b
+        \u043e\u0431\u0440\u0430\u0449\u0430\u043b\u0438\u0441\u044c \u0441 \u0437\u0430\u043f\u0440\u043e\u0441\u0430\u043c\u0438
+        \u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0435 \u043a \u043f\u0435\u0440\u0435\u043f\u0438\u0441\u043a\u0435
+        \u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.
+        \u041e\u0431 \u044d\u0442\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0430\u0435\u0442
+        \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0438\u0437\u0434\u0430\u043d\u0438\u0435
+        The New York Times.</p>\r\n<p>\u0412 \u0447\u0430\u0441\u0442\u043d\u043e\u0441\u0442\u0438,
+        \u0440\u0435\u0447\u044c \u0438\u0434\u0435\u0442 \u043e \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0446\u0438\u044f\u0445
+        Microsoft, Google \u0438 Apple. \u041a\u0430\u043a \u043f\u0438\u0448\u0435\u0442
+        \u0438\u0437\u0434\u0430\u043d\u0438\u0435, \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435
+        \u043c\u0435\u0441\u044f\u0446\u044b \u041c\u0438\u043d\u0438\u0441\u0442\u0435\u0440\u0441\u0442\u0432\u043e
+        \u044e\u0441\u0442\u0438\u0446\u0438\u0438 ...</p>", "scheduled_update_date":
+        null, "slug": "blog/google-apple-i-microsoft-otkazalis-shpionit-dlia-vlastei-ssha-2124",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1442477164000, "url": "http://62515.hs-sites.com/blog/google-apple-i-microsoft-otkazalis-shpionit-dlia-vlastei-ssha-2124",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "2830792369", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1431417245000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1431417246000, "head_html":
+        "", "html_title": "<Foo> & <Bar>", "id": 2830792369, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "<Foo>
+        & <Bar>", "meta_keywords": null, "name": "<Foo> & <Bar>", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "<Foo> & <Bar>", "post_summary": "<foo> &amp; <bar></bar></foo>",
+        "preview_image_src": null, "preview_key": "4_Y5AHWQ", "processing_status":
+        "published", "publish_date": 1431417246000, "publish_immediately": "true",
+        "published_url": "http://62515.hs-sites.com/blog/-temporary-slug-d827d8d2-05cb-49f5-b359-da82cfa90528",
+        "rss_body": "<foo> &amp; <bar></bar></foo>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<foo> &amp; <bar></bar></foo>", "scheduled_update_date":
+        null, "slug": "blog/-temporary-slug-d827d8d2-05cb-49f5-b359-da82cfa90528",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1431417341000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-d827d8d2-05cb-49f5-b359-da82cfa90528",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "2826133274", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1431330782000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1431330782000, "head_html":
+        "", "html_title": "Huehuehue", "id": 2826133274, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "Huehuehue",
+        "meta_keywords": null, "name": "Huehuehue", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/41.png\"
+        />", "post_summary": "<p>Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/41.png\"/></p>",
+        "preview_image_src": null, "preview_key": "sUk59_QX", "processing_status":
+        "published", "publish_date": 1431330782000, "publish_immediately": "true",
+        "published_url": "http://62515.hs-sites.com/blog/-temporary-slug-760726f6-8956-463d-bce0-c4f34cfbe63f",
+        "rss_body": "<p>Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/41.png\"/></p>",
+        "rss_email_by_text": "By", "rss_email_click_through_text": "Read more &raquo;",
+        "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p>Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/41.png\"/></p>",
+        "scheduled_update_date": null, "slug": "blog/-temporary-slug-760726f6-8956-463d-bce0-c4f34cfbe63f",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1431330845000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-760726f6-8956-463d-bce0-c4f34cfbe63f",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "2815648726", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1431330270000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1431330271000, "head_html":
+        "", "html_title": "Huehuehue", "id": 2815648726, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "Huehuehue",
+        "meta_keywords": null, "name": "Huehuehue", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/08.png\"
+        />", "post_summary": "<p>Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/08.png\"/></p>",
+        "preview_image_src": null, "preview_key": "AkbPbDEq", "processing_status":
+        "published", "publish_date": 1431330271000, "publish_immediately": "true",
+        "published_url": "http://62515.hs-sites.com/blog/-temporary-slug-5193d7ef-2dc0-47c6-8103-27d9e3b54bf9",
+        "rss_body": "<p>Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/08.png\"/></p>",
+        "rss_email_by_text": "By", "rss_email_click_through_text": "Read more &raquo;",
+        "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p>Huehuehue <img alt=\"Foobar\" src=\"http://ragemaker.net/images/Happy/08.png\"/></p>",
+        "scheduled_update_date": null, "slug": "blog/-temporary-slug-5193d7ef-2dc0-47c6-8103-27d9e3b54bf9",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1431330319000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-5193d7ef-2dc0-47c6-8103-27d9e3b54bf9",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "2823814997", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1431330034000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1431330034000, "head_html":
+        "", "html_title": "Foobar", "id": 2823814997, "include_default_custom_css":
+        null, "is_draft": false, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "Foobar",
+        "meta_keywords": null, "name": "Foobar", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "Foobar Foobar Foobar", "post_summary": "<p>Foobar Foobar Foobar</p>", "preview_image_src":
+        null, "preview_key": "ZHNG8y0D", "processing_status": "published", "publish_date":
+        1431330034000, "publish_immediately": "true", "published_url": "http://62515.hs-sites.com/blog/-temporary-slug-f1a218e8-7182-4c12-bb58-e5b3dd339ab6",
+        "rss_body": "<p>Foobar Foobar Foobar</p>", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "<p>Foobar Foobar Foobar</p>", "scheduled_update_date":
+        null, "slug": "blog/-temporary-slug-f1a218e8-7182-4c12-bb58-e5b3dd339ab6",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1431330071000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-f1a218e8-7182-4c12-bb58-e5b3dd339ab6",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "352531735", "archived": false, "attached_stylesheets": [], "author_user_id":
+        100307, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "d4c2ff5a-257d-4c4c-84a1-15e7197258fc", "campaign_name": "market",
+        "category_id": 3, "cloned_from": null, "comment_count": 2, "content_group_id":
+        351076997, "created": 1381896164000, "css": {}, "css_text": "", "deleted_at":
+        0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "flex_areas": {}, "folder_id": null, "footer_html":
+        "", "freeze_date": 1381896282000, "head_html": "", "html_title": "Demonstrating
+        the Blog Post API", "id": 352531735, "include_default_custom_css": null, "is_draft":
+        true, "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "A test blog
+        post demonstrating the API.", "meta_keywords": null, "name": "Demonstrating
+        the Blog Post API", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "<p>This blog post is meant to demonstrate the capabilities of the COS API.</p>\n<p><span>Part
+        content system, part personalization engine. HubSpot''s COS is the first integrated
+        website, blog and landing page system to be optimized for mobile right out-of-the-box.
+        Fully integrated with every marketing channel, it adapts to each viewer''s
+        unique context.</span></p>\n<p><span><span>HubSpot is a complete inbound marketing
+        platform. So not only are all of the tools you use in one place, your customers
+        get a seamless experience from email to social to web. Brilliant.</span></span></p>",
+        "post_summary": "<p>This blog post is meant to demonstrate the capabilities
+        of the COS API.</p>\n", "preview_image_src": null, "preview_key": "Bw3HHMW_",
+        "processing_status": "published", "publish_date": 1381896282000, "publish_immediately":
+        true, "published_url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "rss_body": "<p>This blog post is meant to demonstrate the capabilities of
+        the COS API.</p>\n<p><span>Part content system, part personalization engine.
+        HubSpot''s COS is the first integrated website, blog and landing page system
+        to be optimized for mobile right out-of-the-box. Fully integrated with every
+        marketing channel, it adapts to each viewer''s unique context.</span></p>\n<p><span><span>HubSpot
+        is a complete inbound marketing platform. So not only are all of the tools
+        you use in one place, your customers get a seamless experience from email
+        to social to web. Brilliant.</span></span></p>", "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p>This
+        blog post is meant to demonstrate the capabilities of the COS API.</p>\n",
+        "scheduled_update_date": null, "slug": "blog/demonstrating-the-blog-post-api",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [349001328], "unpublished_at":
+        null, "updated": 1381896283000, "url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {"blog_comments":
+        {"body": {}, "name": "blog_comments", "meta": {}, "type": "blog_comments",
+        "id": "blog_comments", "css": {}}}}], "limit": 20, "offset": 0}'
+    http_version: 
+  recorded_at: Wed, 10 Oct 2012 07:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=351076997&created__range=1412924400000&hapikey=demo&order_by=-created
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MjIsMzA7c2V0OjMsNztnZXQ6MjEsMzQ=
+      Content-Length:
+      - '23286'
+      Date:
+      - Wed, 02 Dec 2015 19:34:03 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 7, "objects": [{"analytics_page_id": "461745102", "archived":
+        false, "attached_stylesheets": [], "author_user_id": null, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "slug":
+        "janusz", "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "43a0c102-4e62-4527-849a-21c9bc40c908", "campaign_name": "Fall
+        2013 Season End Clearance", "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1389892017000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "flex_areas": {}, "folder_id": null, "footer_html":
+        "", "freeze_date": 1389892043000, "head_html": "", "html_title": "Testing
+        the blog API first API blog post!", "id": 461745102, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "A post
+        about posts", "meta_keywords": null, "name": "Testing the blog API first API
+        blog post!", "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "<p>Hey guys! I''m
+        using the <b>API</b>! Woohoo!</p>", "post_summary": "<p>Hey guys!</p>", "preview_image_src":
+        null, "preview_key": "fVDzUEki", "processing_status": "published", "publish_date":
+        1389892043000, "publish_immediately": true, "published_url": null, "rss_body":
+        "<p>Hey guys! I''m using the <b>API</b>! Woohoo!</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p>Hey
+        guys!</p>", "scheduled_update_date": null, "slug": "blog/2013/10/api-blog-post-1389892022",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1389892043000, "url": "http://62515.hs-sites.com/blog/2013/10/api-blog-post-1389892022",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "444963329", "archived": false, "attached_stylesheets": [], "author_user_id":
+        100307, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        348109414, "comment_count": 0, "content_group_id": 351076997, "created": 1389385574000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1389385574000, "head_html":
+        "", "html_title": "Cloned Blog Post", "id": 444963329, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "This
+        is the meta description of your first post.", "meta_keywords": null, "name":
+        "Cloned Blog Post", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "\n<p>This is an example blog post.  You can delete this blog post by going
+        to the blog dashboard.</p>\n<!--more--><p>We hope you enjoy your HubSpot!</p>\n",
+        "post_summary": "\n<p>This is an example blog post.  You can delete this blog
+        post by going to the blog dashboard.</p>\n", "preview_image_src": null, "preview_key":
+        "M3R5xXPi", "processing_status": "undefined", "publish_date": 1389385574000,
+        "publish_immediately": null, "published_url": null, "rss_body": "<p>This is
+        an example blog post.  You can delete this blog post by going to the blog
+        dashboard.</p>\n<!--more--><p>We hope you enjoy your HubSpot!</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "\n<p>This
+        is an example blog post.  You can delete this blog post by going to the blog
+        dashboard.</p>\n", "scheduled_update_date": null, "slug": "blog/your-first-blog-post-44",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1389385574000, "url": "http://62515.hs-sites.com/blog/your-first-blog-post-44",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "444953404", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {}, "blog_author_id": null, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "content_group_id": 351076997, "created": 1389385479000, "css": {}, "css_text":
+        "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "flex_areas": {}, "folder_id": null, "footer_html":
+        "", "freeze_date": 1389385479000, "head_html": "", "html_title": "Test Blog
+        Post", "id": 444953404, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": null, "meta_keywords":
+        null, "name": "Test Blog Post", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        null, "post_summary": null, "preview_image_src": null, "preview_key": "2K1sokVE",
+        "processing_status": "", "publish_date": 1389385479000, "publish_immediately":
+        null, "published_url": null, "rss_body": "", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "", "scheduled_update_date": null, "slug": "blog/-temporary-slug-5b948be2-3a0b-4727-a713-f4cd67303bbd",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1389385479000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-5b948be2-3a0b-4727-a713-f4cd67303bbd",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "444962919", "archived": false, "attached_stylesheets": [], "author_user_id":
+        100307, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        348109414, "comment_count": 0, "content_group_id": 351076997, "created": 1389385478000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1389385478000, "head_html":
+        "", "html_title": "Cloned Blog Post", "id": 444962919, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "This
+        is the meta description of your first post.", "meta_keywords": null, "name":
+        "Cloned Blog Post", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "\n<p>This is an example blog post.  You can delete this blog post by going
+        to the blog dashboard.</p>\n<!--more--><p>We hope you enjoy your HubSpot!</p>\n",
+        "post_summary": "\n<p>This is an example blog post.  You can delete this blog
+        post by going to the blog dashboard.</p>\n", "preview_image_src": null, "preview_key":
+        "-yvF07ep", "processing_status": "undefined", "publish_date": 1389385478000,
+        "publish_immediately": null, "published_url": null, "rss_body": "<p>This is
+        an example blog post.  You can delete this blog post by going to the blog
+        dashboard.</p>\n<!--more--><p>We hope you enjoy your HubSpot!</p>", "rss_email_by_text":
+        "By", "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "\n<p>This
+        is an example blog post.  You can delete this blog post by going to the blog
+        dashboard.</p>\n", "scheduled_update_date": null, "slug": "blog/your-first-blog-post-43",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "unpublished_at": null,
+        "updated": 1389385478000, "url": "http://62515.hs-sites.com/blog/your-first-blog-post-43",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "385448441", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1384934339000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": null, "freeze_date": 1384934339000,
+        "head_html": null, "html_title": "Suggestion Records", "id": 385448441, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": null,
+        "meta_keywords": "Suggestion ", "name": "Suggestion Records", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "Your content will be scanned using Copyscape to ensure
+        no part has been copied<br style=\"color: rgb(42, 77, 123); font-family: Verdana,
+        Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Both our editors
+        and the client will review Copyscape repo&nbsp;Do not submit content that
+        has been copied in any way<br style=\"color: rgb(42, 77, 123); font-family:
+        Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part h&nbsp;Do not submit
+        content that has been copied in any way<br style=\"color: rgb(42, 77, 123);
+        font-family: Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Both our editors and the client
+        will review Copyscape &nbsp;port. If pl ", "post_summary": "<p>Your content
+        will be scanned using Copyscape to ensure no part has been copied<br style=\"color:
+        rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS'';
+        font-size: 11px;\"/>?&nbsp;Both our editors and the client will review Copyscape
+        repo&nbsp;Do not submit content that has been copied in any way<br style=\"color:
+        rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS'';
+        font-size: 11px;\"/>?&nbsp;Your content will be scanned using Copyscape to
+        ensure no part h&nbsp;Do not submit content that has been copied in any way<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your content will be scanned
+        using Copyscape to ensure no part has been copied<br style=\"color: rgb(42,
+        77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size:
+        11px;\"/>?&nbsp;Both our editors and the client will review Copyscape &nbsp;port.
+        If pl </p>", "preview_image_src": null, "preview_key": "_-kRw4Gz", "processing_status":
+        "", "publish_date": 1384934339000, "publish_immediately": false, "published_url":
+        null, "rss_body": "<p>Your content will be scanned using Copyscape to ensure
+        no part has been copied<br style=\"color: rgb(42, 77, 123); font-family: Verdana,
+        Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Both our editors
+        and the client will review Copyscape repo&nbsp;Do not submit content that
+        has been copied in any way<br style=\"color: rgb(42, 77, 123); font-family:
+        Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part h&nbsp;Do not submit
+        content that has been copied in any way<br style=\"color: rgb(42, 77, 123);
+        font-family: Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Both our editors and the client
+        will review Copyscape &nbsp;port. If pl </p>", "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p>Your
+        content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Both our editors and the client
+        will review Copyscape repo&nbsp;Do not submit content that has been copied
+        in any way<br style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial,
+        sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your content will
+        be scanned using Copyscape to ensure no part h&nbsp;Do not submit content
+        that has been copied in any way<br style=\"color: rgb(42, 77, 123); font-family:
+        Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Both our editors and the client
+        will review Copyscape &nbsp;port. If pl </p>", "scheduled_update_date": null,
+        "slug": "blog/suggestion-records", "staged_from": null, "state": "DRAFT",
+        "style_override_id": null, "subcategory": "normal_blog_post", "tms_id": null,
+        "topic_ids": [], "unpublished_at": null, "updated": 1384934339000, "url":
+        "http://62515.hs-sites.com/blog/suggestion-records", "use_featured_image":
+        true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id": "352531735",
+        "archived": false, "attached_stylesheets": [], "author_user_id": 100307, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "slug":
+        "janusz", "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "d4c2ff5a-257d-4c4c-84a1-15e7197258fc", "campaign_name": "market",
+        "category_id": 3, "cloned_from": null, "comment_count": 2, "content_group_id":
+        351076997, "created": 1381896164000, "css": {}, "css_text": "", "deleted_at":
+        0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "flex_areas": {}, "folder_id": null, "footer_html":
+        "", "freeze_date": 1381896282000, "head_html": "", "html_title": "Demonstrating
+        the Blog Post API", "id": 352531735, "include_default_custom_css": null, "is_draft":
+        true, "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "A test blog
+        post demonstrating the API.", "meta_keywords": null, "name": "Demonstrating
+        the Blog Post API", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "<p>This blog post is meant to demonstrate the capabilities of the COS API.</p>\n<p><span>Part
+        content system, part personalization engine. HubSpot''s COS is the first integrated
+        website, blog and landing page system to be optimized for mobile right out-of-the-box.
+        Fully integrated with every marketing channel, it adapts to each viewer''s
+        unique context.</span></p>\n<p><span><span>HubSpot is a complete inbound marketing
+        platform. So not only are all of the tools you use in one place, your customers
+        get a seamless experience from email to social to web. Brilliant.</span></span></p>",
+        "post_summary": "<p>This blog post is meant to demonstrate the capabilities
+        of the COS API.</p>\n", "preview_image_src": null, "preview_key": "Bw3HHMW_",
+        "processing_status": "published", "publish_date": 1381896282000, "publish_immediately":
+        true, "published_url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "rss_body": "<p>This blog post is meant to demonstrate the capabilities of
+        the COS API.</p>\n<p><span>Part content system, part personalization engine.
+        HubSpot''s COS is the first integrated website, blog and landing page system
+        to be optimized for mobile right out-of-the-box. Fully integrated with every
+        marketing channel, it adapts to each viewer''s unique context.</span></p>\n<p><span><span>HubSpot
+        is a complete inbound marketing platform. So not only are all of the tools
+        you use in one place, your customers get a seamless experience from email
+        to social to web. Brilliant.</span></span></p>", "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p>This
+        blog post is meant to demonstrate the capabilities of the COS API.</p>\n",
+        "scheduled_update_date": null, "slug": "blog/demonstrating-the-blog-post-api",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [349001328], "unpublished_at":
+        null, "updated": 1381896283000, "url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {"blog_comments":
+        {"body": {}, "name": "blog_comments", "meta": {}, "type": "blog_comments",
+        "id": "blog_comments", "css": {}}}}, {"analytics_page_id": "348109414", "archived":
+        false, "attached_stylesheets": [], "author_user_id": 100307, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "slug":
+        "janusz", "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "content_group_id": 351076997, "created": 1381896118000,
+        "css": {}, "css_text": "", "deleted_at": 0, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "flex_areas":
+        {}, "folder_id": null, "footer_html": "", "freeze_date": 1438275852000, "head_html":
+        "", "html_title": "Updated Test Blog Post", "id": 348109414, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "legacy_blog_tabid": null, "meta_description": "This
+        is the meta description of your first post.", "meta_keywords": null, "name":
+        "Updated Test Blog Post", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "\n<p>This is an example blog post.  You can delete this blog post by going
+        to the blog dashboard.</p>\n<p>We hope you enjoy your HubSpot!</p>\n", "post_summary":
+        "\n<p>This is an example blog post.  You can delete this blog post by going
+        to the blog dashboard.</p>\n", "preview_image_src": null, "preview_key": "AhbF8tzV",
+        "processing_status": "published", "publish_date": 1381896118000, "publish_immediately":
+        null, "published_url": null, "rss_body": "\n<p>This is an example blog post.  You
+        can delete this blog post by going to the blog dashboard.</p>\n<p>We hope
+        you enjoy your HubSpot!</p>\n", "rss_email_by_text": "By", "rss_email_click_through_text":
+        "Read more &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_image_max_width":
+        0, "rss_summary": "\n<p>This is an example blog post.  You can delete this
+        blog post by going to the blog dashboard.</p>\n", "scheduled_update_date":
+        null, "slug": "blog/your-first-blog-post", "staged_from": null, "state": "DRAFT",
+        "style_override_id": null, "subcategory": "normal_blog_post", "tms_id": null,
+        "topic_ids": [], "unpublished_at": null, "updated": 1438275852000, "url":
+        "http://62515.hs-sites.com/blog/your-first-blog-post", "use_featured_image":
+        true, "widget_containers": {}, "widgets": {}}], "limit": 20, "offset": 0}'
+    http_version: 
+  recorded_at: Wed, 10 Oct 2012 07:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=351076997&created__range=1412924400000&hapikey=demo&order_by=-created&state=PUBLISHED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MTAsNztzZXQ6MywyO2dldDo5LDEy
+      Content-Length:
+      - '4019'
+      Date:
+      - Wed, 02 Dec 2015 19:34:04 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 1, "objects": [{"analytics_page_id": "352531735", "archived":
+        false, "attached_stylesheets": [], "author_user_id": 100307, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "slug":
+        "janusz", "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "d4c2ff5a-257d-4c4c-84a1-15e7197258fc", "campaign_name": "market",
+        "category_id": 3, "cloned_from": null, "comment_count": 2, "content_group_id":
+        351076997, "created": 1381896164000, "css": {}, "css_text": "", "deleted_at":
+        0, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "flex_areas": {}, "folder_id": null, "footer_html":
+        "", "freeze_date": 1381896282000, "head_html": "", "html_title": "Demonstrating
+        the Blog Post API", "id": 352531735, "include_default_custom_css": null, "is_draft":
+        true, "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "legacy_blog_tabid": null, "meta_description": "A test blog
+        post demonstrating the API.", "meta_keywords": null, "name": "Demonstrating
+        the Blog Post API", "page_expiry_date": null, "page_expiry_enabled": null,
+        "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "<p>This blog post is meant to demonstrate the capabilities of the COS API.</p>\n<p><span>Part
+        content system, part personalization engine. HubSpot''s COS is the first integrated
+        website, blog and landing page system to be optimized for mobile right out-of-the-box.
+        Fully integrated with every marketing channel, it adapts to each viewer''s
+        unique context.</span></p>\n<p><span><span>HubSpot is a complete inbound marketing
+        platform. So not only are all of the tools you use in one place, your customers
+        get a seamless experience from email to social to web. Brilliant.</span></span></p>",
+        "post_summary": "<p>This blog post is meant to demonstrate the capabilities
+        of the COS API.</p>\n", "preview_image_src": null, "preview_key": "Bw3HHMW_",
+        "processing_status": "published", "publish_date": 1381896282000, "publish_immediately":
+        true, "published_url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "rss_body": "<p>This blog post is meant to demonstrate the capabilities of
+        the COS API.</p>\n<p><span>Part content system, part personalization engine.
+        HubSpot''s COS is the first integrated website, blog and landing page system
+        to be optimized for mobile right out-of-the-box. Fully integrated with every
+        marketing channel, it adapts to each viewer''s unique context.</span></p>\n<p><span><span>HubSpot
+        is a complete inbound marketing platform. So not only are all of the tools
+        you use in one place, your customers get a seamless experience from email
+        to social to web. Brilliant.</span></span></p>", "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_image_max_width": 0, "rss_summary": "<p>This
+        blog post is meant to demonstrate the capabilities of the COS API.</p>\n",
+        "scheduled_update_date": null, "slug": "blog/demonstrating-the-blog-post-api",
+        "staged_from": null, "state": "PUBLISHED", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [349001328], "unpublished_at":
+        null, "updated": 1381896283000, "url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {"blog_comments":
+        {"body": {}, "name": "blog_comments", "meta": {}, "type": "blog_comments",
+        "id": "blog_comments", "css": {}}}}], "limit": 20, "offset": 0}'
+    http_version: 
+  recorded_at: Wed, 10 Oct 2012 07:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=351076997&created__range=1412892000000&hapikey=demo&order_by=-created
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6MTgsMTc7c2V0OjEsMTtnZXQ6MTksMjE=
+      X-Trace:
+      - 1B95F28D7BAB9D53E90600FC06C88368FA47A77559048CE69C94BE81BC
+      Content-Length:
+      - '24707'
+      Date:
+      - Thu, 18 Aug 2016 14:05:29 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 7, "objects": [{"analytics_page_id": "461745102", "archived":
+        false, "attached_stylesheets": [], "author_user_id": null, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "slug":
+        "janusz", "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "43a0c102-4e62-4527-849a-21c9bc40c908", "campaign_name": "Fall
+        2013 Season End Clearance", "category_id": 3, "cloned_from": null, "comment_count":
+        0, "compose_body": null, "content_group_id": 351076997, "created": 1389892017000,
+        "css": {}, "css_text": "", "deleted_at": 0, "deleted_by": null, "domain":
+        "", "enable_domain_stylesheets": true, "enable_layout_stylesheets": true,
+        "featured_image": "", "featured_image_alt_text": "", "flex_areas": {}, "folder_id":
+        null, "footer_html": "", "freeze_date": 1389892043000, "head_html": "", "html_title":
+        "Testing the blog API first API blog post!", "id": 461745102, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": "A post about posts",
+        "meta_keywords": null, "name": "Testing the blog API first API blog post!",
+        "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "<p>Hey guys! I''m
+        using the <b>API</b>! Woohoo!</p>", "post_summary": "<p>Hey guys!</p>", "preview_image_src":
+        null, "preview_key": "fVDzUEki", "processing_status": "published", "publish_date":
+        1389892043000, "publish_immediately": true, "published_url": null, "rss_body":
+        "<p>Hey guys! I''m using the <b>API</b>! Woohoo!</p>", "rss_email_author_line_template":
+        false, "rss_email_blog_image_max_width": null, "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_entry_template": null, "rss_email_entry_template_enabled":
+        false, "rss_email_image_max_width": 0, "rss_summary": "<p>Hey guys!</p>",
+        "scheduled_update_date": null, "slug": "blog/2013/10/api-blog-post-1389892022",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "translated_from_id":
+        null, "unpublished_at": null, "updated": 1389892043000, "url": "http://62515.hs-sites.com/blog/2013/10/api-blog-post-1389892022",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "450007202", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {}, "blog_author_id": null, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "compose_body": null, "content_group_id": 351076997, "created": 1389387668000,
+        "css": {}, "css_text": "", "deleted_at": 0, "deleted_by": null, "domain":
+        "", "enable_domain_stylesheets": true, "enable_layout_stylesheets": true,
+        "featured_image": "", "featured_image_alt_text": "", "flex_areas": {}, "folder_id":
+        null, "footer_html": "", "freeze_date": 1389387668000, "head_html": "", "html_title":
+        "Test Blog Post", "id": 450007202, "include_default_custom_css": null, "is_draft":
+        true, "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": null, "meta_keywords":
+        null, "name": "Test Blog Post", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        null, "post_summary": null, "preview_image_src": null, "preview_key": "Puvfl8Po",
+        "processing_status": "", "publish_date": 1389387668000, "publish_immediately":
+        null, "published_url": null, "rss_body": "", "rss_email_author_line_template":
+        false, "rss_email_blog_image_max_width": null, "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_entry_template": null, "rss_email_entry_template_enabled":
+        false, "rss_email_image_max_width": 0, "rss_summary": "", "scheduled_update_date":
+        null, "slug": "blog/-temporary-slug-b3e5fb76-7e00-4938-a8a9-c6b7dfff73b5",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "translated_from_id":
+        null, "unpublished_at": null, "updated": 1389387668000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-b3e5fb76-7e00-4938-a8a9-c6b7dfff73b5",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "444963329", "archived": false, "attached_stylesheets": [], "author_user_id":
+        100307, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        348109414, "comment_count": 0, "compose_body": null, "content_group_id": 351076997,
+        "created": 1389385574000, "css": {}, "css_text": "", "deleted_at": 0, "deleted_by":
+        null, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "featured_image_alt_text": "", "flex_areas": {},
+        "folder_id": null, "footer_html": "", "freeze_date": 1389385574000, "head_html":
+        "", "html_title": "Cloned Blog Post", "id": 444963329, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": "This is the meta description
+        of your first post.", "meta_keywords": null, "name": "Cloned Blog Post", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "\n<p>This is an example blog post.  You can delete this
+        blog post by going to the blog dashboard.</p>\n<!--more--><p>We hope you enjoy
+        your HubSpot!</p>\n", "post_summary": "\n<p>This is an example blog post.  You
+        can delete this blog post by going to the blog dashboard.</p>\n", "preview_image_src":
+        null, "preview_key": "M3R5xXPi", "processing_status": "undefined", "publish_date":
+        1389385574000, "publish_immediately": null, "published_url": null, "rss_body":
+        "<p>This is an example blog post.  You can delete this blog post by going
+        to the blog dashboard.</p>\n<!--more--><p>We hope you enjoy your HubSpot!</p>",
+        "rss_email_author_line_template": false, "rss_email_blog_image_max_width":
+        null, "rss_email_by_text": "By", "rss_email_click_through_text": "Read more
+        &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_entry_template":
+        null, "rss_email_entry_template_enabled": false, "rss_email_image_max_width":
+        0, "rss_summary": "\n<p>This is an example blog post.  You can delete this
+        blog post by going to the blog dashboard.</p>\n", "scheduled_update_date":
+        null, "slug": "blog/your-first-blog-post-44", "staged_from": null, "state":
+        "DRAFT", "style_override_id": null, "subcategory": "normal_blog_post", "tms_id":
+        null, "topic_ids": [], "translated_from_id": null, "unpublished_at": null,
+        "updated": 1389385574000, "url": "http://62515.hs-sites.com/blog/your-first-blog-post-44",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "444953404", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {}, "blog_author_id": null, "blueprint_type_id": 0, "campaign":
+        null, "campaign_name": null, "category_id": 3, "cloned_from": null, "comment_count":
+        0, "compose_body": null, "content_group_id": 351076997, "created": 1389385479000,
+        "css": {}, "css_text": "", "deleted_at": 0, "deleted_by": null, "domain":
+        "", "enable_domain_stylesheets": true, "enable_layout_stylesheets": true,
+        "featured_image": "", "featured_image_alt_text": "", "flex_areas": {}, "folder_id":
+        null, "footer_html": "", "freeze_date": 1389385479000, "head_html": "", "html_title":
+        "Test Blog Post", "id": 444953404, "include_default_custom_css": null, "is_draft":
+        true, "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": null, "meta_keywords":
+        null, "name": "Test Blog Post", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        null, "post_summary": null, "preview_image_src": null, "preview_key": "2K1sokVE",
+        "processing_status": "", "publish_date": 1389385479000, "publish_immediately":
+        null, "published_url": null, "rss_body": "", "rss_email_author_line_template":
+        false, "rss_email_blog_image_max_width": null, "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_entry_template": null, "rss_email_entry_template_enabled":
+        false, "rss_email_image_max_width": 0, "rss_summary": "", "scheduled_update_date":
+        null, "slug": "blog/-temporary-slug-5b948be2-3a0b-4727-a713-f4cd67303bbd",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "translated_from_id":
+        null, "unpublished_at": null, "updated": 1389385479000, "url": "http://62515.hs-sites.com/blog/-temporary-slug-5b948be2-3a0b-4727-a713-f4cd67303bbd",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "444962919", "archived": false, "attached_stylesheets": [], "author_user_id":
+        100307, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        348109414, "comment_count": 0, "compose_body": null, "content_group_id": 351076997,
+        "created": 1389385478000, "css": {}, "css_text": "", "deleted_at": 0, "deleted_by":
+        null, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "featured_image_alt_text": "", "flex_areas": {},
+        "folder_id": null, "footer_html": "", "freeze_date": 1389385478000, "head_html":
+        "", "html_title": "Cloned Blog Post", "id": 444962919, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": "This is the meta description
+        of your first post.", "meta_keywords": null, "name": "Cloned Blog Post", "page_expiry_date":
+        null, "page_expiry_enabled": null, "page_expiry_redirect_id": null, "page_expiry_redirect_url":
+        null, "page_redirected": null, "performable_url": null, "personas": [], "portal_id":
+        62515, "post_body": "\n<p>This is an example blog post.  You can delete this
+        blog post by going to the blog dashboard.</p>\n<!--more--><p>We hope you enjoy
+        your HubSpot!</p>\n", "post_summary": "\n<p>This is an example blog post.  You
+        can delete this blog post by going to the blog dashboard.</p>\n", "preview_image_src":
+        null, "preview_key": "-yvF07ep", "processing_status": "undefined", "publish_date":
+        1389385478000, "publish_immediately": null, "published_url": null, "rss_body":
+        "<p>This is an example blog post.  You can delete this blog post by going
+        to the blog dashboard.</p>\n<!--more--><p>We hope you enjoy your HubSpot!</p>",
+        "rss_email_author_line_template": false, "rss_email_blog_image_max_width":
+        null, "rss_email_by_text": "By", "rss_email_click_through_text": "Read more
+        &raquo;", "rss_email_comment_text": "Comment &raquo;", "rss_email_entry_template":
+        null, "rss_email_entry_template_enabled": false, "rss_email_image_max_width":
+        0, "rss_summary": "\n<p>This is an example blog post.  You can delete this
+        blog post by going to the blog dashboard.</p>\n", "scheduled_update_date":
+        null, "slug": "blog/your-first-blog-post-43", "staged_from": null, "state":
+        "DRAFT", "style_override_id": null, "subcategory": "normal_blog_post", "tms_id":
+        null, "topic_ids": [], "translated_from_id": null, "unpublished_at": null,
+        "updated": 1389385478000, "url": "http://62515.hs-sites.com/blog/your-first-blog-post-43",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "385448441", "archived": false, "attached_stylesheets": [], "author_user_id":
+        null, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": null, "campaign_name": null, "category_id": 3, "cloned_from":
+        null, "comment_count": 0, "compose_body": null, "content_group_id": 351076997,
+        "created": 1384934339000, "css": {}, "css_text": "", "deleted_at": 0, "deleted_by":
+        null, "domain": "", "enable_domain_stylesheets": true, "enable_layout_stylesheets":
+        true, "featured_image": "", "featured_image_alt_text": "", "flex_areas": {},
+        "folder_id": null, "footer_html": null, "freeze_date": 1384934339000, "head_html":
+        null, "html_title": "Suggestion Records", "id": 385448441, "include_default_custom_css":
+        null, "is_draft": true, "is_instant_email_enabled": false, "is_social_publishing_enabled":
+        false, "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": null, "meta_keywords":
+        "Suggestion ", "name": "Suggestion Records", "page_expiry_date": null, "page_expiry_enabled":
+        null, "page_expiry_redirect_id": null, "page_expiry_redirect_url": null, "page_redirected":
+        null, "performable_url": null, "personas": [], "portal_id": 62515, "post_body":
+        "Your content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Both our editors and the client
+        will review Copyscape repo&nbsp;Do not submit content that has been copied
+        in any way<br style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial,
+        sans-serif, ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Your content will
+        be scanned using Copyscape to ensure no part h&nbsp;Do not submit content
+        that has been copied in any way<br style=\"color: rgb(42, 77, 123); font-family:
+        Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\">?&nbsp;Both our editors and the client
+        will review Copyscape &nbsp;port. If pl ", "post_summary": "<p>Your content
+        will be scanned using Copyscape to ensure no part has been copied<br style=\"color:
+        rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS'';
+        font-size: 11px;\"/>?&nbsp;Both our editors and the client will review Copyscape
+        repo&nbsp;Do not submit content that has been copied in any way<br style=\"color:
+        rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS'';
+        font-size: 11px;\"/>?&nbsp;Your content will be scanned using Copyscape to
+        ensure no part h&nbsp;Do not submit content that has been copied in any way<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your content will be scanned
+        using Copyscape to ensure no part has been copied<br style=\"color: rgb(42,
+        77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size:
+        11px;\"/>?&nbsp;Both our editors and the client will review Copyscape &nbsp;port.
+        If pl </p>", "preview_image_src": null, "preview_key": "_-kRw4Gz", "processing_status":
+        "", "publish_date": 1384934339000, "publish_immediately": false, "published_url":
+        null, "rss_body": "<p>Your content will be scanned using Copyscape to ensure
+        no part has been copied<br style=\"color: rgb(42, 77, 123); font-family: Verdana,
+        Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Both our editors
+        and the client will review Copyscape repo&nbsp;Do not submit content that
+        has been copied in any way<br style=\"color: rgb(42, 77, 123); font-family:
+        Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part h&nbsp;Do not submit
+        content that has been copied in any way<br style=\"color: rgb(42, 77, 123);
+        font-family: Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your
+        content will be scanned using Copyscape to ensure no part has been copied<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Both our editors and the client
+        will review Copyscape &nbsp;port. If pl </p>", "rss_email_author_line_template":
+        false, "rss_email_blog_image_max_width": null, "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_entry_template": null, "rss_email_entry_template_enabled":
+        false, "rss_email_image_max_width": 0, "rss_summary": "<p>Your content will
+        be scanned using Copyscape to ensure no part has been copied<br style=\"color:
+        rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS'';
+        font-size: 11px;\"/>?&nbsp;Both our editors and the client will review Copyscape
+        repo&nbsp;Do not submit content that has been copied in any way<br style=\"color:
+        rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS'';
+        font-size: 11px;\"/>?&nbsp;Your content will be scanned using Copyscape to
+        ensure no part h&nbsp;Do not submit content that has been copied in any way<br
+        style=\"color: rgb(42, 77, 123); font-family: Verdana, Arial, sans-serif,
+        ''Trebuchet MS''; font-size: 11px;\"/>?&nbsp;Your content will be scanned
+        using Copyscape to ensure no part has been copied<br style=\"color: rgb(42,
+        77, 123); font-family: Verdana, Arial, sans-serif, ''Trebuchet MS''; font-size:
+        11px;\"/>?&nbsp;Both our editors and the client will review Copyscape &nbsp;port.
+        If pl </p>", "scheduled_update_date": null, "slug": "blog/suggestion-records",
+        "staged_from": null, "state": "DRAFT", "style_override_id": null, "subcategory":
+        "normal_blog_post", "tms_id": null, "topic_ids": [], "translated_from_id":
+        null, "unpublished_at": null, "updated": 1384934339000, "url": "http://62515.hs-sites.com/blog/suggestion-records",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {}}, {"analytics_page_id":
+        "352531735", "archived": false, "attached_stylesheets": [], "author_user_id":
+        100307, "blog_author": {"username": "testapi@hubspot.com", "bio": "", "twitter":
+        "", "updated": 1446552486458, "linkedin": "", "facebook": "", "full_name":
+        "Janusz", "deleted_at": 0, "slug": "janusz", "portal_id": 62515, "user_id":
+        215482, "created": 1377856983000, "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "id": 284839243, "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "d4c2ff5a-257d-4c4c-84a1-15e7197258fc", "campaign_name": "market",
+        "category_id": 3, "cloned_from": null, "comment_count": 4, "compose_body":
+        null, "content_group_id": 351076997, "created": 1381896164000, "css": {},
+        "css_text": "", "deleted_at": 0, "deleted_by": null, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "featured_image_alt_text":
+        "", "flex_areas": {}, "folder_id": null, "footer_html": "", "freeze_date":
+        1381896282000, "head_html": "", "html_title": "Demonstrating the Blog Post
+        API", "id": 352531735, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": "A test blog post demonstrating
+        the API.", "meta_keywords": null, "name": "Demonstrating the Blog Post API",
+        "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "<p>This blog post
+        is meant to demonstrate the capabilities of the COS API.</p>\n<p><span>Part
+        content system, part personalization engine. HubSpot''s COS is the first integrated
+        website, blog and landing page system to be optimized for mobile right out-of-the-box.
+        Fully integrated with every marketing channel, it adapts to each viewer''s
+        unique context.</span></p>\n<p><span><span>HubSpot is a complete inbound marketing
+        platform. So not only are all of the tools you use in one place, your customers
+        get a seamless experience from email to social to web. Brilliant.</span></span></p>",
+        "post_summary": "<p>This blog post is meant to demonstrate the capabilities
+        of the COS API.</p>\n", "preview_image_src": null, "preview_key": "Bw3HHMW_",
+        "processing_status": "published", "publish_date": 1381896282000, "publish_immediately":
+        true, "published_url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "rss_body": "<p>This blog post is meant to demonstrate the capabilities of
+        the COS API.</p>\n<p><span>Part content system, part personalization engine.
+        HubSpot''s COS is the first integrated website, blog and landing page system
+        to be optimized for mobile right out-of-the-box. Fully integrated with every
+        marketing channel, it adapts to each viewer''s unique context.</span></p>\n<p><span><span>HubSpot
+        is a complete inbound marketing platform. So not only are all of the tools
+        you use in one place, your customers get a seamless experience from email
+        to social to web. Brilliant.</span></span></p>", "rss_email_author_line_template":
+        false, "rss_email_blog_image_max_width": null, "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_entry_template": null, "rss_email_entry_template_enabled":
+        false, "rss_email_image_max_width": 0, "rss_summary": "<p>This blog post is
+        meant to demonstrate the capabilities of the COS API.</p>\n", "scheduled_update_date":
+        null, "slug": "blog/demonstrating-the-blog-post-api", "staged_from": null,
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "tms_id": null, "topic_ids": [349001328], "translated_from_id": null, "unpublished_at":
+        null, "updated": 1381896283000, "url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {"blog_comments":
+        {"body": {}, "name": "blog_comments", "meta": {}, "type": "blog_comments",
+        "id": "blog_comments", "css": {}}}}], "limit": 20, "offset": 0}'
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 22:00:00 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=351076997&created__range=1412892000000&hapikey=demo&order_by=-created&state=PUBLISHED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cache-Control:
+      - No-store
+      Content-Type:
+      - application/json
+      P3p:
+      - 'P3P: policyref="http://www.hubspot.com/w3c/p3p.xml", CP="CURa ADMa DEVa TAIa
+        PSAa PSDa OUR IND DSP NON COR'
+      Server:
+      - gunicorn/0.17.2
+      Vary:
+      - Accept-Encoding
+      X-Hs-Mc-Reqs:
+      - Z2V0X21hbnk6Niw1O3NldDoxLDE7Z2V0OjcsMjI=
+      X-Trace:
+      - 1B78C7DEC9CADD2E62FF20DB1509CEAE4B56164BED97FE25791AAFE781
+      Content-Length:
+      - '4355'
+      Date:
+      - Thu, 18 Aug 2016 14:05:30 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count": 1, "objects": [{"analytics_page_id": "352531735", "archived":
+        false, "attached_stylesheets": [], "author_user_id": 100307, "blog_author":
+        {"username": "testapi@hubspot.com", "bio": "", "twitter": "", "updated": 1446552486458,
+        "linkedin": "", "facebook": "", "full_name": "Janusz", "deleted_at": 0, "id":
+        284839243, "portal_id": 62515, "user_id": 215482, "created": 1377856983000,
+        "gravatar_url": "https://app.hubspot.com/settings/avatar/bb23f3ae97b9698d130c02d2841e86a4",
+        "google_plus": "", "slug": "janusz", "website": "", "avatar": "", "email":
+        "testapi@hubspot.com"}, "blog_author_id": 284839243, "blueprint_type_id":
+        0, "campaign": "d4c2ff5a-257d-4c4c-84a1-15e7197258fc", "campaign_name": "market",
+        "category_id": 3, "cloned_from": null, "comment_count": 4, "compose_body":
+        null, "content_group_id": 351076997, "created": 1381896164000, "css": {},
+        "css_text": "", "deleted_at": 0, "deleted_by": null, "domain": "", "enable_domain_stylesheets":
+        true, "enable_layout_stylesheets": true, "featured_image": "", "featured_image_alt_text":
+        "", "flex_areas": {}, "folder_id": null, "footer_html": "", "freeze_date":
+        1381896282000, "head_html": "", "html_title": "Demonstrating the Blog Post
+        API", "id": 352531735, "include_default_custom_css": null, "is_draft": true,
+        "is_instant_email_enabled": false, "is_social_publishing_enabled": false,
+        "keywords": [], "language": null, "last_edit_session_id": null, "last_edit_update_id":
+        null, "legacy_blog_tabid": null, "meta_description": "A test blog post demonstrating
+        the API.", "meta_keywords": null, "name": "Demonstrating the Blog Post API",
+        "page_expiry_date": null, "page_expiry_enabled": null, "page_expiry_redirect_id":
+        null, "page_expiry_redirect_url": null, "page_redirected": null, "performable_url":
+        null, "personas": [], "portal_id": 62515, "post_body": "<p>This blog post
+        is meant to demonstrate the capabilities of the COS API.</p>\n<p><span>Part
+        content system, part personalization engine. HubSpot''s COS is the first integrated
+        website, blog and landing page system to be optimized for mobile right out-of-the-box.
+        Fully integrated with every marketing channel, it adapts to each viewer''s
+        unique context.</span></p>\n<p><span><span>HubSpot is a complete inbound marketing
+        platform. So not only are all of the tools you use in one place, your customers
+        get a seamless experience from email to social to web. Brilliant.</span></span></p>",
+        "post_summary": "<p>This blog post is meant to demonstrate the capabilities
+        of the COS API.</p>\n", "preview_image_src": null, "preview_key": "Bw3HHMW_",
+        "processing_status": "published", "publish_date": 1381896282000, "publish_immediately":
+        true, "published_url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "rss_body": "<p>This blog post is meant to demonstrate the capabilities of
+        the COS API.</p>\n<p><span>Part content system, part personalization engine.
+        HubSpot''s COS is the first integrated website, blog and landing page system
+        to be optimized for mobile right out-of-the-box. Fully integrated with every
+        marketing channel, it adapts to each viewer''s unique context.</span></p>\n<p><span><span>HubSpot
+        is a complete inbound marketing platform. So not only are all of the tools
+        you use in one place, your customers get a seamless experience from email
+        to social to web. Brilliant.</span></span></p>", "rss_email_author_line_template":
+        false, "rss_email_blog_image_max_width": null, "rss_email_by_text": "By",
+        "rss_email_click_through_text": "Read more &raquo;", "rss_email_comment_text":
+        "Comment &raquo;", "rss_email_entry_template": null, "rss_email_entry_template_enabled":
+        false, "rss_email_image_max_width": 0, "rss_summary": "<p>This blog post is
+        meant to demonstrate the capabilities of the COS API.</p>\n", "scheduled_update_date":
+        null, "slug": "blog/demonstrating-the-blog-post-api", "staged_from": null,
+        "state": "PUBLISHED", "style_override_id": null, "subcategory": "normal_blog_post",
+        "tms_id": null, "topic_ids": [349001328], "translated_from_id": null, "unpublished_at":
+        null, "updated": 1381896283000, "url": "http://62515.hs-sites.com/blog/demonstrating-the-blog-post-api",
+        "use_featured_image": true, "widget_containers": {}, "widgets": {"blog_comments":
+        {"body": {}, "name": "blog_comments", "meta": {}, "type": "blog_comments",
+        "id": "blog_comments", "css": {}}}}], "limit": 20, "offset": 0}'
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 22:00:00 GMT
 recorded_with: VCR 2.4.0

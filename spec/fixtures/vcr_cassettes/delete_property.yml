@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.hubapi.com/contacts/v2/properties/named/my_new_property?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Date:
+      - Tue, 05 Jan 2016 22:51:33 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Jan 2016 22:51:33 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/companies/v2/properties/named/my_new_property?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 18 Aug 2016 14:04:56 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 18 Aug 2016 14:04:53 GMT
+recorded_with: VCR 2.4.0

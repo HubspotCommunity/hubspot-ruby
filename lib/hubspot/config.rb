@@ -1,15 +1,20 @@
+require 'logger'
+
 module Hubspot
   class Config
+
+    CONFIG_KEYS = [:hapikey, :base_url, :portal_id, :logger]
+    DEFAULT_LOGGER = Logger.new('/dev/null')
+
     class << self
-      attr_reader :hapikey
-      attr_reader :base_url
-      attr_reader :portal_id
+      attr_accessor *CONFIG_KEYS
 
       def configure(config)
         config.stringify_keys!
         @hapikey = config["hapikey"]
         @base_url = config["base_url"] || "https://api.hubapi.com"
         @portal_id = config["portal_id"]
+        @logger = config['logger'] || DEFAULT_LOGGER
         self
       end
 
@@ -17,6 +22,7 @@ module Hubspot
         @hapikey = nil
         @base_url = "https://api.hubapi.com"
         @portal_id = nil
+        @logger = DEFAULT_LOGGER
       end
 
       def ensure!(*params)

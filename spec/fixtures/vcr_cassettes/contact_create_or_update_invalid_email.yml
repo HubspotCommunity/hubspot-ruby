@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/not_an_email?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '296'
+      Date:
+      - Mon, 20 Jun 2016 17:17:12 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Property values were not valid","correlationId":"96cb3fe1-c6c8-4986-86ba-b52dfdf0319e","validationResults":[{"isValid":false,"message":"Email
+        address not_an_email is invalid","error":"INVALID_EMAIL","name":"email"}],"requestId":"7ecd0bd2-b6ec-439e-869c-83f7b1cc7bf5"}'
+    http_version: 
+  recorded_at: Mon, 20 Jun 2016 17:17:12 GMT
+recorded_with: VCR 2.4.0

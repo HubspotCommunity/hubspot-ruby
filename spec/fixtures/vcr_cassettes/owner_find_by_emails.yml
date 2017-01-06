@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/owners/v2/owners?email=aaron@unbounce.com&hapikey=demo&includeInactive=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '283'
+      Date:
+      - Wed, 20 Jan 2016 20:14:06 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"portalId":62515,"ownerId":72,"type":"PERSON","firstName":"Aaron","lastName":"Oman","email":"aaron@unbounce.com","createdAt":1405605859739,"updatedAt":1446764930941,"remoteList":[{"id":29619,"portalId":62515,"ownerId":72,"remoteId":"254556","remoteType":"HUBSPOT","active":true}]}]'
+    http_version: 
+  recorded_at: Wed, 20 Jan 2016 20:14:06 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/owners/v2/owners?email=support@unbounce.com&hapikey=demo&includeInactive=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '285'
+      Date:
+      - Wed, 20 Jan 2016 20:16:03 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"portalId":62515,"ownerId":81,"type":"PERSON","firstName":"Aaron","lastName":"Oman","email":"support@unbounce.com","createdAt":1405605861125,"updatedAt":1446764931682,"remoteList":[{"id":29899,"portalId":62515,"ownerId":81,"remoteId":"329822","remoteType":"HUBSPOT","active":true}]}]'
+    http_version: 
+  recorded_at: Wed, 20 Jan 2016 20:16:03 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/owners/v2/owners?email=adwordsapp@websitepublicity.com&hapikey=demo&includeInactive=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '297'
+      Date:
+      - Wed, 20 Jan 2016 20:16:03 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"portalId":62515,"ownerId":75,"type":"PERSON","firstName":"AdWords","lastName":"App","email":"adwordsapp@websitepublicity.com","createdAt":1405605860232,"updatedAt":1446764931762,"remoteList":[{"id":29739,"portalId":62515,"ownerId":75,"remoteId":"310514","remoteType":"HUBSPOT","active":true}]}]'
+    http_version: 
+  recorded_at: Wed, 20 Jan 2016 20:16:03 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/owners/v2/owners?email=adrianmott@gmail.com&hapikey=demo&includeInactive=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '286'
+      Date:
+      - Wed, 20 Jan 2016 20:16:03 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"portalId":62515,"ownerId":63,"type":"PERSON","firstName":"Adrian","lastName":"Mott","email":"adrianmott@gmail.com","createdAt":1405605858540,"updatedAt":1446764930939,"remoteList":[{"id":29381,"portalId":62515,"ownerId":63,"remoteId":"127430","remoteType":"HUBSPOT","active":true}]}]'
+    http_version: 
+  recorded_at: Wed, 20 Jan 2016 20:16:03 GMT
+recorded_with: VCR 2.4.0

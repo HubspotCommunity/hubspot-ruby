@@ -5,16 +5,16 @@ module Hubspot
   # {https://developers.hubspot.com/docs/methods/forms/forms_overview}
   #
   class Form
-  	FORMS_PATH       = '/contacts/v1/forms'
-  	FORM_PATH        = '/contacts/v1/forms/:form_guid'
-  	FIELDS_PATH      = '/contacts/v1/fields/:form_guid'
-  	FIELD_PATH       = FIELDS_PATH + '/:field_name'
-  	SUBMIT_DATA_PATH = '/uploads/form/v2/:portal_id/:form_guid'
+    FORMS_PATH       = '/forms/v2/forms' # '/contacts/v1/forms'
+    FORM_PATH        = '/forms/v2/forms/:form_guid' # '/contacts/v1/forms/:form_guid'
+    FIELDS_PATH      = '/forms/v2/fields/:form_guid' # '/contacts/v1/fields/:form_guid'
+    FIELD_PATH       = FIELDS_PATH + '/:field_name'
+    SUBMIT_DATA_PATH = '/uploads/form/v2/:portal_id/:form_guid'
 
     class << self
       # {https://developers.hubspot.com/docs/methods/forms/create_form}
       def create!(opts={})
-      	response = Hubspot::Connection.post_json(FORMS_PATH, params: {}, body: opts)
+        response = Hubspot::Connection.post_json(FORMS_PATH, params: {}, body: opts)
         new(response)
       end
 
@@ -35,7 +35,7 @@ module Hubspot
     attr_reader :properties
 
     def initialize(hash)
-      self.send(:assign_properties, hash)	
+      self.send(:assign_properties, hash)
     end
 
     # {https://developers.hubspot.com/docs/methods/forms/get_fields}
@@ -45,26 +45,26 @@ module Hubspot
       field_name = opts.delete(:only) { nil }
 
       if field_name
-      	field_name = field_name.to_s
-      	if bypass_cache || @fields.nil? || @fields.empty?
-      	  response = Hubspot::Connection.get_json(FIELD_PATH, { form_guid: @guid, field_name: field_name })
-      	  response
-      	else
-      	  @fields.detect { |f| f['name'] == field_name }	
-      	end
+        field_name = field_name.to_s
+        if bypass_cache || @fields.nil? || @fields.empty?
+          response = Hubspot::Connection.get_json(FIELD_PATH, { form_guid: @guid, field_name: field_name })
+          response
+        else
+          @fields.detect { |f| f['name'] == field_name }
+        end
       else
-      	if bypass_cache || @fields.nil? || @fields.empty?
+        if bypass_cache || @fields.nil? || @fields.empty?
           response = Hubspot::Connection.get_json(FIELDS_PATH, { form_guid: @guid })
           @fields = response
         end
         @fields
       end
     end
- 
+
     # {https://developers.hubspot.com/docs/methods/forms/submit_form}
-    def submit(opts={})    
+    def submit(opts={})
       response = Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
-      [204, 302].include?(response.code)
+      [204, 302, 200].include?(response.code)
     end
 
     # {https://developers.hubspot.com/docs/methods/forms/update_form}
@@ -88,7 +88,7 @@ module Hubspot
 
     def assign_properties(hash)
       @guid = hash['guid']
-      @fields = hash['fields']
+      @fields = hash['formFieldGroups'].inject([]){ |result, fg| result | fg['fields'] }
       @properties = hash
     end
   end

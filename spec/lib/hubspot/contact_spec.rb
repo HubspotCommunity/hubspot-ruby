@@ -1,76 +1,141 @@
 describe Hubspot::Contact do
   let(:example_contact_hash) do
-    VCR.use_cassette("contact_example", record: :none) do
-      HTTParty.get("https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo").parsed_response
+    VCR.use_cassette('contact_example', record: :none) do
+      HTTParty.get('https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo').parsed_response
     end
   end
 
-  before{ Hubspot.configure(hapikey: "demo") }
+  before{ Hubspot.configure(hapikey: 'demo') }
 
-  describe "#initialize" do
+  describe '#initialize' do
     subject{ Hubspot::Contact.new(example_contact_hash) }
     it{ should be_an_instance_of Hubspot::Contact }
-    its(["email"]){ should == "testingapis@hubspot.com" }
-    its(["firstname"]){ should == "Clint" }
-    its(["lastname"]){ should == "Eastwood" }
-    its(["phone"]){ should == "555-555-5432" }
-    its(:utk){ should == "1234567890" }
+    its(['email']){ should == 'testingapis@hubspot.com' }
+    its(['firstname']){ should == 'Clint' }
+    its(['lastname']){ should == 'Eastwood' }
+    its(['phone']){ should == '555-555-5432' }
+    its(:utk){ should == '1234567890' }
     its(:vid){ should == 82325 }
   end
 
-  describe ".create!" do
-    cassette "contact_create"
+  describe '.create!' do
+    cassette 'contact_create'
     let(:params){{}}
     subject{ Hubspot::Contact.create!(email, params) }
-    context "with a new email" do
+    context 'with a new email' do
       let(:email){ "newcontact#{Time.now.to_i}@hsgem.com" }
       it{ should be_an_instance_of Hubspot::Contact }
       its(:email){ should match /newcontact.*@hsgem.com/ } # Due to VCR the email may not match exactly
 
-      context "and some params" do
-        cassette "contact_create_with_params"
+      context 'and some params' do
+        cassette 'contact_create_with_params'
         let(:email){ "newcontact_x_#{Time.now.to_i}@hsgem.com" }
-        let(:params){ {firstname: "Hugh", lastname: "Jackman" } }
-        its(["firstname"]){ should == "Hugh"}
-        its(["lastname"]){ should == "Jackman"}
+        let(:params){ {firstname: 'Hugh', lastname: 'Jackman' } }
+        its(['firstname']){ should == 'Hugh'}
+        its(['lastname']){ should == 'Jackman'}
       end
     end
-    context "with an existing email" do
-      cassette "contact_create_existing_email"
-      let(:email){ "testingapis@hubspot.com" }
-      it "raises a RequestError" do
+    context 'with an existing email' do
+      cassette 'contact_create_existing_email'
+      let(:email){ 'testingapis@hubspot.com' }
+      it 'raises a RequestError' do
         expect{ subject }.to raise_error Hubspot::RequestError
       end
     end
-    context "with an invalid email" do
-      cassette "contact_create_invalid_email"
-      let(:email){ "not_an_email" }
-      it "raises a RequestError" do
+    context 'with an invalid email' do
+      cassette 'contact_create_invalid_email'
+      let(:email){ 'not_an_email' }
+      it 'raises a RequestError' do
         expect{ subject }.to raise_error Hubspot::RequestError
       end
     end
   end
 
-  describe ".find_by_email" do
+  describe '.createOrUpdate' do
+    cassette 'contact_create_or_update'
+    let(:params){{}}
+    subject{ Hubspot::Contact.createOrUpdate(email, params) }
+    context 'with a new email' do
+      let(:email){ "newcontact#{Time.now.to_i}@hsgem.com" }
+      it{ should be_an_instance_of Hubspot::Contact }
+      its(:email){ should match /newcontact.*@hsgem.com/ } # Due to VCR the email may not match exactly
+
+      context 'and some params' do
+        cassette 'contact_create_or_update_with_params'
+        let(:email){ "newcontact_x_#{Time.now.to_i}@hsgem.com" }
+        let(:params){ {firstname: 'Hugh', lastname: 'Jackman' } }
+        its(['firstname']){ should == 'Hugh'}
+        its(['lastname']){ should == 'Jackman'}
+      end
+    end
+    context 'with an existing email' do
+      cassette 'contact_create_or_update_existing_email'
+      let(:email){ 'testingapis@hubspot.com' }
+      let(:params){ { firstname: 'Hugh', lastname: 'Jackman, Jr.' } }
+      its(['firstname']){ should == 'Hugh'}
+      its(['lastname']){ should == 'Jackman, Jr.'}
+    end
+    context 'with an invalid email' do
+      cassette 'contact_create_or_update_invalid_email'
+      let(:email){ 'not_an_email' }
+      it 'raises a RequestError' do
+        expect{ subject }.to raise_error Hubspot::RequestError
+      end
+    end
+  end
+
+  describe '.create_or_update!' do
+    cassette 'create_or_update'
+    let(:existing_contact) do
+      Hubspot::Contact.create!("morpheus@example.com", firstname: 'Morpheus')
+    end
+    before do
+      Hubspot::Contact.create_or_update!(params)
+    end
+
+    let(:params) do
+      [
+        {
+          vid: existing_contact.vid,
+          email: existing_contact.email,
+          firstname: 'Neo'
+        },
+        {
+          email: 'smith@example.com',
+          firstname: 'Smith'
+        }
+      ]
+    end
+
+    it 'creates and updates contacts' do
+      contact = Hubspot::Contact.find_by_id existing_contact.vid
+      expect(contact.properties['firstname']).to eql 'Neo'
+      latest_contact_email = Hubspot::Contact.all(recent: true).first.email
+      new_contact = Hubspot::Contact.find_by_email(latest_contact_email)
+      expect(new_contact.properties['firstname']).to eql 'Smith'
+    end
+  end
+
+  describe '.find_by_email' do
     context 'given an uniq email' do
-      cassette "contact_find_by_email"
+      cassette 'contact_find_by_email'
       subject{ Hubspot::Contact.find_by_email(email) }
 
-      context "when the contact is found" do
-        let(:email){ "testingapis@hubspot.com" }
+      context 'when the contact is found' do
+        let(:email){ 'testingapis@hubspot.com' }
         it{ should be_an_instance_of Hubspot::Contact }
         its(:vid){ should == 82325 }
       end
 
-      context "when the contact cannot be found" do
-        it 'raises an error' do 
+      context 'when the contact cannot be found' do
+        it 'raises an error' do
           expect { Hubspot::Contact.find_by_email('notacontact@test.com') }.to raise_error(Hubspot::RequestError)
         end
       end
     end
 
-    context 'batch mode' do 
-      cassette "contact_find_by_email_batch_mode"
+    context 'batch mode' do
+      cassette 'contact_find_by_email_batch_mode'
 
       it 'find lists of contacts' do
         emails = ['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']
@@ -80,54 +145,61 @@ describe Hubspot::Contact do
     end
   end
 
-  describe ".find_by_id" do
-    context 'given an uniq id' do 
-      cassette "contact_find_by_id"
+  describe '.find_by_id' do
+    before do
+      @s = StringIO.new
+      Hubspot::Config.logger = Logger.new(@s)
+    end
+
+    context 'given an uniq id' do
+      cassette 'contact_find_by_id'
       subject{ Hubspot::Contact.find_by_id(vid) }
 
-      context "when the contact is found" do
+      context 'when the contact is found' do
         let(:vid){ 82325 }
         it{ should be_an_instance_of Hubspot::Contact }
-        its(:email){ should == "testingapis@hubspot.com" }
+        its(:email){ should == 'testingapis@hubspot.com' }
       end
 
-      context "when the contact cannot be found" do
+      context 'when the contact cannot be found' do
         it 'raises an error' do
-          expect { Hubspot::Contact.find_by_id(9999999) }.to raise_error(Hubspot::RequestError) 
+          expect { Hubspot::Contact.find_by_id(9999999) }.to raise_error(Hubspot::RequestError)
+          expect(@s.string).to include 'Response: 404'
         end
       end
     end
 
-    context 'batch mode' do 
-      cassette "contact_find_by_id_batch_mode"
+    context 'batch mode' do
+      cassette 'contact_find_by_id_batch_mode'
 
       # NOTE: error currently appends on API endpoint
       it 'find lists of contacts' do
         expect { Hubspot::Contact.find_by_id([82325]) }.to raise_error(Hubspot::ApiError)
+        expect(@s.string).to include('Response: 200')
       end
     end
   end
 
-  describe ".find_by_utk" do
-    context 'given an uniq utk' do 
-      cassette "contact_find_by_utk"
+  describe '.find_by_utk' do
+    context 'given an uniq utk' do
+      cassette 'contact_find_by_utk'
       subject{ Hubspot::Contact.find_by_utk(utk) }
 
-      context "when the contact is found" do
-        let(:utk){ "f844d2217850188692f2610c717c2e9b" }
+      context 'when the contact is found' do
+        let(:utk){ 'f844d2217850188692f2610c717c2e9b' }
         it{ should be_an_instance_of Hubspot::Contact }
-        its(:utk){ should == "f844d2217850188692f2610c717c2e9b" }
+        its(:utk){ should == 'f844d2217850188692f2610c717c2e9b' }
       end
 
-      context "when the contact cannot be found" do
-        it 'raises an error' do 
-          expect { Hubspot::Contact.find_by_utk("invalid") }.to raise_error(Hubspot::RequestError) 
+      context 'when the contact cannot be found' do
+        it 'raises an error' do
+          expect { Hubspot::Contact.find_by_utk('invalid') }.to raise_error(Hubspot::RequestError)
         end
       end
     end
 
-    context 'batch mode' do 
-      cassette "contact_find_by_utk_batch_mode"
+    context 'batch mode' do
+      cassette 'contact_find_by_utk_batch_mode'
 
       it 'find lists of contacts' do
         utks = ['f844d2217850188692f2610c717c2e9b', 'j94344d22178501692f2610c717c2e9b']
@@ -136,9 +208,38 @@ describe Hubspot::Contact do
     end
   end
 
+  describe '.search' do
+    subject { Hubspot::Contact.search(query, options) }
+
+    cassette 'contact_search'
+
+    let(:options) { {} }
+
+    context 'when query returns contacts' do
+      let(:query) { '@hubspot.com' }
+
+      it { expect(subject['has-more']).to eq(true) }
+      it { subject['contacts'].each { |contact| expect(contact).to be_an_instance_of(Hubspot::Contact) } }
+
+      context 'when query finds more than count, but is limited' do
+        let(:options) { { count: 1 } }
+
+        it { expect(subject['has-more']).to eq(true) }
+        it { expect(subject['total'] > 1).to eq(true) }
+      end
+    end
+
+    context 'when the query returns no results' do
+      let(:query) { 'something_that_does_not_exist' }
+
+      it { expect(subject['total']).to eq(0) }
+      it { expect(subject['has-more']).to eq(false) }
+      it { expect(subject['contacts']).to be_empty }
+    end
+  end
 
   describe '.all' do
-    context 'all contacts' do 
+    context 'all contacts' do
       cassette 'find_all_contacts'
 
       it 'must get the contacts list' do
@@ -177,7 +278,7 @@ describe Hubspot::Contact do
       end
     end
 
-    context 'recent contacts' do 
+    context 'recent contacts' do
       cassette 'find_all_recent_contacts'
 
       it 'must get the contacts list' do
@@ -194,43 +295,43 @@ describe Hubspot::Contact do
     end
   end
 
-  describe "#update!" do
-    cassette "contact_update"
+  describe '#update!' do
+    cassette 'contact_update'
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }
-    let(:params){ {firstname: "Steve", lastname: "Cunningham"} }
+    let(:params){ {firstname: 'Steve', lastname: 'Cunningham'} }
     subject{ contact.update!(params) }
 
     it{ should be_an_instance_of Hubspot::Contact }
-    its(["firstname"]){ should ==  "Steve" }
-    its(["lastname"]){ should ==  "Cunningham" }
+    its(['firstname']){ should ==  'Steve' }
+    its(['lastname']){ should ==  'Cunningham' }
 
-    context "when the request is not successful" do
-      let(:contact){ Hubspot::Contact.new({"vid" => "invalid", "properties" => {}})}
-      it "raises an error" do
+    context 'when the request is not successful' do
+      let(:contact){ Hubspot::Contact.new({'vid' => 'invalid', 'properties' => {}})}
+      it 'raises an error' do
         expect{ subject }.to raise_error Hubspot::RequestError
       end
     end
   end
 
-  describe "#destroy!" do
-    cassette "contact_destroy"
+  describe '#destroy!' do
+    cassette 'contact_destroy'
     let(:contact){ Hubspot::Contact.create!("newcontact_y_#{Time.now.to_i}@hsgem.com") }
     subject{ contact.destroy! }
     it { should be_true }
-    it "should be destroyed" do
+    it 'should be destroyed' do
       subject
       contact.destroyed?.should be_true
     end
-    context "when the request is not successful" do
-      let(:contact){ Hubspot::Contact.new({"vid" => "invalid", "properties" => {}})}
-      it "raises an error" do
+    context 'when the request is not successful' do
+      let(:contact){ Hubspot::Contact.new({'vid' => 'invalid', 'properties' => {}})}
+      it 'raises an error' do
         expect{ subject }.to raise_error Hubspot::RequestError
         contact.destroyed?.should be_false
       end
     end
   end
 
-  describe "#destroyed?" do
+  describe '#destroyed?' do
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }
     subject{ contact }
     its(:destroyed?){ should be_false }
