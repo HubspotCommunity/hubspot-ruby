@@ -33,7 +33,7 @@ module Hubspot
       def find(engagement_id)
         begin
           response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
-          new(HashWithIndifferentAccess.new(response))
+          response ? new(HashWithIndifferentAccess.new(response)) : nil
         rescue Hubspot::RequestError => ex
           if ex.response.code == 404
             return nil
@@ -124,6 +124,49 @@ module Hubspot
         }
 
         # if the owner id has been provided, append it to the engagement
+        data[:engagement][:owner_id] = owner_id if owner_id
+
+        super(data)
+      end
+    end
+  end
+
+  class EngagementCall < Engagement
+    def body
+      metadata['body']
+    end
+
+    def contact_ids
+      associations['contactIds']
+    end
+
+    def company_ids
+      associations['companyIds']
+    end
+
+    def deal_ids
+      associations['dealIds']
+    end
+
+    class << self
+      def create!(contact_vid, body, duration, owner_id = nil, deal_id = nil, status = 'COMPLETED', time = nil)
+        data = {
+          engagement: {
+            type: 'CALL'
+          },
+          associations: {
+            contactIds: [contact_vid],
+            dealIds: [deal_id],
+            ownerIds: [owner_id]
+          },
+          metadata: {
+            body: body,
+            status: status,
+            durationMilliseconds: duration
+          }
+        }
+
+        data[:engagement][:timestamp] = (time.to_i) * 1000 if time
         data[:engagement][:owner_id] = owner_id if owner_id
 
         super(data)
