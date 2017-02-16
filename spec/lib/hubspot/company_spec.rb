@@ -108,15 +108,15 @@ describe Hubspot::Contact do
       cassette 'find_all_recent_companies'
 
       it 'must get the companies list' do
-        companies = Hubspot::Company.all(recent: true)
+        companies = Hubspot::Company.all(recently_updated: true)
         expect(companies.size).to eql 20
 
         first, last = companies.first, companies.last
         expect(first).to be_a Hubspot::Company
-        expect(first.vid).to eql 42866817
+        expect(first.vid).to eql 318615742
 
         expect(last).to be_a Hubspot::Company
-        expect(last.vid).to eql 42861017
+        expect(last.vid).to eql 359899290
       end
     end
   end
