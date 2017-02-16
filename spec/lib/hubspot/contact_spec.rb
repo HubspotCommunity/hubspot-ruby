@@ -261,6 +261,28 @@ describe Hubspot::Contact do
         expect(last['lastname']).to eql 'Morgan'
       end
 
+      it 'must get the contacts list with paging data' do
+        contact_data = Hubspot::Contact.all({paged: true})
+        contacts = contact_data['contacts']
+
+        expect(contacts.size).to eql 20 # default page size
+
+        first = contacts.first
+        last = contacts.last
+
+        expect(first).to be_a Hubspot::Contact
+        expect(first.vid).to eql 154835
+        expect(first['firstname']).to eql 'HubSpot'
+        expect(first['lastname']).to eql 'Test'
+
+        expect(last).to be_a Hubspot::Contact
+        expect(last.vid).to eql 196199
+        expect(last['firstname']).to eql 'Eleanor'
+        expect(last['lastname']).to eql 'Morgan'
+        expect(contact_data['has-more']).to eql true
+        expect(contact_data['vid-offset']).to eql 196199
+      end
+
       it 'must filter only 2 contacts' do
         contacts = Hubspot::Contact.all(count: 2)
         expect(contacts.size).to eql 2
