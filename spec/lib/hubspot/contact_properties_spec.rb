@@ -1,8 +1,16 @@
 describe Hubspot::ContactProperties do
   describe '.add_default_parameters' do
-    subject { Hubspot::ContactProperties.add_default_parameters({}) }
+    let(:opts) { {} }
+    subject { Hubspot::ContactProperties.add_default_parameters(opts) }
     context 'default parameters' do
-      its([:property]) { should == 'email' }
+      context 'without property parameter' do
+        its([:property]) { should == 'email' }
+      end
+
+      context 'with property parameter' do
+        let(:opts) { {property: 'firstname' } }
+        its([:property]) { should == 'firstname'}
+      end
     end
   end
 

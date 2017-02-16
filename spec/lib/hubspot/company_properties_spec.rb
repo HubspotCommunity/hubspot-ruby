@@ -1,8 +1,16 @@
 describe Hubspot::CompanyProperties do
   describe '.add_default_parameters' do
-    subject { Hubspot::CompanyProperties.add_default_parameters({}) }
+    let(:opts) { {} }
+    subject { Hubspot::CompanyProperties.add_default_parameters(opts) }
     context 'default parameters' do
-      its([:property]) { should == 'email' }
+      context 'without property parameter' do
+        its([:property]) { should == 'email' }
+      end
+
+      context 'with property parameter' do
+        let(:opts) { {property: 'name' } }
+        its([:property]) { should == 'name'}
+      end
     end
   end
 
