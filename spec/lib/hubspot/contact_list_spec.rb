@@ -38,6 +38,18 @@ describe Hubspot::ContactList do
       expect(contact).to be_a(Hubspot::Contact)
     end
 
+    it 'returns by default 20 contact lists with paging data' do
+      contact_data = list.contacts({paged: true})
+      contacts = contact_data['contacts']
+
+      expect(contact_data).to have_key 'vid-offset'
+      expect(contact_data).to have_key 'has-more'
+
+      expect(contacts.count).to eql 20
+      contact = contacts.first
+      expect(contact).to be_a(Hubspot::Contact)
+    end
+
     it 'add default properties to the contacts returned' do
       contact = list.contacts.first
       expect(contact.email).to_not be_empty
@@ -86,7 +98,7 @@ describe Hubspot::ContactList do
     context 'all list types' do
       cassette 'find_all_lists'
 
-      it 'returns by defaut 20 contact lists' do
+      it 'returns by default 20 contact lists' do
         lists = Hubspot::ContactList.all
         expect(lists.count).to eql 20
 
