@@ -32,7 +32,7 @@ describe Hubspot::ContactList do
 
     let(:list) { Hubspot::ContactList.new(example_contact_list_hash) }
 
-    it 'returns by defaut 20 contact lists' do
+    it 'returns by default 20 contact lists' do
       expect(list.contacts.count).to eql 20
       contact = list.contacts.first
       expect(contact).to be_a(Hubspot::Contact)

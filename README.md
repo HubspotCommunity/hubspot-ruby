@@ -37,6 +37,12 @@ Here's what you can do for now:
 Hubspot::Contact.create!("email@address.com", {firstname: "First", lastname: "Last"})
 ```
 
+#### In batches
+
+```ruby
+Hubspot::Contact.create_or_update!([{email: 'smith@example.com', firstname: 'First', lastname: 'Last'}])
+```
+
 ### Find a contact
 
 These methods will return a `Hubspot::Contact` object if successful, `nil` otherwise:
@@ -54,6 +60,11 @@ Given an instance of `Hubspot::Contact`, update its attributes with:
 contact.update!({firstname: "First", lastname: "Last"})
 ```
 
+#### In batches
+
+```ruby
+Hubspot::Contact.create_or_update!([{vid: '12345', firstname: 'First', lastname: 'Last'}])
+```
 ## Contributing to hubspot-ruby
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
@@ -77,8 +88,4 @@ order to disable VCR.
 ## Disclaimer
 
 This project and the code therein was not created by and is not supported by HubSpot, Inc or any of its affiliates.
-
-## Copyright
-
-Copyright (c) 2013 Omada Health Inc. See LICENSE.txt for further details.
 

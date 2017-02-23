@@ -11,23 +11,6 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require 'jeweler'
-require './lib/hubspot/version.rb'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "hubspot-ruby"
-  gem.homepage = "http://github.com/omadahealth/hubspot-ruby"
-  #gem.license = "MIT"
-  gem.summary = %Q{hubspot-ruby is a wrapper for the HubSpot REST API}
-  gem.description = %Q{hubspot-ruby is a wrapper for the HubSpot REST API}
-  gem.email = "hello@omadahealth.com"
-  gem.authors = ["Andrew DiMichele"]
-  gem.version = Hubspot::Version::STRING
-
-  # dependencies defined in Gemfile
-end
-Jeweler::RubygemsDotOrgTasks.new
-
 require 'rspec/core'
 require 'rspec/core/rake_task'
 

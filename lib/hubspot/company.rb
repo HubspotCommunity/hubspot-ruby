@@ -13,6 +13,7 @@ module Hubspot
     UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
     ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
     DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
+    GET_COMPANY_CONTACTS_PATH         = "/companies/v2/companies/:company_id/contacts"
 
     class << self
       # Find all companies by created date (descending)
@@ -133,6 +134,16 @@ module Hubspot
 
     def destroyed?
       !!@destroyed
+    end
+
+    # Finds company contacts
+    # {http://developers.hubspot.com/docs/methods/companies/get_company_contacts}
+    # @return [Array] Array of Hubspot::Contact records
+    def contacts
+      response = Hubspot::Connection.get_json(GET_COMPANY_CONTACTS_PATH, company_id: vid)
+      response['contacts'].each_with_object([]) do |contact, memo|
+        memo << Hubspot::Contact.find_by_id(contact['vid'])
+      end
     end
   end
 end

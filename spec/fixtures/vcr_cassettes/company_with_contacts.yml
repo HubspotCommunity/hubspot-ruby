@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/companies/v2/companies/115200636?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3930'
+      Date:
+      - Sat, 24 Sep 2016 08:37:54 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - ak_bmsc=057D4FA8AD8B64573F4A618069CA9AF6C16C5EA1A14B0000623BE65755916257~plyH9tcfLeMs4sIaKcbeLpQ2t5ZghX93aA3WBp+A67yJHy6V62l5RIQ5lVrky8ibHN/Ftob3pY7uol8UEWqrqh72eHcYvp8Yj7ySPyuuL0c5uqvEVNz/w36xFQypu3iEozbm/ys6O3o9OT4UrdTFWp4lP//yAFXIjOuEr7rGiw8TZxIOhT4wBoU8mR0tl8tDmYpqZK4m2g79PCy+HtJieFNmhjyCs1/vhAVQ5BsO7eM6I=;
+        expires=Sat, 24 Sep 2016 10:37:54 GMT; max-age=7200; path=/; domain=.hubapi.com;
+        HttpOnly
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":115200636,"isDeleted":false,"properties":{"website":{"value":"jollo.se","timestamp":1457513066540,"source":"COMPANIES","sourceId":null,"versions":[{"name":"website","value":"jollo.se","timestamp":1457513066540,"source":"COMPANIES","sourceVid":[]}]},"num_associated_contacts":{"value":"5","timestamp":1458119061672,"source":"COMPANIES","sourceId":null,"versions":[{"name":"num_associated_contacts","value":"5","timestamp":1458119061672,"source":"COMPANIES","sourceVid":[]}]},"hs_analytics_first_timestamp":{"value":"1457513066060","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"hs_analytics_first_timestamp","value":"1457513066060","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]},"createdate":{"value":"1457513066540","timestamp":1457513066540,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1457513066540","timestamp":1457513066540,"source":"API","sourceVid":[]}]},"hs_analytics_num_visits":{"value":"0","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"hs_analytics_num_visits","value":"0","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]},"first_contact_createdate":{"value":"1457513066060","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"first_contact_createdate","value":"1457513066060","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]},"hs_analytics_source":{"value":"OFFLINE","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"hs_analytics_source","value":"OFFLINE","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]},"hs_lastmodifieddate":{"value":"1473716819259","timestamp":1473716819259,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1473716819259","timestamp":1473716819259,"source":"CALCULATED","sourceVid":[]}]},"about_us":{"value":"Sample
+        About Us","timestamp":1473716819255,"source":"API","sourceId":null,"versions":[{"name":"about_us","value":"Sample
+        About Us","timestamp":1473716819255,"source":"API","sourceVid":[]}]},"domain":{"value":"jollo.se","timestamp":1457513066540,"source":"COMPANIES","sourceId":null,"versions":[{"name":"domain","value":"jollo.se","timestamp":1457513066540,"source":"COMPANIES","sourceVid":[]}]},"name":{"value":"jollo.se","timestamp":1464484587592,"source":"BIDEN","sourceId":"name","versions":[{"name":"name","value":"jollo.se","timestamp":1464484587592,"sourceId":"name","source":"BIDEN","sourceVid":[]}]},"hs_analytics_num_page_views":{"value":"0","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"hs_analytics_num_page_views","value":"0","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]},"hs_analytics_source_data_2":{"value":"testapi@hubspot.com","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"hs_analytics_source_data_2","value":"testapi@hubspot.com","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]},"hs_analytics_source_data_1":{"value":"CONTACTS_WEB","timestamp":1457513281774,"source":"CALCULATED","sourceId":"company
+        sync triggered by vid=925574","versions":[{"name":"hs_analytics_source_data_1","value":"CONTACTS_WEB","timestamp":1457513281774,"sourceId":"company
+        sync triggered by vid=925574","source":"CALCULATED","sourceVid":[]}]}},"additionalDomains":[]}'
+    http_version: 
+  recorded_at: Sat, 24 Sep 2016 08:37:54 GMT
+recorded_with: VCR 2.4.0

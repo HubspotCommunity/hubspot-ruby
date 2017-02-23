@@ -5,8 +5,8 @@ http_interactions:
     uri: https://api.hubapi.com/engagements/v1/engagements?hapikey=demo
     body:
       encoding: UTF-8
-      string: '{"engagement":{"type":"NOTE"},"associations":{"contactIds":[null]},"metadata":{"body":"test
-        note"}}'
+      string: '{"engagement":{"type":"CALL"},"associations":{"contactIds":[null],"dealIds":[null],"ownerIds":[null]},"metadata":{"body":"test
+        call","status":"COMPLETED","durationMilliseconds":0}}'
     headers:
       Content-Type:
       - application/json
@@ -28,20 +28,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '281'
+      - '327'
       Date:
-      - Thu, 15 Dec 2016 14:38:32 GMT
+      - Thu, 15 Dec 2016 14:38:33 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"engagement":{"id":185949811,"portalId":62515,"active":true,"createdAt":1481812712677,"lastUpdated":1481812712677,"type":"NOTE","timestamp":1481812712677},"associations":{"contactIds":[],"companyIds":[],"dealIds":[],"ownerIds":[],"workflowIds":[]},"metadata":{"body":"test
-        note"}}'
+      string: '{"engagement":{"id":185949816,"portalId":62515,"active":true,"createdAt":1481812713434,"lastUpdated":1481812713434,"type":"CALL","timestamp":1481812713434},"associations":{"contactIds":[],"companyIds":[],"dealIds":[],"ownerIds":[],"workflowIds":[]},"metadata":{"status":"COMPLETED","durationMilliseconds":0,"body":"test
+        call"}}'
     http_version: 
-  recorded_at: Thu, 15 Dec 2016 14:38:32 GMT
+  recorded_at: Thu, 15 Dec 2016 14:38:33 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/engagements/v1/engagements/185949811?hapikey=demo
+    uri: https://api.hubapi.com/engagements/v1/engagements/185949816?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
@@ -64,20 +64,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '281'
+      - '327'
       Date:
-      - Thu, 15 Dec 2016 14:38:32 GMT
+      - Thu, 15 Dec 2016 14:38:33 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"engagement":{"id":185949811,"portalId":62515,"active":true,"createdAt":1481812712677,"lastUpdated":1481812712677,"type":"NOTE","timestamp":1481812712677},"associations":{"contactIds":[],"companyIds":[],"dealIds":[],"ownerIds":[],"workflowIds":[]},"metadata":{"body":"test
-        note"}}'
+      string: '{"engagement":{"id":185949816,"portalId":62515,"active":true,"createdAt":1481812713434,"lastUpdated":1481812713434,"type":"CALL","timestamp":1481812713434},"associations":{"contactIds":[],"companyIds":[],"dealIds":[],"ownerIds":[],"workflowIds":[]},"metadata":{"status":"COMPLETED","durationMilliseconds":0,"body":"test
+        call"}}'
     http_version: 
-  recorded_at: Thu, 15 Dec 2016 14:38:32 GMT
+  recorded_at: Thu, 15 Dec 2016 14:38:33 GMT
 - request:
     method: delete
-    uri: https://api.hubapi.com/engagements/v1/engagements/185949811?hapikey=demo
+    uri: https://api.hubapi.com/engagements/v1/engagements/185949816?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
@@ -110,7 +110,7 @@ http_interactions:
   recorded_at: Thu, 15 Dec 2016 14:38:33 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/engagements/v1/engagements/185949811?hapikey=demo
+    uri: https://api.hubapi.com/engagements/v1/engagements/185949816?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''

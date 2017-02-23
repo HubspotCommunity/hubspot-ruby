@@ -11,6 +11,8 @@ module Hubspot
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
     UPDATE_DEAL_PATH = '/deals/v1/deal/:deal_id'
+    ASSOCIATE_DEAL_PATH = '/deals/v1/deal/:deal_id/associations/:OBJECTTYPE?id=:objectId'
+    ASSOCIATED_DEAL_PATH = "/deals/v1/deal/associated/:objectType/:objectId"
 
     attr_reader :properties
     attr_reader :portal_id
@@ -36,6 +38,17 @@ module Hubspot
         new(response)
       end
 
+       # Associate a deal with a contact or company
+       # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
+       # Usage
+       # Hubspot::Deal.associate!(45146940, [], [52])
+       def associate!(deal_id, company_ids=[], vids=[])
+         objecttype = company_ids.any? ? 'COMPANY' : 'CONTACT'
+         object_ids = (company_ids.any? ? company_ids : vids).join('&id=')
+         Hubspot::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
+       end
+ 
+
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
         new(response)
@@ -48,6 +61,17 @@ module Hubspot
       def recent(opts = {})
         response = Hubspot::Connection.get_json(RECENT_UPDATED_PATH, opts)
         response['results'].map { |d| new(d) }
+      end
+      
+      # Find all deals associated to a company
+      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
+      # @param company [Hubspot::Company] the company
+      # @return [Array] Array of Hubspot::Deal records
+      def find_by_company(company)
+        path = ASSOCIATED_DEAL_PATH
+        params = { objectType: :company, objectId: company.vid }
+        response = Hubspot::Connection.get_json(path, params)
+        response["results"].map { |deal_id| find(deal_id) }
       end
 
     end

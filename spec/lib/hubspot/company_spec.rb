@@ -4,6 +4,11 @@ describe Hubspot::Contact do
       HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
     end
   end
+  let(:company_with_contacts_hash) do
+    VCR.use_cassette("company_with_contacts", record: :none) do
+      HTTParty.get("https://api.hubapi.com/companies/v2/companies/115200636?hapikey=demo").parsed_response
+    end
+  end
 
   before{ Hubspot.configure(hapikey: "demo") }
 
@@ -103,15 +108,15 @@ describe Hubspot::Contact do
       cassette 'find_all_recent_companies'
 
       it 'must get the companies list' do
-        companies = Hubspot::Company.all(recent: true)
+        companies = Hubspot::Company.all(recently_updated: true)
         expect(companies.size).to eql 20
 
         first, last = companies.first, companies.last
         expect(first).to be_a Hubspot::Company
-        expect(first.vid).to eql 42866817
+        expect(first.vid).to eql 318615742
 
         expect(last).to be_a Hubspot::Company
-        expect(last.vid).to eql 42861017
+        expect(last.vid).to eql 359899290
       end
     end
   end
@@ -172,5 +177,14 @@ describe Hubspot::Contact do
     let(:company){ Hubspot::Company.new(example_company_hash) }
     subject{ company }
     its(:destroyed?){ should be_false }
+  end
+
+  describe "#contacts" do
+    let(:company){ Hubspot::Company.new(company_with_contacts_hash) }
+    subject do
+      VCR.use_cassette("company_contacts") { company.contacts }
+    end
+
+    its(:size) { should eql 5 }
   end
 end
