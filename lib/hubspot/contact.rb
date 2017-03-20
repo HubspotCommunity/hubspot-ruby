@@ -43,7 +43,8 @@ module Hubspot
         end
 
         response = Hubspot::Connection.get_json(path, opts)
-        paged ? response : response['contacts'].map { |c| new(c) }
+        response['contacts'].map! { |c| new(c) }
+        paged ? response : response['contacts']
       end
 
       # TODO: create or update a contact

@@ -85,7 +85,7 @@ module Hubspot
         opts[:list_id] = @id
 
         response = Hubspot::Connection.get_json(path, Hubspot::ContactProperties.add_default_parameters(opts))
-        @contacts = response['contacts'].map { |c| Hubspot::Contact.new(c) }
+        @contacts = response['contacts'].map! { |c| Hubspot::Contact.new(c) }
         paged ? response : @contacts
       else
         @contacts

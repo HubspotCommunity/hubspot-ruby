@@ -270,6 +270,9 @@ describe Hubspot::Contact do
         first = contacts.first
         last = contacts.last
 
+        expect(contact_data).to have_key 'vid-offset'
+        expect(contact_data).to have_key 'has-more'
+
         expect(first).to be_a Hubspot::Contact
         expect(first.vid).to eql 154835
         expect(first['firstname']).to eql 'HubSpot'
