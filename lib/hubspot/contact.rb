@@ -24,7 +24,8 @@ module Hubspot
     class << self
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
       def create!(email, params={})
-        params_with_email = params.stringify_keys.merge('email' => email)
+        params_with_email = params.stringify_keys
+        params_with_email = params.stringify_keys.merge('email' => email) if email
         post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_email)}
         response = Hubspot::Connection.post_json(CREATE_CONTACT_PATH, params: {}, body: post_data )
         new(response)
