@@ -74,6 +74,17 @@ module Hubspot
         response["results"].map { |deal_id| find(deal_id) }
       end
 
+      # Find all deals associated to a company
+      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
+      # @param contact [Hubspot::Contact] the company
+      # @return [Array] Array of Hubspot::Deal records
+      def find_by_contact(contact)
+        path = ASSOCIATED_DEAL_PATH
+        params = { objectType: :contact, objectId: contact.vid }
+        response = Hubspot::Connection.get_json(path, params)
+        response["results"].map { |deal_id| find(deal_id) }
+      end
+
     end
 
     # Archives the contact in hubspot
