@@ -18,6 +18,7 @@ require 'hubspot/deal_pipeline'
 require 'hubspot/deal_properties'
 require 'hubspot/owner'
 require 'hubspot/engagement'
+require 'hubspot/subscription'
 
 module Hubspot
   def self.configure(config={})
