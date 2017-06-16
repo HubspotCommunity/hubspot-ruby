@@ -11,11 +11,11 @@ module Hubspot
 	attr_reader :subscription_statuses
 
 	def initialize(response_hash)
-      @subscribed			 = response_hash['subscribed']
-      @marked_as_spam 		 = response_hash['markedAsSpam']
-      @bounced	    		 = response_hash['bounced']
-      @status      		   	 = response_hash['status']
-      @subscription_statuses = response_hash['SubscriptionStatuses']
+      @subscribed		= response_hash['subscribed']
+      @marked_as_spam 		= response_hash['markedAsSpam']
+      @bounced			= response_hash['bounced']
+      @status 			= response_hash['status']
+      @subscription_statuses	= response_hash['SubscriptionStatuses']
     end
 
 	class << self 
