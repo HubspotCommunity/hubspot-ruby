@@ -193,4 +193,39 @@ module Hubspot
       end
     end
   end
+
+  class EngagementTask < Engagement
+    def body
+      metadata['body']
+    end
+
+    def contact_ids
+      associations['contactIds']
+    end
+
+    class << self
+      def create!(contact_id, task_title, task_body, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
+        data = {
+          engagement: {
+            type: 'TASK'
+          },
+          associations: {
+            contactIds: [contact_id]
+          },
+          metadata: {
+            body: task_body,
+            subject: task_title,
+            status: status,
+            forObjectType: object_type
+          }
+        }
+
+        # if the owner id has been provided, append it to the engagement
+        data[:engagement][:owner_id] = owner_id if owner_id
+
+        super(data)
+      end
+    end
+
+  end
 end
