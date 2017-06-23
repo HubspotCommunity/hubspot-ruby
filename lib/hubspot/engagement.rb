@@ -190,7 +190,8 @@ module Hubspot
             type: 'TASK'
           },
           associations: {
-            contactIds: [contact_id]
+            contactIds: [contact_id],
+            ownerIds: [owner_id]
           },
           metadata: {
             body: task_body,
