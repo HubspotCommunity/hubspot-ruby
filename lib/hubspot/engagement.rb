@@ -124,7 +124,7 @@ module Hubspot
         }
 
         # if the owner id has been provided, append it to the engagement
-        data[:engagement][:owner_id] = owner_id if owner_id
+        data[:engagement][:ownerId] = owner_id if owner_id
 
         super(data)
       end
@@ -167,7 +167,7 @@ module Hubspot
         }
 
         data[:engagement][:timestamp] = (time.to_i) * 1000 if time
-        data[:engagement][:owner_id] = owner_id if owner_id
+        data[:engagement][:ownerId] = owner_id if owner_id
 
         super(data)
       end
@@ -202,7 +202,7 @@ module Hubspot
         }
 
         # if the owner id has been provided, append it to the engagement
-        data[:engagement][:owner_id] = owner_id if owner_id
+        data[:engagement][:ownerId] = owner_id if owner_id
 
         super(data)
       end
