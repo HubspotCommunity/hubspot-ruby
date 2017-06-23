@@ -142,7 +142,7 @@ module Hubspot
         }
 
         # if the owner id has been provided, append it to the engagement
-        data[:engagement][:owner_id] = owner_id if owner_id
+        data[:engagement][:ownerId] = owner_id if owner_id
         # if the deal id has been provided, associate the note with the deal
         data[:associations][:dealIds] = [deal_id] if deal_id
 
@@ -187,7 +187,7 @@ module Hubspot
         }
 
         data[:engagement][:timestamp] = (time.to_i) * 1000 if time
-        data[:engagement][:owner_id] = owner_id if owner_id
+        data[:engagement][:ownerId] = owner_id if owner_id
 
         super(data)
       end
@@ -222,7 +222,7 @@ module Hubspot
         }
 
         # if the owner id has been provided, append it to the engagement
-        data[:engagement][:owner_id] = owner_id if owner_id
+        data[:engagement][:ownerId] = owner_id if owner_id
 
         super(data)
       end
