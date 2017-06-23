@@ -176,8 +176,7 @@ module Hubspot
           },
           associations: {
             contactIds: [contact_vid],
-            dealIds: [deal_id],
-            ownerIds: [owner_id]
+            dealIds: [deal_id]
           },
           metadata: {
             body: body,
@@ -210,8 +209,7 @@ module Hubspot
             type: 'TASK'
           },
           associations: {
-            contactIds: [contact_id],
-            ownerIds: [owner_id]
+            contactIds: [contact_id]
           },
           metadata: {
             body: task_body,
