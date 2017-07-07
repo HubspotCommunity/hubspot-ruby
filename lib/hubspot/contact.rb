@@ -143,7 +143,7 @@ module Hubspot
       end
     end
 
-    attr_reader :properties, :vid, :is_new
+    attr_reader :properties, :vid, :is_new, :added_at, :form_submissions
     attr_reader :is_contact
 
     def initialize(response_hash)
@@ -151,6 +151,8 @@ module Hubspot
       @properties = Hubspot::Utils.properties_to_hash(props) unless props.blank?
       @is_contact = response_hash["is-contact"]
       @vid = response_hash['vid']
+      @added_at = response_hash['addedAt']
+      @form_submissions = response_hash['form-submissions']
     end
 
     def [](property)
