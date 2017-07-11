@@ -4,7 +4,7 @@ module Hubspot
     PROPERTY_SPECS = {
       group_field_names: %w(name displayName displayOrder properties),
       field_names:       %w(name groupName description fieldType formField type displayOrder label options),
-      valid_field_types: %w(textarea select text date file number radio checkbox),
+      valid_field_types: %w(textarea select text date file number radio checkbox booleancheckbox),
       valid_types:       %w(string number bool datetime enumeration),
       options:           %w(description value label hidden displayOrder)
     }
