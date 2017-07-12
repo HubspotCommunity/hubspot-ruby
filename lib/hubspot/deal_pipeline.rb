@@ -44,6 +44,13 @@ module Hubspot
       end
     end
 
+    # Destroys deal_pipeline
+    # {http://developers.hubspot.com/docs/methods/companies/delete_company}
+    # @return [TrueClass] true
+    def destroy!
+      Hubspot::Connection.delete_json(PIPELINE_PATH, pipeline_id: @pipeline_id)
+    end
+
     def [](stage)
       @stages[stage]
     end
