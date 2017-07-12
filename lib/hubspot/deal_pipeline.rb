@@ -34,6 +34,14 @@ module Hubspot
         response = Hubspot::Connection.get_json(PIPELINES_PATH, {})
         response.map { |p| new(p) }
       end
+
+      # Creates a DealPipeline
+      # {https://developers.hubspot.com/docs/methods/deal-pipelines/create-deal-pipeline}
+      # @return [Hubspot::PipeLine] Company record
+      def create!(post_data={})
+        response = Hubspot::Connection.post_json(PIPELINES_PATH, params: {}, body: post_data)
+        new(response)
+      end
     end
 
     def [](stage)
