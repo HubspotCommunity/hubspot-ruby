@@ -68,7 +68,7 @@ module Hubspot
       # @param company [Hubspot::Company] the company
       # @return [Array] Array of Hubspot::Deal records
       def find_by_company(company)
-        find_by_company company
+        find_by_association company
       end
 
       # Find all deals associated to a contact
@@ -76,7 +76,7 @@ module Hubspot
       # @param contact [Hubspot::Contact] the contact
       # @return [Array] Array of Hubspot::Deal records
       def find_by_contact(contact)
-        find_by_contact contact
+        find_by_association contact
       end
 
       # Find all deals associated to a contact or company
