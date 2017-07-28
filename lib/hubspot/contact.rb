@@ -150,7 +150,7 @@ module Hubspot
       props = response_hash['properties']
       @properties = Hubspot::Utils.properties_to_hash(props) unless props.blank?
       @is_contact = response_hash["is-contact"]
-      @list_memberships = response_hash["list-memberships"]
+      @list_memberships = response_hash["list-memberships"] || []
       @vid = response_hash['vid']
     end
 
