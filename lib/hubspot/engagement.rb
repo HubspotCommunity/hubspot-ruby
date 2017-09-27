@@ -10,6 +10,9 @@ module Hubspot
     CREATE_ENGAGMEMENT_PATH = '/engagements/v1/engagements'
     ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id'
     GET_ASSOCIATED_ENGAGEMENTS = '/engagements/v1/engagements/associated/:objectType/:objectId/paged'
+    GET_RECENT_ENGAGEMENT_PATH = '/engagements/v1/engagements/recent/modified'
+
+    MAX_ENGAGEMENTS_PER_REQUEST = 100
 
     attr_reader :id
     attr_reader :engagement
@@ -66,6 +69,27 @@ module Hubspot
         end
         engagements
       end
+
+      def get_all_recent_engagements(since, count = MAX_ENGAGEMENTS_PER_REQUEST)
+        result = []
+        offset = 0
+        loop do
+          hubspot_params = { count: count, offset: offset, since: since }
+          response = Hubspot::Connection.get_json(GET_RECENT_ENGAGEMENT_PATH, hubspot_params)
+          engagements = response['results'].try(:map) { |engagement| new(engagement) }
+          result.concat(engagements)
+          offset = response[:offset]
+          break unless response[:hasMore]
+        end
+        result
+      rescue Hubspot::RequestError => ex
+        if ex.response.code == 404
+          return nil
+        else
+          raise ex
+        end
+      end
+
     end
 
     # Archives the engagement in hubspot
