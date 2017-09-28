@@ -71,17 +71,18 @@ module Hubspot
       end
 
       def recent(since, offset = 0, count = MAX_ENGAGEMENTS_PER_REQUEST)
-        params = { count: count, offset: offset, since: since }
-        response = Hubspot::Connection.get_json(GET_RECENT_ENGAGEMENT_PATH, params)
-        response['results'].map { |engagement| new(engagement) }
-        response
-      rescue Hubspot::RequestError => ex
-        if ex.response.code == 404
-          return nil
-        else
-          raise ex
+        begin
+          params = { count: count, offset: offset, since: since }
+          response = Hubspot::Connection.get_json(GET_RECENT_ENGAGEMENT_PATH, params)
+          response['results'] = response['results'].map { |engagement| new(engagement) }
+          response
+        rescue Hubspot::RequestError => ex
+          if ex.response.code == 404
+            return nil
+          else
+            raise ex
+          end
         end
-      end
 
     end
 
