@@ -12,8 +12,6 @@ module Hubspot
     GET_ASSOCIATED_ENGAGEMENTS = '/engagements/v1/engagements/associated/:objectType/:objectId/paged'
     GET_RECENT_ENGAGEMENT_PATH = '/engagements/v1/engagements/recent/modified'
 
-    MAX_ENGAGEMENTS_PER_REQUEST = 100
-
     attr_reader :id
     attr_reader :engagement
     attr_reader :associations
@@ -70,7 +68,7 @@ module Hubspot
         engagements
       end
 
-      def recent(since, offset = 0, count = MAX_ENGAGEMENTS_PER_REQUEST)
+      def recent(since, offset = 0, count = 20)
         params = { count: count, offset: offset, since: since }
         response = Hubspot::Connection.get_json(GET_RECENT_ENGAGEMENT_PATH, params)
         response['results'] = response['results'].try(:map) { |engagement| new(engagement) }
