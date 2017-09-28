@@ -74,6 +74,7 @@ module Hubspot
         params = { count: count, offset: offset, since: since }
         response = Hubspot::Connection.get_json(GET_RECENT_ENGAGEMENT_PATH, params)
         response['results'].map { |engagement| new(engagement) }
+        response
       rescue Hubspot::RequestError => ex
         if ex.response.code == 404
           return nil
