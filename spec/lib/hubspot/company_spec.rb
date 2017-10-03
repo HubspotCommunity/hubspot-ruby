@@ -62,7 +62,7 @@ describe Hubspot::Contact do
   describe ".find_by_domain" do
     context 'given a domain' do
       cassette "company_find_by_domain"
-      subject{ Hubspot::Company.find_by_domain("hubspot.com") }
+      subject{ Hubspot::Company.find_by_domain("example.com") }
 
       context "when a company is found" do
         it{ should be_an_instance_of Array }
@@ -73,6 +73,24 @@ describe Hubspot::Contact do
         subject{Hubspot::Company.find_by_domain("asdf1234baddomain.com")}
         it{ should be_an_instance_of Array }
         it{ should be_empty }
+      end
+    end
+
+    context 'given a domain and parameters' do
+      cassette 'company_find_by_domain_with_params'
+      subject(:companies) { Hubspot::Company.find_by_domain("example.com", limit: 2, properties: ["name", "createdate"], offset_company_id: 117004411) }
+
+      context "when a company is found" do
+        it{ should be_an_instance_of Array }
+        it{ should_not be_empty }
+
+        it 'must use the parameters to search' do
+          expect(companies.size).to eql 2
+          expect(companies.first['name']).to be_a_kind_of String
+          expect(companies.first['createdate']).to be_a_kind_of String
+          expect(companies.first['domain']).to be_nil
+          expect(companies.first['hs_lastmodifieddate']).to be_nil
+        end
       end
     end
   end
