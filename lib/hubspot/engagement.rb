@@ -125,7 +125,7 @@ module Hubspot
     end
 
     class << self
-      def create!(contact_id, note_body, owner_id = nil)
+      def create!(contact_id, note_body, owner_id = nil, timestamp = nil)
         data = {
           engagement: {
             type: 'NOTE'
@@ -138,6 +138,8 @@ module Hubspot
           }
         }
 
+        data[:engagement][:timestamp] = timestamp if timestamp
+        
         # if the owner id has been provided, append it to the engagement
         data[:engagement][:owner_id] = owner_id if owner_id
 
