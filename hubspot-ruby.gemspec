@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   # Add development-only dependencies here
   s.add_development_dependency("rake")
-  s.add_development_dependency("rspec")
+  s.add_development_dependency("rspec", "~> 2.0")
   s.add_development_dependency("rr")
   s.add_development_dependency("webmock", "< 1.10")
   s.add_development_dependency("vcr")
