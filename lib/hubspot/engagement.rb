@@ -125,10 +125,11 @@ module Hubspot
     end
 
     class << self
-      def create!(contact_id, note_body, owner_id = nil)
+      def create!(contact_id, note_body, timestamp, owner_id = nil)
         data = {
           engagement: {
-            type: 'NOTE'
+            type: 'NOTE',
+            timestamp: timestamp
           },
           associations: {
             contactIds: [contact_id]
