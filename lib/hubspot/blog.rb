@@ -39,14 +39,14 @@ module Hubspot
 
     # Returns the posts for this blog instance.
     #   defaults to returning the last 2 months worth of published blog posts
-    #   in date descending order (i.e. most recent first)
+    #   in date descending order (i.e. most recently published first)
     # {https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts}
     # @return [Hubspot::BlogPost]
     def posts(params = {})
       default_params = {
         content_group_id: self["id"],
-        order_by: '-created',
-        created__gt: Time.now - 2.month,
+        order_by: '-publish_date',
+        updated__gt: Time.now - 2.month,
         state: 'PUBLISHED'
       }
       raise Hubspot::InvalidParams.new('params must be passed as a hash') unless params.is_a?(Hash)
