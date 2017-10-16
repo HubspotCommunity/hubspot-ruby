@@ -137,8 +137,8 @@ module Hubspot
             body: note_body
           }
         }
-        
-        data[:engagement] = { type: 'NOTE', timestamp: timestamp } if timestamp.present?
+
+        data[:engagement][:timestamp] = timestamp if timestamp
         
         # if the owner id has been provided, append it to the engagement
         data[:engagement][:owner_id] = owner_id if owner_id
