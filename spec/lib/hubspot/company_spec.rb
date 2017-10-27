@@ -62,17 +62,23 @@ describe Hubspot::Contact do
   describe ".find_by_domain" do
     context 'given a domain' do
       cassette "company_find_by_domain"
-      subject{ Hubspot::Company.find_by_domain("example.com") }
+      subject(:companies) { Hubspot::Company.find_by_domain("example.com") }
 
       context "when a company is found" do
-        it{ should be_an_instance_of Array }
-        it{ should_not be_empty }
+        it { should be_an_instance_of Array }
+        it { should_not be_empty }
+
+        it 'must contain all available properties' do
+          companies[0..9].each do |company|
+            expect(company.properties).to eql Hubspot::Company.find_by_id(company.vid).properties
+          end
+        end
       end
 
       context "when a company cannot be found" do
-        subject{Hubspot::Company.find_by_domain("asdf1234baddomain.com")}
-        it{ should be_an_instance_of Array }
-        it{ should be_empty }
+        subject { Hubspot::Company.find_by_domain("asdf1234baddomain.com") }
+        it { should be_an_instance_of Array }
+        it { should be_empty }
       end
     end
 

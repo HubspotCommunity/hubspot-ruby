@@ -50,7 +50,7 @@ module Hubspot
         raise Hubspot::InvalidParams, 'expecting String parameter' unless domain.try(:is_a?, String)
 
         limit = options.fetch(:limit, 100)
-        properties = options.fetch(:properties, ["domain", "createdate", "name", "hs_lastmodifieddate"])
+        properties = options.fetch(:properties) { Hubspot::CompanyProperties.all.map { |property| property["name"] } }
         offset_company_id = options.fetch(:offset_company_id, nil)
 
         post_data = {
