@@ -1,7 +1,12 @@
 describe Hubspot::Deal do
+  let(:portal_id) { 62515 }
+  let(:company_id) { 8954037 }
+  let(:vid) { 27136 }
+  let(:amount) { '30' }
+
   let(:example_deal_hash) do
     VCR.use_cassette("deal_example") do
-      HTTParty.get("https://api.hubapi.com/deals/v1/deal/3?hapikey=demo&portalId=62515").parsed_response
+      HTTParty.get("https://api.hubapi.com/deals/v1/deal/3?hapikey=demo&portalId=#{portal_id}").parsed_response
     end
   end
 
@@ -10,27 +15,39 @@ describe Hubspot::Deal do
   describe "#initialize" do
     subject{ Hubspot::Deal.new(example_deal_hash) }
     it  { should be_an_instance_of Hubspot::Deal }
-    its (:portal_id) { should == 62515 }
+    its (:portal_id) { should == portal_id }
     its (:deal_id) { should == 3 }
   end
 
   describe ".create!" do
     cassette "deal_create"
-    subject { Hubspot::Deal.create!(62515, [8954037], [27136], {}) }
+    subject { Hubspot::Deal.create!(portal_id, [company_id], [vid], {}) }
     its(:deal_id)     { should_not be_nil }
-    its(:portal_id)   { should eql 62515 }
-    its(:company_ids) { should eql [8954037]}
-    its(:vids)        { should eql [27136]}
+    its(:portal_id)   { should eql portal_id }
+    its(:company_ids) { should eql [company_id]}
+    its(:vids)        { should eql [vid]}
   end
 
   describe ".find" do
     cassette "deal_find"
-    let(:deal) {Hubspot::Deal.create!(62515, [8954037], [27136], { amount: 30})}
+    let(:deal) {Hubspot::Deal.create!(portal_id, [company_id], [vid], { amount: amount})}
 
     it 'must find by the deal id' do
       find_deal = Hubspot::Deal.find(deal.deal_id)
       find_deal.deal_id.should eql deal.deal_id
-      find_deal.properties["amount"].should eql "30"
+      find_deal.properties["amount"].should eql amount
+    end
+  end
+
+  describe '.find_by_company' do
+    cassette 'deal_find_by_company'
+    let(:company) { Hubspot::Company.create!('Test Company') }
+    let(:deal) { Hubspot::Deal.create!(portal_id, [company.vid], [vid], { amount: amount }) }
+
+    it 'returns company deals' do
+      deals = Hubspot::Deal.find_by_company(company)
+      deals.first.deal_id.should eql deal.deal_id
+      deals.first.properties['amount'].should eql amount
     end
   end
 
@@ -68,7 +85,7 @@ describe Hubspot::Deal do
   describe '#destroy!' do
     cassette 'destroy_deal'
 
-    let(:deal) {Hubspot::Deal.create!(62515, [8954037], [27136], {amount: 30})}
+    let(:deal) {Hubspot::Deal.create!(portal_id, [company_id], [vid], {amount: amount})}
 
     it 'should remove from hubspot' do
       pending
