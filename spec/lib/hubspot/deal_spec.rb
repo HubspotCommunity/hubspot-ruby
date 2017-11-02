@@ -39,6 +39,18 @@ describe Hubspot::Deal do
     end
   end
 
+  describe '.find_by_company' do
+    cassette 'deal_find_by_company'
+    let(:company) { Hubspot::Company.create!('Test Company') }
+    let(:deal) { Hubspot::Deal.create!(portal_id, [company.vid], [vid], { amount: amount }) }
+
+    it 'returns company deals' do
+      deals = Hubspot::Deal.find_by_company(company)
+      deals.first.deal_id.should eql deal.deal_id
+      deals.first.properties['amount'].should eql amount
+    end
+  end
+
   describe '.recent' do
     cassette 'find_all_recent_updated_deals'
 
