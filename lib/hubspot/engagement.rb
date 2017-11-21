@@ -37,12 +37,8 @@ module Hubspot
           response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
           response ? new(HashWithIndifferentAccess.new(response)) : nil
         rescue Hubspot::RequestError => ex
-          if ex.response.code == 404
-            return nil
-          else
-            raise ex
-          end
-        end
+          return nil if ex.response.code == 404
+          raise ex
       end
 
       def find_by_company(company_id)
@@ -75,11 +71,8 @@ module Hubspot
         response['results'] = response['results'].try(:map) { |engagement| new(engagement) }
         response
       rescue Hubspot::RequestError => ex
-        if ex.response.code == 404
-          return nil
-        else
-          raise ex
-        end
+        return nil if ex.response.code == 404
+        raise ex
       end
 
       def all(offset = 0, limit = 20)
@@ -88,11 +81,8 @@ module Hubspot
         response['results'] = response['results'].try(:map) { |engagement| new(engagement) }
         response
       rescue Hubspot::RequestError => ex
-        if ex.response.code == 404
-          return nil
-        else
-          raise ex
-        end
+        return nil if ex.response.code == 404
+        raise ex
       end
 
     end
