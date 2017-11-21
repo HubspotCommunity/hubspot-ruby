@@ -33,11 +33,11 @@ module Hubspot
       end
 
       def find(engagement_id)
-	      response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
-	      response ? new(HashWithIndifferentAccess.new(response)) : nil
+        response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
+        response ? new(HashWithIndifferentAccess.new(response)) : nil
       rescue Hubspot::RequestError => ex
-	      return nil if ex.response.code == 404
-	      raise ex
+        return nil if ex.response.code == 404
+        raise ex
       end
 
       def find_by_company(company_id)
