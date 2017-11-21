@@ -11,6 +11,7 @@ module Hubspot
     ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id'
     GET_ASSOCIATED_ENGAGEMENTS = '/engagements/v1/engagements/associated/:objectType/:objectId/paged'
     GET_RECENT_ENGAGEMENT_PATH = '/engagements/v1/engagements/recent/modified'
+    GET_ALL_ENGAGEMENT_PATH = '/engagements/v1/engagements/paged'
 
     attr_reader :id
     attr_reader :engagement
@@ -36,12 +37,8 @@ module Hubspot
           response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
           response ? new(HashWithIndifferentAccess.new(response)) : nil
         rescue Hubspot::RequestError => ex
-          if ex.response.code == 404
-            return nil
-          else
-            raise ex
-          end
-        end
+          return nil if ex.response.code == 404
+          raise ex
       end
 
       def find_by_company(company_id)
@@ -74,11 +71,18 @@ module Hubspot
         response['results'] = response['results'].try(:map) { |engagement| new(engagement) }
         response
       rescue Hubspot::RequestError => ex
-        if ex.response.code == 404
-          return nil
-        else
-          raise ex
-        end
+        return nil if ex.response.code == 404
+        raise ex
+      end
+
+      def all(offset = 0, limit = 20)
+        params = { limit: limit, offset: offset}
+        response = Hubspot::Connection.get_json(GET_ALL_ENGAGEMENT_PATH, params)
+        response['results'] = response['results'].try(:map) { |engagement| new(engagement) }
+        response
+      rescue Hubspot::RequestError => ex
+        return nil if ex.response.code == 404
+        raise ex
       end
 
     end
