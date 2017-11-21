@@ -33,12 +33,11 @@ module Hubspot
       end
 
       def find(engagement_id)
-        begin
-          response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
-          response ? new(HashWithIndifferentAccess.new(response)) : nil
-        rescue Hubspot::RequestError => ex
-          return nil if ex.response.code == 404
-          raise ex
+        response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
+        response ? new(HashWithIndifferentAccess.new(response)) : nil
+      rescue Hubspot::RequestError => ex
+        return nil if ex.response.code == 404
+        raise ex
       end
 
       def find_by_company(company_id)
@@ -143,7 +142,7 @@ module Hubspot
         }
 
         data[:engagement][:timestamp] = timestamp if timestamp
-        
+
         # if the owner id has been provided, append it to the engagement
         data[:engagement][:owner_id] = owner_id if owner_id
 
