@@ -318,6 +318,22 @@ describe Hubspot::Contact do
         expect(last.vid).to eql 263776
       end
     end
+
+    context 'recent created contacts' do
+      cassette 'find_all_recent_created_contacts'
+
+      it 'must get the contacts list' do
+        contacts = Hubspot::Contact.all(recent_created: true)
+        expect(contacts.size).to eql 20
+
+        first, last = contacts.first, contacts.last
+        expect(first).to be_a Hubspot::Contact
+        expect(first.vid).to eql 5478174
+
+        expect(last).to be_a Hubspot::Contact
+        expect(last.vid).to eql 5476674
+      end
+    end
   end
 
   describe '#update!' do

@@ -18,6 +18,7 @@ module Hubspot
     DESTROY_CONTACT_PATH         = '/contacts/v1/contact/vid/:contact_id'
     CONTACTS_PATH                = '/contacts/v1/lists/all/contacts/all'
     RECENTLY_UPDATED_PATH        = '/contacts/v1/lists/recently_updated/contacts/recent'
+    RECENTLY_CREATED_PATH        = '/contacts/v1/lists/all/contacts/recent'
     CREATE_OR_UPDATE_PATH        = '/contacts/v1/contact/createOrUpdate/email/:contact_email'
     QUERY_PATH                   = '/contacts/v1/search/query'
 
@@ -33,11 +34,15 @@ module Hubspot
 
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
       # {https://developers.hubspot.com/docs/methods/contacts/get_recently_updated_contacts}
+      # {https://developers.hubspot.com/docs/methods/contacts/get_recently_created_contacts}
       def all(opts={})
         recent = opts.delete(:recent) { false }
+        recent_created = opts.delete(:recent_created) { false }
         paged = opts.delete(:paged) { false }
         path, opts =
-        if recent
+        if recent_created
+          [RECENTLY_CREATED_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
+        elsif recent
           [RECENTLY_UPDATED_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
         else
           [CONTACTS_PATH, opts]
