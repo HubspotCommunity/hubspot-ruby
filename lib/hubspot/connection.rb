@@ -2,7 +2,7 @@ module Hubspot
   class Connection
     include HTTParty
 
-    TRACK_URL = 'http://track.hubspot.com'
+    TRACK_URL = 'https://track.hubspot.com'
 
     class << self
       def get_json(path, opts)
@@ -44,8 +44,6 @@ module Hubspot
         Hubspot::Config.ensure!(:portal_id)
         url = generate_url(path, opts.merge(_a: Hubspot::Config.portal_id), base_url: TRACK_URL, hapikey: false)
         response = get(url)
-        puts url
-        puts response
         raise(Hubspot::RequestError.new(response)) unless response.success?
         response
       end
