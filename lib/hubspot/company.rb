@@ -9,7 +9,7 @@ module Hubspot
     RECENTLY_CREATED_COMPANIES_PATH   = "/companies/v2/companies/recent/created"
     RECENTLY_MODIFIED_COMPANIES_PATH  = "/companies/v2/companies/recent/modified"
     GET_COMPANY_BY_ID_PATH            = "/companies/v2/companies/:company_id"
-    GET_COMPANY_BY_DOMAIN_PATH        = "/companies/v2/companies/domain/:domain"
+    GET_COMPANY_BY_DOMAIN_PATH        = "/companies/v2/domains/:domain/companies"
     UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
     ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
     DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
@@ -39,18 +39,35 @@ module Hubspot
       end
 
       # Finds a list of companies by domain
-      # {http://developers.hubspot.com/docs/methods/companies/get_companies_by_domain}
+      # {https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain}
       # @param domain [String] company domain to search by
+      # @param options [Hash] Possible options are:
+      #    limit [Integer] for pagination
+      #    properties [Array] list of company properties to recieve
+      #    offset_company_id [Integer] for pagination (should be company ID)
       # @return [Array] Array of Hubspot::Company records
-      def find_by_domain(domain)
-        path = GET_COMPANY_BY_DOMAIN_PATH
-        params = { domain: domain }
-        raise Hubspot::InvalidParams, 'expecting Integer parameter' unless domain.try(:is_a?, String)
+      def find_by_domain(domain, options = {})
+        raise Hubspot::InvalidParams, 'expecting String parameter' unless domain.try(:is_a?, String)
+
+        limit = options.fetch(:limit, 100)
+        properties = options.fetch(:properties) { Hubspot::CompanyProperties.all.map { |property| property["name"] } }
+        offset_company_id = options.fetch(:offset_company_id, nil)
+
+        post_data = {
+          "limit" => limit,
+          "requestOptions" => {
+            "properties" => properties
+          }
+        }
+        post_data["offset"] = {
+          "isPrimary" => true,
+          "companyId" => offset_company_id
+        } if offset_company_id
 
         companies = []
         begin
-          response = Hubspot::Connection.get_json(path, params)
-          companies = response.try(:map) { |company| new(company) }
+          response = Hubspot::Connection.post_json(GET_COMPANY_BY_DOMAIN_PATH, params: { domain: domain }, body: post_data )
+          companies = response["results"].try(:map) { |company| new(company) }
         rescue => e
           raise e unless e.message =~ /not found/ # 404 / hanle the error and kindly return an empty array
         end
