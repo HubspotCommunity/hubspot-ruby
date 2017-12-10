@@ -45,3 +45,7 @@ tmp
 
 # Generaged gem files
 *.gem
+
+# Sublime Text project files
+*.sublime-project
+*.sublime-workspace
