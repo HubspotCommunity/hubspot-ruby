@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "httparty", ">=0.10.0"
 
   # Add development-only dependencies here
-  s.add_development_dependency("rake")
+  s.add_development_dependency("rake", "~> 11.0")
   s.add_development_dependency("rspec", "~> 2.0")
   s.add_development_dependency("rr")
   s.add_development_dependency("webmock", "< 1.10")
