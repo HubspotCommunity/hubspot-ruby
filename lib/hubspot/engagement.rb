@@ -14,12 +14,14 @@ module Hubspot
     attr_reader :id
     attr_reader :engagement
     attr_reader :associations
+    attr_reader :attachments
     attr_reader :metadata
 
     def initialize(response_hash)
 
       @engagement = response_hash["engagement"]
       @associations = response_hash["associations"]
+      @attachments = response_hash["attachments"]
       @metadata = response_hash["metadata"]
       @id = engagement["id"]
     end
