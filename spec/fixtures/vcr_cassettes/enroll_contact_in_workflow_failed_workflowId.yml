@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/automation/v2/workflows/22210900/enrollments/contacts/testingapis@hubspot.com?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 16 Feb 2018 21:36:50 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '151'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d000e39c41c4b9b533e365161ba9723f31518817009; expires=Sat, 16-Feb-19
+        21:36:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Hubspot-Notfound:
+      - 'true'
+      X-Trace:
+      - 2BD609D86865AA2954AE3E9B2FCEBF3715B96D3D9A000000000000000000
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3ee3a5084d4399ec-EWR
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"resource not found","correlationId":"44a5e851-85a7-4db0-b3dd-f19b6d1f50ea","requestId":"1c7314ca1b7b601f7b5da2470aeadca6"}'
+    http_version: 
+  recorded_at: Fri, 16 Feb 2018 21:36:50 GMT
+recorded_with: VCR 4.0.0

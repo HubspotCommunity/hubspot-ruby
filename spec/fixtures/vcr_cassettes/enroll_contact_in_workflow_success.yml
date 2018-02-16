@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/automation/v2/workflows/2582322/enrollments/contacts/testingapis@hubspot.com?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Fri, 16 Feb 2018 21:36:49 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d19711a529ce92f647b8eea27fe2f76451518817009; expires=Sat, 16-Feb-19
+        21:36:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BD087F471301899ADAE4A4493C9745D79C82F4BCE000000000000000000
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3ee3a506084899f8-EWR
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 16 Feb 2018 21:36:49 GMT
+recorded_with: VCR 4.0.0
