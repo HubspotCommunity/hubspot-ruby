@@ -21,6 +21,7 @@ module Hubspot
     RECENTLY_CREATED_PATH        = '/contacts/v1/lists/all/contacts/recent'
     CREATE_OR_UPDATE_PATH        = '/contacts/v1/contact/createOrUpdate/email/:contact_email'
     QUERY_PATH                   = '/contacts/v1/search/query'
+    GET_ENROLLMENTS_PATH         = '/automation/v2/workflows/enrollments/contacts/:vid'
 
     class << self
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
@@ -197,5 +198,11 @@ module Hubspot
     def destroyed?
       !!@destroyed
     end
+
+    def enrollments(opts={})
+      Hubspot::Connection.get_json(GET_ENROLLMENTS_PATH, opts.merge({vid: @vid}))
+    end
+
+
   end
 end
