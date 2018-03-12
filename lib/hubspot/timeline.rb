@@ -4,7 +4,7 @@ module Hubspot
 
     class << self
       def create_event(app_id, token, params = {})
-        Hubspot::Connection.put_json_with_token(CREATE_EVENT_PATH, token, params: {'application‐id': app_id}, body: params)
+        Hubspot::Connection.put_json(CREATE_EVENT_PATH, params: {'application‐id': app_id}, body: params, token: token)
       end
     end
   end
