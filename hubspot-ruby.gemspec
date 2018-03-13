@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.2.1"
+  s.version = "0.4.0"
   s.require_paths = ["lib"]
-  s.authors = ["Andrew DiMichele"]
+  s.authors = ["Andrew DiMichele", "Chris Bisnett"]
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
   s.files = [".rspec", "Gemfile", "Guardfile", "LICENSE.txt", "README.md", "RELEASING.md", "Rakefile", "hubspot-ruby.gemspec"]
   s.files += Dir["lib/**/*.rb"]
@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "httparty", ">=0.10.0"
 
   # Add development-only dependencies here
-  s.add_development_dependency("rake")
-  s.add_development_dependency("rspec")
+  s.add_development_dependency("rake", "~> 11.0")
+  s.add_development_dependency("rspec", "~> 2.0")
   s.add_development_dependency("rr")
   s.add_development_dependency("webmock", "< 1.10")
   s.add_development_dependency("vcr")

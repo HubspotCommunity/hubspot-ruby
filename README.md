@@ -65,6 +65,13 @@ contact.update!({firstname: "First", lastname: "Last"})
 ```ruby
 Hubspot::Contact.create_or_update!([{vid: '12345', firstname: 'First', lastname: 'Last'}])
 ```
+
+### Create a deal
+
+```ruby
+Hubspot::Deal.create!(nil, [company.vid], [contact.vid], pipeline: 'default', dealstage: 'initial_contact')
+```
+
 ## Contributing to hubspot-ruby
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
