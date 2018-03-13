@@ -142,6 +142,18 @@ describe Hubspot::Form do
         result.should be false
       end
     end
+
+    context 'when initializing Hubspot::Form directly' do
+      let(:form) { Hubspot::Form.new('guid' => '561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0') }
+
+      before { Hubspot.configure(hapikey: 'demo', portal_id: '62515') }
+
+      it 'returns true if the form submission is successful' do
+        params = {}
+        result = form.submit(params)
+        result.should be true
+      end
+    end
   end
 
   describe '#update!' do

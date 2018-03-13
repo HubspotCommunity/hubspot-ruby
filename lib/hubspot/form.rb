@@ -88,7 +88,7 @@ module Hubspot
 
     def assign_properties(hash)
       @guid = hash['guid']
-      @fields = hash['formFieldGroups'].inject([]){ |result, fg| result | fg['fields'] }
+      @fields = (hash['formFieldGroups'] || []).inject([]) { |result, fg| result | fg['fields'] }
       @properties = hash
     end
   end
