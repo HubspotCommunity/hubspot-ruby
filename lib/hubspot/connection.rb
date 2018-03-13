@@ -23,13 +23,13 @@ module Hubspot
       end
 
       def put_json(path, opts)
-	      if opts[:token].present?
-		      url = generate_url(path, opts[:params], hapikey: false)
-		      response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json', 'Authorization' => "Bearer #{opts[:token]}" }, format: :json)
-	      else
-		      url = generate_url(path, opts[:params])
-		      response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
-	      end
+        if opts[:token].present?
+          url = generate_url(path, opts[:params], hapikey: false)
+          response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json', 'Authorization' => "Bearer #{opts[:token]}" }, format: :json)
+        else
+          url = generate_url(path, opts[:params])
+          response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
+        end
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
         response.parsed_response
