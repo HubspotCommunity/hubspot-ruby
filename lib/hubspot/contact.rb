@@ -69,13 +69,16 @@ module Hubspot
       def create_or_update!(contacts)
         query = contacts.map do |ch|
           contact_hash = ch.with_indifferent_access
-          contact_param = {
-            properties: Hubspot::Utils.hash_to_properties(contact_hash.except(:vid))
-          }
           if contact_hash[:vid]
-            contact_param.merge!(vid: contact_hash[:vid])
+            contact_param = {
+              vid: contact_hash[:vid],
+              properties: Hubspot::Utils.hash_to_properties(contact_hash.except(:vid))
+            }
           elsif contact_hash[:email]
-            contact_param.merge!(email: contact_hash[:email])
+            contact_param = {
+              email: contact_hash[:email],
+              properties: Hubspot::Utils.hash_to_properties(contact_hash.except(:email))
+            }
           else
             raise Hubspot::InvalidParams, 'expecting vid or email for contact'
           end
