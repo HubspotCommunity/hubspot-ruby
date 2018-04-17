@@ -4,7 +4,7 @@ module Hubspot
   class Config
 
     CONFIG_KEYS = [:hapikey, :base_url, :portal_id, :logger]
-    DEFAULT_LOGGER = Logger.new('/dev/null')
+    DEFAULT_LOGGER = Logger.new(nil)
 
     class << self
       attr_accessor *CONFIG_KEYS
