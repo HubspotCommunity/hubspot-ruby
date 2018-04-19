@@ -92,9 +92,10 @@ module Hubspot
     # @return [Hubspot::Engagement] self
     def update!(params)
       data = {
-        engagement: engagement,
-        associations: associations,
-        metadata: metadata
+        engagement: params[:engagement]     || engagement,
+        associations: params[:associations] || associations,
+        attachments: params[:attachments]   || attachments,
+        metadata: params[:metadata]         || metadata
       }
 
       Hubspot::Connection.put_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
