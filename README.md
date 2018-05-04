@@ -21,7 +21,7 @@ initializer:
 Hubspot.configure(hapikey: "YOUR_API_KEY")
 ```
 
-If you're have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
+If you have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
 
 ### Note about authentication
 
