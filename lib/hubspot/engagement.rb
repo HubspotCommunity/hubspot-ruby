@@ -113,7 +113,7 @@ module Hubspot
     end
 
     class << self
-      def create!(contact_id, note_body, owner_id = nil)
+      def create!(contact_id, note_body, owner_id = nil, deal_id = nil)
         data = {
           engagement: {
             type: 'NOTE'
@@ -128,6 +128,8 @@ module Hubspot
 
         # if the owner id has been provided, append it to the engagement
         data[:engagement][:owner_id] = owner_id if owner_id
+        # if the deal id has been provided, associate the note with the deal
+        data[:associations][:dealIds] = [deal_id] if deal_id
 
         super(data)
       end
