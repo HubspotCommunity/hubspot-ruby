@@ -105,7 +105,7 @@ describe Hubspot::ContactList do
         list = lists.first
         expect(list).to be_a(Hubspot::ContactList)
         expect(list.id).to be_an(Integer)
-  	  end
+      end
 
       expect_count_and_offset { |params| Hubspot::ContactList.all(params) }
     end
@@ -114,7 +114,7 @@ describe Hubspot::ContactList do
       cassette 'find_all_stastic_lists'
 
       it 'returns by defaut all the static contact lists' do
-      	lists = Hubspot::ContactList.all(static: true)
+        lists = Hubspot::ContactList.all(static: true)
         expect(lists.count).to be > 20
 
         list = lists.first
@@ -127,7 +127,7 @@ describe Hubspot::ContactList do
       cassette 'find_all_dynamic_lists'
 
       it 'returns by defaut all the static contact lists' do
-      	lists = Hubspot::ContactList.all(dynamic: true)
+        lists = Hubspot::ContactList.all(dynamic: true)
         expect(lists.count).to be > 20
 
         list = lists.first
