@@ -28,6 +28,22 @@ describe Hubspot::Deal do
     its(:vids)        { should eql [vid]}
   end
 
+  describe ".associate" do
+    cassette "deal_associate"
+    let(:deal) { Hubspot::Deal.create!(portal_id, [company_id], [vid], { amount: amount}) }
+    let(:company) { Hubspot::Company.create!("New Company #{Time.now.to_i}") }
+    let(:contact) { Hubspot::Contact.create!("newcontact#{Time.now.to_i}@hsgem.com") }
+
+    subject { Hubspot::Deal.associate!(deal.deal_id, [company.vid], [contact.vid]) }
+
+    it 'associates the deal to the contact and the company' do
+      subject
+      find_deal = Hubspot::Deal.find(deal.deal_id)
+      find_deal.company_ids.should eql [company.vid]
+      find_deal.vids.should eql [contact.vid]
+    end
+  end
+
   describe ".find" do
     cassette "deal_find"
     let(:deal) {Hubspot::Deal.create!(portal_id, [company_id], [vid], { amount: amount})}

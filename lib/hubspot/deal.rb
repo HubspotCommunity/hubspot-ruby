@@ -38,16 +38,15 @@ module Hubspot
         new(response)
       end
 
-       # Associate a deal with a contact or company
-       # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
-       # Usage
-       # Hubspot::Deal.associate!(45146940, [], [52])
-       def associate!(deal_id, company_ids=[], vids=[])
-         objecttype = company_ids.any? ? 'COMPANY' : 'CONTACT'
-         object_ids = (company_ids.any? ? company_ids : vids).join('&id=')
-         Hubspot::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
-       end
- 
+      # Associate a deal with contacts and/or companies
+      # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
+      # Can make up to two API calls, one per object type.
+      # Usage
+      #   Hubspot::Deal.associate!(45146940, [], [52])
+      def associate!(deal_id, company_ids=[], vids=[])
+        associate(deal_id, 'CONTACT', vids) if vids.any?
+        associate(deal_id, 'COMPANY', company_ids) if company_ids.any?
+      end
 
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
@@ -62,7 +61,7 @@ module Hubspot
         response = Hubspot::Connection.get_json(RECENT_UPDATED_PATH, opts)
         response['results'].map { |d| new(d) }
       end
-      
+
       # Find all deals associated to a company
       # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
       # @param company [Hubspot::Company] the company
@@ -74,6 +73,15 @@ module Hubspot
         response["results"].map { |deal_id| find(deal_id) }
       end
 
+      private
+
+      def associate(deal_id, object_type, ids)
+        Hubspot::Connection.put_json(
+          ASSOCIATE_DEAL_PATH,
+          params: { deal_id: deal_id, OBJECTTYPE: object_type, objectId: ids.join('&id=') },
+          body: {}
+        )
+      end
     end
 
     # Archives the contact in hubspot
