@@ -16,6 +16,7 @@ module Hubspot
     GET_CONTACTS_BY_UTK_PATH     = '/contacts/v1/contact/utks/batch'
     UPDATE_CONTACT_PATH          = '/contacts/v1/contact/vid/:contact_id/profile'
     DESTROY_CONTACT_PATH         = '/contacts/v1/contact/vid/:contact_id'
+    MERGE_CONTACT_PATH           = '/contacts/v1/contact/merge-vids/:contact_id'
     CONTACTS_PATH                = '/contacts/v1/lists/all/contacts/all'
     RECENTLY_UPDATED_PATH        = '/contacts/v1/lists/recently_updated/contacts/recent'
     RECENTLY_CREATED_PATH        = '/contacts/v1/lists/all/contacts/recent'
@@ -148,6 +149,19 @@ module Hubspot
 
         response = Hubspot::Connection.get_json(QUERY_PATH, { q: query, count: count, offset: offset })
         response.merge("contacts" => response["contacts"].map { |contact_hash| new(contact_hash) })
+      end
+
+      # Merge two contacts
+      # Properties of the secondary contact will be applied to the primary contact
+      # The main email will be the primary contact's
+      # The secondary email still won't be available for new contacts
+      # {https://developers.hubspot.com/docs/methods/contacts/merge-contacts}
+      def merge!(primary_contact_vid, secondary_contact_vid)
+        Hubspot::Connection.post_json(
+          MERGE_CONTACT_PATH,
+          params: { contact_id: primary_contact_vid, no_parse: true },
+          body: { vidToMerge: secondary_contact_vid }
+        )
       end
     end
 
