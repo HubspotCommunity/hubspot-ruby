@@ -163,6 +163,14 @@ module Hubspot
           body: { vidToMerge: secondary_contact_vid }
         )
       end
+
+      # Updates the properties of a contact
+      # {https://developers.hubspot.com/docs/methods/contacts/update_contact}
+      # @param params [Hash] hash of properties to update
+      def update!(vid, params = {})
+        query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
+        Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
+      end
     end
 
     attr_reader :properties, :vid, :is_new
@@ -197,8 +205,7 @@ module Hubspot
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Contact] self
     def update!(params)
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
-      Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
+      self.class.update!(vid, params)
       @properties.merge!(params)
       self
     end
