@@ -1,0 +1,136 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"New Company 1531234622"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Jul 2018 14:57:02 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '820'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d027d1cd243dd0ddd74efc88ec03daa411531234622; expires=Wed, 10-Jul-19
+        14:57:02 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BFD75EDFC0EC316192E4B1FBD87BB710055A0B6EC000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4383e165a849b7bf-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":856818818,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1531234622682","timestamp":1531234622682,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531234622682","timestamp":1531234622682,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"New
+        Company 1531234622","timestamp":1531234622682,"source":"API","sourceId":null,"versions":[{"name":"name","value":"New
+        Company 1531234622","timestamp":1531234622682,"source":"API","sourceVid":[]}]},"createdate":{"value":"1531234622682","timestamp":1531234622682,"source":"API","sourceId":"API","versions":[{"name":"createdate","value":"1531234622682","timestamp":1531234622682,"sourceId":"API","source":"API","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Tue, 10 Jul 2018 14:57:02 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/856818818?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Acme Cogs"},{"name":"domain","value":"abccogs.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Jul 2018 14:57:03 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1370'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de4fc4d1bb00a3648bfa20266018470b61531234622; expires=Wed, 10-Jul-19
+        14:57:02 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2B04DC3BF7F0AC46E3E1D75351B0C4D48324C0F565000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4383e168ca6469b2-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":856818818,"isDeleted":false,"properties":{"website":{"value":"abccogs.com","timestamp":1531234623200,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"abccogs.com","timestamp":1531234623200,"source":"CALCULATED","sourceVid":[]}]},"hs_lastmodifieddate":{"value":"1531234623200","timestamp":1531234623200,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531234623200","timestamp":1531234623200,"source":"CALCULATED","sourceVid":[]},{"name":"hs_lastmodifieddate","value":"1531234622682","timestamp":1531234622682,"source":"CALCULATED","sourceVid":[]}]},"domain":{"value":"abccogs.com","timestamp":1531234623200,"source":"API","sourceId":"9c180937-4a5e-4b69-995d-5c8e723d67fc","versions":[{"name":"domain","value":"abccogs.com","timestamp":1531234623200,"sourceId":"9c180937-4a5e-4b69-995d-5c8e723d67fc","source":"API","sourceVid":[]}]},"name":{"value":"Acme
+        Cogs","timestamp":1531234623200,"source":"API","sourceId":"9c180937-4a5e-4b69-995d-5c8e723d67fc","versions":[{"name":"name","value":"Acme
+        Cogs","timestamp":1531234623200,"sourceId":"9c180937-4a5e-4b69-995d-5c8e723d67fc","source":"API","sourceVid":[]},{"name":"name","value":"New
+        Company 1531234622","timestamp":1531234622682,"source":"API","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Tue, 10 Jul 2018 14:57:03 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Acme Cogs"},{"name":"domain","value":"abccogs.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 405
+      message: Method Not Allowed
+    headers:
+      Date:
+      - Tue, 10 Jul 2018 14:57:03 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de339db906cdbd8809e95e2288e0639151531234623; expires=Wed, 10-Jul-19
+        14:57:03 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Allow:
+      - HEAD,POST,GET,OPTIONS
+      X-Trace:
+      - 2B6106CE17C91AB5BE3DA6C623F3AFBDA73090FB82000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4383e16c4c12bd56-CDG
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 10 Jul 2018 14:57:03 GMT
+recorded_with: VCR 4.0.0

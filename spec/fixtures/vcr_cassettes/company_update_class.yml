@@ -1,0 +1,136 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"New Company 1531234621"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Jul 2018 14:57:01 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '820'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d747f46d492efce9bfad2d9229b45dc771531234621; expires=Wed, 10-Jul-19
+        14:57:01 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BCC35CC9F6288AB2C80CDEE1A17A0C86356B73020000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4383e15e5fb7b7d1-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":856953039,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1531234621266","timestamp":1531234621266,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531234621266","timestamp":1531234621266,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"New
+        Company 1531234621","timestamp":1531234621266,"source":"API","sourceId":null,"versions":[{"name":"name","value":"New
+        Company 1531234621","timestamp":1531234621266,"source":"API","sourceVid":[]}]},"createdate":{"value":"1531234621266","timestamp":1531234621266,"source":"API","sourceId":"API","versions":[{"name":"createdate","value":"1531234621266","timestamp":1531234621266,"sourceId":"API","source":"API","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Tue, 10 Jul 2018 14:57:01 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/856953039?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Acme Flask"},{"name":"domain","value":"abcflasks.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Jul 2018 14:57:01 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1380'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d38c377bbc96cf20bdef4a5f2a03bdaf11531234621; expires=Wed, 10-Jul-19
+        14:57:01 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2B7DCAC069E745FFFB260BA658AC2B0AD889933138000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4383e1605adea86f-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":856953039,"isDeleted":false,"properties":{"website":{"value":"abcflasks.com","timestamp":1531234621583,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"abcflasks.com","timestamp":1531234621583,"source":"CALCULATED","sourceVid":[]}]},"hs_lastmodifieddate":{"value":"1531234621583","timestamp":1531234621583,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531234621583","timestamp":1531234621583,"source":"CALCULATED","sourceVid":[]},{"name":"hs_lastmodifieddate","value":"1531234621266","timestamp":1531234621266,"source":"CALCULATED","sourceVid":[]}]},"domain":{"value":"abcflasks.com","timestamp":1531234621583,"source":"API","sourceId":"79ce0155-b260-4faa-b01c-3c640d1733f3","versions":[{"name":"domain","value":"abcflasks.com","timestamp":1531234621583,"sourceId":"79ce0155-b260-4faa-b01c-3c640d1733f3","source":"API","sourceVid":[]}]},"name":{"value":"Acme
+        Flask","timestamp":1531234621583,"source":"API","sourceId":"79ce0155-b260-4faa-b01c-3c640d1733f3","versions":[{"name":"name","value":"Acme
+        Flask","timestamp":1531234621583,"sourceId":"79ce0155-b260-4faa-b01c-3c640d1733f3","source":"API","sourceVid":[]},{"name":"name","value":"New
+        Company 1531234621","timestamp":1531234621266,"source":"API","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Tue, 10 Jul 2018 14:57:01 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Acme Flask"},{"name":"domain","value":"abcflasks.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 405
+      message: Method Not Allowed
+    headers:
+      Date:
+      - Tue, 10 Jul 2018 14:57:01 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d26f49d4cd28c7c0cae45ec3d9b2cf4f41531234621; expires=Wed, 10-Jul-19
+        14:57:01 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Allow:
+      - HEAD,POST,GET,OPTIONS
+      X-Trace:
+      - 2B1497F4AEE26E84FBDFD42EE75E2FE70AA32ABBE0000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4383e16208bea887-CDG
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 10 Jul 2018 14:57:01 GMT
+recorded_with: VCR 4.0.0

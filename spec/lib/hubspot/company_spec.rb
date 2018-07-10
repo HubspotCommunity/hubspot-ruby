@@ -49,6 +49,24 @@ describe Hubspot::Contact do
     its(['num_associated_contacts']) { should eql '1' }
   end
 
+  describe ".update!" do
+    cassette "company_update_class"
+    let(:company) { Hubspot::Company.create!("New Company #{Time.now.to_i}") }
+    let(:params) { { name: "Acme Flask", domain: "abcflasks.com" } }
+    subject { Hubspot::Company.update!(company.vid, params) }
+
+    it { should be_an_instance_of Hubspot::Company }
+    its(["name"]) { should == "Acme Flask" }
+    its(["domain"]) { should == "abcflasks.com" }
+
+    context "when the request is not successful" do
+      let(:company){ Hubspot::Company.new("vid" => "invalid", "properties" => {})}
+      it "raises an error" do
+        expect{ subject }.to raise_error Hubspot::RequestError
+      end
+    end
+  end
+
   describe ".find_by_id" do
     context 'given an uniq id' do
       cassette "company_find_by_id"
@@ -180,8 +198,8 @@ describe Hubspot::Contact do
   end
 
   describe "#update!" do
-    cassette "company_update"
-    let(:company){ Hubspot::Company.new(example_company_hash) }
+    cassette "company_update_instance"
+    let(:company){ Hubspot::Company.create!("New Company #{Time.now.to_i}") }
     let(:params){ {name: "Acme Cogs", domain: "abccogs.com"} }
     subject{ company.update!(params) }
 
