@@ -9,6 +9,7 @@ module Hubspot
   class Engagement
     CREATE_ENGAGMEMENT_PATH = '/engagements/v1/engagements'
     ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id'
+    ASSOCIATE_ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id/associations/:object_type/:object_vid'
     GET_ASSOCIATED_ENGAGEMENTS = '/engagements/v1/engagements/associated/:objectType/:objectId/paged'
 
     attr_reader :id
@@ -67,6 +68,20 @@ module Hubspot
           raise e unless e.message =~ /not found/
         end
         engagements
+      end
+
+      # Associates an engagement with an object
+      # {https://developers.hubspot.com/docs/methods/engagements/associate_engagement}
+      # @param engagement_id [int] id of the engagement to associate
+      # @param object_type [string] one of contact, company, or deal
+      # @param object_vid [int] id of the contact, company, or deal to associate
+      def associate!(engagement_id, object_type, object_vid)
+        Hubspot::Connection.put_json(ASSOCIATE_ENGAGEMENT_PATH,
+                                     params: {
+                                       engagement_id: engagement_id,
+                                       object_type: object_type,
+                                       object_vid: object_vid
+                                     })
       end
     end
 

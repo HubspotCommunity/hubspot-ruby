@@ -71,6 +71,20 @@ describe Hubspot::Engagement do
       end
     end
 
+    describe ".associate!" do
+      cassette "engagement_associate"
+
+      let(:engagement) { Hubspot::EngagementNote.create!(nil, 'note') }
+      let(:contact) { Hubspot::Contact.create!("newcontact#{Time.now.to_i}@hsgem.com") }
+      subject { Hubspot::Engagement.associate!(engagement.id, 'contact', contact.vid) }
+
+      it 'associate an engagement to a resource' do
+        subject
+        found_by_contact = Hubspot::Engagement.find_by_contact(contact.vid)
+        expect(found_by_contact.first.id).to eql engagement.id
+      end
+    end
+
     describe '#destroy!' do
       cassette 'engagement_destroy'
 
