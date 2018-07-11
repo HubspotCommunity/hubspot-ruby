@@ -82,6 +82,42 @@ describe Hubspot::Deal do
     end
   end
 
+  describe ".update!" do
+    cassette "deal_update_class"
+    let(:deal) { Hubspot::Deal.create!(portal_id, [], [], {}) }
+    let(:params) { { dealname: "Acme Flask" } }
+    subject { Hubspot::Deal.update!(deal.deal_id, params) }
+
+    it 'updates the deal' do
+      subject.should be_an_instance_of Hubspot::Deal
+      subject["dealname"].should == "Acme Flask"
+    end
+
+    context 'when the request is not successful' do
+      it 'raises an error' do
+        skip 'hubspot does not send a 404 anymore'
+        # https://github.com/adimichele/hubspot-ruby/issues/124
+      end
+    end
+  end
+
+  describe "#update!" do
+    cassette "deal_update_instance"
+    let(:deal) { Hubspot::Deal.create!(portal_id, [], [], {}) }
+    let(:params) { { dealname: "Acme Cogs" } }
+    subject { deal.update!(params) }
+
+    it{ should be_an_instance_of Hubspot::Deal }
+    its(["dealname"]) { should ==  "Acme Cogs" }
+
+    context 'when the request is not successful' do
+      it 'raises an error' do
+        skip 'hubspot does not send a 404 anymore'
+        # https://github.com/adimichele/hubspot-ruby/issues/124
+      end
+    end
+  end
+
   describe '#destroy!' do
     cassette 'destroy_deal'
 

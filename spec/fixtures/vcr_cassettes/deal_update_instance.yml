@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/deals/v1/deal?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"associations":{"associatedCompanyIds":[],"associatedVids":[]},"properties":[]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 08:30:04 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '858'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d3118908e52abe9eb6288579ced0e1bd21531297804; expires=Thu, 11-Jul-19
+        08:30:04 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BBF6883F535DF8D1B79F96DC77B569335B8D8DE34000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4389e7ed0f32bd79-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":319502350,"isDeleted":false,"associations":{"associatedVids":[],"associatedCompanyIds":[],"associatedDealIds":[]},"properties":{"hs_lastmodifieddate":{"value":"1531297804400","timestamp":1531297804400,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531297804400","timestamp":1531297804400,"source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1531297804400","timestamp":1531297804400,"source":"API","sourceId":null,"versions":[{"name":"hs_createdate","value":"1531297804400","timestamp":1531297804400,"source":"API","sourceVid":[]}]},"createdate":{"value":"1531297804400","timestamp":1531297804400,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1531297804400","timestamp":1531297804400,"source":"API","sourceVid":[]}]}},"imports":[],"stateChanges":[]}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 08:30:04 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/deals/v1/deal/319502350?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"dealname","value":"Acme Cogs"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 08:30:04 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1364'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbd4dbb2bedebc7c8530cbcd82433ce211531297804; expires=Thu, 11-Jul-19
+        08:30:04 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2B9F39D53C23654243C95E3B4C6636594F6460F549000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4389e7ee7cc2b7b9-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":319502350,"isDeleted":false,"associations":{"associatedVids":[],"associatedCompanyIds":[],"associatedDealIds":[]},"properties":{"dealname":{"value":"Acme
+        Cogs","timestamp":1531297804856,"source":"API","sourceId":null,"versions":[{"name":"dealname","value":"Acme
+        Cogs","timestamp":1531297804856,"source":"API","sourceVid":[]}]},"hs_lastmodifieddate":{"value":"1531297804856","timestamp":1531297804856,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531297804856","timestamp":1531297804856,"source":"CALCULATED","sourceVid":[]},{"name":"hs_lastmodifieddate","value":"1531297804400","timestamp":1531297804400,"source":"CALCULATED","sourceVid":[]}]},"num_associated_contacts":{"value":"0","timestamp":0,"source":"CALCULATED","sourceId":null,"versions":[{"name":"num_associated_contacts","value":"0","source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1531297804400","timestamp":1531297804400,"source":"API","sourceId":null,"versions":[{"name":"hs_createdate","value":"1531297804400","timestamp":1531297804400,"source":"API","sourceVid":[]}]},"createdate":{"value":"1531297804400","timestamp":1531297804400,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1531297804400","timestamp":1531297804400,"source":"API","sourceVid":[]}]}},"imports":[],"stateChanges":[]}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 08:30:04 GMT
+recorded_with: VCR 4.0.0
