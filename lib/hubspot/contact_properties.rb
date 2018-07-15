@@ -1,4 +1,4 @@
-module Hubspot
+module HubSpot
   class ContactProperties < Properties
 
     ALL_PROPERTIES_PATH  = '/contacts/v2/properties'

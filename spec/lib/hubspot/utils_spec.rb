@@ -1,4 +1,4 @@
-describe Hubspot::Utils do
+describe HubSpot::Utils do
   describe ".properties_to_hash" do
     let(:properties) do
       {
@@ -7,7 +7,7 @@ describe Hubspot::Utils do
         "lastname"  => { "value" => "Smith" }
       }
     end
-    subject { Hubspot::Utils.properties_to_hash(properties) }
+    subject { HubSpot::Utils.properties_to_hash(properties) }
     its(["email"]) { should == "email@address.com" }
     its(["firstname"]) { should == "Bob" }
     its(["lastname"]) { should == "Smith" }
@@ -21,7 +21,7 @@ describe Hubspot::Utils do
         "lastname"  => "Smith"
       }
     end
-    subject { Hubspot::Utils.hash_to_properties(hash) }
+    subject { HubSpot::Utils.hash_to_properties(hash) }
     it { should be_an_instance_of Array }
     its(:length) { should == 3 }
     it { should include({ "property" => "email", "value" => "email@address.com" }) }
@@ -47,7 +47,7 @@ describe Hubspot::Utils do
 
     context 'with no changes' do
       it 'should report no changes' do
-        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::ContactProperties, source, target)
+        skip, new_groups, new_props, update_props = HubSpot::Utils.compare_property_lists(HubSpot::ContactProperties, source, target)
         expect(skip.count).to be > 0
         expect(new_groups.count).to be(0)
         expect(new_props.count).to be(0)
@@ -69,7 +69,7 @@ describe Hubspot::Utils do
           end
         end
 
-        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::ContactProperties, source, target)
+        skip, new_groups, new_props, update_props = HubSpot::Utils.compare_property_lists(HubSpot::ContactProperties, source, target)
         expect(skip.count).to be > 0
         expect(new_groups.count).to be(0)
         expect(new_props.count).to be(0)
@@ -96,7 +96,7 @@ describe Hubspot::Utils do
 
     context 'with no changes' do
       it 'should report no changes' do
-        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::DealProperties, source, target)
+        skip, new_groups, new_props, update_props = HubSpot::Utils.compare_property_lists(HubSpot::DealProperties, source, target)
         expect(skip.count).to be > 0
         expect(new_groups.count).to be(0)
         expect(new_props.count).to be(0)
@@ -118,7 +118,7 @@ describe Hubspot::Utils do
           end
         end
 
-        skip, new_groups, new_props, update_props = Hubspot::Utils.compare_property_lists(Hubspot::DealProperties, source, target)
+        skip, new_groups, new_props, update_props = HubSpot::Utils.compare_property_lists(HubSpot::DealProperties, source, target)
         expect(skip.count).to be > 0
         expect(new_groups.count).to be(0)
         expect(new_props.count).to be(0)

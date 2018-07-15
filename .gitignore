@@ -49,3 +49,6 @@ tmp
 # Sublime Text project files
 *.sublime-project
 *.sublime-workspace
+
+# Emacs backup files
+*~

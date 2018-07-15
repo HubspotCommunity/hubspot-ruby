@@ -1,4 +1,4 @@
-module Hubspot
+module HubSpot
   describe Properties do
     let(:params) { { 'name'                          => 'amount_of_new_money_lined_up',
                      'label'                         => 'New Money Lined Up (Over $50K or Under $50K)',
@@ -36,7 +36,7 @@ module Hubspot
 
     context '.valid_params' do
       it 'should strip out extra keys and their values' do
-        result = Hubspot::Properties.valid_params(params)
+        result = HubSpot::Properties.valid_params(params)
         expect(Properties.same?(result, valid_params))
       end
     end

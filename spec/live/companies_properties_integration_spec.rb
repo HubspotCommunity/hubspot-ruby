@@ -2,11 +2,11 @@ describe 'Company Properties API Live test', live: true do
   # Let's try to hit all the API endpoints at least once
 
   before do
-    Hubspot.configure hapikey: "demo"
+    HubSpot.configure hapikey: "demo"
   end
 
   it 'should return a list of properties' do
-    result = Hubspot::CompanyProperties.all
+    result = HubSpot::CompanyProperties.all
 
     expect(result.count).to be > 0
   end
@@ -14,7 +14,7 @@ describe 'Company Properties API Live test', live: true do
   it 'should return a list of properties for the specified groups' do
     group_names = %w(companyinformation)
 
-    result = Hubspot::CompanyProperties.all({}, { include: group_names })
+    result = HubSpot::CompanyProperties.all({}, { include: group_names })
     expect(result.count).to be > 0
     result.each do |entry|
       expect(group_names.include?(entry['groupName']))
@@ -24,7 +24,7 @@ describe 'Company Properties API Live test', live: true do
   it 'should return a list of properties except for the specified groups' do
     group_names = %w(companyinformation)
 
-    result = Hubspot::CompanyProperties.all({}, { exclude: group_names })
+    result = HubSpot::CompanyProperties.all({}, { exclude: group_names })
     expect(result.count).to be > 0
     result.each do |entry|
       expect(group_names.include?(entry['groupName'])).to be_false
@@ -32,14 +32,14 @@ describe 'Company Properties API Live test', live: true do
   end
 
   it 'should return a list of groups' do
-    result = Hubspot::CompanyProperties.groups
+    result = HubSpot::CompanyProperties.groups
 
     expect(result.count).to be > 0
     expect(result[0].slice(*%w(name displayName displayOrder)).count).to eq(3)
   end
 
   it 'should return  list of groups and their properties' do
-    result = Hubspot::CompanyProperties.groups({ includeProperties: true })
+    result = HubSpot::CompanyProperties.groups({ includeProperties: true })
 
     expect(result.count).to be > 0
     expect(result[0].slice(*%w(name displayName displayOrder properties)).count).to eq(4)
@@ -47,7 +47,7 @@ describe 'Company Properties API Live test', live: true do
 
   it 'should return only the requested groups' do
     group_names = %w(companyinformation )
-    result      = Hubspot::CompanyProperties.groups({}, { include: group_names })
+    result      = HubSpot::CompanyProperties.groups({}, { include: group_names })
 
     expect(result.count).to eq(group_names.count)
     result.each do |entry|
@@ -57,7 +57,7 @@ describe 'Company Properties API Live test', live: true do
 
   it 'should filter out the excluded groups' do
     group_names = %w(companyinformation )
-    result      = Hubspot::CompanyProperties.groups({}, { exclude: group_names })
+    result      = HubSpot::CompanyProperties.groups({}, { exclude: group_names })
 
     result.each do |entry|
       expect(group_names.include?(entry['name'])).to be_false
@@ -76,19 +76,19 @@ describe 'Company Properties API Live test', live: true do
     }
 
     it 'should create a new property' do
-      response = Hubspot::CompanyProperties.create!(data)
+      response = HubSpot::CompanyProperties.create!(data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should update an existing property' do
       data['label'] = 'An updated test property'
 
-      response = Hubspot::CompanyProperties.update!(data['name'], data)
+      response = HubSpot::CompanyProperties.update!(data['name'], data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should delete an existing property' do
-      response = Hubspot::CompanyProperties.delete!(data['name'])
+      response = HubSpot::CompanyProperties.delete!(data['name'])
       expect(response).to be nil
     end
   end
@@ -101,19 +101,19 @@ describe 'Company Properties API Live test', live: true do
     }
 
     it 'should create a new property group' do
-      response = Hubspot::CompanyProperties.create_group!(data)
+      response = HubSpot::CompanyProperties.create_group!(data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should update an existing property group' do
       data['displayName'] = 'Test Group 99 Modified'
 
-      response = Hubspot::CompanyProperties.update_group!(data['name'], data)
+      response = HubSpot::CompanyProperties.update_group!(data['name'], data)
       data.map { |key, val| expect(response[key]).to eql(val) }
     end
 
     it 'should delete an existing property group' do
-      response = Hubspot::CompanyProperties.delete_group!(data['name'])
+      response = HubSpot::CompanyProperties.delete_group!(data['name'])
       expect(response).to be nil
     end
   end

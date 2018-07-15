@@ -1,4 +1,4 @@
-describe Hubspot::Contact do
+describe HubSpot::Contact do
   let(:example_company_hash) do
     VCR.use_cassette("company_example", record: :none) do
       HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
@@ -10,11 +10,11 @@ describe Hubspot::Contact do
     end
   end
 
-  before{ Hubspot.configure(hapikey: "demo") }
+  before{ HubSpot.configure(hapikey: "demo") }
 
   describe "#initialize" do
-    subject{ Hubspot::Company.new(example_company_hash) }
-    it{ should be_an_instance_of Hubspot::Company }
+    subject{ HubSpot::Company.new(example_company_hash) }
+    it{ should be_an_instance_of HubSpot::Company }
     its(["name"]){ should == "HubSpot" }
     its(["domain"]){ should == "hubspot.com" }
     its(:vid){ should == 21827084 }
@@ -23,10 +23,10 @@ describe Hubspot::Contact do
   describe ".create!" do
     cassette "company_create"
     let(:params){{}}
-    subject{ Hubspot::Company.create!(name, params) }
+    subject{ HubSpot::Company.create!(name, params) }
     context "with a new name" do
       let(:name){ "New Company #{Time.now.to_i}" }
-      it{ should be_an_instance_of Hubspot::Company }
+      it{ should be_an_instance_of HubSpot::Company }
       its(:name){ should match /New Company .*/ } # Due to VCR the email may not match exactly
 
       context "and some params" do
@@ -42,17 +42,17 @@ describe Hubspot::Contact do
    describe ".find_by_id" do
     context 'given an uniq id' do
       cassette "company_find_by_id"
-      subject{ Hubspot::Company.find_by_id(vid) }
+      subject{ HubSpot::Company.find_by_id(vid) }
 
       context "when the company is found" do
         let(:vid){ 21827084 }
-        it{ should be_an_instance_of Hubspot::Company }
+        it{ should be_an_instance_of HubSpot::Company }
         its(:name){ should == "HubSpot" }
       end
 
       context "when the contact cannot be found" do
         it 'raises an error' do
-          expect { Hubspot::Company.find_by_id(9999999) }.to raise_error(Hubspot::RequestError)
+          expect { HubSpot::Company.find_by_id(9999999) }.to raise_error(HubSpot::RequestError)
         end
       end
     end
@@ -62,7 +62,7 @@ describe Hubspot::Contact do
   describe ".find_by_domain" do
     context 'given a domain' do
       cassette "company_find_by_domain"
-      subject(:companies) { Hubspot::Company.find_by_domain("example.com") }
+      subject(:companies) { HubSpot::Company.find_by_domain("example.com") }
 
       context "when a company is found" do
         it { should be_an_instance_of Array }
@@ -70,13 +70,13 @@ describe Hubspot::Contact do
 
         it 'must contain all available properties' do
           companies[0..9].each do |company|
-            expect(company.properties).to eql Hubspot::Company.find_by_id(company.vid).properties
+            expect(company.properties).to eql HubSpot::Company.find_by_id(company.vid).properties
           end
         end
       end
 
       context "when a company cannot be found" do
-        subject { Hubspot::Company.find_by_domain("asdf1234baddomain.com") }
+        subject { HubSpot::Company.find_by_domain("asdf1234baddomain.com") }
         it { should be_an_instance_of Array }
         it { should be_empty }
       end
@@ -84,7 +84,7 @@ describe Hubspot::Contact do
 
     context 'given a domain and parameters' do
       cassette 'company_find_by_domain_with_params'
-      subject(:companies) { Hubspot::Company.find_by_domain("example.com", limit: 2, properties: ["name", "createdate"], offset_company_id: 117004411) }
+      subject(:companies) { HubSpot::Company.find_by_domain("example.com", limit: 2, properties: ["name", "createdate"], offset_company_id: 117004411) }
 
       context "when a company is found" do
         it{ should be_an_instance_of Array }
@@ -106,24 +106,24 @@ describe Hubspot::Contact do
       cassette 'find_all_companies'
 
       it 'must get the companies list' do
-        companies = Hubspot::Company.all
+        companies = HubSpot::Company.all
 
         expect(companies.size).to eql 20 # default page size
 
         first = companies.first
         last = companies.last
 
-        expect(first).to be_a Hubspot::Company
+        expect(first).to be_a HubSpot::Company
         expect(first.vid).to eql 42866817
         expect(first['name']).to eql 'name'
 
-        expect(last).to be_a Hubspot::Company
+        expect(last).to be_a HubSpot::Company
         expect(last.vid).to eql 42861017
         expect(last['name']).to eql 'Xge5rbdt2zm'
       end
 
       it 'must filter only 2 copmanies' do
-        copmanies = Hubspot::Company.all(count: 2)
+        copmanies = HubSpot::Company.all(count: 2)
         expect(copmanies.size).to eql 2
       end
     end
@@ -132,14 +132,14 @@ describe Hubspot::Contact do
       cassette 'find_all_recent_companies'
 
       it 'must get the companies list' do
-        companies = Hubspot::Company.all(recently_updated: true)
+        companies = HubSpot::Company.all(recently_updated: true)
         expect(companies.size).to eql 20
 
         first, last = companies.first, companies.last
-        expect(first).to be_a Hubspot::Company
+        expect(first).to be_a HubSpot::Company
         expect(first.vid).to eql 318615742
 
-        expect(last).to be_a Hubspot::Company
+        expect(last).to be_a HubSpot::Company
         expect(last.vid).to eql 359899290
       end
     end
@@ -147,25 +147,25 @@ describe Hubspot::Contact do
 
   describe "#update!" do
     cassette "company_update"
-    let(:company){ Hubspot::Company.new(example_company_hash) }
+    let(:company){ HubSpot::Company.new(example_company_hash) }
     let(:params){ {name: "Acme Cogs", domain: "abccogs.com"} }
     subject{ company.update!(params) }
 
-    it{ should be_an_instance_of Hubspot::Company }
+    it{ should be_an_instance_of HubSpot::Company }
     its(["name"]){ should ==  "Acme Cogs" }
     its(["domain"]){ should ==  "abccogs.com" }
 
     context "when the request is not successful" do
-      let(:company){ Hubspot::Company.new({"vid" => "invalid", "properties" => {}})}
+      let(:company){ HubSpot::Company.new({"vid" => "invalid", "properties" => {}})}
       it "raises an error" do
-        expect{ subject }.to raise_error Hubspot::RequestError
+        expect{ subject }.to raise_error HubSpot::RequestError
       end
     end
   end
 
   describe "#destroy!" do
     cassette "company_destroy"
-    let(:company){ Hubspot::Company.create!("newcompany_y_#{Time.now.to_i}@hsgem.com") }
+    let(:company){ HubSpot::Company.create!("newcompany_y_#{Time.now.to_i}@hsgem.com") }
     subject{ company.destroy! }
     it { should be_true }
     it "should be destroyed" do
@@ -173,9 +173,9 @@ describe Hubspot::Contact do
       company.destroyed?.should be_true
     end
     context "when the request is not successful" do
-      let(:company){ Hubspot::Company.new({"vid" => "invalid", "properties" => {}})}
+      let(:company){ HubSpot::Company.new({"vid" => "invalid", "properties" => {}})}
       it "raises an error" do
-        expect{ subject }.to raise_error Hubspot::RequestError
+        expect{ subject }.to raise_error HubSpot::RequestError
         company.destroyed?.should be_false
       end
     end
@@ -183,10 +183,10 @@ describe Hubspot::Contact do
 
   describe "#add_contact" do
     cassette "add_contact_to_company"
-    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
-    let(:contact){ Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
-    subject { Hubspot::Company.all(recent: true).last }
-    context "with Hubspot::Contact instance" do
+    let(:company){ HubSpot::Company.create!("company_#{Time.now.to_i}@example.com") }
+    let(:contact){ HubSpot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
+    subject { HubSpot::Company.all(recent: true).last }
+    context "with HubSpot::Contact instance" do
       before { company.add_contact contact }
       its(['num_associated_contacts']) { should eql '1' }
     end
@@ -198,13 +198,13 @@ describe Hubspot::Contact do
   end
 
   describe "#destroyed?" do
-    let(:company){ Hubspot::Company.new(example_company_hash) }
+    let(:company){ HubSpot::Company.new(example_company_hash) }
     subject{ company }
     its(:destroyed?){ should be_false }
   end
 
   describe "#contacts" do
-    let(:company){ Hubspot::Company.new(company_with_contacts_hash) }
+    let(:company){ HubSpot::Company.new(company_with_contacts_hash) }
     subject do
       VCR.use_cassette("company_contacts") { company.contacts }
     end

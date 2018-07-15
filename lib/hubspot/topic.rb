@@ -1,4 +1,4 @@
-module Hubspot
+module HubSpot
   #
   # HubSpot Topics API
   #
@@ -9,17 +9,17 @@ module Hubspot
     class << self
       # Lists the topics
       # {https://developers.hubspot.com/docs/methods/blogv2/get_topics)
-      # @return [Hubspot::Topic] array of topics
+      # @return [HubSpot::Topic] array of topics
       def list
-        response = Hubspot::Connection.get_json(TOPICS_PATH, {})
+        response = HubSpot::Connection.get_json(TOPICS_PATH, {})
         response['objects'].map { |t| new(t) }
       end
 
       # Finds the details for a specific topic_id
       # {https://developers.hubspot.com/docs/methods/blogv2/get_topics_topic_id }
-      # @return Hubspot::Topic
+      # @return HubSpot::Topic
       def find_by_topic_id(id)
-        response = Hubspot::Connection.get_json(TOPIC_PATH, { topic_id: id })
+        response = HubSpot::Connection.get_json(TOPIC_PATH, { topic_id: id })
         new(response)
       end
     end

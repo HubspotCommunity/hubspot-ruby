@@ -1,9 +1,9 @@
 require 'timecop'
 
-describe Hubspot do
+describe HubSpot do
   let(:example_blog_hash) do
     VCR.use_cassette("blog_list", record: :none) do
-      url = Hubspot::Connection.send(:generate_url, Hubspot::Blog::BLOG_LIST_PATH)
+      url = HubSpot::Connection.send(:generate_url, HubSpot::Blog::BLOG_LIST_PATH)
       resp = HTTParty.get(url, format: :json)
       resp.parsed_response["objects"].first
     end
@@ -11,7 +11,7 @@ describe Hubspot do
   let(:created_range_params) { { created__gt: false, created__range: (Time.now..Time.now + 2.years)  } }
 
   before do
-    Hubspot.configure(hapikey: "demo")
+    HubSpot.configure(hapikey: "demo")
     Timecop.freeze(Time.local(2012, 'Oct', 10))
   end
 
@@ -19,11 +19,11 @@ describe Hubspot do
     Timecop.return
   end
 
-  describe Hubspot::Blog do
+  describe HubSpot::Blog do
 
     describe ".list" do
       cassette "blog_list"
-      let(:blog_list) { Hubspot::Blog.list }
+      let(:blog_list) { HubSpot::Blog.list }
 
       it "should have a list of blogs" do
         blog_list.count.should be(1)
@@ -34,20 +34,20 @@ describe Hubspot do
       cassette "blog_list"
 
       it "should have a list of blogs" do
-        blog = Hubspot::Blog.find_by_id(351076997)
+        blog = HubSpot::Blog.find_by_id(351076997)
         blog["id"].should eq(351076997)
       end
     end
 
     describe "#initialize" do
-      subject{ Hubspot::Blog.new(example_blog_hash) }
+      subject{ HubSpot::Blog.new(example_blog_hash) }
       its(["name"]) { should == "API Demonstration Blog" }
       its(["id"])   { should == 351076997 }
     end
 
     describe "#posts" do
       cassette "one_month_blog_posts_filter_state"
-      let(:blog) { Hubspot::Blog.new(example_blog_hash) }
+      let(:blog) { HubSpot::Blog.new(example_blog_hash) }
 
       describe "can be filtered by state" do
 
@@ -57,7 +57,7 @@ describe Hubspot do
         end
 
         it "should validate the state is a valid one" do
-          expect { blog.posts('invalid') }.to raise_error(Hubspot::InvalidParams)
+          expect { blog.posts('invalid') }.to raise_error(HubSpot::InvalidParams)
         end
 
         it "should allow draft posts if specified" do
@@ -85,12 +85,12 @@ describe Hubspot do
     end
   end
 
-  describe Hubspot::BlogPost do
+  describe HubSpot::BlogPost do
     cassette "blog_posts"
 
     let(:example_blog_post) do
       VCR.use_cassette("one_month_blog_posts_filter_state", record: :none) do
-        blog = Hubspot::Blog.new(example_blog_hash)
+        blog = HubSpot::Blog.new(example_blog_hash)
         blog.posts(created_range_params).first
       end
     end
@@ -100,16 +100,16 @@ describe Hubspot do
     end
 
     it "can find by blog_post_id" do
-      blog = Hubspot::BlogPost.find_by_blog_post_id(422192866)
+      blog = HubSpot::BlogPost.find_by_blog_post_id(422192866)
       expect(blog['id']).to eq(422192866)
     end
 
     context 'containing a topic' do
       # 422192866 contains a topic
-      let(:blog_with_topic) { Hubspot::BlogPost.find_by_blog_post_id(422192866) }
+      let(:blog_with_topic) { HubSpot::BlogPost.find_by_blog_post_id(422192866) }
 
       it "should return topic objects" do
-        expect(blog_with_topic.topics.first.is_a?(Hubspot::Topic)).to be(true)
+        expect(blog_with_topic.topics.first.is_a?(HubSpot::Topic)).to be(true)
       end
     end
   end

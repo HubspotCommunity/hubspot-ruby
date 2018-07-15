@@ -19,11 +19,13 @@ require 'hubspot/deal_properties'
 require 'hubspot/owner'
 require 'hubspot/engagement'
 require 'hubspot/subscription'
+require 'hubspot/deprecations'
 
-module Hubspot
+
+module HubSpot
   def self.configure(config={})
-    Hubspot::Config.configure(config)
+    HubSpot::Config.configure(config)
   end
 
-  require 'hubspot/railtie' if defined?(Rails)
+ require 'hubspot/railtie' if defined?(Rails)
 end

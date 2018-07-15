@@ -1,6 +1,6 @@
 require 'logger'
 
-module Hubspot
+module HubSpot
   class Config
 
     CONFIG_KEYS = [:hapikey, :base_url, :portal_id, :logger]
@@ -27,7 +27,7 @@ module Hubspot
 
       def ensure!(*params)
         params.each do |p|
-          raise Hubspot::ConfigurationError.new("'#{p}' not configured") unless instance_variable_get "@#{p}"
+          raise HubSpot::ConfigurationError.new("'#{p}' not configured") unless instance_variable_get "@#{p}"
         end
       end
     end

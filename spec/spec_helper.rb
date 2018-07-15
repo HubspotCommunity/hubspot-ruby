@@ -28,7 +28,7 @@ RSpec.configure do |config|
   config.mock_with :rr
 
   config.after(:each) do
-    Hubspot::Config.reset!
+    HubSpot::Config.reset!
   end
 
   config.around(:each, live: true) do |example|

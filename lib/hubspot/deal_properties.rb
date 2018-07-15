@@ -1,4 +1,4 @@
-module Hubspot
+module HubSpot
   class DealProperties < Properties
 
     ALL_PROPERTIES_PATH  = '/deals/v1/properties'

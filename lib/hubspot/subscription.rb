@@ -1,4 +1,4 @@
-module Hubspot
+module HubSpot
   class Subscription
 	SUBSCRIPTIONS_PATH = '/email/public/v1/subscriptions'
 	TIMELINE_PATH 	   = '/email/public/v1/subscriptions/timeline'
@@ -20,7 +20,7 @@ module Hubspot
 
 	class << self 
 	  def status(email)
-	  	response = Hubspot::Connection.get_json(SUBSCRIPTION_PATH, {email_address: email})
+	  	response = HubSpot::Connection.get_json(SUBSCRIPTION_PATH, {email_address: email})
 	  	new(response)
 	  end 
 	end 

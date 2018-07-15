@@ -1,4 +1,4 @@
-module Hubspot
+module HubSpot
   class Utils
     class << self
       # Parses the hubspot properties format into a key-value hash
@@ -104,10 +104,10 @@ module Hubspot
 
       def with_hapikey(hapikey)
         begin
-          Hubspot.configure(hapikey: hapikey) unless hapikey.blank?
+          HubSpot.configure(hapikey: hapikey) unless hapikey.blank?
           yield if block_given?
         ensure
-          Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY']) unless hapikey.blank?
+          HubSpot.configure(hapikey: ENV['HUBSPOT_API_KEY']) unless hapikey.blank?
         end
       end
 

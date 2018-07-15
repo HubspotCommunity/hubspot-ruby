@@ -1,6 +1,6 @@
 require 'hubspot/utils'
 
-module Hubspot
+module HubSpot
   #
   # HubSpot Deals API
   #
@@ -26,20 +26,20 @@ module Hubspot
 
     class << self
       def find(pipeline_id)
-        response = Hubspot::Connection.get_json(PIPELINE_PATH, { pipeline_id: pipeline_id })
+        response = HubSpot::Connection.get_json(PIPELINE_PATH, { pipeline_id: pipeline_id })
         new(response)
       end
 
       def all
-        response = Hubspot::Connection.get_json(PIPELINES_PATH, {})
+        response = HubSpot::Connection.get_json(PIPELINES_PATH, {})
         response.map { |p| new(p) }
       end
 
       # Creates a DealPipeline
       # {https://developers.hubspot.com/docs/methods/deal-pipelines/create-deal-pipeline}
-      # @return [Hubspot::PipeLine] Company record
+      # @return [HubSpot::PipeLine] Company record
       def create!(post_data={})
-        response = Hubspot::Connection.post_json(PIPELINES_PATH, params: {}, body: post_data)
+        response = HubSpot::Connection.post_json(PIPELINES_PATH, params: {}, body: post_data)
         new(response)
       end
     end
@@ -48,7 +48,7 @@ module Hubspot
     # {http://developers.hubspot.com/docs/methods/companies/delete_company}
     # @return [TrueClass] true
     def destroy!
-      Hubspot::Connection.delete_json(PIPELINE_PATH, pipeline_id: @pipeline_id)
+      HubSpot::Connection.delete_json(PIPELINE_PATH, pipeline_id: @pipeline_id)
     end
 
     def [](stage)

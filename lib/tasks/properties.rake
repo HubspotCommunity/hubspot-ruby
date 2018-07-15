@@ -8,8 +8,8 @@ namespace :hubspot do
     unless %w(contact deal).include?(kind)
       raise ArgumentError, ':kind must be either "contact" or "deal"'
     end
-    klass = kind == 'contact' ? Hubspot::ContactProperties : Hubspot::DealProperties
-    props = Hubspot::Utils::dump_properties(klass, hapikey, build_filter(args))
+    klass = kind == 'contact' ? HubSpot::ContactProperties : HubSpot::DealProperties
+    props = HubSpot::Utils::dump_properties(klass, hapikey, build_filter(args))
     if args[:file].blank?
       puts JSON.pretty_generate(props)
     else
@@ -29,10 +29,10 @@ namespace :hubspot do
     unless %w(contact deal).include?(kind)
       raise ArgumentError, ':kind must be either "contact" or "deal"'
     end
-    klass = kind == 'contact' ? Hubspot::ContactProperties : Hubspot::DealProperties
+    klass = kind == 'contact' ? HubSpot::ContactProperties : HubSpot::DealProperties
     file = File.read(args[:file])
     props = JSON.parse(file)
-    Hubspot::Utils.restore_properties(klass, hapikey, props, args[:dry_run] != 'false')
+    HubSpot::Utils.restore_properties(klass, hapikey, props, args[:dry_run] != 'false')
   end
 
   private

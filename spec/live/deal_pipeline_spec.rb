@@ -1,7 +1,7 @@
 describe 'Deals pipeline API Live test', live: true do
 
   before do
-    Hubspot.configure hapikey: 'demo'
+    HubSpot.configure hapikey: 'demo'
   end
 
   let(:params) do
@@ -23,7 +23,7 @@ describe 'Deals pipeline API Live test', live: true do
   end
 
   it 'should create, find, update and destroy' do
-    pipeline = Hubspot::DealPipeline.create!(params)
+    pipeline = HubSpot::DealPipeline.create!(params)
 
     expect(pipeline.label).to eql 'auto pipeline1'
     expect(pipeline.stages.size).to eql 2

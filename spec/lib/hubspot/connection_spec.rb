@@ -1,44 +1,44 @@
-describe Hubspot::Connection do
+describe HubSpot::Connection do
   before(:each) do
     @url           = 'http://localhost:3000'
     @http_response = mock('http_response')
   end
 
   describe '.get_json' do
-    it 'delegates url format to Hubspot::Utils, call HTTParty get and returns response' do
+    it 'delegates url format to HubSpot::Utils, call HTTParty get and returns response' do
       @http_response.success? { true }
       @http_response.parsed_response { {} }
       @http_response.code { 200 }
       @http_response.body { 'mocked response' }
 
-      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).get(@url, format: :json) { @http_response }
-      Hubspot::Connection.get_json(@url, {})
+      mock(HubSpot::Connection).generate_url(@url, {}) { @url }
+      mock(HubSpot::Connection).get(@url, format: :json) { @http_response }
+      HubSpot::Connection.get_json(@url, {})
     end
   end
 
   describe '.post_json' do
-    it 'delegates url format to Hubspot::Utils, call HTTParty post and returns response' do
+    it 'delegates url format to HubSpot::Utils, call HTTParty post and returns response' do
       @http_response.success? { true }
       @http_response.parsed_response { {} }
       @http_response.code { 200 }
       @http_response.body { 'mocked response' }
 
-      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json) { @http_response }
-      Hubspot::Connection.post_json(@url, params: {}, body: {})
+      mock(HubSpot::Connection).generate_url(@url, {}) { @url }
+      mock(HubSpot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json) { @http_response }
+      HubSpot::Connection.post_json(@url, params: {}, body: {})
     end
   end
 
   describe '.delete_json' do
-    it 'delegates url format to Hubspot::Utils, call HTTParty delete and returns response' do
+    it 'delegates url format to HubSpot::Utils, call HTTParty delete and returns response' do
       @http_response.success? { true }
       @http_response.code { 200 }
       @http_response.body { 'mocked response' }
 
-      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).delete(@url, format: :json) { @http_response }
-      Hubspot::Connection.delete_json(@url, {})
+      mock(HubSpot::Connection).generate_url(@url, {}) { @url }
+      mock(HubSpot::Connection).delete(@url, format: :json) { @http_response }
+      HubSpot::Connection.delete_json(@url, {})
     end
   end
 
@@ -47,8 +47,8 @@ describe Hubspot::Connection do
       let(:path){ "/test/:email/profile" }
       let(:params){{email: "test"}}
       let(:options){{}}
-      subject{ Hubspot::Connection.send(:generate_url, path, params, options) }
-      before{ Hubspot.configure(hapikey: "demo", portal_id: "62515") }
+      subject{ HubSpot::Connection.send(:generate_url, path, params, options) }
+      before{ HubSpot.configure(hapikey: "demo", portal_id: "62515") }
 
       it "doesn't modify params" do
         expect{ subject }.to_not change{params}
@@ -61,16 +61,16 @@ describe Hubspot::Connection do
       end
 
       context "when configure hasn't been called" do
-        before{ Hubspot::Config.reset! }
+        before{ HubSpot::Config.reset! }
         it "raises a config exception" do
-          expect{ subject }.to raise_error Hubspot::ConfigurationError
+          expect{ subject }.to raise_error HubSpot::ConfigurationError
         end
       end
 
       context "with interpolations but no params" do
         let(:params){{}}
         it "raises an interpolation exception" do
-          expect{ subject }.to raise_error Hubspot::MissingInterpolation
+          expect{ subject }.to raise_error HubSpot::MissingInterpolation
         end
       end
 
@@ -115,7 +115,7 @@ describe Hubspot::Connection do
       end
 
       context "passing Array as parameters for batch mode, key is prefixed with batch_" do
-        let(:path) { Hubspot::ContactList::LIST_BATCH_PATH }
+        let(:path) { HubSpot::ContactList::LIST_BATCH_PATH }
         let(:params) { { batch_list_id: [1,2,3] } }
         it{ should == "https://api.hubapi.com/contacts/v1/lists/batch?listId=1&listId=2&listId=3&hapikey=demo" }
       end

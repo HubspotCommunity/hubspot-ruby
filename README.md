@@ -18,7 +18,7 @@ Before using the library, you must initialize it with your HubSpot API key. If y
 initializer:
 
 ```ruby
-Hubspot.configure(hapikey: "YOUR_API_KEY")
+HubSpot.configure(hapikey: "YOUR_API_KEY")
 ```
 
 If you have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
@@ -34,27 +34,27 @@ Here's what you can do for now:
 ### Create a contact
 
 ```ruby
-Hubspot::Contact.create!("email@address.com", {firstname: "First", lastname: "Last"})
+HubSpot::Contact.create!("email@address.com", {firstname: "First", lastname: "Last"})
 ```
 
 #### In batches
 
 ```ruby
-Hubspot::Contact.create_or_update!([{email: 'smith@example.com', firstname: 'First', lastname: 'Last'}])
+HubSpot::Contact.create_or_update!([{email: 'smith@example.com', firstname: 'First', lastname: 'Last'}])
 ```
 
 ### Find a contact
 
-These methods will return a `Hubspot::Contact` object if successful, `nil` otherwise:
+These methods will return a `HubSpot::Contact` object if successful, `nil` otherwise:
 
 ```ruby
-Hubspot::Contact.find_by_email("email@address.com")
-Hubspot::Contact.find_by_id(12345) # Pass the contact VID
+HubSpot::Contact.find_by_email("email@address.com")
+HubSpot::Contact.find_by_id(12345) # Pass the contact VID
 ```
 
 ### Update a contact
 
-Given an instance of `Hubspot::Contact`, update its attributes with:
+Given an instance of `HubSpot::Contact`, update its attributes with:
 
 ```ruby
 contact.update!({firstname: "First", lastname: "Last"})
@@ -63,13 +63,13 @@ contact.update!({firstname: "First", lastname: "Last"})
 #### In batches
 
 ```ruby
-Hubspot::Contact.create_or_update!([{vid: '12345', firstname: 'First', lastname: 'Last'}])
+HubSpot::Contact.create_or_update!([{vid: '12345', firstname: 'First', lastname: 'Last'}])
 ```
 
 ### Create a deal
 
 ```ruby
-Hubspot::Deal.create!(nil, [company.vid], [contact.vid], pipeline: 'default', dealstage: 'initial_contact')
+HubSpot::Deal.create!(nil, [company.vid], [contact.vid], pipeline: 'default', dealstage: 'initial_contact')
 ```
 
 ## Contributing to hubspot-ruby
