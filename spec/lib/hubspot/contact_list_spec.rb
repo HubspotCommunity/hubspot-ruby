@@ -105,7 +105,7 @@ describe HubSpot::ContactList do
         list = lists.first
         expect(list).to be_a(HubSpot::ContactList)
         expect(list.id).to be_an(Integer)
-  	  end
+      end
 
       expect_count_and_offset { |params| HubSpot::ContactList.all(params) }
     end
