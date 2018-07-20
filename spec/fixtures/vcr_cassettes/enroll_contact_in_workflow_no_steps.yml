@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/automation/v2/workflows/2325759/enrollments/contacts/testingapis@hubspot.com?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 412
+      message: Precondition Failed
+    headers:
+      Date:
+      - Fri, 16 Feb 2018 21:36:49 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '210'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d9c760cf3cc056603a6ec8a36c44119aa1518817009; expires=Sat, 16-Feb-19
+        21:36:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BA8C121309A20E64F119B859F3C2A2BBD4F06F258000000000000000000
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3ee3a506ee6a99e6-EWR
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"There are no steps on this workflow to
+        execute","correlationId":"1efbf441-0c42-44b4-9b1a-c2c7c709c646","type":"WORKFLOW_HAS_NO_STEPS","requestId":"123f9921ebf7bcf951dc4af9bc15a696"}'
+    http_version: 
+  recorded_at: Fri, 16 Feb 2018 21:36:49 GMT
+recorded_with: VCR 4.0.0

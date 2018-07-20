@@ -377,4 +377,14 @@ describe Hubspot::Contact do
     subject{ contact }
     its(:destroyed?){ should be_false }
   end
+
+  describe "#enrollments" do
+    cassette 'workflow_enrollments'
+    it "returns all workflows this contact is enrolled in" do
+        contacts = Hubspot::Contact.all(recent: true)
+        first = contacts.first
+        enrollments = first.enrollments
+        expect(enrollments.count).to eq(0)
+    end
+  end
 end

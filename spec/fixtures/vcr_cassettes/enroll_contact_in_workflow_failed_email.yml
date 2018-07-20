@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/automation/v2/workflows/2582322/enrollments/contacts/hahha@hubspot.com?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 16 Feb 2018 21:36:49 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '191'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d9c760cf3cc056603a6ec8a36c44119aa1518817009; expires=Sat, 16-Feb-19
+        21:36:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Hubspot-Notfound:
+      - 'true'
+      X-Trace:
+      - 2B5E01D3EBB7F53B8A53B3580CB84212BD3C415F68000000000000000000
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3ee3a507bf0f99e6-EWR
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Couldn''t find a Contact with the email
+        ''hahha@hubspot.com''","correlationId":"2981981b-825a-4930-aca4-3440a6f80022","requestId":"e4b40c14c7a5211d9086cde0731d04f0"}'
+    http_version: 
+  recorded_at: Fri, 16 Feb 2018 21:36:49 GMT
+recorded_with: VCR 4.0.0
