@@ -395,9 +395,10 @@ RSpec.describe Hubspot::Contact do
     end
 
     context 'when the request is not successful' do
+      let(:vid_to_update) { 1 }
+
       it 'raises an error' do
-        skip 'hubspot does not send a 404 anymore'
-        # https://github.com/adimichele/hubspot-ruby/issues/124
+        expect{ subject }.to raise_error Hubspot::RequestError
       end
     end
   end
@@ -413,9 +414,9 @@ RSpec.describe Hubspot::Contact do
     its(['lastname']) { should == 'Cunningham' }
 
     context 'when the request is not successful' do
+      let(:contact) { Hubspot::Contact.new('vid' => 1, 'properties' => {}) }
       it 'raises an error' do
-        skip 'hubspot does not send a 404 anymore'
-        # https://github.com/adimichele/hubspot-ruby/issues/124
+        expect { subject }.to raise_error Hubspot::RequestError
       end
     end
   end

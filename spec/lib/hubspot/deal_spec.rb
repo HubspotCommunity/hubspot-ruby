@@ -94,9 +94,10 @@ describe Hubspot::Deal do
     end
 
     context 'when the request is not successful' do
+      let(:deal) { Hubspot::Deal.new('portalID' => portal_id, 'dealId' => 1, 'associations' => {}, 'properties' => {}) }
+
       it 'raises an error' do
-        skip 'hubspot does not send a 404 anymore'
-        # https://github.com/adimichele/hubspot-ruby/issues/124
+        expect { subject }.to raise_error Hubspot::RequestError
       end
     end
   end
@@ -111,9 +112,10 @@ describe Hubspot::Deal do
     its(["dealname"]) { should ==  "Acme Cogs" }
 
     context 'when the request is not successful' do
+      let(:deal) { Hubspot::Deal.new('portalID' => portal_id, 'dealId' => 1, 'associations' => {}, 'properties' => {}) }
+
       it 'raises an error' do
-        skip 'hubspot does not send a 404 anymore'
-        # https://github.com/adimichele/hubspot-ruby/issues/124
+        expect { subject }.to raise_error Hubspot::RequestError
       end
     end
   end
