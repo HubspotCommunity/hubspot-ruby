@@ -66,6 +66,20 @@ contact.update!({firstname: "First", lastname: "Last"})
 Hubspot::Contact.create_or_update!([{vid: '12345', firstname: 'First', lastname: 'Last'}])
 ```
 
+### Create or Update a contact
+
+Given an instance of `Hubspot::Contact`, you can create or update a contact with:
+
+```ruby
+Hubspot::Contact.createOrUpdate('address@email.com', {firstname: "First", lastname: "Last"})
+```
+
+#### In batches
+
+```ruby
+Hubspot::Contact.create_or_update!([{email: 'address@email.com', firstname: 'First', lastname: 'Last'}])
+```
+
 ### Create a deal
 
 ```ruby
