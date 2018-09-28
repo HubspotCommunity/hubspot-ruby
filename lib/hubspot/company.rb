@@ -15,6 +15,7 @@ module Hubspot
     ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
     DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
     GET_COMPANY_CONTACTS_PATH         = "/companies/v2/companies/:company_id/contacts"
+    BATCH_UPDATE_PATH                 = "/companies/v1/batch-async/update"
 
     class << self
       # Find all companies by created date (descending)
@@ -110,6 +111,32 @@ module Hubspot
                                        vid: contact_vid,
                                      },
                                      body: nil)
+      end
+
+      # Updates the properties of companies
+      # NOTE: Up to 100 companies can be updated in a single request. There is no limit to the number of properties that can be updated per company.
+      # {https://developers.hubspot.com/docs/methods/companies/batch-update-companies}
+      # Returns a 202 Accepted response on success.
+      def batch_update!(companies)
+        query = companies.map do |company|
+          company_hash = company.with_indifferent_access
+          if company_hash[:vid]
+            # For consistency - Since vid has been used everywhere.
+            company_param = {
+              objectId: company_hash[:vid],
+              properties: Hubspot::Utils.hash_to_properties(company_hash.except(:vid).stringify_keys!),
+            }
+          elsif company_hash[:objectId]
+            company_param = {
+              objectId: company_hash[:objectId],
+              properties: Hubspot::Utils.hash_to_properties(company_hash.except(:objectId).stringify_keys!, key_name: 'name'),
+            }
+          else
+            raise Hubspot::InvalidParams, 'expecting vid or objectId for company'
+          end
+          company_param
+        end
+        Hubspot::Connection.post_json(BATCH_UPDATE_PATH, params: {}, body: query)
       end
     end
 
