@@ -5,15 +5,16 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/companies/companies-overview}
   #
   class Company
-    CREATE_COMPANY_PATH               = "/companies/v2/companies/"
-    RECENTLY_CREATED_COMPANIES_PATH   = "/companies/v2/companies/recent/created"
-    RECENTLY_MODIFIED_COMPANIES_PATH  = "/companies/v2/companies/recent/modified"
-    GET_COMPANY_BY_ID_PATH            = "/companies/v2/companies/:company_id"
-    GET_COMPANY_BY_DOMAIN_PATH        = "/companies/v2/domains/:domain/companies"
-    UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
-    ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
-    DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
-    GET_COMPANY_CONTACTS_PATH         = "/companies/v2/companies/:company_id/contacts"
+    CREATE_COMPANY_PATH              = "/companies/v2/companies/"
+    RECENTLY_CREATED_COMPANIES_PATH  = "/companies/v2/companies/recent/created"
+    RECENTLY_MODIFIED_COMPANIES_PATH = "/companies/v2/companies/recent/modified"
+    GET_COMPANY_BY_ID_PATH           = "/companies/v2/companies/:company_id"
+    GET_COMPANY_BY_DOMAIN_PATH       = "/companies/v2/domains/:domain/companies"
+    UPDATE_COMPANY_PATH              = "/companies/v2/companies/:company_id"
+    ADD_CONTACT_TO_COMPANY_PATH      = "/companies/v2/companies/:company_id/contacts/:vid"
+    DESTROY_COMPANY_PATH             = "/companies/v2/companies/:company_id"
+    GET_COMPANY_CONTACTS_PATH        = "/companies/v2/companies/:company_id/contacts"
+    BATCH_UPDATE_PATH                = "/companies/v1/batch-async/update"
 
     class << self
       # Find all companies by created date (descending)
@@ -95,6 +96,32 @@ module Hubspot
         post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_name, key_name: "name")}
         response = Hubspot::Connection.post_json(CREATE_COMPANY_PATH, params: {}, body: post_data )
         new(response)
+      end
+
+      # Updates the properties of companies
+      # NOTE: Up to 100 companies can be updated in a single request. There is no limit to the number of properties that can be updated per company.
+      # {https://developers.hubspot.com/docs/methods/companies/batch-update-companies}
+      # Returns a 202 Accepted response on success.
+      def batch_update!(companies)
+        query = companies.map do |company|
+          company_hash = company.with_indifferent_access
+          if company_hash[:vid]
+            # For consistency - Since vid has been used everywhere.
+            company_param = {
+              objectId: company_hash[:vid],
+              properties: Hubspot::Utils.hash_to_properties(company_hash.except(:vid).stringify_keys!, key_name: 'name'),
+            }
+          elsif company_hash[:objectId]
+            company_param = {
+              objectId: company_hash[:objectId],
+              properties: Hubspot::Utils.hash_to_properties(company_hash.except(:objectId).stringify_keys!, key_name: 'name'),
+            }
+          else
+            raise Hubspot::InvalidParams, 'expecting vid or objectId for company'
+          end
+          company_param
+        end
+        Hubspot::Connection.post_json(BATCH_UPDATE_PATH, params: {}, body: query)
       end
     end
 
