@@ -124,7 +124,7 @@ module Hubspot
             # For consistency - Since vid has been used everywhere.
             company_param = {
               objectId: company_hash[:vid],
-              properties: Hubspot::Utils.hash_to_properties(company_hash.except(:vid).stringify_keys!),
+              properties: Hubspot::Utils.hash_to_properties(company_hash.except(:vid).stringify_keys!, key_name: 'name'),
             }
           elsif company_hash[:objectId]
             company_param = {
