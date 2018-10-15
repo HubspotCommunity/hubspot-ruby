@@ -1,0 +1,173 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/filemanager/api/v2/files/4958081202?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Feb 2018 18:52:54 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '504'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dae7d6092a11da4541e11c067bd45a41c1519239174; expires=Thu, 21-Feb-19
+        18:52:54 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Vary:
+      - Accept-Encoding, User-Agent
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3f0be7c6be945a80-BOS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":4958081202,"portal_id":62515,"name":"Google Display Network","size":589192,"height":null,"width":null,"encoding":null,"type":"DOCUMENT","extension":"pdf","cloud_key":"hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","s3_url":"http://cdn1.hubspot.com/hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","friendly_url":"https://cdn2.hubspot.net/hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","alt_key":"hubfs/62515/hubspot-projects-attachments/473512/7899431/google%20display%20network","alt_key_hash":"a5372456c13f281c68f7ca7173fcf808","title":"Google
+        Display Network","meta":{"redirects":["hubfs/62515/Google%20Display%20Network.pdf"],"url_scheme":"SIMPLIFIED","allows_anonymous_access":true},"created":1490025439634,"updated":1490025440434,"deleted_at":1519239034623,"folder_id":4958081211,"hidden":false,"cloud_key_hash":"7b33c1c6d9abf8a8388f7cf0988bab59","archived":false,"url":"https://cdn2.hubspot.net/hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","alt_url":"http://cdn2.hubspot.net/hubfs/62515/hubspot-projects-attachments/473512/7899431/google%20display%20network.pdf"}'
+    http_version: 
+  recorded_at: Wed, 21 Feb 2018 18:52:54 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/filemanager/api/v2/files/99999999999999999?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Wed, 21 Feb 2018 18:53:14 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d6e8aa029f6ca08559de86e12f0813a8d1519239194; expires=Thu, 21-Feb-19
+        18:53:14 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3f0be843da525a62-BOS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 21 Feb 2018 18:53:14 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/filemanager/api/v2/files/4958081202?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Feb 2018 18:53:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '504'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0047e626fb19749e1a8e59b6b5333cac1519239204; expires=Thu, 21-Feb-19
+        18:53:24 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Vary:
+      - Accept-Encoding, User-Agent
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3f0be882a9fc5a62-BOS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":4958081202,"portal_id":62515,"name":"Google Display Network","size":589192,"height":null,"width":null,"encoding":null,"type":"DOCUMENT","extension":"pdf","cloud_key":"hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","s3_url":"http://cdn1.hubspot.com/hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","friendly_url":"https://cdn2.hubspot.net/hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","alt_key":"hubfs/62515/hubspot-projects-attachments/473512/7899431/google%20display%20network","alt_key_hash":"a5372456c13f281c68f7ca7173fcf808","title":"Google
+        Display Network","meta":{"redirects":["hubfs/62515/Google%20Display%20Network.pdf"],"url_scheme":"SIMPLIFIED","allows_anonymous_access":true},"created":1490025439634,"updated":1490025440434,"deleted_at":1519239174423,"folder_id":4958081211,"hidden":false,"cloud_key_hash":"7b33c1c6d9abf8a8388f7cf0988bab59","archived":false,"url":"https://cdn2.hubspot.net/hubfs/62515/HubSpot-Projects-Attachments/473512/7899431/Google%20Display%20Network.pdf","alt_url":"http://cdn2.hubspot.net/hubfs/62515/hubspot-projects-attachments/473512/7899431/google%20display%20network.pdf"}'
+    http_version: 
+  recorded_at: Wed, 21 Feb 2018 18:53:24 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/filemanager/api/v2/files/4958081202/full-delete?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Feb 2018 18:53:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dec3408f38c94f66c5e6df4affec8ed741519239204; expires=Thu, 21-Feb-19
+        18:53:24 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Vary:
+      - Accept-Encoding, User-Agent
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 3f0be883ddac5a32-BOS
+    body:
+      encoding: UTF-8
+      string: '{"succeeded":true}'
+    http_version: 
+  recorded_at: Wed, 21 Feb 2018 18:53:24 GMT
+recorded_with: VCR 4.0.0
