@@ -19,6 +19,7 @@ require 'hubspot/deal_properties'
 require 'hubspot/owner'
 require 'hubspot/engagement'
 require 'hubspot/subscription'
+require 'hubspot/oauth'
 
 module Hubspot
   def self.configure(config={})
