@@ -1,45 +1,49 @@
 require 'httparty'
+
 module Hubspot
   class OAuth < Connection
     include HTTParty
+
     DEFAULT_OAUTH_HEADERS = {"Content-Type" => "application/x-www-form-urlencoded;charset=utf-8"}
+
     class << self
-      def refresh(params)
-        params.stringify_keys!
-        no_parse = params.delete("no_parse") { false }
+      def refresh(token, params={}, options={})
+        oauth_post(token_url, { grant_type: "refresh_token", refresh_token: token }.merge(params),
+          options)
+      end
+
+      def create(code, params={}, options={})
+        oauth_post(token_url, { grant_type: "authorization_code", code: code }.merge(params),
+          options)
+      end
+
+      def authorize_url(scopes, params={})
+        client_id = params[:client_id] || Hubspot::Config.client_id
+        redirect_uri = params[:redirect_uri] || Hubspot::Config.redirect_uri
+        scopes = Array.wrap(scopes)
+
+        "https://app.hubspot.com/oauth/authorize?client_id=#{client_id}&scope=#{scopes.join("%20")}&redirect_uri=#{redirect_uri}"
+      end
+
+      def token_url
+        token_url = Hubspot::Config.base_url + "/oauth/v1/token"
+      end
+
+      def oauth_post(url, params, options={})
+        no_parse = options[:no_parse] || false
+
         body = {
-          client_id: params["client_id"] || Hubspot::Config.client_id,
-          grant_type: "refresh_token",
-          client_secret: params["client_secret"] || Hubspot::Config.client_secret,
-          redirect_uri: params["redirect_uri"] || Hubspot::Config.redirect_uri,
-          refresh_token: params["refresh_token"]
-        }
-        response = post(oauth_url, body: body, headers: DEFAULT_OAUTH_HEADERS)
-        log_request_and_response oauth_url, response, body
+          client_id: Hubspot::Config.client_id,
+          client_secret: Hubspot::Config.client_secret,
+          redirect_uri: Hubspot::Config.redirect_uri,
+        }.merge(params)
+
+        response = post(url, body: body, headers: DEFAULT_OAUTH_HEADERS)
+        log_request_and_response url, response, body
+
         raise(Hubspot::RequestError.new(response)) unless response.success?
 
         no_parse ? response : response.parsed_response
-      end
-
-      def create(params)
-        params.stringify_keys!
-        no_parse = params.delete("no_parse") { false }
-        body = {
-          client_id: params["client_id"] || Hubspot::Config.client_id,
-          grant_type: "authorization_code",
-          client_secret: params["client_secret"] || Hubspot::Config.client_secret,
-          redirect_uri: params["redirect_uri"] || Hubspot::Config.redirect_uri,
-          code: params["code"]
-        }
-        response = post(oauth_url, body: body, headers: DEFAULT_OAUTH_HEADERS)
-        log_request_and_response oauth_url, response, body
-        raise(Hubspot::RequestError.new(response)) unless response.success?
-
-        no_parse ? response : response.parsed_response
-      end
-
-      def oauth_url
-        oauth_url = Hubspot::Config.base_url + "/oauth/v1/token"
       end
     end
   end
