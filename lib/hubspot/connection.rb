@@ -45,7 +45,11 @@ module Hubspot
       end
 
       def generate_url(path, params={}, options={})
-        Hubspot::Config.ensure! :hapikey
+        if Hubspot::Config.access_token.present?
+          options[:hapikey] = false
+        else
+          Hubspot::Config.ensure! :hapikey
+        end
         path = path.clone
         params = params.clone
         base_url = options[:base_url] || Hubspot::Config.base_url
