@@ -82,12 +82,28 @@ module Hubspot
       # @param company [Hubspot::Company] the company
       # @return [Array] Array of Hubspot::Deal records
       def find_by_company(company)
+        find_by_association company
+      end
+
+      # Find all deals associated to a contact
+      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
+      # @param contact [Hubspot::Contact] the contact
+      # @return [Array] Array of Hubspot::Deal records
+      def find_by_contact(contact)
+        find_by_association contact
+      end
+
+      # Find all deals associated to a contact or company
+      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
+      # @param object [Hubspot::Contact || Hubspot::Company] a contact or company
+      # @return [Array] Array of Hubspot::Deal records
+      def find_by_association(object)
         path = ASSOCIATED_DEAL_PATH
-        params = { objectType: :company, objectId: company.vid }
+        type = object.class.to_s.gsub('Hubspot::', '').downcase.to_sym
+        params = { objectType: type, objectId: object.vid }
         response = Hubspot::Connection.get_json(path, params)
         response["results"].map { |deal_id| find(deal_id) }
       end
-
     end
 
     # Archives the contact in hubspot
