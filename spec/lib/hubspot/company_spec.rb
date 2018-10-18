@@ -191,6 +191,16 @@ describe Hubspot::Contact do
     end
   end
 
+  describe "#get_contact_vids" do
+    cassette "company_get_contact_vids"
+    let(:company) { Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
+    let(:contact) { Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
+    before { company.add_contact(contact) }
+    subject { company.get_contact_vids }
+
+    it { is_expected.to eq [contact.vid] }
+  end
+
   describe "#add_contact" do
     cassette "add_contact_to_company_instance"
     let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
