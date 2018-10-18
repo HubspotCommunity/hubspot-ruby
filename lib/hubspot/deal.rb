@@ -99,8 +99,13 @@ module Hubspot
       # @return [Array] Array of Hubspot::Deal records
       def find_by_association(object)
         path = ASSOCIATED_DEAL_PATH
-        type = object.class.to_s.gsub('Hubspot::', '').downcase.to_sym
-        params = { objectType: type, objectId: object.vid }
+        objectType =  case object
+                      when Hubspot::Company then :company
+                      when Hubspot::Contact then :contact
+                      else raise(Hubspot::InvalidParams, "Instance type not supported")
+                      end
+
+        params = { objectType: objectType, objectId: object.vid }
         response = Hubspot::Connection.get_json(path, params)
         response["results"].map { |deal_id| find(deal_id) }
       end
