@@ -1,0 +1,180 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"company_1531299402@example.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 08:56:43 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '836'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d2760e556eab6faf1b4824bbdaff698971531299403; expires=Thu, 11-Jul-19
+        08:56:43 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BDA0A970CFF2D6B7F81FEDD42C30877BA14608B53000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 438a0ef4fa55a87b-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":858046203,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1531299403110","timestamp":1531299403110,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531299403110","timestamp":1531299403110,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"company_1531299402@example.com","timestamp":1531299403110,"source":"API","sourceId":null,"versions":[{"name":"name","value":"company_1531299402@example.com","timestamp":1531299403110,"source":"API","sourceVid":[]}]},"createdate":{"value":"1531299403110","timestamp":1531299403110,"source":"API","sourceId":"API","versions":[{"name":"createdate","value":"1531299403110","timestamp":1531299403110,"sourceId":"API","source":"API","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 08:56:43 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"contact_1531299403@example.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 08:56:43 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=deff938707f85b8fc92a5dc4b9b9670711531299403; expires=Thu, 11-Jul-19
+        08:56:43 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Trace:
+      - 2B0F85DD9CCF97AF0477603DE3649AE4EC402563AA000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 438a0ef67e2bb783-CDG
+    body:
+      encoding: UTF-8
+      string: '{"vid":7858674,"canonical-vid":7858674,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mPOZANDxGMxNF3i_B1l_lOC2zksk3mmU4zj3kTVyWuReWSRqj6drft6zG-XSG1Vnbw_8kaHJa8O_1968dhsQ7KMp3USXiumflY-lZPxUxOdRXhA6C0yX-goJcoVpHSnbTHeY-kM","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mPOZANDxGMxNF3i_B1l_lOC2zksk3mmU4zj3kTVyWuReWSRqj6drft6zG-XSG1Vnbw_8kaHJa8O_1968dhsQ7KMp3USXiumflY-lZPxUxOdRXhA6C0yX-goJcoVpHSnbTHeY-kM/","properties":{"email":{"value":"contact_1531299403@example.com","versions":[{"value":"contact_1531299403@example.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1531299403346,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":7858674,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"contact_1531299403@example.com","timestamp":1531299403349,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"4108f3fa-9de9-453c-809f-b7ef4c9f2662","timestamp":1531299403356,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 08:56:43 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/858046203/contacts/7858674?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 08:56:43 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '836'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0493a4b7bd86820ce20ef981dba917dd1531299403; expires=Thu, 11-Jul-19
+        08:56:43 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      X-Trace:
+      - 2BAC859B76CDBDA2C9891FFD735D34253977DC141E000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 438a0ef8fe0eb7a7-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":858046203,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1531299403110","timestamp":1531299403110,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1531299403110","timestamp":1531299403110,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"company_1531299402@example.com","timestamp":1531299403110,"source":"API","sourceId":null,"versions":[{"name":"name","value":"company_1531299402@example.com","timestamp":1531299403110,"source":"API","sourceVid":[]}]},"createdate":{"value":"1531299403110","timestamp":1531299403110,"source":"API","sourceId":"API","versions":[{"name":"createdate","value":"1531299403110","timestamp":1531299403110,"sourceId":"API","source":"API","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 08:56:43 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/companies/v2/companies/858046203/vids?hapikey=demo&vidOffset=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 08:56:44 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '66'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de0bbe53c44029393937691484a15a8861531299404; expires=Thu, 11-Jul-19
+        08:56:44 GMT; path=/; domain=.hubapi.com; HttpOnly
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Vary:
+      - Accept-Encoding, User-Agent
+      X-Trace:
+      - 2BA7F9E2B41EAF3B16AF92BD77552A0AF1E3213E67000000000000000000
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 438a0efb3cc4bd56-CDG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"vids":[7858674],"vidOffset":7858674,"hasMore":false}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 08:56:44 GMT
+recorded_with: VCR 4.0.0
