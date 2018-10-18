@@ -336,6 +336,32 @@ describe Hubspot::Contact do
     end
   end
 
+  describe '.merge!' do
+    cassette 'contact_merge'
+    let(:primary_params) { { firstname: 'Hugh', lastname: 'Jackman' } }
+    let(:primary_contact) { Hubspot::Contact.create!("primary_#{Time.now.to_i}@hsgem.com", primary_params) }
+    let(:secondary_params) { { firstname: 'Wolverine' } }
+    let(:secondary_contact) { Hubspot::Contact.create!("secondary_#{Time.now.to_i}@hsgem.com", secondary_params) }
+
+    subject { Hubspot::Contact.merge!(primary_contact.vid, secondary_contact.vid) }
+
+    it 'merges the contacts' do
+      subject
+
+      primary_find_by_id = Hubspot::Contact.find_by_id primary_contact.vid
+      primary_find_by_email = Hubspot::Contact.find_by_email primary_contact.email
+      secondary_find_by_id = Hubspot::Contact.find_by_id secondary_contact.vid
+      secondary_find_by_email = Hubspot::Contact.find_by_email secondary_contact.email
+
+      primary_find_by_id.email.should == primary_contact.email
+      primary_find_by_id.email.should == primary_find_by_email.email
+      primary_find_by_id.email.should == secondary_find_by_id.email
+      primary_find_by_id.email.should == secondary_find_by_email.email
+      primary_find_by_id['firstname'].should == 'Wolverine'
+      primary_find_by_id['lastname'].should == 'Jackman'
+    end
+  end
+
   describe '#update!' do
     cassette 'contact_update'
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }
