@@ -96,6 +96,20 @@ module Hubspot
         response = Hubspot::Connection.post_json(CREATE_COMPANY_PATH, params: {}, body: post_data )
         new(response)
       end
+
+      # Adds contact to a company
+      # {http://developers.hubspot.com/docs/methods/companies/add_contact_to_company}
+      # @param company_vid [Integer] The ID of a company to add a contact to
+      # @param contact_vid [Integer] contact id to add
+      # @return parsed response
+      def add_contact!(company_vid, contact_vid)
+        Hubspot::Connection.put_json(ADD_CONTACT_TO_COMPANY_PATH,
+                                     params: {
+                                       company_id: company_vid,
+                                       vid: contact_vid,
+                                     },
+                                     body: nil)
+      end
     end
 
     attr_reader :properties
@@ -132,12 +146,7 @@ module Hubspot
                     else
                       contact_or_vid
                     end
-      Hubspot::Connection.put_json(ADD_CONTACT_TO_COMPANY_PATH,
-                                   params: {
-                                     company_id: vid,
-                                     vid: contact_vid,
-                                   },
-                                   body: nil)
+      self.class.add_contact!(vid, contact_vid)
       self
     end
 
