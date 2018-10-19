@@ -99,20 +99,6 @@ module Hubspot
         new(response)
       end
 
-      # Adds contact to a company
-      # {http://developers.hubspot.com/docs/methods/companies/add_contact_to_company}
-      # @param company_vid [Integer] The ID of a company to add a contact to
-      # @param contact_vid [Integer] contact id to add
-      # @return parsed response
-      def add_contact!(company_vid, contact_vid)
-        Hubspot::Connection.put_json(ADD_CONTACT_TO_COMPANY_PATH,
-                                     params: {
-                                       company_id: company_vid,
-                                       vid: contact_vid,
-                                     },
-                                     body: nil)
-      end
-
       # Updates the properties of companies
       # NOTE: Up to 100 companies can be updated in a single request. There is no limit to the number of properties that can be updated per company.
       # {https://developers.hubspot.com/docs/methods/companies/batch-update-companies}
@@ -137,6 +123,20 @@ module Hubspot
           company_param
         end
         Hubspot::Connection.post_json(BATCH_UPDATE_PATH, params: {}, body: query)
+      end
+    
+      # Adds contact to a company
+      # {http://developers.hubspot.com/docs/methods/companies/add_contact_to_company}
+      # @param company_vid [Integer] The ID of a company to add a contact to
+      # @param contact_vid [Integer] contact id to add
+      # @return parsed response
+      def add_contact!(company_vid, contact_vid)
+        Hubspot::Connection.put_json(ADD_CONTACT_TO_COMPANY_PATH,
+                                     params: {
+                                       company_id: company_vid,
+                                       vid: contact_vid,
+                                     },
+                                     body: nil)
       end
     end
 
