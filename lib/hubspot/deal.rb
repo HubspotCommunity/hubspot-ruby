@@ -7,6 +7,7 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/deals/deals_overview}
   #
   class Deal
+    ALL_DEALS_PATH = "/deals/v1/deal/paged"
     CREATE_DEAL_PATH = "/deals/v1/deal"
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
@@ -47,11 +48,24 @@ module Hubspot
          object_ids = (company_ids.any? ? company_ids : vids).join('&id=')
          Hubspot::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
        end
- 
+
 
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
         new(response)
+      end
+
+      def all(opts = {})
+        path = ALL_DEALS_PATH
+
+        opts[:includeAssociations] = true # Needed for initialize to work
+        response = Hubspot::Connection.get_json(path, opts)
+
+        result = {}
+        result['deals'] = response['deals'].map { |d| new(d) }
+        result['offset'] = response['offset']
+        result['hasMore'] = response['hasMore']
+        return result
       end
 
       # Find recent updated deals.
@@ -62,18 +76,39 @@ module Hubspot
         response = Hubspot::Connection.get_json(RECENT_UPDATED_PATH, opts)
         response['results'].map { |d| new(d) }
       end
-      
+
       # Find all deals associated to a company
       # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
       # @param company [Hubspot::Company] the company
       # @return [Array] Array of Hubspot::Deal records
       def find_by_company(company)
+        find_by_association company
+      end
+
+      # Find all deals associated to a contact
+      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
+      # @param contact [Hubspot::Contact] the contact
+      # @return [Array] Array of Hubspot::Deal records
+      def find_by_contact(contact)
+        find_by_association contact
+      end
+
+      # Find all deals associated to a contact or company
+      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
+      # @param object [Hubspot::Contact || Hubspot::Company] a contact or company
+      # @return [Array] Array of Hubspot::Deal records
+      def find_by_association(object)
         path = ASSOCIATED_DEAL_PATH
-        params = { objectType: :company, objectId: company.vid }
+        objectType =  case object
+                      when Hubspot::Company then :company
+                      when Hubspot::Contact then :contact
+                      else raise(Hubspot::InvalidParams, "Instance type not supported")
+                      end
+
+        params = { objectType: objectType, objectId: object.vid }
         response = Hubspot::Connection.get_json(path, params)
         response["results"].map { |deal_id| find(deal_id) }
       end
-
     end
 
     # Archives the contact in hubspot

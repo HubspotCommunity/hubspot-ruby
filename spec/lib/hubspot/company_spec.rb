@@ -39,7 +39,17 @@ describe Hubspot::Contact do
     end
   end
 
-   describe ".find_by_id" do
+  describe ".add_contact!" do
+    cassette "add_contact_to_company_class"
+    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
+    let(:contact){ Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
+    subject { Hubspot::Company.find_by_id(company.vid) }
+
+    before { Hubspot::Company.add_contact! company.vid, contact.vid }
+    its(['num_associated_contacts']) { should eql '1' }
+  end
+
+  describe ".find_by_id" do
     context 'given an uniq id' do
       cassette "company_find_by_id"
       subject{ Hubspot::Company.find_by_id(vid) }
@@ -214,11 +224,22 @@ describe Hubspot::Contact do
     end
   end
 
+  describe "#get_contact_vids" do
+    cassette "company_get_contact_vids"
+    let(:company) { Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
+    let(:contact) { Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
+    before { company.add_contact(contact) }
+    subject { company.get_contact_vids }
+
+    it { is_expected.to eq [contact.vid] }
+  end
+
   describe "#add_contact" do
-    cassette "add_contact_to_company"
+    cassette "add_contact_to_company_instance"
     let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
     let(:contact){ Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
-    subject { Hubspot::Company.all(recent: true).last }
+    subject { Hubspot::Company.find_by_id(company.vid) }
+
     context "with Hubspot::Contact instance" do
       before { company.add_contact contact }
       its(['num_associated_contacts']) { should eql '1' }

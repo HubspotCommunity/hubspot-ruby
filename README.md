@@ -14,8 +14,9 @@ Or with bundler,
 gem "hubspot-ruby"
 ```
 
-Before using the library, you must initialize it with your HubSpot API key. If you're using Rails, put this code in an
-initializer:
+## Authentication with an API key
+
+Before using the library, you must initialize it with your HubSpot API key. If you're using Rails, put this code in an initializer:
 
 ```ruby
 Hubspot.configure(hapikey: "YOUR_API_KEY")
@@ -23,9 +24,56 @@ Hubspot.configure(hapikey: "YOUR_API_KEY")
 
 If you have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
 
-### Note about authentication
+## Authentication with OAuth 2.0
 
-For now, this library only supports authentication with a HubSpot API key (aka "hapikey"). OAuth is not yet supported.
+Configure the library with the client ID and secret from your [HubSpot App](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
+
+```ruby
+Hubspot.configure(
+    client_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    client_secret: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    redirect_uri: "https://myapp.com/oauth")
+```
+
+To initiate an OAuth connection to your app, create a URL with the required scopes:
+
+```ruby
+Hubspot::OAuth.authorize_url(["contacts", "content"])
+```
+
+After the user accepts the scopes and installs the integration with their HubSpot account, they will be redirected to the URI requested with the query parameter `code` appended to the URL. `code` can then be passed to HubSpot to generate an access token:
+
+```ruby
+Hubspot::OAuth.create(params[:code])
+```
+
+To use the returned `access_token` string for authentication, you'll need to update the configuration:
+
+```ruby
+Hubspot.configure(
+    client_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    client_secret: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    redirect_uri: "https://myapp.com/oauth",
+    access_token: access_token)
+```
+
+Now all requests will use the provided access token when querying the API:
+
+```ruby
+Hubspot::Contact.all
+```
+
+### Refreshing the token
+
+When you create a HubSpot OAuth token, it will have an expiration date given by the `expires_in` field returned from the create API. If you with to continue using the token without needing to create another, you'll need to refresh the token:
+
+```ruby
+Hubspot::OAuth.refresh(refresh_token)
+```
+
+### A note on OAuth credentials
+
+At this time, OAuth tokens are configured globally rather than on a per-connection basis.
 
 ## Usage
 
