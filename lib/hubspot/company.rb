@@ -5,17 +5,17 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/companies/companies-overview}
   #
   class Company
-    CREATE_COMPANY_PATH               = "/companies/v2/companies/"
-    RECENTLY_CREATED_COMPANIES_PATH   = "/companies/v2/companies/recent/created"
-    RECENTLY_MODIFIED_COMPANIES_PATH  = "/companies/v2/companies/recent/modified"
-    GET_COMPANY_BY_ID_PATH            = "/companies/v2/companies/:company_id"
-    GET_COMPANY_BY_DOMAIN_PATH        = "/companies/v2/domains/:domain/companies"
-    UPDATE_COMPANY_PATH               = "/companies/v2/companies/:company_id"
-    GET_COMPANY_CONTACT_VIDS_PATH     = "/companies/v2/companies/:company_id/vids"
-    ADD_CONTACT_TO_COMPANY_PATH       = "/companies/v2/companies/:company_id/contacts/:vid"
-    DESTROY_COMPANY_PATH              = "/companies/v2/companies/:company_id"
-    GET_COMPANY_CONTACTS_PATH         = "/companies/v2/companies/:company_id/contacts"
-    BATCH_UPDATE_PATH                 = "/companies/v1/batch-async/update"
+    CREATE_COMPANY_PATH              = "/companies/v2/companies/"
+    RECENTLY_CREATED_COMPANIES_PATH  = "/companies/v2/companies/recent/created"
+    RECENTLY_MODIFIED_COMPANIES_PATH = "/companies/v2/companies/recent/modified"
+    GET_COMPANY_BY_ID_PATH           = "/companies/v2/companies/:company_id"
+    GET_COMPANY_BY_DOMAIN_PATH       = "/companies/v2/domains/:domain/companies"
+    UPDATE_COMPANY_PATH              = "/companies/v2/companies/:company_id"
+    GET_COMPANY_CONTACT_VIDS_PATH    = "/companies/v2/companies/:company_id/vids"
+    ADD_CONTACT_TO_COMPANY_PATH      = "/companies/v2/companies/:company_id/contacts/:vid"
+    DESTROY_COMPANY_PATH             = "/companies/v2/companies/:company_id"
+    GET_COMPANY_CONTACTS_PATH        = "/companies/v2/companies/:company_id/contacts"
+    BATCH_UPDATE_PATH                = "/companies/v1/batch-async/update"
 
     class << self
       # Find all companies by created date (descending)
