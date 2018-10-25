@@ -173,6 +173,39 @@ describe Hubspot::Contact do
     end
   end
 
+  describe "#batch_update!" do
+    cassette "company_batch_update"
+    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
+
+    context 'update via vid' do
+      let(:updated_companies) { [{ vid: company.vid, name: "Carol H" }] }
+
+      it 'should update companies' do
+        Hubspot::Company.batch_update!(updated_companies)
+        checked_company = Hubspot::Company.find_by_id(company.vid)
+        expect(checked_company.properties["name"]).to eq("Carol H")
+      end
+    end
+
+    context 'update via objectId' do
+      let(:updated_companies) { [{ objectId: company.vid, name: "Carol H" }] }
+
+      it 'should update companies' do
+        Hubspot::Company.batch_update!(updated_companies)
+        checked_company = Hubspot::Company.find_by_id(company.vid)
+        expect(checked_company.properties["name"]).to eq("Carol H")
+      end
+    end
+
+    context 'missing vid or objectId' do
+      let(:updated_companies) { [{ name: "Carol H" }] }
+
+      it 'should raise error with expected message' do
+        expect { Hubspot::Company.batch_update!(updated_companies) }.to raise_error(Hubspot::InvalidParams, 'expecting vid or objectId for company')
+      end
+    end
+  end
+
   describe "#destroy!" do
     cassette "company_destroy"
     let(:company){ Hubspot::Company.create!("newcompany_y_#{Time.now.to_i}@hsgem.com") }
