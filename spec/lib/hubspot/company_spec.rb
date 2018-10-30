@@ -132,7 +132,7 @@ describe Hubspot::Contact do
         expect(last['name']).to eql 'Xge5rbdt2zm'
       end
 
-      it 'must filter only 2 copmanies' do
+      it 'must filter only 2 companies' do
         copmanies = Hubspot::Company.all(count: 2)
         expect(copmanies.size).to eql 2
       end
