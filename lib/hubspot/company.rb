@@ -40,6 +40,32 @@ module Hubspot
         response['results'].map { |c| new(c) }
       end
 
+      # Find all companies by created date (descending)
+      #    recently_updated [boolean] (for querying all accounts by modified time)
+      #    count [Integer] for pagination
+      #    offset [Integer] for pagination
+      # {http://developers.hubspot.com/docs/methods/companies/get_companies_created}
+      # {http://developers.hubspot.com/docs/methods/companies/get_companies_modified}
+      # @return [Object], you can get:
+      # response.results for [Array]
+      # response.hasMore for [Boolean]
+      # response.offset for [Integer]
+      def all_with_offset(opts = {})
+        recently_updated = opts.delete(:recently_updated) { false }
+
+        path = if recently_updated
+          RECENTLY_MODIFIED_COMPANIES_PATH
+        else
+          RECENTLY_CREATED_COMPANIES_PATH
+        end
+
+        response = Hubspot::Connection.get_json(path, opts)
+        formatted_results = response['results'].map { |c| new(c) }
+        response = JSON.parse(response.to_json, object_class: OpenStruct)
+        response.results = formatted_results
+        response
+      end
+
       # Finds a list of companies by domain
       # {https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain}
       # @param domain [String] company domain to search by
