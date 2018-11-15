@@ -27,7 +27,8 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-task :default => :spec
+desc "Default: Excludes 'live' tests that issue real network calls."
+task default: %w(spec:quick)
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
