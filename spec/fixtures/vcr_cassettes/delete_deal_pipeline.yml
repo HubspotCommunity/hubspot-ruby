@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/deals/v1/pipelines?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"label":"New Pipeline"}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Nov 2018 21:05:45 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d3db1facf506b5fea11d58eb1e27e028e1542315945; expires=Fri, 15-Nov-19
+        21:05:45 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BED74F16DF3CA6CF4D059738CC9529A0618BABF38000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '113817'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 47a4ad849e9e5a32-BOS
+    body:
+      encoding: UTF-8
+      string: '{"pipelineId":"e878f589-61fe-4e4e-acd1-44a4357b957b","stages":[{"stageId":"137786","label":"Appointment
+        Scheduled","probability":0.2,"active":true,"displayOrder":0,"closedWon":false},{"stageId":"137787","label":"Qualified
+        To Buy","probability":0.4,"active":true,"displayOrder":1,"closedWon":false},{"stageId":"137788","label":"Presentation
+        Scheduled","probability":0.6,"active":true,"displayOrder":2,"closedWon":false},{"stageId":"137789","label":"Decision
+        Maker Bought-In","probability":0.8,"active":true,"displayOrder":3,"closedWon":false},{"stageId":"137790","label":"Contract
+        Sent","probability":0.9,"active":true,"displayOrder":4,"closedWon":false},{"stageId":"137791","label":"Closed
+        Won","probability":1.0,"active":true,"displayOrder":5,"closedWon":true},{"stageId":"137792","label":"Closed
+        Lost","probability":0.0,"active":true,"displayOrder":6,"closedWon":false}],"label":"New
+        Pipeline","active":true,"displayOrder":0,"staticDefault":false}'
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 21:05:45 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/deals/v1/pipelines/e878f589-61fe-4e4e-acd1-44a4357b957b?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Thu, 15 Nov 2018 21:05:46 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d9d4948b89fab5d15167c95ded65126471542315945; expires=Fri, 15-Nov-19
+        21:05:45 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B3036CB498292196BBB724005C67EAC0E85869243000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '113816'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 47a4ad85fb61ae32-BOS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 21:05:46 GMT
+recorded_with: VCR 4.0.0
