@@ -15,13 +15,13 @@ describe Hubspot::DealProperties do
   end
 
   let(:example_groups) do
-    VCR.use_cassette('deal_groups_example', record: :once) do
+    VCR.use_cassette('deal_groups_example') do
       HTTParty.get('https://api.hubapi.com/deals/v1/groups?hapikey=demo').parsed_response
     end
   end
 
   let(:example_properties) do
-    VCR.use_cassette('deal_properties_example', record: :once) do
+    VCR.use_cassette('deal_properties_example') do
       HTTParty.get('https://api.hubapi.com/deals/v1/properties?hapikey=demo').parsed_response
     end
   end

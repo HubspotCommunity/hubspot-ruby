@@ -31,13 +31,13 @@ describe Hubspot::Utils do
 
   describe '.compare_property_lists for ContactProperties' do
     let(:example_groups) do
-      VCR.use_cassette('groups_example', record: :once) do
+      VCR.use_cassette('groups_example') do
         HTTParty.get('https://api.hubapi.com/contacts/v2/groups?hapikey=demo').parsed_response
       end
     end
 
     let(:example_properties) do
-      VCR.use_cassette('properties_example', record: :once) do
+      VCR.use_cassette('properties_example') do
         HTTParty.get('https://api.hubapi.com/contacts/v2/properties?hapikey=demo').parsed_response
       end
     end
@@ -80,13 +80,13 @@ describe Hubspot::Utils do
 
   describe '.compare_property_lists for DealProperties' do
     let(:example_groups) do
-      VCR.use_cassette('deal_groups_example', record: :once) do
+      VCR.use_cassette('deal_groups_example') do
         HTTParty.get('https://api.hubapi.com/deals/v1/groups?hapikey=demo').parsed_response
       end
     end
 
     let(:example_properties) do
-      VCR.use_cassette('deal_properties_example', record: :once) do
+      VCR.use_cassette('deal_properties_example') do
         HTTParty.get('https://api.hubapi.com/deals/v1/properties?hapikey=demo').parsed_response
       end
     end

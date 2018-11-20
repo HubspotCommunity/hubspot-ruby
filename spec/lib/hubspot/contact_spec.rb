@@ -1,6 +1,6 @@
 RSpec.describe Hubspot::Contact do
   let(:example_contact_hash) do
-    VCR.use_cassette('contact_example', record: :none) do
+    VCR.use_cassette('contact_example') do
       HTTParty.get('https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo').parsed_response
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe Hubspot::Contact do
   describe '.createOrUpdate' do
     context "when the contact already exists" do
       it "updates the contact" do
-        VCR.use_cassette("contacts/update_contact", record: :none) do
+        VCR.use_cassette("contacts/update_contact") do
           existing_contact = Hubspot::Contact.create!("contact@example.com")
           email = existing_contact.email
           new_email = "new_email@example.com"
@@ -73,7 +73,7 @@ RSpec.describe Hubspot::Contact do
 
     context "when the contact does not exist" do
       it "creates the contact" do
-        VCR.use_cassette("contacts/create_contact", record: :none) do
+        VCR.use_cassette("contacts/create_contact") do
           email = "new_contact@example.com"
           params = { firstname: "Leslie", lastname: "Knope" }
 
@@ -93,7 +93,7 @@ RSpec.describe Hubspot::Contact do
 
     context "with an invalid email" do
       it "raises an error" do
-        VCR.use_cassette("contact_create_or_update_invalid_email", record: :none) do
+        VCR.use_cassette("contact_create_or_update_invalid_email") do
           expect {
             Hubspot::Contact.createOrUpdate("not_an_email")
           }.to raise_error(Hubspot::RequestError)

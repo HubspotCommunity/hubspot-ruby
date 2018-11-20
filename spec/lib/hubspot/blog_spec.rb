@@ -13,7 +13,7 @@ describe Hubspot do
   describe Hubspot::Blog do
     describe ".list" do
       it "returns a list of blogs" do
-        VCR.use_cassette("blog_list", record: :none) do
+        VCR.use_cassette("blog_list") do
           result = Hubspot::Blog.list
 
           assert_requested :get, hubspot_api_url("/content/api/v2/blogs?hapikey=demo")
@@ -25,7 +25,7 @@ describe Hubspot do
 
     describe ".find_by_id" do
       it "retrieves a blog by id" do
-        VCR.use_cassette("blog_list", record: :none) do
+        VCR.use_cassette("blog_list") do
           id = 351076997
           result = Hubspot::Blog.find_by_id(id)
 
@@ -58,7 +58,7 @@ describe Hubspot do
 
     describe "#posts" do
       it "returns published blog posts created in the last 2 months" do
-        VCR.use_cassette("blog_posts/all_blog_posts", record: :none) do
+        VCR.use_cassette("blog_posts/all_blog_posts") do
           blog_id = 123
           created_gt = timestamp_in_milliseconds(Time.now - 2.months)
           blog = Hubspot::Blog.new({ "id" => blog_id })
@@ -71,7 +71,7 @@ describe Hubspot do
       end
 
       it "includes given parameters in the request" do
-        VCR.use_cassette("blog_posts/filter_blog_posts", record: :none) do
+        VCR.use_cassette("blog_posts/filter_blog_posts") do
           blog_id = 123
           created_gt = timestamp_in_milliseconds(Time.now - 2.months)
           blog = Hubspot::Blog.new({ "id" => 123 })

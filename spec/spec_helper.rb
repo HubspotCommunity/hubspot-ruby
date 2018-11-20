@@ -13,16 +13,10 @@ end
 require 'rspec'
 require 'webmock/rspec'
 require 'hubspot-ruby'
-require 'vcr'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir["#{RSPEC_ROOT}/support/**/*.rb"].each {|f| require f}
-
-VCR.configure do |c|
-  c.cassette_library_dir = "#{RSPEC_ROOT}/fixtures/vcr_cassettes"
-  c.hook_into :webmock
-end
 
 RSpec.configure do |config|
   config.mock_with :rr

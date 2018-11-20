@@ -1,11 +1,11 @@
 describe Hubspot::Contact do
   let(:example_company_hash) do
-    VCR.use_cassette("company_example", record: :none) do
+    VCR.use_cassette("company_example") do
       HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
     end
   end
   let(:company_with_contacts_hash) do
-    VCR.use_cassette("company_with_contacts", record: :none) do
+    VCR.use_cassette("company_with_contacts") do
       HTTParty.get("https://api.hubapi.com/companies/v2/companies/115200636?hapikey=demo").parsed_response
     end
   end

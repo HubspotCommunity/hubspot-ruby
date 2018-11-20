@@ -1,7 +1,7 @@
 describe Hubspot::Form do
   let(:guid) { '78c2891f-ebdd-44c0-bd94-15c012bbbfbf' } # '561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0'
   let(:example_form_hash) do
-    VCR.use_cassette('form_example', record: :none) do
+    VCR.use_cassette('form_example') do
       HTTParty.get("https://api.hubapi.com#{Hubspot::Form::FORMS_PATH}/#{guid}/?hapikey=demo").parsed_response
     end
   end

@@ -132,13 +132,27 @@ Hubspot::Deal.create!(nil, [company.vid], [contact.vid], pipeline: 'default', de
 
 ### Testing
 
-All tests can be run with `rake spec`. Isolate fast-running tests with `rake spec:quick`.
+This project uses [VCR] to test interactions with the HubSpot API.
+VCR records HTTP requests and replays them during future tests.
 
-GET requests are pretty easy to test with VCR, but for POST/PUT requests, you probably want to update verify the state
-of a live HubSpot instance. To do this, please add "live" tests to `spec/live/`, using the rspec label `live: true` in
-order to disable VCR.
+All tests can be run with `rake spec`.
 
-"Live" tests can be isolated with `rake spec:live`.
+Tests under the `live` directory do not use VCR and issue real network calls.
+Do not add tests to this directory as these tests are being migrated over to use
+VCR.
+
+By default, the VCR recording mode is set to `:none`, which allows recorded
+requests to be re-played but raises for any new request. This prevents the test
+suite from issuing unexpected HTTP requests.
+
+To add a new test or update a VCR recording, run the test with the `VCR_RECORD`
+environment variable:
+
+```sh
+VCR_RECORD=1 bundle exec rspec spec
+```
+
+[VCR]: https://github.com/vcr/vcr
 
 ## Disclaimer
 

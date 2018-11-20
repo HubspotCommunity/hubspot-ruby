@@ -1,6 +1,6 @@
 describe Hubspot::ContactList do
   let(:example_contact_list_hash) do
-    VCR.use_cassette("contact_list_example", record: :none) do
+    VCR.use_cassette("contact_list_example") do
       HTTParty.get("https://api.hubapi.com/contacts/v1/lists/1?hapikey=demo").parsed_response
     end
   end
@@ -9,7 +9,7 @@ describe Hubspot::ContactList do
   let(:dynamic_list) { Hubspot::ContactList.all(dynamic: true, count: 1).first }
 
   let(:example_contact_hash) do
-    VCR.use_cassette("contact_example", record: :none) do
+    VCR.use_cassette("contact_example") do
       HTTParty.get("https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo").parsed_response
     end
   end
