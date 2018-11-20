@@ -1,4 +1,4 @@
-describe Hubspot::Contact do
+RSpec.describe Hubspot::Contact do
   let(:example_contact_hash) do
     VCR.use_cassette('contact_example', record: :none) do
       HTTParty.get('https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo').parsed_response
@@ -52,34 +52,52 @@ describe Hubspot::Contact do
   end
 
   describe '.createOrUpdate' do
-    cassette 'contact_create_or_update'
-    let(:params){{}}
-    subject{ Hubspot::Contact.createOrUpdate(email, params) }
-    context 'with a new email' do
-      let(:email){ "newcontact#{Time.now.to_i}@hsgem.com" }
-      it{ should be_an_instance_of Hubspot::Contact }
-      its(:email){ should match /newcontact.*@hsgem.com/ } # Due to VCR the email may not match exactly
+    context "when the contact already exists" do
+      it "updates the contact" do
+        VCR.use_cassette("contacts/update_contact", record: :none) do
+          existing_contact = Hubspot::Contact.create!("contact@example.com")
+          email = existing_contact.email
+          new_email = "new_email@example.com"
+          params = { email: new_email }
 
-      context 'and some params' do
-        cassette 'contact_create_or_update_with_params'
-        let(:email){ "newcontact_x_#{Time.now.to_i}@hsgem.com" }
-        let(:params){ {firstname: 'Hugh', lastname: 'Jackman' } }
-        its(['firstname']){ should == 'Hugh'}
-        its(['lastname']){ should == 'Jackman'}
+          contact = Hubspot::Contact.createOrUpdate(email, params)
+
+          assert_requested :post, hubspot_api_url("/contacts/v1/contact/createOrUpdate/email/#{email}?hapikey=demo")
+          expect(contact).to be_a(Hubspot::Contact)
+          expect(contact.email).to eq(new_email)
+
+          contact.destroy!
+        end
       end
     end
-    context 'with an existing email' do
-      cassette 'contact_create_or_update_existing_email'
-      let(:email){ 'testingapis@hubspot.com' }
-      let(:params){ { firstname: 'Hugh', lastname: 'Jackman, Jr.' } }
-      its(['firstname']){ should == 'Hugh'}
-      its(['lastname']){ should == 'Jackman, Jr.'}
+
+    context "when the contact does not exist" do
+      it "creates the contact" do
+        VCR.use_cassette("contacts/create_contact", record: :none) do
+          email = "new_contact@example.com"
+          params = { firstname: "Leslie", lastname: "Knope" }
+
+          contact = Hubspot::Contact.createOrUpdate(email, params)
+
+          assert_requested :post, hubspot_api_url("/contacts/v1/contact/createOrUpdate/email/#{email}?hapikey=demo")
+
+          expect(contact).to be_a(Hubspot::Contact)
+          expect(contact.email).to eq(email)
+          expect(contact[:firstname]).to eq(params[:firstname])
+          expect(contact[:lastname]).to eq(params[:lastname])
+
+          contact.destroy!
+        end
+      end
     end
-    context 'with an invalid email' do
-      cassette 'contact_create_or_update_invalid_email'
-      let(:email){ 'not_an_email' }
-      it 'raises a RequestError' do
-        expect{ subject }.to raise_error Hubspot::RequestError
+
+    context "with an invalid email" do
+      it "raises an error" do
+        VCR.use_cassette("contact_create_or_update_invalid_email", record: :none) do
+          expect {
+            Hubspot::Contact.createOrUpdate("not_an_email")
+          }.to raise_error(Hubspot::RequestError)
+        end
       end
     end
   end
