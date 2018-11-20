@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/content/api/v2/blog-posts?content_group_id=123&created__gt=1344556800000&hapikey=demo&order_by=-created&state=PUBLISHED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 19 Nov 2018 15:39:20 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dd2827db985138ce76890f7bfad1fbd471542641959; expires=Tue, 19-Nov-19
+        15:39:19 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BFC6D2D4D1BED97061BF9B453B1EFA0E45E5002F5000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '142173'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding, User-Agent
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 47c3c4d9baf85a80-BOS
+    body:
+      encoding: UTF-8
+      string: '{"limit":20,"objects":[],"offset":0,"total":0,"total_count":0}'
+    http_version: 
+  recorded_at: Wed, 10 Oct 2012 00:00:00 GMT
+recorded_with: VCR 4.0.0
