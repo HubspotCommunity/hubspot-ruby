@@ -28,3 +28,6 @@ module Hubspot
 
   require 'hubspot/railtie' if defined?(Rails)
 end
+
+# Alias the module for those looking to use the stylized name HubSpot
+HubSpot = Hubspot
