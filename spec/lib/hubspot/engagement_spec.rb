@@ -46,7 +46,7 @@ describe Hubspot::Engagement do
       it 'must find by company id' do
         find_engagements = Hubspot::EngagementNote.find_by_company(engagement.associations["companyIds"].first)
         find_engagements.should_not be_nil
-        find_engagements.any?{|engagement| engagement.id == engagement.id and engagement.body == engagement.body}.should be_true
+        find_engagements.any?{|engagement| engagement.id == engagement.id and engagement.body == engagement.body}.should be true
       end
     end
 
@@ -57,7 +57,7 @@ describe Hubspot::Engagement do
       it 'must find by contact id' do
         find_engagements = Hubspot::EngagementNote.find_by_contact(engagement.associations["contactIds"].first)
         find_engagements.should_not be_nil
-        find_engagements.any?{|engagement| engagement.id == engagement.id and engagement.body == engagement.body}.should be_true
+        find_engagements.any?{|engagement| engagement.id == engagement.id and engagement.body == engagement.body}.should be true
       end
     end
 
@@ -93,8 +93,8 @@ describe Hubspot::Engagement do
       it 'should remove from hubspot' do
         expect(Hubspot::Engagement.find(engagement.id)).to_not be_nil
 
-        expect(engagement.destroy!).to be_true
-        expect(engagement.destroyed?).to be_true
+        expect(engagement.destroy!).to be true
+        expect(engagement.destroyed?).to be true
 
         expect(Hubspot::Engagement.find(engagement.id)).to be_nil
       end
@@ -135,8 +135,8 @@ describe Hubspot::Engagement do
       it 'should remove from hubspot' do
         expect(Hubspot::Engagement.find(engagement.id)).to_not be_nil
 
-        expect(engagement.destroy!).to be_true
-        expect(engagement.destroyed?).to be_true
+        expect(engagement.destroy!).to be true
+        expect(engagement.destroyed?).to be true
 
         expect(Hubspot::Engagement.find(engagement.id)).to be_nil
       end

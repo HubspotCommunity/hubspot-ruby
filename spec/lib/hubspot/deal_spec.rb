@@ -82,19 +82,17 @@ describe Hubspot::Deal do
     end
   end
 
-  describe '#destroy!' do
-    cassette 'destroy_deal'
+  describe "#destroy!" do
+    it "should remove from hubspot" do
+      VCR.use_cassette("destroy_deal") do
+        deal = Hubspot::Deal.create!(portal_id, [company_id], [vid], {amount: amount})
 
-    let(:deal) {Hubspot::Deal.create!(portal_id, [company_id], [vid], {amount: amount})}
+        result = deal.destroy!
 
-    it 'should remove from hubspot' do
-      pending
-      expect(Hubspot::Deal.find(deal.deal_id)).to_not be_nil
+        assert_requested :delete, hubspot_api_url("/deals/v1/deal/#{deal.deal_id}?hapikey=demo")
 
-      expect(deal.destroy!).to be_true
-      expect(deal.destroyed?).to be_true
-
-      expect(Hubspot::Deal.find(deal.deal_id)).to be_nil
+        expect(result).to be true
+      end
     end
   end
 

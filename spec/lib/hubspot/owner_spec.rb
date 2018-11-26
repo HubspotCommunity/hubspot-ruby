@@ -13,7 +13,7 @@ describe Hubspot::Owner do
     it 'should find all owners' do
       owners = Hubspot::Owner.all
 
-      expect(owners.blank?).to be_false
+      expect(owners.blank?).to be false
       compare_owners(owners, example_owners)
     end
   end
@@ -48,7 +48,7 @@ end
 def compare_owners(owners, examples)
   owners.each do |owner|
     example = examples.detect { |o| o['email'] == owner.email }
-    expect(example.blank?).to be_false
+    expect(example.blank?).to be false
     example.each do |key, val|
       expect(owner[key]).to eq(val)
     end

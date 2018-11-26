@@ -282,11 +282,11 @@ describe Hubspot::ContactList do
 
     let(:contact_list) { Hubspot::ContactList.create!({ name: "newcontactlist_#{Time.now.to_i}"}) }
     subject{ contact_list.destroy! }
-    it { should be_true }
+    it { should be true }
 
     it "should be destroyed" do
       subject
-      contact_list.destroyed?.should be_true
+      expect(contact_list).to be_destroyed
     end
   end
 

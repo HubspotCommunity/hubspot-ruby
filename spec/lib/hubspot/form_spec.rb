@@ -179,11 +179,11 @@ describe Hubspot::Form do
     # NOTE: form previous created via the create! method
     let(:form) { Hubspot::Form.find('beb92950-ca65-4daf-87ae-a42c054e429f') }
     subject { form.destroy! }
-    it { should be_true }
+    it { should be true }
 
     it 'should be destroyed' do
       subject
-      form.destroyed?.should be_true
+      form.destroyed?.should be true
     end
   end
 end

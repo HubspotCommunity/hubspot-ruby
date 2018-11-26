@@ -234,16 +234,16 @@ describe Hubspot::Contact do
     cassette "company_destroy"
     let(:company){ Hubspot::Company.create!("newcompany_y_#{Time.now.to_i}@hsgem.com") }
     subject{ company.destroy! }
-    it { should be_true }
+    it { should be true }
     it "should be destroyed" do
       subject
-      company.destroyed?.should be_true
+      company.destroyed?.should be true
     end
     context "when the request is not successful" do
       let(:company){ Hubspot::Company.new({"vid" => "invalid", "properties" => {}})}
       it "raises an error" do
         expect{ subject }.to raise_error Hubspot::RequestError
-        company.destroyed?.should be_false
+        company.destroyed?.should be false
       end
     end
   end
@@ -278,7 +278,7 @@ describe Hubspot::Contact do
   describe "#destroyed?" do
     let(:company){ Hubspot::Company.new(example_company_hash) }
     subject{ company }
-    its(:destroyed?){ should be_false }
+    its(:destroyed?){ should be false }
   end
 
   describe "#contacts" do

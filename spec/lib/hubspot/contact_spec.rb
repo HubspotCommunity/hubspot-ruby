@@ -157,8 +157,11 @@ RSpec.describe Hubspot::Contact do
 
       it 'find lists of contacts' do
         emails = ['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']
-        contacts = Hubspot::Contact.find_by_email(emails)
-        pending
+        email_query_params = "email=#{emails.first}&email=#{emails.last}"
+
+        Hubspot::Contact.find_by_email(emails)
+
+        assert_requested :get, hubspot_api_url("/contacts/v1/contact/emails/batch?#{email_query_params}&hapikey=demo")
       end
     end
   end
@@ -402,16 +405,16 @@ RSpec.describe Hubspot::Contact do
     cassette 'contact_destroy'
     let(:contact){ Hubspot::Contact.create!("newcontact_y_#{Time.now.to_i}@hsgem.com") }
     subject{ contact.destroy! }
-    it { should be_true }
+    it { should be true }
     it 'should be destroyed' do
       subject
-      contact.destroyed?.should be_true
+      contact.destroyed?.should be true
     end
     context 'when the request is not successful' do
       let(:contact){ Hubspot::Contact.new({'vid' => 'invalid', 'properties' => {}})}
       it 'raises an error' do
         expect{ subject }.to raise_error Hubspot::RequestError
-        contact.destroyed?.should be_false
+        contact.destroyed?.should be false
       end
     end
   end
@@ -419,6 +422,6 @@ RSpec.describe Hubspot::Contact do
   describe '#destroyed?' do
     let(:contact){ Hubspot::Contact.new(example_contact_hash) }
     subject{ contact }
-    its(:destroyed?){ should be_false }
+    its(:destroyed?){ should be false }
   end
 end

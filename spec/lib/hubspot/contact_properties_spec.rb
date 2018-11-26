@@ -45,7 +45,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return properties for the specified group[s]' do
           response = Hubspot::ContactProperties.all({}, { include: groups })
-          response.each { |p| expect(groups.include?(p['groupName'])).to be_true }
+          response.each { |p| expect(groups.include?(p['groupName'])).to be true }
         end
       end
 
@@ -54,7 +54,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return properties for the non-specified group[s]' do
           response = Hubspot::ContactProperties.all({}, { exclude: groups })
-          response.each { |p| expect(groups.include?(p['groupName'])).to be_false }
+          response.each { |p| expect(groups.include?(p['groupName'])).to be false }
         end
       end
     end
@@ -158,7 +158,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return the specified groups' do
           response = Hubspot::ContactProperties.groups({}, { include: groups })
-          response.each { |p| expect(groups.include?(p['name'])).to be_true }
+          response.each { |p| expect(groups.include?(p['name'])).to be true }
         end
       end
 
@@ -167,7 +167,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return groups that were not excluded' do
           response = Hubspot::ContactProperties.groups({}, { exclude: groups })
-          response.each { |p| expect(groups.include?(p['name'])).to be_false }
+          response.each { |p| expect(groups.include?(p['name'])).to be false }
         end
       end
     end
@@ -186,7 +186,7 @@ describe Hubspot::ContactProperties do
 
         it 'should return the valid parameters' do
           response = Hubspot::ContactProperties.create_group!(params)
-          expect(Hubspot::ContactProperties.same?(response, params)).to be_true
+          expect(Hubspot::ContactProperties.same?(response, params)).to be true
         end
       end
 
@@ -198,7 +198,7 @@ describe Hubspot::ContactProperties do
         it 'should return the valid parameters' do
           params['name'] = 'ff_group234'
           response       = Hubspot::ContactProperties.create_group!(sub_params)
-          expect(Hubspot::ContactProperties.same?(response, sub_params)).to be_true
+          expect(Hubspot::ContactProperties.same?(response, sub_params)).to be true
         end
       end
     end
@@ -218,7 +218,7 @@ describe Hubspot::ContactProperties do
           params['displayName'] = 'Test Group OneA'
 
           response = Hubspot::ContactProperties.update_group!(params['name'], params)
-          expect(Hubspot::ContactProperties.same?(response, params)).to be_true
+          expect(Hubspot::ContactProperties.same?(response, params)).to be true
         end
       end
 

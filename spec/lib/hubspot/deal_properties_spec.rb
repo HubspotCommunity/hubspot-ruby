@@ -45,7 +45,7 @@ describe Hubspot::DealProperties do
 
         it 'should return properties for the specified group[s]' do
           response = Hubspot::DealProperties.all({}, { include: groups })
-          response.each { |p| expect(groups.include?(p['groupName'])).to be_true }
+          response.each { |p| expect(groups.include?(p['groupName'])).to be true }
         end
       end
 
@@ -54,7 +54,7 @@ describe Hubspot::DealProperties do
 
         it 'should return properties for the non-specified group[s]' do
           response = Hubspot::DealProperties.all({}, { exclude: groups })
-          response.each { |p| expect(groups.include?(p['groupName'])).to be_false }
+          response.each { |p| expect(groups.include?(p['groupName'])).to be false }
         end
       end
     end
@@ -110,7 +110,7 @@ describe Hubspot::DealProperties do
 
         it 'should return the valid parameters' do
           response = Hubspot::DealProperties.create!(params)
-          expect(Hubspot::DealProperties.same?(params, response)).to be_true
+          expect(Hubspot::DealProperties.same?(params, response)).to be true
         end
       end
     end
@@ -130,7 +130,7 @@ describe Hubspot::DealProperties do
           params['description'] = 'What is their favorite flavor?'
 
           response = Hubspot::DealProperties.update!(params['name'], params)
-          expect(Hubspot::DealProperties.same?(response, params)).to be_true
+          expect(Hubspot::DealProperties.same?(response, params)).to be true
         end
       end
     end
@@ -173,7 +173,7 @@ describe Hubspot::DealProperties do
 
         it 'should return the specified groups' do
           response = Hubspot::DealProperties.groups({}, { include: groups })
-          response.each { |p| expect(groups.include?(p['name'])).to be_true }
+          response.each { |p| expect(groups.include?(p['name'])).to be true }
         end
       end
 
@@ -182,7 +182,7 @@ describe Hubspot::DealProperties do
 
         it 'should return groups that were not excluded' do
           response = Hubspot::DealProperties.groups({}, { exclude: groups })
-          response.each { |p| expect(groups.include?(p['name'])).to be_false }
+          response.each { |p| expect(groups.include?(p['name'])).to be false }
         end
       end
     end
@@ -201,7 +201,7 @@ describe Hubspot::DealProperties do
 
         it 'should return the valid parameters' do
           response = Hubspot::DealProperties.create_group!(params)
-          expect(Hubspot::DealProperties.same?(response, params)).to be_true
+          expect(Hubspot::DealProperties.same?(response, params)).to be true
         end
       end
 
@@ -213,7 +213,7 @@ describe Hubspot::DealProperties do
         it 'should return the valid parameters' do
           params['name'] = 'ff_group234'
           response       = Hubspot::DealProperties.create_group!(sub_params)
-          expect(Hubspot::DealProperties.same?(response, sub_params)).to be_true
+          expect(Hubspot::DealProperties.same?(response, sub_params)).to be true
         end
       end
     end
@@ -233,7 +233,7 @@ describe Hubspot::DealProperties do
           params['displayName'] = 'Test Group OneA'
 
           response = Hubspot::DealProperties.update_group!(params['name'], params)
-          expect(Hubspot::DealProperties.same?(response, params)).to be_true
+          expect(Hubspot::DealProperties.same?(response, params)).to be true
         end
       end
 
