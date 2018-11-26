@@ -135,11 +135,7 @@ Hubspot::Deal.create!(nil, [company.vid], [contact.vid], pipeline: 'default', de
 This project uses [VCR] to test interactions with the HubSpot API.
 VCR records HTTP requests and replays them during future tests.
 
-All tests can be run with `rake spec`.
-
-Tests under the `live` directory do not use VCR and issue real network calls.
-Do not add tests to this directory as these tests are being migrated over to use
-VCR.
+To run the tests, run `bundle exec rake` or `bundle exec rspec`.
 
 By default, the VCR recording mode is set to `:none`, which allows recorded
 requests to be re-played but raises for any new request. This prevents the test

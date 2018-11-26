@@ -25,14 +25,6 @@ RSpec.configure do |config|
     Hubspot::Config.reset!
   end
 
-  config.around(:each, live: true) do |example|
-    VCR.turn_off!
-    WebMock.disable!
-    example.run
-    WebMock.enable!
-    VCR.turn_on!
-  end
-
   config.extend CassetteHelper
   config.extend TestsHelper
 end

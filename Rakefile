@@ -14,21 +14,10 @@ require 'rake'
 require 'rspec/core'
 require 'rspec/core/rake_task'
 
-namespace :spec do
-  RSpec::Core::RakeTask.new(:quick) do |spec|
-    spec.pattern = FileList['spec/**/*_spec.rb'].select{ |s| !s.match("/live/") }
-  end
-  RSpec::Core::RakeTask.new(:live) do |spec|
-    spec.pattern = FileList['spec/live/*_spec.rb']
-  end
-end
+RSpec::Core::RakeTask.new(:spec)
 
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
-end
-
-desc "Default: Excludes 'live' tests that issue real network calls."
-task default: %w(spec:quick)
+desc "Default: runs the full test suite."
+task default: :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
