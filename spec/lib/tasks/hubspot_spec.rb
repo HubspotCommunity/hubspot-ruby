@@ -20,6 +20,18 @@ RSpec.describe "hubspot rake tasks", type: :rake do
       end
     end
 
+    it "prints a deprecation warning" do
+      VCR.use_cassette("dump_contact_properties_and_groups") do
+        file = Tempfile.new ""
+
+        output = capture_stderr do
+          invoke_rake_task("hubspot:dump_properties", ["contact", file, hapikey])
+        end
+
+        expect(output).to include("hubspot:dump_properties is deprecated")
+      end
+    end
+
     context "given an unknown class" do
       it "raises an error" do
         file = Tempfile.new
@@ -52,6 +64,21 @@ RSpec.describe "hubspot rake tasks", type: :rake do
           expect(results).not_to include("Created: ")
           expect(results).not_to include("Updated: ")
         end
+      end
+    end
+
+    it "prints a deprecation warning" do
+      VCR.use_cassette("restore_contact_properties_and_groups") do
+        file = build_file_with_matching_properties("contact")
+
+        output = capture_stderr do
+          invoke_rake_task(
+            "hubspot:restore_properties",
+            ["contact", file, hapikey]
+          )
+        end
+
+        expect(output).to include("hubspot:restore_properties is deprecated")
       end
     end
 
@@ -88,13 +115,5 @@ RSpec.describe "hubspot rake tasks", type: :rake do
     file = Tempfile.new
     invoke_rake_task("hubspot:dump_properties", ["contact", file, hapikey])
     file
-  end
-
-  def capture_stdout
-    previous, $stdout = $stdout, StringIO.new
-    yield
-    $stdout.string
-  ensure
-    $stdout = previous
   end
 end
