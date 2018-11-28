@@ -3,6 +3,8 @@ require 'hubspot-ruby'
 namespace :hubspot do
   desc 'Dump properties to file'
   task :dump_properties, [:kind, :file, :hapikey, :include, :exclude] do |_, args|
+    Hubspot::Deprecator.build.deprecation_warning("hubspot:dump_properties")
+
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     kind = args[:kind]
     unless %w(contact deal).include?(kind)
@@ -21,6 +23,8 @@ namespace :hubspot do
 
   desc 'Restore properties from file'
   task :restore_properties, [:kind, :file, :hapikey, :dry_run] do |_, args|
+    Hubspot::Deprecator.build.deprecation_warning("hubspot:restore_properties")
+
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     if args[:file].blank?
       raise ArgumentError, ':file is a required parameter'

@@ -126,4 +126,39 @@ describe Hubspot::Utils do
       end
     end
   end
+
+  describe ".dump_properties" do
+    it "prints a deprecation warning" do
+      VCR.use_cassette("dump_deal_properties_and_groups") do
+        api_key = "demo"
+
+        output = capture_stderr do
+          Hubspot::Utils.dump_properties(Hubspot::DealProperties, api_key)
+        end
+
+        expected_warning = "Hubspot::Utils.dump_properties is deprecated"
+        expect(output).to include(expected_warning)
+      end
+    end
+  end
+
+  describe ".restore_properties" do
+    it "prints a deprecation warning" do
+      VCR.use_cassette("restore_deal_properties_and_groups") do
+        api_key = "demo"
+        properties = {"groups" => {}, "properties" => {}}
+
+        output = capture_stderr do
+          Hubspot::Utils.restore_properties(
+            Hubspot::DealProperties,
+            api_key,
+            properties
+          )
+        end
+
+        expected_warning = "Hubspot::Utils.restore_properties is deprecated"
+        expect(output).to include(expected_warning)
+      end
+    end
+  end
 end
