@@ -1,5 +1,7 @@
 # HubSpot REST API wrappers for ruby
 
+[![Build Status](https://travis-ci.org/adimichele/hubspot-ruby.svg?branch=v0-stable)](https://travis-ci.org/adimichele/hubspot-ruby)
+
 Wraps the HubSpot REST API for convenient access from ruby applications.
 
 Documentation for the HubSpot REST API can be found here: https://developers.hubspot.com/docs/endpoints
