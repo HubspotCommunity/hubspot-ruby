@@ -11,6 +11,8 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/adimichele/hubspot-ruby"
   s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
 
+  s.required_ruby_version = ">= 2.3"
+
   # Add runtime dependencies here
   s.add_runtime_dependency "activesupport", ">=3.0.0"
   s.add_runtime_dependency "httparty", ">=0.10.0"
