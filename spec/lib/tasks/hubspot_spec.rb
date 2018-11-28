@@ -8,7 +8,7 @@ RSpec.describe "hubspot rake tasks", type: :rake do
   describe "hubspot:dump_properties" do
     it "writes the class properties and groups to the given file" do
       VCR.use_cassette("dump_contact_properties_and_groups") do
-        file = Tempfile.new
+        file = Tempfile.new ""
 
         invoke_rake_task("hubspot:dump_properties", ["contact", file, hapikey])
 
@@ -22,7 +22,7 @@ RSpec.describe "hubspot rake tasks", type: :rake do
 
     context "given an unknown class" do
       it "raises an error" do
-        file = Tempfile.new
+        file = Tempfile.new ""
 
         expected_error_msg = ':kind must be either "contact" or "deal"'
 
@@ -71,7 +71,7 @@ RSpec.describe "hubspot rake tasks", type: :rake do
 
     context "given an unknown class" do
       it "raises an error" do
-        file = Tempfile.new
+        file = Tempfile.new ""
         expected_error_msg = ':kind must be either "contact" or "deal"'
 
         expect do
@@ -85,7 +85,7 @@ RSpec.describe "hubspot rake tasks", type: :rake do
   end
 
   def build_file_with_matching_properties(klass)
-    file = Tempfile.new
+    file = Tempfile.new ""
     invoke_rake_task("hubspot:dump_properties", ["contact", file, hapikey])
     file
   end
