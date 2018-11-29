@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.6.0"
+  s.version = "0.6.1"
   s.require_paths = ["lib"]
   s.authors = ["Andrew DiMichele", "Chris Bisnett"]
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
