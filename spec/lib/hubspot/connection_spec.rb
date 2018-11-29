@@ -1,44 +1,46 @@
 describe Hubspot::Connection do
-  before(:each) do
-    @url           = 'http://localhost:3000'
-    @http_response = mock('http_response')
+  before do
+    Hubspot.configure hapikey: 'fake'
   end
 
-  describe '.get_json' do
-    it 'delegates url format to Hubspot::Utils, call HTTParty get and returns response' do
-      @http_response.success? { true }
-      @http_response.parsed_response { {} }
-      @http_response.code { 200 }
-      @http_response.body { 'mocked response' }
+  describe ".get_json" do
+    it "returns the parsed response from the GET request" do
+      path = "/some/path"
+      body = { key: "value" }
 
-      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).get(@url, format: :json) { @http_response }
-      Hubspot::Connection.get_json(@url, {})
+      stub_request(:get, "https://api.hubapi.com/some/path?hapikey=fake").
+        to_return(status: 200, body: JSON.generate(body))
+
+      result = Hubspot::Connection.get_json(path, {})
+
+      expect(result).to eq({ "key" => "value" })
     end
   end
 
-  describe '.post_json' do
-    it 'delegates url format to Hubspot::Utils, call HTTParty post and returns response' do
-      @http_response.success? { true }
-      @http_response.parsed_response { {} }
-      @http_response.code { 200 }
-      @http_response.body { 'mocked response' }
+  describe ".post_json" do
+    it "returns the parsed response from the POST request" do
+      path = "/some/path"
+      body = { id: 1, name: "ABC" }
 
-      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json) { @http_response }
-      Hubspot::Connection.post_json(@url, params: {}, body: {})
+      stub_request(:post, "https://api.hubapi.com/some/path?hapikey=fake&name=ABC").
+        to_return(status: 200, body: JSON.generate(body))
+
+      result = Hubspot::Connection.post_json(path, params: { name: "ABC" })
+
+      expect(result).to eq({ "id" => 1, "name" => "ABC" })
     end
   end
 
-  describe '.delete_json' do
-    it 'delegates url format to Hubspot::Utils, call HTTParty delete and returns response' do
-      @http_response.success? { true }
-      @http_response.code { 200 }
-      @http_response.body { 'mocked response' }
+  describe ".delete_json" do
+    it "returns the response from the DELETE request" do
+      path = "/some/path"
 
-      mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).delete(@url, format: :json) { @http_response }
-      Hubspot::Connection.delete_json(@url, {})
+      stub_request(:delete, "https://api.hubapi.com/some/path?hapikey=fake").
+        to_return(status: 204, body: JSON.generate({}))
+
+      result = Hubspot::Connection.delete_json(path, {})
+
+      expect(result.code).to eq(204)
     end
   end
 

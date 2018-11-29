@@ -178,27 +178,67 @@ describe Hubspot::ContactList do
     end
   end
 
-  describe '#add' do
-    cassette "add_contacts_to_lists"
+  describe "#add" do
+    context "for a static list" do
+      it "adds the contact to the contact list" do
+        VCR.use_cassette("contact_lists/add_contact") do
+          contact = Hubspot::Contact.create!("email@example.com")
+          contact_list_params = { name: "my-contacts-list" }
+          contact_list = Hubspot::ContactList.create!(contact_list_params)
 
-    context 'static list' do
-      it 'returns true if contacts have been added to the list' do
-        contact = Hubspot::Contact.all(count: 1).first
-        mock(Hubspot::Connection).post_json("/contacts/v1/lists/:list_id/add", {:params=>{:list_id=>4}, :body=>{:vids=>[contact.vid]}}) { { 'updated' => [contact.vid] } }
+          result = contact_list.add([contact])
 
-        expect(static_list.add(contact)).to be true
+          expect(result).to be true
+
+          contact.destroy!
+          contact_list.destroy!
+        end
       end
 
-      it 'returns false if the contact already exists in the list' do
-        contact = static_list.contacts(count: 1).first
-        expect(static_list.add(contact)).to be false
+      context "when the contact already exists in the contact list" do
+        it "returns false" do
+          VCR.use_cassette("contact_lists/add_existing_contact") do
+            contact = Hubspot::Contact.create!("email@example.com")
+
+            contact_list_params = { name: "my-contacts-list" }
+            contact_list = Hubspot::ContactList.create!(contact_list_params)
+            contact_list.add([contact])
+
+            result = contact_list.add([contact])
+
+            expect(result).to be false
+
+            contact.destroy!
+            contact_list.destroy!
+          end
+        end
       end
     end
 
-    context 'dynamic list' do
-      it 'raises error if try to add a contact to a dynamic list' do
-        contact = Hubspot::Contact.new(example_contact_hash)
-        expect { dynamic_list.add(contact) }.to raise_error(Hubspot::RequestError)
+    context "for a dynamic list" do
+      it "raises an error as dynamic lists add contacts via on filters" do
+        VCR.use_cassette("contact_list/add_contact_to_dynamic_list") do
+          contact = Hubspot::Contact.create!("email@example.com")
+          contact_list_params = {
+            name: "my-contacts-list",
+            dynamic: true,
+            "filters": [
+              [
+                {
+                  "operator": "EQ",
+                  "property": "email",
+                  "type": "string",
+                  "value": "@hubspot.com"
+                },
+              ],
+            ],
+          }
+          contact_list = Hubspot::ContactList.create!(contact_list_params)
+
+          expect {
+            contact_list.add(contact)
+          }.to raise_error(Hubspot::RequestError)
+        end
       end
     end
   end

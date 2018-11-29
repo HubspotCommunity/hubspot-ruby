@@ -19,8 +19,6 @@ require 'hubspot-ruby'
 Dir["#{RSPEC_ROOT}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-  config.mock_with :rr
-
   config.after(:each) do
     Hubspot::Config.reset!
   end

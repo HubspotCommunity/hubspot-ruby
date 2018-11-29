@@ -1,0 +1,315 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"email@example.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 21:01:30 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dd47a4095b20cd6371c97bb3a80ca01f61543784489; expires=Mon, 02-Dec-19
+        21:01:29 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BE005CFBCBE2C8246572148415853729C3D4D8C7E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '131530'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4830baa5ca4f5a44-BOS
+    body:
+      encoding: UTF-8
+      string: '{"vid":10581374,"canonical-vid":10581374,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mPYREUcwBVSIF6-nTET92vgF4dJOyMYQzFnEN29w-KbbT88fH6vtpXhvXBjazOgVEyH-w2dQ7n9_vFlRE7se_Uj38znGJT81Ivci3RFKAVpIEKhui2mD9YhQjzE08pdMnHyRIBc","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mPYREUcwBVSIF6-nTET92vgF4dJOyMYQzFnEN29w-KbbT88fH6vtpXhvXBjazOgVEyH-w2dQ7n9_vFlRE7se_Uj38znGJT81Ivci3RFKAVpIEKhui2mD9YhQjzE08pdMnHyRIBc/","properties":{"email":{"value":"email@example.com","versions":[{"value":"email@example.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1543784489923,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":10581374,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"email@example.com","timestamp":1543784489927,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"5eacaf93-5754-4b7b-880a-c536bbc8a9ef","timestamp":1543784489939,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 21:01:30 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"name":"my-contacts-list","dynamic":false,"portal_id":null}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 21:01:30 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d44a4d25bfd44498421711c1e9eb276b71543784490; expires=Mon, 02-Dec-19
+        21:01:30 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BCF6147C8F59544EDA33330AE528D7EAF0D2DB7E1000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '131529'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4830baa94f3eae08-BOS
+    body:
+      encoding: UTF-8
+      string: '{"dynamic":false,"metaData":{"listReferencesCount":null,"processing":"DONE","lastSizeChangeAt":0,"lastProcessingStateChangeAt":1543784490515,"error":"","size":0},"filters":[],"internalListId":489103,"archived":false,"portalId":62515,"createdAt":1543784490515,"listId":488317,"listType":"STATIC","updatedAt":1543784490515,"name":"my-contacts-list"}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 21:01:30 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/488317/add?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[10581374]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 21:01:31 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbc13cec85974c4f3d3864c0bb65007be1543784491; expires=Mon, 02-Dec-19
+        21:01:31 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BFB8DC4B6889DFA791F82958EC5FC47A05FB020F3000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '131528'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4830baacda4aae08-BOS
+    body:
+      encoding: UTF-8
+      string: '{"updated":[10581374],"discarded":[],"invalidVids":[],"invalidEmails":[]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 21:01:31 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/lists/488317/add?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"vids":[10581374]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 21:01:31 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbc13cec85974c4f3d3864c0bb65007be1543784491; expires=Mon, 02-Dec-19
+        21:01:31 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B0D1DE1FBBDA43DC911519CBB25A1107F7DC46D24000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '131527'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4830baae3bdcae08-BOS
+    body:
+      encoding: UTF-8
+      string: '{"updated":[],"discarded":[10581374],"invalidVids":[],"invalidEmails":[]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 21:01:31 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/10581374?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 21:01:31 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d38839d3f04477bc8ef63e0c598f471b31543784491; expires=Mon, 02-Dec-19
+        21:01:31 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BC17FC4A9F9762AD7F8169BB86F249C0A73CDAE23000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '131526'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4830baafcd0c5a2c-BOS
+    body:
+      encoding: UTF-8
+      string: '{"vid":10581374,"deleted":true,"reason":"OK"}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 21:01:31 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/contacts/v1/lists/488317?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 21:01:32 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d8aabd69b298beaa9b340cad1774658a71543784491; expires=Mon, 02-Dec-19
+        21:01:31 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B33D206DF2D82DAEC37E4DC179F8DD47B83C712B2000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '131525'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '56'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4830bab19d1eae38-BOS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 21:01:32 GMT
+recorded_with: VCR 4.0.0
