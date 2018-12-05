@@ -14,10 +14,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.3"
 
   # Add runtime dependencies here
-  s.add_runtime_dependency "activesupport", ">=3.0.0"
-  s.add_runtime_dependency "httparty", ">=0.10.0"
+  s.add_runtime_dependency "activesupport", ">= 4.2.2"
+  s.add_runtime_dependency "httparty", ">= 0.10"
 
   # Add development-only dependencies here
+  s.add_development_dependency("appraisal", "~> 2.2")
   s.add_development_dependency("rake", "~> 11.0")
   s.add_development_dependency("rspec", "~> 3.8")
   s.add_development_dependency("rspec-its", "~> 1.2")
