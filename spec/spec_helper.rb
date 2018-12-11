@@ -10,6 +10,7 @@ SimpleCov.start do
   add_filter "/.bundle/"
 end
 
+require 'dotenv/load'
 require 'rspec'
 require 'rspec/its'
 require 'webmock/rspec'
@@ -23,6 +24,8 @@ RSpec.configure do |config|
   config.after(:each) do
     Hubspot::Config.reset!
   end
+
+  config.filter_run_when_matching :focus
 
   config.extend CassetteHelper
   config.extend TestsHelper

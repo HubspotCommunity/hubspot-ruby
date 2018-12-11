@@ -1,8 +1,52 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/properties?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"name":"fax_number","groupName":"companyinformation","type":"string","options":[]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 12 Dec 2018 20:06:05 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '766'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da4f21aab5dfe16fe8f34c6c66f5639ee1544645165; expires=Thu, 12-Dec-19
+        20:06:05 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BD78DF0B6A232915DFE4A4246C299A9ACF05C3D14000000000000000000
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4882cf3ccc805a2c-BOS
+    body:
+      encoding: UTF-8
+      string: '{"name":"fax_number","label":"new fax number label","description":"","groupName":"companyinformation","type":"string","fieldType":"","options":[],"hidden":false,"deleted":false,"hubspotDefined":null,"readOnlyDefinition":false,"showCurrencySymbol":null,"createdAt":1544542448040,"formField":false,"displayOrder":-1,"readOnlyValue":false,"mutableDefinitionNotDeletable":false,"favorited":false,"favoritedOrder":-1,"calculated":false,"externalOptions":false,"displayMode":"current_value","createdUserId":null,"textDisplayHint":null,"numberDisplayHint":null,"optionsAreMutable":null,"referencedObjectType":null,"updatedAt":1544645165586,"isCustomizedDefault":false,"searchableInGlobalSearch":false,"currencyPropertyName":null,"hasUniqueValue":false,"updatedUserId":null}'
+    http_version: 
+  recorded_at: Wed, 12 Dec 2018 20:06:05 GMT
+- request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/properties/named/my_new_property?hapikey=demo
+    uri: https://api.hubapi.com/companies/v2/properties/named/fax_number?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -12,17 +56,28 @@ http_interactions:
       code: 204
       message: No Content
     headers:
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Content-Type:
-      - application/json; charset=UTF-8
       Date:
-      - Thu, 18 Aug 2016 14:04:56 GMT
+      - Wed, 12 Dec 2018 20:06:05 GMT
       Connection:
       - keep-alive
+      Set-Cookie:
+      - __cfduid=dc7294dfb7fd2b4aa39ad5cdeba6f2f051544645165; expires=Thu, 12-Dec-19
+        20:06:05 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BDA93348F8B98F7172BEA5CBBC438FCA86C7B5126000000000000000000
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4882cf3dec88ae2c-BOS
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 18 Aug 2016 14:04:53 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Wed, 12 Dec 2018 20:06:05 GMT
+recorded_with: VCR 4.0.0

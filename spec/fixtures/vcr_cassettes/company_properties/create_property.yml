@@ -2,12 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/properties/?hapikey=demo
+    uri: https://api.hubapi.com/companies/v2/properties?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
-      string: '{"name":"my_new_property","groupName":"companyinformation","description":"What
-        kind of x would you like?","fieldType":"text","formField":true,"type":"string","displayOrder":0,"label":"This
-        is my new property","options":[]}'
+      string: '{"name":"fax_number","groupName":"companyinformation","options":[]}'
     headers:
       Content-Type:
       - application/json
@@ -16,20 +14,71 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Length:
-      - '413'
       Date:
-      - Thu, 18 Aug 2016 14:04:55 GMT
+      - Wed, 12 Dec 2018 16:22:23 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '782'
       Connection:
       - keep-alive
+      Set-Cookie:
+      - __cfduid=db2759e3ae4a3bce166b681174ef574371544631743; expires=Thu, 12-Dec-19
+        16:22:23 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BA10FA5439FBC3EBA07CF4A6DEC44A16E99694BE7000000000000000000
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4881878e8970ae08-BOS
     body:
       encoding: UTF-8
-      string: '{"name":"my_new_property","label":"This is my new property","description":"What
-        kind of x would you like?","groupName":"companyinformation","type":"string","fieldType":"text","deleted":false,"options":[],"displayOrder":0,"hidden":false,"formField":true,"readOnlyDefinition":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","calculated":false,"readOnlyValue":false,"externalOptions":false}'
+      string: '{"name":"fax_number","label":"Fax Number","description":"The company
+        fax number.","groupName":"companyinformation","type":"string","fieldType":"text","options":[],"hidden":false,"hubspotDefined":null,"readOnlyDefinition":false,"readOnlyValue":false,"calculated":false,"deleted":false,"showCurrencySymbol":null,"numberDisplayHint":null,"textDisplayHint":null,"createdAt":1544542448040,"formField":false,"displayOrder":0,"mutableDefinitionNotDeletable":false,"favorited":false,"favoritedOrder":-1,"externalOptions":false,"displayMode":"current_value","createdUserId":null,"optionsAreMutable":null,"referencedObjectType":null,"updatedAt":1544631743791,"isCustomizedDefault":false,"searchableInGlobalSearch":false,"currencyPropertyName":null,"hasUniqueValue":false,"updatedUserId":null}'
     http_version: 
-  recorded_at: Thu, 18 Aug 2016 14:04:52 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Wed, 12 Dec 2018 16:22:23 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/companies/v2/properties/named/fax_number?hapikey=<HAPI_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Wed, 12 Dec 2018 16:22:24 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d47e84771b670e61cdfbb043bb4f878591544631743; expires=Thu, 12-Dec-19
+        16:22:23 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B6F77A40C249816722EA8B37B540D290591F77628000000000000000000
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4881878f8e2eae44-BOS
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Dec 2018 16:22:24 GMT
+recorded_with: VCR 4.0.0

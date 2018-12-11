@@ -49,3 +49,6 @@ tmp
 # Sublime Text project files
 *.sublime-project
 *.sublime-workspace
+
+# Ignore local environment variables
+/.env

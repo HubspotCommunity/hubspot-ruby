@@ -3,10 +3,10 @@ module Hubspot
 
     ALL_PROPERTIES_PATH  = '/companies/v2/properties'
     ALL_GROUPS_PATH      = '/companies/v2/groups'
-    CREATE_PROPERTY_PATH = '/companies/v2/properties/'
+    CREATE_PROPERTY_PATH = '/companies/v2/properties'
     UPDATE_PROPERTY_PATH = '/companies/v2/properties/named/:property_name'
     DELETE_PROPERTY_PATH = '/companies/v2/properties/named/:property_name'
-    CREATE_GROUP_PATH    = '/companies/v2/groups/'
+    CREATE_GROUP_PATH    = '/companies/v2/groups'
     UPDATE_GROUP_PATH    = '/companies/v2/groups/named/:group_name'
     DELETE_GROUP_PATH    = '/companies/v2/groups/named/:group_name'
 
