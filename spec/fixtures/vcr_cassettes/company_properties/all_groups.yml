@@ -2,65 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.hubapi.com/contacts/v2/groups?hapikey=demo
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Accept-Encoding
-      - Accept-Encoding
-      Content-Length:
-      - '5457'
-      Date:
-      - Tue, 05 Jan 2016 22:51:35 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '[{"name":"contactinformation","displayName":"Contact","displayOrder":1,"hubspotDefined":false},{"name":"doba_signup","displayName":"Doba
-        Signup","displayOrder":1,"hubspotDefined":false},{"name":"shopifyinformation_teleport","displayName":"Shopify
-        Information","displayOrder":2,"hubspotDefined":false},{"name":"calltrackinginfo","displayName":"Call
-        Tracking Information","displayOrder":4,"hubspotDefined":false},{"name":"emailinformation","displayName":"Email","displayOrder":4,"hubspotDefined":false},{"name":"conversioninformation","displayName":"Conversion
-        Information","displayOrder":5,"hubspotDefined":false},{"name":"ff_test_group","displayName":"ff_test_group
-        Used for FF testing","displayOrder":5,"hubspotDefined":false},{"name":"aoigroup","displayName":"Areas
-        of Interest77","displayOrder":6,"hubspotDefined":false},{"name":"analyticsinformation","displayName":"Analytics","displayOrder":8,"hubspotDefined":false},{"name":"salesforceinformation","displayName":"Salesforce","displayOrder":9,"hubspotDefined":false},{"name":"docalyticsdata","displayName":"docalyticsdata","displayOrder":10,"hubspotDefined":false},{"name":"mojaba","displayName":"Mojaba
-        Visit Properties","displayOrder":13,"hubspotDefined":false},{"name":"proform_fields","displayName":"ProForm
-        Fields","displayOrder":99,"hubspotDefined":false},{"name":"web_contract_fields","displayName":"Web
-        Contract Fields","displayOrder":99,"hubspotDefined":false},{"name":"ff_group23","displayName":"","displayOrder":100,"hubspotDefined":false},{"name":"agiloneabandonedcart","displayName":"AgilOne
-        Abandoned Cart","displayOrder":100,"hubspotDefined":false},{"name":"agilonelastbrowsedproduct","displayName":"AgilOne
-        Last Browsed Product","displayOrder":100,"hubspotDefined":false},{"name":"crm","displayName":"CRM","displayOrder":100,"hubspotDefined":false},{"name":"group1","displayName":"Group
-        One","displayOrder":100,"hubspotDefined":false},{"name":"ff_group2","displayName":"Test
-        Group TwoA","displayOrder":100,"hubspotDefined":false},{"name":"improveit360","displayName":"improveit!
-        360","displayOrder":101,"hubspotDefined":false},{"name":"email_sends","displayName":"email
-        sends","displayOrder":102,"hubspotDefined":false},{"name":"mohith_testing","displayName":"Mohith
-        Testing","displayOrder":104,"hubspotDefined":false},{"name":"customer_attributes","displayName":"Customer
-        Attributes","displayOrder":107,"hubspotDefined":false},{"name":"purchase_data","displayName":"Purchase
-        Data","displayOrder":108,"hubspotDefined":false},{"name":"ifbyphone","displayName":"Ifbyphone","displayOrder":110,"hubspotDefined":false},{"name":"new_property_group","displayName":"New
-        Property Group","displayOrder":111,"hubspotDefined":false},{"name":"eebproperties","displayName":"eebproperties","displayOrder":113,"hubspotDefined":false},{"name":"office365","displayName":"Office365","displayOrder":114,"hubspotDefined":false},{"name":"vk","displayName":"VK","displayOrder":115,"hubspotDefined":false},{"name":"discoverorg_testing","displayName":"DiscoverOrg
-        Testing","displayOrder":116,"hubspotDefined":false},{"name":"qualaroo","displayName":"Qualaroo","displayOrder":117,"hubspotDefined":false},{"name":"leads","displayName":"Leads","displayOrder":118,"hubspotDefined":false},{"name":"dt_test","displayName":"DT_Test","displayOrder":119,"hubspotDefined":false},{"name":"cartodb","displayName":"CartoDB","displayOrder":120,"hubspotDefined":false},{"name":"feeder_group","displayName":"feeder_group","displayOrder":121,"hubspotDefined":false},{"name":"venzee_contact_form","displayName":"venzee
-        contact form","displayOrder":122,"hubspotDefined":false},{"name":"sample_property_group","displayName":"sample_property_group","displayOrder":123,"hubspotDefined":false},{"name":"fff_properties","displayName":"fff_properties","displayOrder":124,"hubspotDefined":false},{"name":"converstation_information","displayName":"Converstation
-        Information","displayOrder":125,"hubspotDefined":false},{"name":"my_custom_group","displayName":"My
-        Custom Group","displayOrder":126,"hubspotDefined":false},{"name":"opportunities","displayName":"Opportunities","displayOrder":127,"hubspotDefined":false},{"name":"xxx_group","displayName":"xxx
-        group","displayOrder":128,"hubspotDefined":false},{"name":"me_tests","displayName":"ME/tests","displayOrder":129,"hubspotDefined":false},{"name":"workflowmax","displayName":"WorkflowMAX","displayOrder":130,"hubspotDefined":false},{"name":"dialogtech","displayName":"DialogTech","displayOrder":131,"hubspotDefined":false},{"name":"mytestgroup","displayName":"MyTestGroup","displayOrder":132,"hubspotDefined":false},{"name":"book2meet","displayName":"book2meet","displayOrder":133,"hubspotDefined":false},{"name":"purchase_history","displayName":"Purchase
-        History","displayOrder":134,"hubspotDefined":false},{"name":"video","displayName":"video","displayOrder":135,"hubspotDefined":false},{"name":"gro_test","displayName":"gro
-        test","displayOrder":136,"hubspotDefined":false},{"name":"bsmg_content_library","displayName":"Bsmg
-        Content Library","displayOrder":137,"hubspotDefined":false},{"name":"careerquizproperties","displayName":"CareerQuizProperties","displayOrder":138,"hubspotDefined":false},{"name":"base","displayName":"Base","displayOrder":139,"hubspotDefined":false},{"name":"group3","displayName":"Test
-        Group Three","displayOrder":140,"hubspotDefined":false},{"name":"salesforce_information","displayName":"Salesforce
-        Information","displayOrder":141,"hubspotDefined":false}]'
-    http_version: 
-  recorded_at: Tue, 05 Jan 2016 22:51:35 GMT
-- request:
-    method: get
     uri: https://api.hubapi.com/companies/v2/groups?hapikey=demo
     body:
       encoding: US-ASCII
@@ -78,7 +19,7 @@ http_interactions:
       Content-Length:
       - '41175'
       Date:
-      - Thu, 18 Aug 2016 14:04:57 GMT
+      - Thu, 18 Aug 2016 14:04:56 GMT
       Connection:
       - keep-alive
     body:
@@ -462,5 +403,5 @@ http_interactions:
         Information","displayOrder":6,"hubspotDefined":false},{"name":"salesforceinformation","displayName":"Salesforce
         Information","displayOrder":6,"hubspotDefined":false},{"name":"workflowmax","displayName":"WorkflowMAX","displayOrder":7,"hubspotDefined":false},{"name":"ff_group234","displayName":"","displayOrder":100,"hubspotDefined":false}]'
     http_version: 
-  recorded_at: Thu, 18 Aug 2016 14:04:54 GMT
+  recorded_at: Thu, 18 Aug 2016 14:04:53 GMT
 recorded_with: VCR 2.4.0

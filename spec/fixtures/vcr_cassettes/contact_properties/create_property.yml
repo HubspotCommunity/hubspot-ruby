@@ -35,36 +35,3 @@ http_interactions:
         kind of x would you like?","groupName":"contactinformation","type":"string","fieldType":"text","hidden":false,"options":[],"deleted":false,"displayOrder":0,"formField":true,"readOnlyValue":false,"readOnlyDefinition":false,"mutableDefinitionNotDeletable":false,"calculated":false,"externalOptions":false,"displayMode":"current_value"}'
     http_version: 
   recorded_at: Tue, 05 Jan 2016 22:51:32 GMT
-- request:
-    method: post
-    uri: https://api.hubapi.com/companies/v2/properties/?hapikey=demo
-    body:
-      encoding: UTF-8
-      string: '{"name":"my_new_property","groupName":"companyinformation","description":"What
-        kind of x would you like?","fieldType":"text","formField":true,"type":"string","displayOrder":0,"label":"This
-        is my new property","options":[]}'
-    headers:
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Length:
-      - '413'
-      Date:
-      - Thu, 18 Aug 2016 14:04:55 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"name":"my_new_property","label":"This is my new property","description":"What
-        kind of x would you like?","groupName":"companyinformation","type":"string","fieldType":"text","deleted":false,"options":[],"displayOrder":0,"hidden":false,"formField":true,"readOnlyDefinition":false,"mutableDefinitionNotDeletable":false,"displayMode":"current_value","calculated":false,"readOnlyValue":false,"externalOptions":false}'
-    http_version: 
-  recorded_at: Thu, 18 Aug 2016 14:04:52 GMT
-recorded_with: VCR 2.4.0

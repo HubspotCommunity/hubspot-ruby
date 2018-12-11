@@ -15,13 +15,13 @@ describe Hubspot::ContactProperties do
   end
 
   let(:example_groups) do
-    VCR.use_cassette('groups_example') do
+    VCR.use_cassette('contact_properties/groups_example') do
       HTTParty.get('https://api.hubapi.com/contacts/v2/groups?hapikey=demo').parsed_response
     end
   end
 
   let(:example_properties) do
-    VCR.use_cassette('properties_example') do
+    VCR.use_cassette('contact_properties/properties_example') do
       HTTParty.get('https://api.hubapi.com/contacts/v2/properties?hapikey=demo').parsed_response
     end
   end
@@ -31,7 +31,7 @@ describe Hubspot::ContactProperties do
   describe 'Properties' do
     describe '.all' do
       context 'with no filter' do
-        cassette 'all_properties'
+        cassette 'contact_properties/all_properties'
 
         it 'should return all properties' do
           expect(Hubspot::ContactProperties.all).to eql(example_properties)
@@ -41,7 +41,7 @@ describe Hubspot::ContactProperties do
       let(:groups) { %w(calltrackinginfo emailinformation) }
 
       context 'with included groups' do
-        cassette 'properties_in_groups'
+        cassette 'contact_properties/properties_in_groups'
 
         it 'should return properties for the specified group[s]' do
           response = Hubspot::ContactProperties.all({}, { include: groups })
@@ -50,7 +50,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with excluded groups' do
-        cassette 'properties_not_in_groups'
+        cassette 'contact_properties/properties_not_in_groups'
 
         it 'should return properties for the non-specified group[s]' do
           response = Hubspot::ContactProperties.all({}, { exclude: groups })
@@ -82,15 +82,13 @@ describe Hubspot::ContactProperties do
 
     describe '.create!' do
       context 'with no valid parameters' do
-        cassette 'fail_to_create_property'
-
         it 'should return nil' do
           expect(Hubspot::ContactProperties.create!({})).to be(nil)
         end
       end
 
       context 'with all valid parameters' do
-        cassette 'create_property'
+        cassette 'contact_properties/create_property'
 
         it 'should return the valid parameters' do
           response = Hubspot::ContactProperties.create!(params)
@@ -108,7 +106,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with mixed parameters' do
-        cassette 'update_property'
+        cassette 'contact_properties/update_property'
 
         it 'should return the valid parameters' do
           params['description']       = 'What is their favorite flavor?'
@@ -124,7 +122,7 @@ describe Hubspot::ContactProperties do
       let(:name) { params['name'] }
 
       context 'with existing property' do
-        cassette 'delete_property'
+        cassette 'contact_properties/delete_property'
 
         it 'should return nil' do
           expect(Hubspot::ContactProperties.delete!(name)).to eq(nil)
@@ -132,7 +130,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with non-existent property' do
-        cassette 'delete_non_property'
+        cassette 'contact_properties/delete_non_property'
 
         it 'should raise an error' do
           expect { Hubspot::ContactProperties.delete!(name) }.to raise_error(Hubspot::RequestError)
@@ -144,7 +142,7 @@ describe Hubspot::ContactProperties do
   describe 'Groups' do
     describe '.groups' do
       context 'with no filter' do
-        cassette 'all_groups'
+        cassette 'contact_properties/all_groups'
 
         it 'should return all groups' do
           expect(Hubspot::ContactProperties.groups).to eql(example_groups)
@@ -154,7 +152,7 @@ describe Hubspot::ContactProperties do
       let(:groups) { %w(calltrackinginfo emailinformation) }
 
       context 'with included groups' do
-        cassette 'groups_included'
+        cassette 'contact_properties/groups_included'
 
         it 'should return the specified groups' do
           response = Hubspot::ContactProperties.groups({}, { include: groups })
@@ -163,7 +161,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with excluded groups' do
-        cassette 'groups_not_excluded'
+        cassette 'contact_properties/groups_not_excluded'
 
         it 'should return groups that were not excluded' do
           response = Hubspot::ContactProperties.groups({}, { exclude: groups })
@@ -182,7 +180,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with mixed parameters' do
-        cassette 'create_group'
+        cassette 'contact_properties/create_group'
 
         it 'should return the valid parameters' do
           response = Hubspot::ContactProperties.create_group!(params)
@@ -191,7 +189,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with some valid parameters' do
-        cassette 'create_group_some_params'
+        cassette 'contact_properties/create_group_some_params'
 
         let(:sub_params) { params.select { |k, _| k != 'displayName' } }
 
@@ -212,7 +210,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with mixed parameters' do
-        cassette 'update_group'
+        cassette 'contact_properties/update_group'
 
         it 'should return the valid parameters' do
           params['displayName'] = 'Test Group OneA'
@@ -228,7 +226,7 @@ describe Hubspot::ContactProperties do
       let(:name) { params['name'] }
 
       context 'with existing group' do
-        cassette 'delete_group'
+        cassette 'contact_properties/delete_group'
 
         it 'should return nil' do
           expect(Hubspot::ContactProperties.delete_group!(name)).to eq(nil)
@@ -236,7 +234,7 @@ describe Hubspot::ContactProperties do
       end
 
       context 'with non-existent group' do
-        cassette 'delete_non_group'
+        cassette 'contact_properties/delete_non_group'
 
         it 'should raise an error' do
           expect { Hubspot::ContactProperties.delete_group!(name) }.to raise_error(Hubspot::RequestError)

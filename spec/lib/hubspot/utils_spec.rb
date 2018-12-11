@@ -31,13 +31,13 @@ describe Hubspot::Utils do
 
   describe '.compare_property_lists for ContactProperties' do
     let(:example_groups) do
-      VCR.use_cassette('groups_example') do
+      VCR.use_cassette('contact_properties/groups_example') do
         HTTParty.get('https://api.hubapi.com/contacts/v2/groups?hapikey=demo').parsed_response
       end
     end
 
     let(:example_properties) do
-      VCR.use_cassette('properties_example') do
+      VCR.use_cassette('contact_properties/properties_example') do
         HTTParty.get('https://api.hubapi.com/contacts/v2/properties?hapikey=demo').parsed_response
       end
     end

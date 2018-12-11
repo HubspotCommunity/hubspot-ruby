@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.hubapi.com/companies/v2/groups/named/ff_group1?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Hubspot-Notfound:
+      - 'true'
+      Content-Length:
+      - '191'
+      Date:
+      - Thu, 18 Aug 2016 14:05:15 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Couldn''t find a Group with the given
+        name ''ff_group1''.","correlationId":"14388da7-7714-4525-b805-067db1110072","requestId":"79e7e0b3-7d90-4af0-ac43-b5c3ae77b92d"}'
+    http_version: 
+  recorded_at: Thu, 18 Aug 2016 14:05:13 GMT
+recorded_with: VCR 2.4.0
