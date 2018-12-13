@@ -10,6 +10,9 @@ Gem::Specification.new do |s|
   s.files += Dir["spec/**/*.rb"]
   s.homepage = "http://github.com/adimichele/hubspot-ruby"
   s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
+  s.metadata = {
+    "changelog_uri" => "https://github.com/adimichele/hubspot-ruby/blob/master/History.md"
+  }
 
   # Add runtime dependencies here
   s.add_runtime_dependency "activesupport", ">=3.0.0"
