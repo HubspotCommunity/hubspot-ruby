@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.hubapi.com/contacts/v2/groups?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/groups?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
@@ -133,7 +133,7 @@ http_interactions:
   recorded_at: Mon, 26 Nov 2018 21:47:12 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/contacts/v2/properties?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/properties?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
@@ -176,7 +176,7 @@ http_interactions:
   recorded_at: Mon, 26 Nov 2018 21:47:13 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/contacts/v2/groups?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/groups?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''
@@ -307,7 +307,7 @@ http_interactions:
   recorded_at: Mon, 26 Nov 2018 21:47:14 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/contacts/v2/properties?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/properties?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''

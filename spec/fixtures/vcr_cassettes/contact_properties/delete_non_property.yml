@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.hubapi.com/contacts/v2/properties/named/my_new_property?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/properties/named/my_new_property?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''

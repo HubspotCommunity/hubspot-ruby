@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.hubapi.com/contacts/v2/groups/named/ff_group1?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/groups/named/ff_group1?hapikey=demo
     body:
       encoding: UTF-8
       string: '{"name":"ff_group1","displayName":"Test Group OneA","displayOrder":100}'

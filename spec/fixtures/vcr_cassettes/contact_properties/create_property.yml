@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/contacts/v2/properties/?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/contacts/properties?hapikey=demo
     body:
       encoding: UTF-8
       string: '{"name":"my_new_property","groupName":"contactinformation","description":"What
