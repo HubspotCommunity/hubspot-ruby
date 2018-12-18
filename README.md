@@ -18,15 +18,41 @@ Or with bundler,
 gem "hubspot-ruby"
 ```
 
+## Getting Started
+This library can be configured to use OAuth or an API key. To find the
+appropriate values for either approach, please visit the [HubSpot API
+Authentication docs].
+
+Below is a complete list of configuration options with the default values:
+```ruby
+Hubspot.configure({
+  hapikey: <HAPIKEY>,
+  base_url: "https://api.hubapi.com",
+  portal_id: <PORTAL_ID>,
+  logger: Logger.new(nil),
+  access_token: <ACCESS_TOKEN>,
+  client_id: <CLIENT_ID>,
+  client_secret: <CLIENT_SECRET>,
+  redirect_uri: <REDIRECT_URI>,
+)}
+```
+
+If you're new to using the HubSpot API, visit the [HubSpot Developer Tools] to
+learn about topics like "what's a portal id?" and creating a testing
+environment.
+
+[HubSpot API Authentication Docs]: https://developers.hubspot.com/docs/methods/auth/oauth-overview
+[HubSpot Developer Tools]: https://developers.hubspot.com/docs/devtools
+
 ## Authentication with an API key
 
-Before using the library, you must initialize it with your HubSpot API key. If you're using Rails, put this code in an initializer:
-
+To set the HubSpot API key, aka `hapikey`, run the following:
 ```ruby
 Hubspot.configure(hapikey: "YOUR_API_KEY")
 ```
 
-If you have a HubSpot account, you can get your api key by logging in and visiting this url: https://app.hubspot.com/keys/get
+If you have a HubSpot account, you can find your API key by logging in and
+visiting: https://app.hubspot.com/keys/get
 
 ## Authentication with OAuth 2.0
 
