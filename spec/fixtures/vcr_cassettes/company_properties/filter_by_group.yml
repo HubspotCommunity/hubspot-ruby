@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/properties?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
       string: '{"name":"fax_number","groupName":"companyinformation","description":"The
@@ -48,7 +48,7 @@ http_interactions:
   recorded_at: Tue, 11 Dec 2018 16:07:31 GMT
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/properties?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
       string: '{"name":"instagram_handle","groupName":"socialmediainformation","description":"The
@@ -95,7 +95,7 @@ http_interactions:
   recorded_at: Tue, 11 Dec 2018 16:07:32 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/companies/v2/properties?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -470,7 +470,7 @@ http_interactions:
   recorded_at: Tue, 11 Dec 2018 16:07:32 GMT
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/properties/named/fax_number?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties/named/fax_number?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -506,7 +506,7 @@ http_interactions:
   recorded_at: Tue, 11 Dec 2018 16:07:32 GMT
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/properties/named/instagram_handle?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties/named/instagram_handle?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''

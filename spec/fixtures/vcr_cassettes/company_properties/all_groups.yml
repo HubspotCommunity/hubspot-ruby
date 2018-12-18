@@ -46,7 +46,7 @@ http_interactions:
   recorded_at: Tue, 11 Dec 2018 19:30:25 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/companies/v2/groups?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/groups?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -91,7 +91,7 @@ http_interactions:
   recorded_at: Tue, 11 Dec 2018 19:30:25 GMT
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/groups/named/group_awesome?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/groups/named/group_awesome?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''

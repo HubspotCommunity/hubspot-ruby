@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/groups/named/ff_group1?hapikey=demo
+    uri: https://api.hubapi.com/properties/v1/companies/groups/named/ff_group1?hapikey=demo
     body:
       encoding: US-ASCII
       string: ''

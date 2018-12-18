@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/properties?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
       string: '{"name":"fax_number","groupName":"companyinformation","options":[]}'
@@ -47,7 +47,7 @@ http_interactions:
   recorded_at: Wed, 12 Dec 2018 16:22:23 GMT
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/properties/named/fax_number?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties/named/fax_number?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/groups?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/groups?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
       string: '{"name":"ff_group1","displayName":"Test Group One","displayOrder":100}'

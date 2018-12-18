@@ -1,5 +1,10 @@
 ## 1.0.0 (TBD)
 
+* Updates the endpoints referenced in `CompanyProperties` to match the new
+  HubSpot [CompanyProperty endpoints].
+
+[CompanyProperty endpoints]: https://developers.hubspot.com/docs/methods/companies/company-properties-overview
+
 * Updates the endpoints referenced in `ContactProperties` to match the new
   HubSpot [ContactProperty endpoints].
 

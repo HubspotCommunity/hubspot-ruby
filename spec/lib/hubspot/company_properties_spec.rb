@@ -30,7 +30,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
         response = Hubspot::CompanyProperties.all
 
-        assert_hubspot_api_request(:get, "/companies/v2/properties")
+        assert_hubspot_api_request(:get, "/properties/v1/companies/properties")
 
         company_property_names = response.map { |property| property["name"] }
         expect(company_property_names).to include("fax_number")
@@ -64,7 +64,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
           response = Hubspot::CompanyProperties.all({}, { include: [group_a] })
 
-          assert_hubspot_api_request(:get, "/companies/v2/properties")
+          assert_hubspot_api_request(:get, "/properties/v1/companies/properties")
 
           group_names = response.map { |property| property["groupName"] }
           expect(group_names).to include(group_a)
@@ -101,7 +101,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
           response = Hubspot::CompanyProperties.all({}, { exclude: [group_a] })
 
-          assert_hubspot_api_request(:get, "/companies/v2/properties")
+          assert_hubspot_api_request(:get, "/properties/v1/companies/properties")
 
           group_names = response.map { |property| property["groupName"] }
           expect(group_names).not_to include(group_a)
@@ -127,7 +127,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
           assert_hubspot_api_request(
             :post,
-            "/companies/v2/properties",
+            "/properties/v1/companies/properties",
             body: {
               name: name,
               groupName: "companyinformation",
@@ -173,7 +173,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
           assert_hubspot_api_request(
             :put,
-            "/companies/v2/properties",
+            "/properties/v1/companies/properties/named",
             body: {
               groupName: "companyinformation",
               label: new_label,
@@ -217,7 +217,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
           assert_hubspot_api_request(
             :delete,
-            "/companies/v2/properties/named/#{name}"
+            "properties/v1/companies/properties/named/#{name}"
           )
 
           expect(response).to be nil
@@ -245,7 +245,7 @@ RSpec.describe Hubspot::CompanyProperties do
 
           response = Hubspot::CompanyProperties.groups
 
-          assert_hubspot_api_request(:get, "/companies/v2/groups")
+          assert_hubspot_api_request(:get, "/properties/v1/companies/groups")
 
           group_names = response.map { |group| group["name"] }
           expect(group_names).to include(group_name)
@@ -282,7 +282,7 @@ RSpec.describe Hubspot::CompanyProperties do
               { include: group_a }
             )
 
-            assert_hubspot_api_request(:get, "/companies/v2/groups")
+            assert_hubspot_api_request(:get, "/properties/v1/companies/groups")
 
             Hubspot::CompanyProperties.delete!("instagram_handle")
             Hubspot::CompanyProperties.delete!("fax_number")
@@ -322,7 +322,7 @@ RSpec.describe Hubspot::CompanyProperties do
               { exclude: group_a }
             )
 
-            assert_hubspot_api_request(:get, "/companies/v2/groups")
+            assert_hubspot_api_request(:get, "/properties/v1/companies/groups")
 
             group_names = response.map { |group| group["name"] }
             expect(group_names).not_to include(group_a)

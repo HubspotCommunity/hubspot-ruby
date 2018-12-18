@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/properties/named/non-existent?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/properties/v1/companies/properties/named/non-existent?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
