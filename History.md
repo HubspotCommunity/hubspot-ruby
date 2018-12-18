@@ -1,5 +1,10 @@
 ## 1.0.0 (TBD)
 
+* [#168] `Hubspot.configure` will raise when given none or multiple ways to
+  authenticate with the HubSpot API.
+
+[#168]: https://github.com/adimichele/hubspot-ruby/pull/168
+
 * Updates the endpoints referenced in `CompanyProperties` to match the new
   HubSpot [CompanyProperty endpoints].
 
