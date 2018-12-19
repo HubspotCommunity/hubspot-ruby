@@ -5,15 +5,15 @@
 
 [#168]: https://github.com/adimichele/hubspot-ruby/pull/168
 
-* Updates the endpoints referenced in `CompanyProperties` to match the new
-  HubSpot [CompanyProperty endpoints].
+* [#167] Updates the endpoints referenced in `CompanyProperties` to match the new
+  HubSpot CompanyProperty endpoints.
 
-[CompanyProperty endpoints]: https://developers.hubspot.com/docs/methods/companies/company-properties-overview
+[#167]: https://github.com/adimichele/hubspot-ruby/pull/167
 
-* Updates the endpoints referenced in `ContactProperties` to match the new
-  HubSpot [ContactProperty endpoints].
+* [#166] Updates the endpoints referenced in `ContactProperties` to match the new
+  HubSpot ContactProperty endpoints.
 
-[ContactProperty endpoints]: https://developers.hubspot.com/docs/methods/contacts/contact-properties-overview
+[#166]: https://github.com/adimichele/hubspot-ruby/pull/166
 
 ## 0.6.1 (November 29, 2018)
 
