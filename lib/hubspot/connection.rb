@@ -7,8 +7,7 @@ module Hubspot
         url = generate_url(path, opts)
         response = get(url, format: :json)
         log_request_and_response url, response
-        raise(Hubspot::RequestError.new(response)) unless response.success?
-        response.parsed_response
+        handle_response(response)
       end
 
       def post_json(path, opts)
@@ -22,12 +21,18 @@ module Hubspot
         no_parse ? response : response.parsed_response
       end
 
-      def put_json(path, opts)
-        url = generate_url(path, opts[:params])
-        response = put(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
-        log_request_and_response url, response, opts[:body]
-        raise(Hubspot::RequestError.new(response)) unless response.success?
-        response.parsed_response
+      def put_json(path, options)
+        url = generate_url(path, options[:params])
+
+        response = put(
+          url,
+          body: options[:body].to_json,
+          headers: { "Content-Type" => "application/json" },
+          format: :json
+        )
+
+        log_request_and_response(url, response, options[:body])
+        handle_response(response)
       end
 
       def delete_json(path, opts)
@@ -40,8 +45,20 @@ module Hubspot
 
       protected
 
+      def handle_response(response)
+        if response.success?
+          response.parsed_response
+        else
+          raise(Hubspot::RequestError.new(response))
+        end
+      end
+
       def log_request_and_response(uri, response, body=nil)
-        Hubspot::Config.logger.info "Hubspot: #{uri}.\nBody: #{body}.\nResponse: #{response.code} #{response.body}"
+        Hubspot::Config.logger.info(<<~MSG)
+          Hubspot: #{uri}.
+          Body: #{body}.
+          Response: #{response.code} #{response.body}
+        MSG
       end
 
       def generate_url(path, params={}, options={})

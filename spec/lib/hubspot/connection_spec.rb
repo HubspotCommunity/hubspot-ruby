@@ -44,6 +44,59 @@ describe Hubspot::Connection do
     end
   end
 
+  describe ".put_json" do
+    it "issues a PUT request and returns the parsed body" do
+      path = "/some/path"
+      update_options = { params: {}, body: {} }
+
+      stub_request(:put, "https://api.hubapi.com/some/path?hapikey=fake").
+        to_return(status: 200, body: JSON.generate(vid: 123))
+
+      response = Hubspot::Connection.put_json(path, update_options)
+
+      assert_requested(
+        :put,
+        "https://api.hubapi.com/some/path?hapikey=fake",
+         {
+           body: "{}",
+           headers: { "Content-Type" => "application/json" },
+         }
+      )
+
+      expect(response).to eq({ "vid" => 123 })
+    end
+
+    it "logs information about the request and response" do
+      path = "/some/path"
+      update_options = { params: {}, body: {} }
+
+      logger = stub_logger
+
+      stub_request(:put, "https://api.hubapi.com/some/path?hapikey=fake").
+        to_return(status: 200, body: JSON.generate("response body"))
+
+      Hubspot::Connection.put_json(path, update_options)
+
+      expect(logger).to have_received(:info).with(<<~MSG)
+        Hubspot: https://api.hubapi.com/some/path?hapikey=fake.
+        Body: {}.
+        Response: 200 "response body"
+      MSG
+    end
+
+    it "raises when the request fails" do
+      path = "/some/path"
+      update_options = { params: {}, body: {} }
+
+      stub_request(:put, "https://api.hubapi.com/some/path?hapikey=fake").
+        to_return(status: 401)
+
+      expect {
+        Hubspot::Connection.put_json(path, update_options)
+      }.to raise_error(Hubspot::RequestError)
+    end
+  end
+
   context 'private methods' do
     describe ".generate_url" do
       let(:path){ "/test/:email/profile" }
@@ -121,6 +174,12 @@ describe Hubspot::Connection do
         let(:params) { { batch_list_id: [1,2,3] } }
         it{ should == "https://api.hubapi.com/contacts/v1/lists/batch?listId=1&listId=2&listId=3&hapikey=demo" }
       end
+    end
+  end
+
+  def stub_logger
+    instance_double(Logger, info: true).tap do |logger|
+      allow(Hubspot::Config).to receive(:logger).and_return(logger)
     end
   end
 end
