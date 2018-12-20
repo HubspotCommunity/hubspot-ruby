@@ -179,24 +179,6 @@ describe Hubspot::Contact do
     end
   end
 
-  describe "#update!" do
-    cassette "company_update"
-    let(:company){ Hubspot::Company.new(example_company_hash) }
-    let(:params){ {name: "Acme Cogs", domain: "abccogs.com"} }
-    subject{ company.update!(params) }
-
-    it{ should be_an_instance_of Hubspot::Company }
-    its(["name"]){ should ==  "Acme Cogs" }
-    its(["domain"]){ should ==  "abccogs.com" }
-
-    context "when the request is not successful" do
-      let(:company){ Hubspot::Company.new({"vid" => "invalid", "properties" => {}})}
-      it "raises an error" do
-        expect{ subject }.to raise_error Hubspot::RequestError
-      end
-    end
-  end
-
   describe "#batch_update!" do
     cassette "company_batch_update"
     let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }

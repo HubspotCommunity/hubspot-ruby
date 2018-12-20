@@ -180,17 +180,6 @@ module Hubspot
       @properties[property]
     end
 
-    # Updates the properties of a company
-    # {http://developers.hubspot.com/docs/methods/companies/update_company}
-    # @param params [Hash] hash of properties to update
-    # @return [Hubspot::Company] self
-    def update!(params)
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: "name")}
-      Hubspot::Connection.put_json(UPDATE_COMPANY_PATH, params: { company_id: vid }, body: query)
-      @properties.merge!(params)
-      self
-    end
-
     # Gets ALL contact vids of a company
     # May make many calls if the company has a mega-ton of contacts
     # {http://developers.hubspot.com/docs/methods/companies/get_company_contacts_by_id}
