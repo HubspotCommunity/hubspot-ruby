@@ -130,7 +130,7 @@ describe Hubspot::DealProperties do
           params['description'] = 'What is their favorite flavor?'
 
           response = Hubspot::DealProperties.update!(params['name'], params)
-          expect(Hubspot::DealProperties.same?(response, params)).to be true
+          expect(Hubspot::DealProperties.same?(response.body, params)).to be true
         end
       end
     end
@@ -233,7 +233,7 @@ describe Hubspot::DealProperties do
           params['displayName'] = 'Test Group OneA'
 
           response = Hubspot::DealProperties.update_group!(params['name'], params)
-          expect(Hubspot::DealProperties.same?(response, params)).to be true
+          expect(Hubspot::DealProperties.same?(response.body, params)).to be true
         end
       end
 

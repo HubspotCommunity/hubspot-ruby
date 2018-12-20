@@ -181,7 +181,8 @@ RSpec.describe Hubspot::CompanyProperties do
               type: "string",
             }
           )
-          expect(response["label"]).to eq(new_label)
+
+          expect(response.body["label"]).to eq(new_label)
 
           Hubspot::CompanyProperties.delete!(name)
         end
@@ -381,7 +382,7 @@ RSpec.describe Hubspot::CompanyProperties do
           params['displayName'] = 'Test Group OneA'
 
           response = Hubspot::CompanyProperties.update_group!(params['name'], params)
-          expect(Hubspot::CompanyProperties.same?(response, params)).to be true
+          expect(Hubspot::CompanyProperties.same?(response.body, params)).to be true
         end
       end
 

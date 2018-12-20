@@ -105,15 +105,17 @@ describe Hubspot::ContactProperties do
         end
       end
 
-      context 'with mixed parameters' do
-        cassette 'contact_properties/update_property'
+      context "with mixed parameters" do
+        it "should return the valid parameters" do
+          VCR.use_cassette("contact_properties/update_property") do
+            params["description"] = "What is their favorite flavor?"
 
-        it 'should return the valid parameters' do
-          params['description']       = 'What is their favorite flavor?'
-          valid_params['description'] = params['description']
+            response = Hubspot::ContactProperties.update!(params["name"], params)
 
-          response = Hubspot::ContactProperties.update!(params['name'], params)
-          valid_params.each { |k, v| expect(response[k]).to eq(v) }
+            expect(response.body).to include({
+              "description" => "What is their favorite flavor?",
+            })
+          end
         end
       end
     end
@@ -216,7 +218,7 @@ describe Hubspot::ContactProperties do
           params['displayName'] = 'Test Group OneA'
 
           response = Hubspot::ContactProperties.update_group!(params['name'], params)
-          expect(Hubspot::ContactProperties.same?(response, params)).to be true
+          expect(Hubspot::ContactProperties.same?(response.body, params)).to be true
         end
       end
 
