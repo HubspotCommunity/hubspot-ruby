@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"New Company"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 20 Dec 2018 04:01:38 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dccefb37fe3cd5c1c5f81374a3a064f201545278498; expires=Fri, 20-Dec-19
+        04:01:38 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B7AAB92CF8B396E16DCDFF4E1CA527EEB8659217E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '73135'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 48bf3575c9e55a3e-BOS
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1119276107,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1545278498238","timestamp":1545278498238,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1545278498238","timestamp":1545278498238,"source":"CALCULATED","sourceVid":[],"requestId":"a5e704f8-ce0e-4901-9a3d-889ab59e15b8"}]},"name":{"value":"New
+        Company","timestamp":1545278498238,"source":"API","sourceId":null,"versions":[{"name":"name","value":"New
+        Company","timestamp":1545278498238,"source":"API","sourceVid":[],"requestId":"a5e704f8-ce0e-4901-9a3d-889ab59e15b8"}]},"createdate":{"value":"1545278498238","timestamp":1545278498238,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1545278498238","timestamp":1545278498238,"source":"API","sourceVid":[],"requestId":"a5e704f8-ce0e-4901-9a3d-889ab59e15b8"},{"name":"createdate","value":"1545278498238","timestamp":1545278498238,"sourceId":"API","source":"API","sourceVid":[],"requestId":"a5e704f8-ce0e-4901-9a3d-889ab59e15b8"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Thu, 20 Dec 2018 04:01:38 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1119276107?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Newer Company"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 20 Dec 2018 04:01:38 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d768c32ad459b0405e90dcc38b338c9db1545278498; expires=Fri, 20-Dec-19
+        04:01:38 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BC186E36B38D0319810BC64987E61799C6DAC70EA000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '73134'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 48bf35771abd5a4a-BOS
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1119276107,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1545278498450","timestamp":1545278498450,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1545278498450","timestamp":1545278498450,"source":"CALCULATED","sourceVid":[],"requestId":"8c02c13c-6257-4f51-850a-3b55f159f774"},{"name":"hs_lastmodifieddate","value":"1545278498238","timestamp":1545278498238,"source":"CALCULATED","sourceVid":[],"requestId":"a5e704f8-ce0e-4901-9a3d-889ab59e15b8"}]},"name":{"value":"Newer
+        Company","timestamp":1545278498450,"source":"API","sourceId":"8c02c13c-6257-4f51-850a-3b55f159f774","versions":[{"name":"name","value":"Newer
+        Company","timestamp":1545278498450,"sourceId":"8c02c13c-6257-4f51-850a-3b55f159f774","source":"API","sourceVid":[],"requestId":"8c02c13c-6257-4f51-850a-3b55f159f774"},{"name":"name","value":"New
+        Company","timestamp":1545278498238,"source":"API","sourceVid":[],"requestId":"a5e704f8-ce0e-4901-9a3d-889ab59e15b8"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Thu, 20 Dec 2018 04:01:38 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/companies/v2/companies/1119276107?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 20 Dec 2018 04:01:38 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d23eab2aed89e086a4bc387ca6a037bbc1545278498; expires=Fri, 20-Dec-19
+        04:01:38 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BC81AF32F51E726203970DAB2FCBA30F17AA6C7B3000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '73133'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 48bf35784b4bae14-BOS
+    body:
+      encoding: UTF-8
+      string: '{"companyId":1119276107,"deleted":true}'
+    http_version: 
+  recorded_at: Thu, 20 Dec 2018 04:01:38 GMT
+recorded_with: VCR 4.0.0

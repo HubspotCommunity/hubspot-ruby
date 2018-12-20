@@ -151,7 +151,22 @@ module Hubspot
         end
         Hubspot::Connection.post_json(BATCH_UPDATE_PATH, params: {}, body: query)
       end
-    
+
+      # Update a company
+      # {http://developers.hubspot.com/docs/methods/companies/update_company}
+      # @param vid [Integer] hubspot company vid
+      # @param params [Hash] hash of properties to update
+      # @return [Hubspot::Response]
+      def update!(vid, params)
+        properties = Hubspot::Utils.hash_to_properties(params, key_name: "name")
+
+        Hubspot::Connection.put_json(
+          UPDATE_COMPANY_PATH,
+          params: { company_id: vid },
+          body: { "properties" => properties }
+        )
+      end
+
       # Adds contact to a company
       # {http://developers.hubspot.com/docs/methods/companies/add_contact_to_company}
       # @param company_vid [Integer] The ID of a company to add a contact to

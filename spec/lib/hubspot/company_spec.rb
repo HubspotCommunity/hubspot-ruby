@@ -179,6 +179,23 @@ describe Hubspot::Contact do
     end
   end
 
+  describe ".update!" do
+    it "updates the company" do
+      VCR.use_cassette("companies/update_company") do
+        company = Hubspot::Company.create!("New Company")
+
+        Hubspot::Company.update!(company.vid, name: "Newer Company")
+
+        assert_requested(
+          :put,
+          hubspot_api_url("/companies/v2/companies/#{company.vid}?hapikey=demo")
+        )
+
+        company.destroy!
+      end
+    end
+  end
+
   describe "#batch_update!" do
     cassette "company_batch_update"
     let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }

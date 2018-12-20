@@ -7,7 +7,8 @@ module Hubspot
         url = generate_url(path, opts)
         response = get(url, format: :json)
         log_request_and_response url, response
-        handle_response(response)
+        raise(Hubspot::RequestError.new(response)) unless response.success?
+        response.parsed_response
       end
 
       def post_json(path, opts)
@@ -47,7 +48,7 @@ module Hubspot
 
       def handle_response(response)
         if response.success?
-          response.parsed_response
+          Hubspot::Response.new(body: response.parsed_response)
         else
           raise(Hubspot::RequestError.new(response))
         end

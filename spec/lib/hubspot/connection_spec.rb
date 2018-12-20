@@ -45,7 +45,7 @@ describe Hubspot::Connection do
   end
 
   describe ".put_json" do
-    it "issues a PUT request and returns the parsed body" do
+    it "issues a PUT request and returns a response" do
       path = "/some/path"
       update_options = { params: {}, body: {} }
 
@@ -63,7 +63,7 @@ describe Hubspot::Connection do
          }
       )
 
-      expect(response).to eq({ "vid" => 123 })
+      expect(response.body).to eq({ "vid" => 123 })
     end
 
     it "logs information about the request and response" do

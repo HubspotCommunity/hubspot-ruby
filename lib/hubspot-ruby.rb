@@ -21,6 +21,7 @@ require 'hubspot/owner'
 require 'hubspot/engagement'
 require 'hubspot/subscription'
 require 'hubspot/oauth'
+require 'hubspot/response'
 
 module Hubspot
   def self.configure(config={})
