@@ -63,8 +63,11 @@ module Hubspot
 
     # {https://developers.hubspot.com/docs/methods/forms/submit_form}
     def submit(opts={})
-      response = Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
-      [204, 302, 200].include?(response.code)
+      [204, 302, 200].include?(submit_response(opts).code)
+    end
+
+    def submit_response(opts={})
+      Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
     end
 
     # {https://developers.hubspot.com/docs/methods/forms/update_form}
