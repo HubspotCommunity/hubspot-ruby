@@ -52,3 +52,6 @@ tmp
 
 # Ignore local environment variables
 /.env
+
+# Byebug history
+.byebug_history
