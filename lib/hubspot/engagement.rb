@@ -7,6 +7,7 @@ module Hubspot
   # {http://developers.hubspot.com/docs/methods/engagements/create_engagement}
   #
   class Engagement
+    ALL_ENGAGEMENTS_PATH = '/engagements/v1/engagements/paged'
     CREATE_ENGAGMEMENT_PATH = '/engagements/v1/engagements'
     ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id'
     ASSOCIATE_ENGAGEMENT_PATH = '/engagements/v1/engagements/:engagement_id/associations/:object_type/:object_vid'
@@ -44,6 +45,18 @@ module Hubspot
             raise ex
           end
         end
+      end
+
+      def all(opts = {})
+        path = ALL_ENGAGEMENTS_PATH
+
+        response = Hubspot::Connection.get_json(path, opts)
+
+        result = {}
+        result['engagements'] = response['results'].map { |d| new(d) }
+        result['offset'] = response['offset']
+        result['hasMore'] = response['hasMore']
+        return result
       end
 
       def find_by_company(company_id)
