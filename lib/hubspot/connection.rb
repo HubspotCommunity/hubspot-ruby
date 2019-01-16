@@ -5,7 +5,7 @@ module Hubspot
     class << self
       def get_json(path, opts)
         url = generate_url(path, opts)
-        response = get(url, format: :json)
+        response = get(url, format: :json, timeout: timeout(opts))
         log_request_and_response url, response
         handle_response(response)
       end
@@ -14,7 +14,7 @@ module Hubspot
         no_parse = opts[:params].delete(:no_parse) { false }
 
         url = generate_url(path, opts[:params])
-        response = post(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
+        response = post(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json, timeout: timeout(opts))
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
 
@@ -28,7 +28,8 @@ module Hubspot
           url,
           body: options[:body].to_json,
           headers: { "Content-Type" => "application/json" },
-          format: :json
+          format: :json,
+          timeout: timeout(options)
         )
 
         log_request_and_response(url, response, options[:body])
@@ -37,13 +38,17 @@ module Hubspot
 
       def delete_json(path, opts)
         url = generate_url(path, opts)
-        response = delete(url, format: :json)
+        response = delete(url, format: :json, timeout: timeout(opts))
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
         response
       end
 
       protected
+
+      def timeout(opts = {})
+        opts.delete(:timeout) || Hubspot::Config.timeout
+      end
 
       def handle_response(response)
         if response.success?
