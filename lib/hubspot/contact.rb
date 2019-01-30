@@ -41,13 +41,13 @@ module Hubspot
         recent_created = opts.delete(:recent_created) { false }
         paged = opts.delete(:paged) { false }
         path, opts =
-        if recent_created
-          [RECENTLY_CREATED_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
-        elsif recent
-          [RECENTLY_UPDATED_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
-        else
-          [CONTACTS_PATH, opts]
-        end
+          if recent_created
+            [RECENTLY_CREATED_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
+          elsif recent
+            [RECENTLY_UPDATED_PATH, Hubspot::ContactProperties.add_default_parameters(opts)]
+          else
+            [CONTACTS_PATH, opts]
+          end
 
         response = Hubspot::Connection.get_json(path, opts)
         response['contacts'].map! { |c| new(c) }
@@ -93,12 +93,15 @@ module Hubspot
       # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_vid}
-      def find_by_id(vids)
+      # show_list_memberships boolean determines if we get the list_membership data in the same request
+      def find_by_id(vids, show_list_memberships=nil)
+        options = {}
+        options[:showListMemberships] = show_list_memberships unless show_list_memberships.nil?
         batch_mode, path, params = case vids
-        when Integer then [false, GET_CONTACT_BY_ID_PATH, { contact_id: vids }]
-        when Array then [true, CONTACT_BATCH_PATH, { batch_vid: vids }]
-        else raise Hubspot::InvalidParams, 'expecting Integer or Array of Integers parameter'
-        end
+                                   when Integer then [false, GET_CONTACT_BY_ID_PATH, options.merge({ contact_id: vids })]
+                                   when Array then [true, CONTACT_BATCH_PATH, options.merge({ batch_vid: vids })]
+                                   else raise Hubspot::InvalidParams, 'expecting Integer or Array of Integers parameter'
+                                   end
 
         response = Hubspot::Connection.get_json(path, params)
         raise Hubspot::ApiError if batch_mode
@@ -107,12 +110,15 @@ module Hubspot
 
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_email}
-      def find_by_email(emails)
+      # show_list_memberships boolean determines if we get the list_membership data in the same request
+      def find_by_email(emails, show_list_memberships=nil)
+        options = {}
+        options[:showListMemberships] = show_list_memberships unless show_list_memberships.nil?
         batch_mode, path, params = case emails
-        when String then [false, GET_CONTACT_BY_EMAIL_PATH, { contact_email: emails }]
-        when Array then [true, GET_CONTACTS_BY_EMAIL_PATH, { batch_email: emails }]
-        else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
-        end
+                                   when String then [false, GET_CONTACT_BY_EMAIL_PATH, options.merge({ contact_email: emails })]
+                                   when Array then [true, GET_CONTACTS_BY_EMAIL_PATH, options.merge({ batch_email: emails })]
+                                   else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
+                                   end
 
         begin
           response = Hubspot::Connection.get_json(path, params)
@@ -130,12 +136,15 @@ module Hubspot
       # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_utk}
-      def find_by_utk(utks)
+      # show_list_memberships boolean determines if we get the list_membership data in the same request
+      def find_by_utk(utks, show_list_memberships=nil)
+        options = {}
+        options[:showListMemberships] = show_list_memberships unless show_list_memberships.nil?
         batch_mode, path, params = case utks
-        when String then [false, GET_CONTACT_BY_UTK_PATH, { contact_utk: utks }]
-        when Array then [true, GET_CONTACTS_BY_UTK_PATH, { batch_utk: utks }]
-        else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
-        end
+                                   when String then [false, GET_CONTACT_BY_UTK_PATH, options.merge({ contact_utk: utks })]
+                                   when Array then [true, GET_CONTACTS_BY_UTK_PATH, options.merge({ batch_utk: utks })]
+                                   else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
+                                   end
 
         response = Hubspot::Connection.get_json(path, params)
         raise Hubspot::ApiError if batch_mode

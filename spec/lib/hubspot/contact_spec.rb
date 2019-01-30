@@ -163,6 +163,25 @@ RSpec.describe Hubspot::Contact do
 
         assert_requested :get, hubspot_api_url("/contacts/v1/contact/emails/batch?#{email_query_params}&hapikey=demo")
       end
+
+      it 'find lists of contacts with showListMemberships=true' do
+        emails = ['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']
+        email_query_params = "email=#{emails.first}&email=#{emails.last}"
+
+        Hubspot::Contact.find_by_email(emails, true)
+
+        assert_requested :get, hubspot_api_url("/contacts/v1/contact/emails/batch?#{email_query_params}&hapikey=demo&showListMemberships=true")
+      end
+
+      it 'find lists of contacts with showListMemberships=false' do
+        emails = ['testingapis@hubspot.com', 'testingapisawesomeandstuff@hubspot.com']
+        email_query_params = "email=#{emails.first}&email=#{emails.last}"
+
+        Hubspot::Contact.find_by_email(emails, false)
+
+        assert_requested :get, hubspot_api_url("/contacts/v1/contact/emails/batch?#{email_query_params}&hapikey=demo&showListMemberships=false")
+      end
+
     end
   end
 
