@@ -165,7 +165,7 @@ module Hubspot
       end
     end
 
-    attr_reader :properties, :vid, :is_new
+    attr_reader :properties, :vid, :is_new, :added_at
     attr_reader :is_contact, :list_memberships
 
     def initialize(response_hash)
@@ -174,6 +174,7 @@ module Hubspot
       @is_contact = response_hash["is-contact"]
       @list_memberships = response_hash["list-memberships"] || []
       @vid = response_hash['vid']
+      @added_at = response_hash['addedAt']
     end
 
     def [](property)
