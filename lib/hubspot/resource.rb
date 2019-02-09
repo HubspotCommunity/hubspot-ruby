@@ -16,15 +16,20 @@ module Hubspot
           properties: Hubspot::Utils.hash_to_properties(properties.stringify_keys, key_name: property_name_field)
         }
         response = Hubspot::Connection.post_json(create_path, params: {}, body: request)
-        new(response[id_field], response)
+        new(response)
       end
     end
 
-    def initialize(id = nil, response = {})
-      response = response.with_indifferent_access
-
-      @id = id
-      initialize_from(response)
+    def initialize(id_or_response = nil)
+      if id_or_response.is_a?(Integer) || id_or_response.nil?
+        @id = id_or_response
+        initialize_from(HashWithIndifferentAccess.new)
+      elsif id_or_response.is_a?(Hash)
+        @id = id_or_response[id_field]
+        initialize_from(id_or_response.with_indifferent_access)
+      else
+        raise InvalidParams.new("#{self.class.name} must be initialized with an ID, hash, or nil")
+      end
 
       @persisted = @id.present?
       @deleted = false
