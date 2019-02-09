@@ -11,6 +11,7 @@ class Hubspot::Company2 < Hubspot::Resource
   FIND_PATH               = '/companies/v2/companies/:id'
   RECENTLY_CREATED_PATH   = '/companies/v2/companies/recent/created'
   RECENTLY_MODIFIED_PATH  = '/companies/v2/companies/recent/modified'
+  REMOVE_CONTACT_PATH     = '/companies/v2/companies/:id/contacts/:contact_id'
   SEARCH_DOMAIN_PATH      = '/companies/v2/domains/:domain/companies'
   UPDATE_PATH             = '/companies/v2/companies/:id'
 
@@ -80,7 +81,15 @@ class Hubspot::Company2 < Hubspot::Resource
     def add_contact(id, contact_id)
       Hubspot::Connection.put_json(
         ADD_CONTACT_PATH,
-        params: { id: id, contact_id: contact_id}
+        params: { id: id, contact_id: contact_id }
+      )
+      true
+    end
+
+    def remove_contact(id, contact_id)
+      Hubspot::Connection.delete_json(
+        REMOVE_CONTACT_PATH,
+        { id: id, contact_id: contact_id }
       )
       true
     end
@@ -115,5 +124,9 @@ class Hubspot::Company2 < Hubspot::Resource
 
   def add_contact(contact)
     self.class.add_contact(@id, contact.to_i)
+  end
+
+  def remove_contact(contact)
+    self.class.remove_contact(@id, contact.to_i)
   end
 end
