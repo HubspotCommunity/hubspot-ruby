@@ -44,6 +44,10 @@ module Hubspot
       @id = id
     end
 
+    def to_i
+      @id
+    end
+
     def metadata
       @metadata
     end
