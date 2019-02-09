@@ -56,6 +56,10 @@ module Hubspot
       @changes
     end
 
+    def changed?
+      !@changes.empty?
+    end
+
     def [](name)
       @properties[name]
     end

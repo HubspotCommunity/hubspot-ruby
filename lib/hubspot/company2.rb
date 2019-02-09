@@ -4,6 +4,7 @@ class Hubspot::Company2 < Hubspot::Resource
 
   ADD_CONTACT_PATH        = '/companies/v2/companies/:id/contacts/:contact_id'
   ALL_PATH                = '/companies/v2/companies/paged'
+  BATCH_UPDATE_PATH       = '/companies/v1/batch-async/update'
   CONTACTS_PATH           = '/companies/v2/companies/:id/contacts'
   CONTACT_IDS_PATH        = '/companies/v2/companies/:id/vids'
   CREATE_PATH             = '/companies/v2/companies/'
@@ -91,6 +92,33 @@ class Hubspot::Company2 < Hubspot::Resource
         REMOVE_CONTACT_PATH,
         { id: id, contact_id: contact_id }
       )
+
+      true
+    end
+
+    def batch_update(companies, opts = {})
+      request = companies.map do |company|
+        # Use the specified options or update with the changes
+        changes = opts.empty? ? company.changes : opts
+
+        unless changes.empty?
+          {
+            "objectId" => company.id,
+            "properties" => changes.map { |k, v| { "name" => k, "value" => v } }
+          }
+        end
+      end
+
+      # Remove any objects without changes and return if there is nothing to update
+      request.compact!
+      return true if request.empty?
+
+      Hubspot::Connection.post_json(
+        BATCH_UPDATE_PATH,
+        params: {},
+        body: request
+      )
+
       true
     end
   end
