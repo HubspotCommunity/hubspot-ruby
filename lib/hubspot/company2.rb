@@ -4,6 +4,8 @@ class Hubspot::Company2 < Hubspot::Resource
 
   ADD_CONTACT_PATH        = '/companies/v2/companies/:id/contacts/:contact_id'
   ALL_PATH                = '/companies/v2/companies/paged'
+  CONTACTS_PATH           = '/companies/v2/companies/:id/contacts'
+  CONTACT_IDS_PATH        = '/companies/v2/companies/:id/vids'
   CREATE_PATH             = '/companies/v2/companies/'
   DELETE_PATH             = '/companies/v2/companies/:id'
   FIND_PATH               = '/companies/v2/companies/:id'
@@ -82,5 +84,36 @@ class Hubspot::Company2 < Hubspot::Resource
       )
       true
     end
+  end
+
+  def contacts(opts = {})
+    Hubspot::PagedCollection.new(opts) do |options, offset, limit|
+      response = Hubspot::Connection.get_json(
+        CONTACTS_PATH,
+        {"id" => @id, "vidOffset" => offset, "count" => limit}
+      )
+
+      contacts = response["contacts"].map do |result|
+        result["properties"] = Hubspot::Utils.properties_array_to_hash(result["properties"])
+        Hubspot::Contact.new(result)
+      end
+
+      [contacts, response["vidOffset"], response["hasMore"]]
+    end
+  end
+
+  def contact_ids(opts = {})
+    Hubspot::PagedCollection.new(opts) do |options, offset, limit|
+      response = Hubspot::Connection.get_json(
+        CONTACT_IDS_PATH,
+        {"id" => @id, "vidOffset" => offset, "count" => limit}
+      )
+
+      [response["vids"], response["vidOffset"], response["hasMore"]]
+    end
+  end
+
+  def add_contact(contact)
+    self.class.add_contact(@id, contact.to_i)
   end
 end

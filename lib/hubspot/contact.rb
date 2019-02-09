@@ -176,6 +176,10 @@ module Hubspot
       @vid = response_hash['vid']
     end
 
+    def to_i
+      @vid
+    end
+
     def [](property)
       @properties[property]
     end
