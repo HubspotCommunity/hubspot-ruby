@@ -24,7 +24,7 @@ class Hubspot::Company < Hubspot::Resource
           options.merge(offset: offset, limit: limit)
         )
 
-        companies = response["companies"].map { |result| new(result) }
+        companies = response["companies"].map { |result| from_result(result) }
 
         [companies, response["offset"], response["has-more"]]
       end
@@ -47,7 +47,7 @@ class Hubspot::Company < Hubspot::Resource
           body: request
         )
 
-        companies = response["results"].map { |result| new(result) }
+        companies = response["results"].map { |result| from_result(result) }
 
         [companies, response["offset"]["companyId"], response["hasMore"]]
       end
@@ -60,7 +60,7 @@ class Hubspot::Company < Hubspot::Resource
           {offset: offset, count: limit}
         )
 
-        companies = response["results"].map { |result| new(result) }
+        companies = response["results"].map { |result| from_result(result) }
 
         [companies, response["offset"], response["hasMore"]]
       end
@@ -73,7 +73,7 @@ class Hubspot::Company < Hubspot::Resource
           {offset: offset, count: limit}
         )
 
-        companies = response["results"].map { |result| new(result) }
+        companies = response["results"].map { |result| from_result(result) }
 
         [companies, response["offset"], response["hasMore"]]
       end
@@ -132,7 +132,7 @@ class Hubspot::Company < Hubspot::Resource
 
       contacts = response["contacts"].map do |result|
         result["properties"] = Hubspot::Utils.properties_array_to_hash(result["properties"])
-        Hubspot::Contact.new(result)
+        Hubspot::Contact.from_result(result)
       end
 
       [contacts, response["vidOffset"], response["hasMore"]]

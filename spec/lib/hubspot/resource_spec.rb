@@ -29,9 +29,21 @@ RSpec.describe Hubspot::Resource do
       end
 
       it 'has the property set' do
-        pending "rework of initialize and from_result"
         expect(subject[:name]).to eq name
+        expect(subject["name"]).to eq name
         expect(subject.name).to eq name
+      end
+    end
+
+    context 'with no arguments' do
+      subject { described_class.new }
+
+      it 'has no id' do
+        expect(subject.id).to be_nil
+      end
+
+      it 'has no changes' do
+        expect(subject).not_to be_changed
       end
     end
   end

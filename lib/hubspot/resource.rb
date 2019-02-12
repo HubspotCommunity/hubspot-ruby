@@ -6,6 +6,12 @@ module Hubspot
     class_attribute :update_method, instance_writer: false, default: "put"
 
     class << self
+      def from_result(result)
+        resource = new(result[id_field])
+        resource.send(:initialize_from, result.with_indifferent_access)
+        resource
+      end
+
       def find(id)
         instance = new(id)
         instance.reload
@@ -20,20 +26,25 @@ module Hubspot
       end
     end
 
-    def initialize(id_or_response = nil)
-      if id_or_response.is_a?(Integer) || id_or_response.nil?
-        @id = id_or_response
-        initialize_from(HashWithIndifferentAccess.new)
-      elsif id_or_response.is_a?(Hash)
-        @id = id_or_response[id_field]
-        initialize_from(id_or_response.with_indifferent_access)
+    def initialize(id_or_properties = nil)
+      @changes = HashWithIndifferentAccess.new
+      @properties = HashWithIndifferentAccess.new
+
+      if id_or_properties.is_a?(Integer) || id_or_properties.nil?
+        @id = id_or_properties
+      elsif id_or_properties.is_a?(Hash)
+        @id = id_or_properties.delete(id_field) || id_or_properties.delete(:id)
+
+        add_accessors(id_or_properties.keys)
+        id_or_properties.each do |k, v|
+          send "#{k}=", v
+        end
       else
         raise InvalidParams.new("#{self.class.name} must be initialized with an ID, hash, or nil")
       end
 
       @persisted = @id.present?
       @deleted = false
-      @changes = {}
     end
 
     def id
@@ -61,7 +72,7 @@ module Hubspot
     end
 
     def [](name)
-      @properties[name]
+      @changes[name] || @properties[name]
     end
 
     def reload
