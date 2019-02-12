@@ -14,6 +14,8 @@ require 'dotenv/load'
 require 'rspec'
 require 'rspec/its'
 require 'webmock/rspec'
+require 'factory_bot'
+require 'faker'
 require 'hubspot-ruby'
 
 # Requires supporting files with custom matchers and macros, etc,
@@ -26,6 +28,12 @@ RSpec.configure do |config|
   end
 
   config.filter_run_when_matching :focus
+
+  # Setup FactoryBot
+  config.include FactoryBot::Syntax::Methods
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
 
   config.extend CassetteHelper
   config.extend TestsHelper

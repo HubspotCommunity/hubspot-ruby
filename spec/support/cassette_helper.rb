@@ -7,7 +7,9 @@ module CassetteHelper
     end
   end
 
-  def cassette(cassette_name)
-    let(:_cassette){ cassette_name }
+  def cassette(cassette_name = nil)
+    let(:_cassette) do |example|
+      cassette_name || example.full_description
+    end
   end
 end

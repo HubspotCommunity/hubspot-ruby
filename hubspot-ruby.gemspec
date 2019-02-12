@@ -35,5 +35,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("timecop")
   s.add_development_dependency("guard-rspec")
   s.add_development_dependency("byebug")
+  s.add_development_dependency("faker")
+  s.add_development_dependency("factory_bot")
 end
 
