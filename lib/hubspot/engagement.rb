@@ -203,11 +203,10 @@ module Hubspot
     end
 
     class << self
-      def create!(contact_id, task_title, task_body, timestamp = DateTime.now.strftime('%Q').to_i, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
+      def create!(contact_id, task_title, task_body, task_timestamp = nil, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
         data = {
           engagement: {
-            type: 'TASK',
-            timestamp: timestamp
+            type: 'TASK'
           },
           associations: {
             contactIds: [contact_id]
@@ -220,8 +219,9 @@ module Hubspot
           }
         }
 
-        # if the owner id has been provided, append it to the engagement
+        # if the owner id and timestamp has been provided, append it to the engagement
         data[:engagement][:ownerId] = owner_id if owner_id
+        data[:engagement][:timestamp] = task_timestamp.to_i if task_timestamp
 
         super(data)
       end
