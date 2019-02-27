@@ -203,10 +203,11 @@ module Hubspot
     end
 
     class << self
-      def create!(contact_id, task_title, task_body, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
+      def create!(contact_id, task_title, task_body, timestamp = DateTime.now.strftime('%Q').to_i, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
         data = {
           engagement: {
-            type: 'TASK'
+            type: 'TASK',
+            timestamp: timestamp
           },
           associations: {
             contactIds: [contact_id]
