@@ -227,7 +227,7 @@ module Hubspot
       end
     end
 
-    def update!(task_id, contact_id, task_title, task_body, task_timestamp = nil, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
+    def self.update!(task_id, contact_id, task_title, task_body, task_timestamp = nil, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
       data = {
         engagement: {
           id: task_id,
