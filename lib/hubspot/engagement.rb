@@ -227,30 +227,28 @@ module Hubspot
       end
     end
 
-    class << self
-      def update!(task_id, contact_id, task_title, task_body, task_timestamp = nil, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
-        data = {
-          engagement: {
-            id: task_id,
-            type: 'TASK'
-          },
-          associations: {
-            contactIds: [contact_id]
-          },
-          metadata: {
-            body: task_body,
-            subject: task_title,
-            status: status,
-            forObjectType: object_type
-          }
+    def update!(task_id, contact_id, task_title, task_body, task_timestamp = nil, owner_id = nil, status="NOT_STARTED", object_type="CONTACT")
+      data = {
+        engagement: {
+          id: task_id,
+          type: 'TASK'
+        },
+        associations: {
+          contactIds: [contact_id]
+        },
+        metadata: {
+          body: task_body,
+          subject: task_title,
+          status: status,
+          forObjectType: object_type
         }
+      }
 
-        # if the owner id and timestamp has been provided, append it to the engagement
-        data[:engagement][:ownerId] = owner_id if owner_id
-        data[:engagement][:timestamp] = task_timestamp.to_i if task_timestamp
+      # if the owner id and timestamp has been provided, append it to the engagement
+      data[:engagement][:ownerId] = owner_id if owner_id
+      data[:engagement][:timestamp] = task_timestamp.to_i if task_timestamp
 
-        super(data)
-      end
+      super(data)
     end
 
   end
