@@ -248,7 +248,7 @@ module Hubspot
       data[:engagement][:ownerId] = owner_id if owner_id
       data[:engagement][:timestamp] = task_timestamp.to_i if task_timestamp
 
-      super(data)
+      Hubspot::Connection.put_json(Engagement::ENGAGEMENT_PATH, params: { engagement_id: task_id }, body: data)
     end
 
   end
