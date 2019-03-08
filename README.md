@@ -35,7 +35,7 @@ Hubspot.configure({
   client_secret: <CLIENT_SECRET>,
   redirect_uri: <REDIRECT_URI>,
   timeout: nil,
-)}
+})
 ```
 
 If you're new to using the HubSpot API, visit the [HubSpot Developer Tools] to
