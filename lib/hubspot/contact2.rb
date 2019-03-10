@@ -8,6 +8,7 @@ class Hubspot::Contact2 < Hubspot::Resource
   FIND_PATH               = '/contacts/v1/contact/vid/:id/profile'
   FIND_BY_EMAIL_PATH      = '/contacts/v1/contact/email/:email/profile'
   FIND_BY_USER_TOKEN_PATH = '/contacts/v1/contact/utk/:token/profile'
+  SEARCH_PATH             = '/contacts/v1/search/query'
   UPDATE_PATH             = '/contacts/v1/contact/vid/:id/profile'
 
   class << self
@@ -32,6 +33,18 @@ class Hubspot::Contact2 < Hubspot::Resource
       }
       response = Hubspot::Connection.post_json(CREATE_OR_UPDATE_PATH, params: {email: email}, body: request)
       from_result(response)
+    end
+
+    def search(query, opts = {})
+      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
+        response = Hubspot::Connection.get_json(
+          SEARCH_PATH,
+          options.merge(q: query, offset: offset, count: limit)
+          )
+
+        contacts = response["contacts"].map { |result| from_result(result) }
+        [contacts, response["offset"], response["has-more"]]
+      end
     end
   end
 

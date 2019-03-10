@@ -124,4 +124,33 @@ RSpec.describe Hubspot::Contact2 do
       expect(subject.id).to eq(contact.id)
     end
   end
+
+  describe '.search' do
+    cassette
+
+    context 'when the query returns contacts' do
+      subject { described_class.search 'com' }
+
+      it 'has contacts' do
+        expect(subject).not_to be_empty
+        expect(subject.first).to be_a(described_class)
+      end
+    end
+
+    context 'when the query returns no contacts' do
+      subject { described_class.search '123xyz' }
+
+      it 'has no contacts' do
+        expect(subject).to be_empty
+      end
+
+      it 'does not have more' do
+        expect(subject.more?).to be_falsey
+      end
+
+      it 'does not have a next page' do
+        expect(subject.next_page?).to be_falsey
+      end
+    end
+  end
 end
