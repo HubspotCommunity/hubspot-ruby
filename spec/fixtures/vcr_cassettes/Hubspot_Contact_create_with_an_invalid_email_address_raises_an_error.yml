@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/contacts/v1/contact/merge-vids/1/?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
-      string: '{"vidToMerge":2}'
+      string: '{"properties":[{"property":"email","value":"an_invalid_email"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sun, 10 Mar 2019 15:19:40 GMT
+      - Sun, 10 Mar 2019 15:33:56 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,18 +23,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d64b47f5dec0af72811e7dbc1e4d5859a1552231180; expires=Mon, 09-Mar-20
-        15:19:40 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=dc84201397697cd947ded184d14f2a8eb1552232036; expires=Mon, 09-Mar-20
+        15:33:56 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B7986D373062B384448A1D667F991038CF549F2D3000000000000000000
+      - 2B7555C3D358697DE3CFFFDE352250EC8F56D8821A000000000000000000
       X-Hubspot-Ratelimit-Daily:
       - '160000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '122968'
+      - '122567'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '59'
+      - '57'
       Vary:
       - Accept-Encoding
       - Accept-Encoding
@@ -47,11 +47,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4b5644ac5e29cec6-IAD
+      - 4b565995be9fc1ef-IAD
     body:
       encoding: UTF-8
-      string: '{"status":"error","message":"canonical vid is not a valid contact or
-        is already in the process of being merged","correlationId":"04d34bbb-d618-4d2f-bea2-3f95d31fbd8c","requestId":"1a62c019c86cbc739874ab9e61547805"}'
+      string: '{"validationResults":[{"isValid":false,"message":"Email address an_invalid_email
+        is invalid","error":"INVALID_EMAIL","name":"email"}],"status":"error","message":"Property
+        values were not valid","correlationId":"59374b00-5910-4141-b070-12241ce70142","requestId":"257b53dd82039b94629f3a229373917d"}'
     http_version: 
-  recorded_at: Sun, 10 Mar 2019 15:19:40 GMT
+  recorded_at: Sun, 10 Mar 2019 15:33:56 GMT
 recorded_with: VCR 4.0.0

@@ -1,6 +1,6 @@
 
 FactoryBot.define do
-  factory :contact, class: Hubspot::Contact2 do
+  factory :contact, class: Hubspot::Contact do
     to_create { |instance| instance.save }
 
     firstname { Faker::Name.first_name }

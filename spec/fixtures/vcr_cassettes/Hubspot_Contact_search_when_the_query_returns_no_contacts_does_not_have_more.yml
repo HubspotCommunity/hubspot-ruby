@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/search/query?count=25&hapikey=<HAPI_KEY>&offset=&q=123xyz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Mar 2019 15:33:59 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d48bac427ad2c8de0f5e4bbef51eea65f1552232039; expires=Mon, 09-Mar-20
+        15:33:59 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B8D14AAA25DD1721EF174BEB32B7EA1551C9B6993000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '122560'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b5659a46c4bcf06-IAD
+    body:
+      encoding: UTF-8
+      string: '{"query":"123xyz","offset":0,"has-more":false,"total":0,"contacts":[]}'
+    http_version: 
+  recorded_at: Sun, 10 Mar 2019 15:33:59 GMT
+recorded_with: VCR 4.0.0

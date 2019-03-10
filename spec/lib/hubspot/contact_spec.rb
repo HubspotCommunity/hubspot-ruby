@@ -1,4 +1,4 @@
-RSpec.describe Hubspot::Contact2 do
+RSpec.describe Hubspot::Contact do
 
   before{ Hubspot.configure(hapikey: 'demo') }
 
