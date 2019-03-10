@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"an_invalid_email"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 10 Mar 2019 15:33:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc84201397697cd947ded184d14f2a8eb1552232036; expires=Mon, 09-Mar-20
+        15:33:56 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B7555C3D358697DE3CFFFDE352250EC8F56D8821A000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '122567'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b565995be9fc1ef-IAD
+    body:
+      encoding: UTF-8
+      string: '{"validationResults":[{"isValid":false,"message":"Email address an_invalid_email
+        is invalid","error":"INVALID_EMAIL","name":"email"}],"status":"error","message":"Property
+        values were not valid","correlationId":"59374b00-5910-4141-b070-12241ce70142","requestId":"257b53dd82039b94629f3a229373917d"}'
+    http_version: 
+  recorded_at: Sun, 10 Mar 2019 15:33:56 GMT
+recorded_with: VCR 4.0.0

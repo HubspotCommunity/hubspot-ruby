@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1/contacts/1?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:22 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '190'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc66ae3221c6521c30be78dcf9d9b3cb71551280282; expires=Thu, 27-Feb-20
+        15:11:22 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B78988C913FF31302D51E256BADD82E0E042A2C2E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126848'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      X-Hubspot-Notfound:
+      - 'true'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb9562abcc23a8-IAD
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Couldn''t find a company with the ID ''1''
+        in portal ''62515''","correlationId":"354a635c-3d98-49e8-9ddc-2ee6dc029b40","requestId":"efe97ab63449b2bbbb79589ab2b84852"}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:22 GMT
+recorded_with: VCR 4.0.0

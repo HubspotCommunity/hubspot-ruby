@@ -8,6 +8,12 @@ module Hubspot
         newprops
       end
 
+      # Converts an array of property objects into a hash with the property name
+      # as the key
+      def properties_array_to_hash(props)
+        props.inject({}) { |h, x| h[x["name"]] = x; h }
+      end
+
       # Turns a hash into the hubspot properties format
       def hash_to_properties(hash, opts = {})
         key_name = opts[:key_name] || "property"

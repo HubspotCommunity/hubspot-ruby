@@ -1,292 +1,373 @@
-describe Hubspot::Contact do
-  let(:example_company_hash) do
-    VCR.use_cassette("company_example") do
-      HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
-    end
-  end
-  let(:company_with_contacts_hash) do
-    VCR.use_cassette("company_with_contacts") do
-      HTTParty.get("https://api.hubapi.com/companies/v2/companies/115200636?hapikey=demo").parsed_response
-    end
-  end
+RSpec.describe Hubspot::Company do
+  # let(:example_company_hash) do
+  #   VCR.use_cassette("company_example") do
+  #     HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
+  #   end
+  # end
+  # let(:company_with_contacts_hash) do
+  #   VCR.use_cassette("company_with_contacts") do
+  #     HTTParty.get("https://api.hubapi.com/companies/v2/companies/115200636?hapikey=demo").parsed_response
+  #   end
+  # end
 
   before{ Hubspot.configure(hapikey: "demo") }
 
-  describe "#initialize" do
-    subject{ Hubspot::Company.new(example_company_hash) }
-    it{ should be_an_instance_of Hubspot::Company }
-    its(["name"]){ should == "HubSpot" }
-    its(["domain"]){ should == "hubspot.com" }
-    its(:vid){ should == 21827084 }
-  end
+  describe '.find' do
+    context 'with a valid ID' do
+      cassette
+      let(:company) { create :company }
+      subject { described_class.find company.id }
 
-  describe ".create!" do
-    cassette "company_create"
-    let(:params){{}}
-    subject{ Hubspot::Company.create!(name, params) }
-    context "with a new name" do
-      let(:name){ "New Company #{Time.now.to_i}" }
-      it{ should be_an_instance_of Hubspot::Company }
-      its(:name){ should match /New Company .*/ } # Due to VCR the email may not match exactly
+      it 'finds the company' do
+        expect(subject).to be_a(described_class)
+        expect(subject.id).to eq(company.id)
+      end
+    end
 
-      context "and some params" do
-        cassette "company_create_with_params"
-        let(:name){ "New Company with Params #{Time.now.to_i}" }
-        let(:params){ {domain: "new-company-domain-#{Time.now.to_i}"} }
-        its(["name"]){ should match /New Company with Params/ }
-        its(["domain"]){ should match /new\-company\-domain/ }
+    context 'with an invalid ID' do
+      cassette
+      subject { described_class.find 0 }
+
+      it 'raises an error' do
+        expect {
+          subject
+        }.to raise_error(Hubspot::RequestError, /resource not found/)
       end
     end
   end
 
-  describe ".add_contact!" do
-    cassette "add_contact_to_company_class"
-    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
-    let(:contact){ Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
-    subject { Hubspot::Company.find_by_id(company.vid) }
+  describe '.create' do
+    context 'with no properties' do
+      cassette
+      subject { described_class.create }
 
-    before { Hubspot::Company.add_contact! company.vid, contact.vid }
-    its(['num_associated_contacts']) { should eql '1' }
-  end
+      it 'creates a new company' do
+        expect(subject).to be_a(described_class)
+        expect(subject.id).not_to be_nil
+      end
+    end
 
-  describe ".find_by_id" do
-    context 'given an uniq id' do
-      cassette "company_find_by_id"
-      subject{ Hubspot::Company.find_by_id(vid) }
+    context 'with properties' do
+      cassette
 
-      context "when the company is found" do
-        let(:vid){ 21827084 }
-        it{ should be_an_instance_of Hubspot::Company }
-        its(:name){ should == "HubSpot" }
+      let(:name) { "Foo Bar Inc." }
+      let(:properties) { { name: name } }
+      subject { described_class.create properties }
+
+      it 'creates a new company' do
+        expect(subject).to be_a(described_class)
+        expect(subject.id).not_to be_nil
       end
 
-      context "when the contact cannot be found" do
-        it 'raises an error' do
-          expect { Hubspot::Company.find_by_id(9999999) }.to raise_error(Hubspot::RequestError)
-        end
+      it 'has the property set' do
+        expect(subject.name).to eq name
+      end
+
+      it 'is persisted' do
+        expect(subject).to be_persisted
       end
     end
   end
 
-
-  describe ".find_by_domain" do
-    context 'given a domain' do
-      cassette "company_find_by_domain"
-      subject(:companies) { Hubspot::Company.find_by_domain("example.com") }
-
-      context "when a company is found" do
-        it { should be_an_instance_of Array }
-        it { should_not be_empty }
-
-        it 'must contain all available properties' do
-          companies[0..9].each do |company|
-            expect(company.properties).to eql Hubspot::Company.find_by_id(company.vid).properties
-          end
-        end
+  describe '.new' do
+    context 'with no properties' do
+      it 'returns a company' do
+        expect(subject).to be_a(described_class)
       end
 
-      context "when a company cannot be found" do
-        subject { Hubspot::Company.find_by_domain("asdf1234baddomain.com") }
-        it { should be_an_instance_of Array }
-        it { should be_empty }
+      it 'has no changes' do
+        expect(subject.changes).to be_empty
+      end
+
+      it 'is not persisted' do
+        expect(subject).not_to be_persisted
       end
     end
 
-    context 'given a domain and parameters' do
-      cassette 'company_find_by_domain_with_params'
-      subject(:companies) { Hubspot::Company.find_by_domain("example.com", limit: 2, properties: ["name", "createdate"], offset_company_id: 117004411) }
+    context 'with properties' do
+      subject { described_class.new name: Faker::Company.name }
 
-      context "when a company is found" do
-        it{ should be_an_instance_of Array }
-        it{ should_not be_empty }
+      it 'has changes' do
+        expect(subject.changed?).to be_truthy
+      end
 
-        it 'must use the parameters to search' do
-          expect(companies.size).to eql 2
-          expect(companies.first['name']).to be_a_kind_of String
-          expect(companies.first['createdate']).to be_a_kind_of String
-          expect(companies.first['domain']).to be_nil
-          expect(companies.first['hs_lastmodifieddate']).to be_nil
-        end
+      it 'is not persisted' do
+        expect(subject).not_to be_persisted
+      end
+    end
+
+    context 'with an ID property' do
+      subject { described_class.new id: 1 }
+
+      it 'has changes' do
+        pending "tracking ID property changes"
+        expect(subject.changed?).to be_truthy
+      end
+
+      it 'is not persisted' do
+        pending "persisted flag rework"
+        expect(subject).not_to be_persisted
+      end
+    end
+  end
+
+  describe '#reload' do
+    context 'with a valid ID' do
+      cassette
+
+      let(:company) { create :company }
+      subject { inst = described_class.new(company.id); inst.reload }
+
+      it 'loads the company details' do
+        expect(subject.id).to eq(company.id)
+        expect(subject.name).to eq(company.name)
+      end
+    end
+
+    context 'without an ID' do
+      cassette
+
+      it 'raises an error' do
+        expect {
+          subject.reload
+        }.to raise_error(Hubspot::InvalidParams)
+      end
+    end
+  end
+
+  describe '#save' do
+    context 'with no changes' do
+      cassette
+
+      subject { described_class.new }
+
+      it 'creates a new company' do
+        expect {
+          subject.save
+        }.to change { subject.id }.from(nil)
+      end
+
+      it 'has no changes' do
+        expect {
+          subject
+        }.not_to change { subject.changed? }.from(false)
+      end
+    end
+
+    context 'with changes' do
+      cassette
+
+      subject { build :company }
+
+      it 'persists the company' do
+        expect {
+          subject.save
+        }.to change { subject.persisted? }.from(false).to(true)
+      end
+
+      it 'updates the ID property' do
+        expect {
+          subject.save
+        }.to change { subject.id }.from(nil)
+      end
+
+      it 'resets the changes' do
+        expect {
+          subject.save
+        }.to change { subject.changed? }.from(true).to(false)
+      end
+    end
+  end
+
+  describe '#delete' do
+    context 'when not persisted' do
+      cassette
+
+      subject { build :company }
+
+      it 'raises an error' do
+        expect {
+          subject.delete
+        }.to raise_error(Hubspot::InvalidParams)
+      end
+    end
+
+    context 'when persisted' do
+      cassette
+
+      subject { create :company }
+
+      it 'sets the deleted flag' do
+        expect {
+          subject.delete
+        }.to change { subject.deleted? }.from(false).to(true)
+      end
+
+      it 'deletes the resource' do
+        subject.delete
+
+        expect {
+          described_class.find subject.id
+        }.to raise_error(Hubspot::RequestError)
       end
     end
   end
 
   describe '.all' do
-    context 'all companies' do
-      cassette 'find_all_companies'
+    context 'with no options' do
+      cassette
 
-      it 'must get the companies list' do
-        companies = Hubspot::Company.all
+      subject { described_class.all }
 
-        expect(companies.size).to eql 20 # default page size
-
-        first = companies.first
-        last = companies.last
-
-        expect(first).to be_a Hubspot::Company
-        expect(first.vid).to eql 42866817
-        expect(first['name']).to eql 'name'
-
-        expect(last).to be_a Hubspot::Company
-        expect(last.vid).to eql 42861017
-        expect(last['name']).to eql 'Xge5rbdt2zm'
+      it 'returns a collection' do
+        expect(subject).to be_a(Hubspot::PagedCollection)
+        expect(subject.first).to be_a(Hubspot::Company)
       end
 
-      it 'must filter only 2 companies' do
-        copmanies = Hubspot::Company.all(count: 2)
-        expect(copmanies.size).to eql 2
+      it 'has an offset' do
+        expect(subject.next_offset).not_to be_blank
       end
 
-      context 'all_with_offset' do
-        it 'should return companies with offset and hasMore' do
-          response = Hubspot::Company.all_with_offset
-          expect(response['results'].size).to eq(20)
-
-          first = response['results'].first
-          last = response['results'].last
-
-          expect(first).to be_a Hubspot::Company
-          expect(first.vid).to eq(42866817)
-          expect(first['name']).to eql 'name'
-          expect(last).to be_a Hubspot::Company
-          expect(last.vid).to eql 42861017
-          expect(last['name']).to eql 'Xge5rbdt2zm'
-        end
-
-        it 'must filter only 2 companies' do
-          response = Hubspot::Company.all_with_offset(count: 2)
-          expect(response['results'].size).to eq(2)
-          expect(response['hasMore']).to be_truthy
-          expect(response['offset']).to eq(2)
-        end
+      it 'identifies if there are more resources' do
+        expect(subject.more?).not_to be_nil
       end
     end
 
-    context 'recent companies' do
-      cassette 'find_all_recent_companies'
+    context 'with an offset' do
+      cassette
 
-      it 'must get the companies list' do
-        companies = Hubspot::Company.all(recently_updated: true)
-        expect(companies.size).to eql 20
+      let!(:company) { create :company }
+      subject { described_class.all offset: company.id }
 
-        first, last = companies.first, companies.last
-        expect(first).to be_a Hubspot::Company
-        expect(first.vid).to eql 318615742
+      it 'returns a collection' do
+        expect(subject).to be_a(Hubspot::PagedCollection)
+      end
 
-        expect(last).to be_a Hubspot::Company
-        expect(last.vid).to eql 359899290
+      it 'has an offset' do
+        expect(subject.next_offset).not_to be_blank
+      end
+
+      it 'identifies if there are more resources' do
+        expect(subject.more?).not_to be_nil
+      end
+    end
+
+    context 'with a limit' do
+      cassette
+
+      let(:limit) { 1 }
+      subject { described_class.all limit: limit }
+
+      it 'returns a collection' do
+        expect(subject).to be_a(Hubspot::PagedCollection)
+        expect(subject.first).to be_a(Hubspot::Company)
+      end
+
+      it 'respects the limit' do
+        expect(subject.size).to eq(limit)
       end
     end
   end
 
-  describe "#update!" do
-    cassette "company_update"
-    let(:company){ Hubspot::Company.new(example_company_hash) }
-    let(:params){ {name: "Acme Cogs", domain: "abccogs.com"} }
-    subject{ company.update!(params) }
+  describe '.search_domain' do
+    cassette
 
-    it{ should be_an_instance_of Hubspot::Company }
-    its(["name"]){ should ==  "Acme Cogs" }
-    its(["domain"]){ should ==  "abccogs.com" }
+    let!(:company) { create :company }
 
-    context "when the request is not successful" do
-      let(:company){ Hubspot::Company.new({"vid" => "invalid", "properties" => {}})}
-      it "raises an error" do
-        expect{ subject }.to raise_error Hubspot::RequestError
+    subject { described_class.search_domain company.domain }
+
+    it 'returns a collection' do
+      expect(subject).to be_a(Hubspot::PagedCollection)
+      expect(subject.first).to be_a(Hubspot::Company)
+    end
+  end
+
+  describe '.recently_created' do
+    cassette
+
+    subject { described_class.recently_created }
+
+    it 'returns a collection' do
+      expect(subject).to be_a(Hubspot::PagedCollection)
+    end
+  end
+
+  describe '.recently_modified' do
+    cassette
+
+    subject { described_class.recently_modified }
+
+    it 'returns a collection' do
+      expect(subject).to be_a(Hubspot::PagedCollection)
+    end
+  end
+
+  describe '.add_contact' do
+    context 'with a valid company ID and contact ID' do
+      cassette
+
+      let(:company) { create :company }
+      let(:contact) { create :contact }
+
+      subject { described_class.add_contact company.id, contact.id }
+
+      it 'returns success' do
+        expect(subject).to be_truthy
+      end
+
+      it 'adds the contact to the company' do
+        expect {
+          subject
+        }.to change { company.contact_ids }.by([contact.id])
+      end
+    end
+
+    context 'with a valid company ID and invalid contact ID' do
+      cassette
+
+      let(:company) { create :company }
+
+      subject { described_class.add_contact company.id, 1 }
+
+      it 'raises an error' do
+        expect {
+          subject
+        }.to raise_error(Hubspot::RequestError, /Contact with the vid/)
+      end
+    end
+
+    context 'with an invalid company ID' do
+      cassette
+
+      subject { described_class.add_contact 1, 1 }
+
+      it 'raises an error' do
+        expect {
+          subject
+        }.to raise_error(Hubspot::RequestError, /company with the ID/)
       end
     end
   end
 
-  describe "#batch_update!" do
-    cassette "company_batch_update"
-    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
+  describe '.remove_contact' do
+    context 'with a valid company ID and contact ID' do
+      cassette allow_playback_repeats: true
 
-    context 'update via vid' do
-      let(:updated_companies) { [{ vid: company.vid, name: "Carol H" }] }
+      let!(:company) { create :company }
+      let!(:contact) { create :contact, associatedCompanyId: company.id }
 
-      it 'should update companies' do
-        Hubspot::Company.batch_update!(updated_companies)
-        checked_company = Hubspot::Company.find_by_id(company.vid)
-        expect(checked_company.properties["name"]).to eq("Carol H")
+      subject { described_class.remove_contact company.id, contact.id }
+
+      it 'returns success' do
+        expect(subject).to be_truthy
       end
+
+      # Testing this turns out to be hard since using associatedCompanyId doesn't immediately add
+      # the contact to the company but triggers some background job to perform the update. Since
+      # we're testing the gem interface and not the API (that's Hubspot's job) this should be OK to
+      # leave out.
+      #
+      # it 'removes the contact from the company'
     end
-
-    context 'update via objectId' do
-      let(:updated_companies) { [{ objectId: company.vid, name: "Carol H" }] }
-
-      it 'should update companies' do
-        Hubspot::Company.batch_update!(updated_companies)
-        checked_company = Hubspot::Company.find_by_id(company.vid)
-        expect(checked_company.properties["name"]).to eq("Carol H")
-      end
-    end
-
-    context 'missing vid or objectId' do
-      let(:updated_companies) { [{ name: "Carol H" }] }
-
-      it 'should raise error with expected message' do
-        expect { Hubspot::Company.batch_update!(updated_companies) }.to raise_error(Hubspot::InvalidParams, 'expecting vid or objectId for company')
-      end
-    end
-  end
-
-  describe "#destroy!" do
-    cassette "company_destroy"
-    let(:company){ Hubspot::Company.create!("newcompany_y_#{Time.now.to_i}@hsgem.com") }
-    subject{ company.destroy! }
-    it { should be true }
-    it "should be destroyed" do
-      subject
-      company.destroyed?.should be true
-    end
-    context "when the request is not successful" do
-      let(:company){ Hubspot::Company.new({"vid" => "invalid", "properties" => {}})}
-      it "raises an error" do
-        expect{ subject }.to raise_error Hubspot::RequestError
-        company.destroyed?.should be false
-      end
-    end
-  end
-
-  describe "#get_contact_vids" do
-    cassette "company_get_contact_vids"
-    let(:company) { Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
-    let(:contact) { Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
-    before { company.add_contact(contact) }
-    subject { company.get_contact_vids }
-
-    it { is_expected.to eq [contact.vid] }
-  end
-
-  describe "#add_contact" do
-    cassette "add_contact_to_company_instance"
-    let(:company){ Hubspot::Company.create!("company_#{Time.now.to_i}@example.com") }
-    let(:contact){ Hubspot::Contact.create!("contact_#{Time.now.to_i}@example.com") }
-    subject { Hubspot::Company.find_by_id(company.vid) }
-
-    context "with Hubspot::Contact instance" do
-      before { company.add_contact contact }
-      its(['num_associated_contacts']) { should eql '1' }
-    end
-
-    context "with vid" do
-      before { company.add_contact contact.vid }
-      its(['num_associated_contacts']) { should eql '1' }
-    end
-  end
-
-  describe "#destroyed?" do
-    let(:company){ Hubspot::Company.new(example_company_hash) }
-    subject{ company }
-    its(:destroyed?){ should be false }
-  end
-
-  describe "#contacts" do
-    let(:company){ Hubspot::Company.new(company_with_contacts_hash) }
-    subject do
-      VCR.use_cassette("company_contacts") { company.contacts }
-    end
-
-    its(:size) { should eql 5 }
   end
 end

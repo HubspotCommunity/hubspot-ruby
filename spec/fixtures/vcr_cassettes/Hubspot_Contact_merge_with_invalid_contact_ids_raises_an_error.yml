@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact/merge-vids/1/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"vidToMerge":2}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 10 Mar 2019 15:34:03 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d8ed5d73369390405ec71548dcd86ad961552232043; expires=Mon, 09-Mar-20
+        15:34:03 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B4297CE0244ED7B2EE200A2A39331B65ED16F615C000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '122550'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b5659c0f922cf02-IAD
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"canonical vid is not a valid contact or
+        is already in the process of being merged","correlationId":"ece817a9-11d5-4bad-bea8-a9c86c7bf562","requestId":"6c9f32062d98ee2ba5c28a1d9273ac38"}'
+    http_version: 
+  recorded_at: Sun, 10 Mar 2019 15:34:03 GMT
+recorded_with: VCR 4.0.0

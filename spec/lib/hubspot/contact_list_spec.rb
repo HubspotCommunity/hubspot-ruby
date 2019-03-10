@@ -182,7 +182,7 @@ describe Hubspot::ContactList do
     context "for a static list" do
       it "adds the contact to the contact list" do
         VCR.use_cassette("contact_lists/add_contact") do
-          contact = Hubspot::Contact.create!("email@example.com")
+          contact = Hubspot::Contact.create("email@example.com")
           contact_list_params = { name: "my-contacts-list" }
           contact_list = Hubspot::ContactList.create!(contact_list_params)
 
@@ -190,7 +190,7 @@ describe Hubspot::ContactList do
 
           expect(result).to be true
 
-          contact.destroy!
+          contact.delete
           contact_list.destroy!
         end
       end
@@ -198,7 +198,7 @@ describe Hubspot::ContactList do
       context "when the contact already exists in the contact list" do
         it "returns false" do
           VCR.use_cassette("contact_lists/add_existing_contact") do
-            contact = Hubspot::Contact.create!("email@example.com")
+            contact = Hubspot::Contact.create("email@example.com")
 
             contact_list_params = { name: "my-contacts-list" }
             contact_list = Hubspot::ContactList.create!(contact_list_params)
@@ -208,7 +208,7 @@ describe Hubspot::ContactList do
 
             expect(result).to be false
 
-            contact.destroy!
+            contact.delete
             contact_list.destroy!
           end
         end
@@ -218,7 +218,7 @@ describe Hubspot::ContactList do
     context "for a dynamic list" do
       it "raises an error as dynamic lists add contacts via on filters" do
         VCR.use_cassette("contact_list/add_contact_to_dynamic_list") do
-          contact = Hubspot::Contact.create!("email@example.com")
+          contact = Hubspot::Contact.create("email@example.com")
           contact_list_params = {
             name: "my-contacts-list",
             dynamic: true,

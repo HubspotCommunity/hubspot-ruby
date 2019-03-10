@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"hzwp32034@example.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 10 Mar 2019 15:33:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d1c32e4f28e1fe678b8104693dc8b22af1552232034; expires=Mon, 09-Mar-20
+        15:33:54 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B3B5F78C73BE6D758AD13EBF5A399AA3D5E6FE75E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '122573'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b5659865e7ecf3a-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":11654824,"canonical-vid":11654824,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mPjbL0vyt8_5pl3G3uzKtwYnHSHqILeYbxvETAkFCIyLHWwFwYUgAF4l4e6vJ8lx7TOpLGw83nWwN7Oul1vN3h-qvMQuzrYQBWVEnyVotD_UzwgRvXP4kSken0ZgrFLzPwI7XIm","profile-url":"https://app.hubspot.com/contacts/62515/contact/11654824","properties":{"email":{"value":"hzwp32034@example.com","versions":[{"value":"hzwp32034@example.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1552232034323,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":11654824,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"hzwp32034@example.com","timestamp":1552232034328,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"83ea9b75-cc88-4a10-bab1-021053b5cc1f","timestamp":1552232034337,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Sun, 10 Mar 2019 15:33:54 GMT
+recorded_with: VCR 4.0.0
