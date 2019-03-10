@@ -8,6 +8,7 @@ class Hubspot::Contact2 < Hubspot::Resource
   FIND_PATH               = '/contacts/v1/contact/vid/:id/profile'
   FIND_BY_EMAIL_PATH      = '/contacts/v1/contact/email/:email/profile'
   FIND_BY_USER_TOKEN_PATH = '/contacts/v1/contact/utk/:token/profile'
+  MERGE_PATH              = '/contacts/v1/contact/merge-vids/:id/'
   SEARCH_PATH             = '/contacts/v1/search/query'
   UPDATE_PATH             = '/contacts/v1/contact/vid/:id/profile'
 
@@ -46,9 +47,23 @@ class Hubspot::Contact2 < Hubspot::Resource
         [contacts, response["offset"], response["has-more"]]
       end
     end
+
+    def merge(primary, secondary)
+      Hubspot::Connection.post_json(
+        MERGE_PATH,
+        params: { id: primary.to_i, no_parse: true },
+        body: { "vidToMerge" => secondary.to_i }
+        )
+
+      true
+    end
   end
 
   def name
     [firstname, lastname].compact.join(' ')
+  end
+
+  def merge(contact)
+    self.class.merge(@id, contact.to_i)
   end
 end

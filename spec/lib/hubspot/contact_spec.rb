@@ -153,4 +153,60 @@ RSpec.describe Hubspot::Contact2 do
       end
     end
   end
+
+  describe '.merge' do
+    context 'with valid contact ids' do
+      cassette
+
+      let!(:contact1) { create :contact }
+      let!(:contact2) { create :contact }
+
+      subject { described_class.merge contact1.id, contact2.id }
+
+      it 'succeeds' do
+        expect(subject).to be_truthy
+      end
+    end
+
+    context 'with invalid contact ids' do
+      cassette
+
+      subject { described_class.merge 1, 2 }
+
+      it 'raises an error' do
+        expect {
+          subject
+        }.to raise_error(Hubspot::RequestError)
+      end
+    end
+  end
+
+  describe '#merge' do
+    context 'with a valid contact' do
+      cassette
+
+      let!(:contact1) { create :contact }
+      let!(:contact2) { create :contact }
+
+      subject { contact1.merge(contact2) }
+
+      it 'succeeds' do
+        expect(subject).to be_truthy
+      end
+    end
+
+    context 'with an invalid contact' do
+      cassette
+
+      let!(:contact1) { create :contact }
+
+      subject { contact1.merge(1) }
+
+      it 'raises an error' do
+        expect {
+          subject
+        }.to raise_error(Hubspot::RequestError)
+      end
+    end
+  end
 end
