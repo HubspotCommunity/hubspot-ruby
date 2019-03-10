@@ -2,6 +2,7 @@ class Hubspot::Contact < Hubspot::Resource
   self.id_field = "vid"
   self.update_method = "post"
 
+  ALL_PATH                = '/contacts/v1/lists/all/contacts/all'
   CREATE_PATH             = '/contacts/v1/contact'
   CREATE_OR_UPDATE_PATH   = '/contacts/v1/contact/createOrUpdate/email/:email'
   DELETE_PATH             = '/contacts/v1/contact/vid/:id'
@@ -13,6 +14,18 @@ class Hubspot::Contact < Hubspot::Resource
   UPDATE_PATH             = '/contacts/v1/contact/vid/:id/profile'
 
   class << self
+    def all(opts = {})
+      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
+        response = Hubspot::Connection.get_json(
+          ALL_PATH,
+          options.merge("count" => limit, "vidOffset" => offset)
+          )
+
+        contacts = response["contacts"].map { |result| from_result(result) }
+        [contacts, response["vid-offset"], response["has-more"]]
+      end
+    end
+
     def find_by_email(email)
       response = Hubspot::Connection.get_json(FIND_BY_EMAIL_PATH, email: email)
       from_result(response)

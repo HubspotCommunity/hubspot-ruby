@@ -109,7 +109,8 @@ module Hubspot
       # Update the fields with the response
       initialize_from(response.with_indifferent_access)
 
-      self
+      @persisted = true
+      true
     end
 
     def delete
@@ -119,7 +120,7 @@ module Hubspot
 
       @deleted = true
       @changes = {}
-      self
+      true
     end
 
     def deleted?

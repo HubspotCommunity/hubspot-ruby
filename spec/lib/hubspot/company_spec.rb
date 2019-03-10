@@ -148,7 +148,9 @@ RSpec.describe Hubspot::Company do
       end
 
       it 'has no changes' do
-        expect(subject.save.changed?).to be_falsey
+        expect {
+          subject
+        }.not_to change { subject.changed? }.from(false)
       end
     end
 
@@ -158,7 +160,6 @@ RSpec.describe Hubspot::Company do
       subject { build :company }
 
       it 'persists the company' do
-        pending "persisted flag rework"
         expect {
           subject.save
         }.to change { subject.persisted? }.from(false).to(true)
