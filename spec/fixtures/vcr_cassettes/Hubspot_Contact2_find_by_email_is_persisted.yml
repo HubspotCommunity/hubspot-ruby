@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"Colin"},{"property":"lastname","value":"Kozey"},{"property":"email","value":"80299cnzj@example.net"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:40 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d146faba70a8cb99ef9956620531035761551280299; expires=Thu, 27-Feb-20
+        15:11:39 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BF5E57CFD63C5EB51357999F8C6A86BE373AB4D93000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126821'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '54'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95d23f2e9580-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":11601174,"canonical-vid":11601174,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mO_QNU_Pnxg_I0Z6AyUymkYwbp42QXRJBFMWU4xPQO5KnzUV2r00D8R3EFAkePBbAY0yo-XGHBW63kfyb8YkPLDqeo3GmkEpZBlEEI7HrT8Q9MsoLAyfslmBFY-SS-v18Jrnbla","profile-url":"https://app.hubspot.com/contacts/62515/contact/11601174","properties":{"firstname":{"value":"Colin","versions":[{"value":"Colin","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299905,"selected":false}]},"email":{"value":"80299cnzj@example.net","versions":[{"value":"80299cnzj@example.net","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299905,"selected":false}]},"lastname":{"value":"Kozey","versions":[{"value":"Kozey","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299905,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":11601174,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"80299cnzj@example.net","timestamp":1551280299909,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"dd12822c-72d6-4516-9fbd-11ae7063e8e1","timestamp":1551280299920,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:40 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/email/80299cnzj@example.net/profile?hapikey=<HAPI_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:40 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d4cc2b55f98815830c718422eef79e1c61551280300; expires=Thu, 27-Feb-20
+        15:11:40 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B4740FA3CF886EFE1BCCA12DB79F4B41270A77436000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126820'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95d489e7c1ae-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":11601174,"canonical-vid":11601174,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mOZCuNtvP_lo2Liv2cb61zW0NVlH0N9XOBLnTzCR_55KoZv3HNdTDeMRzaDeBzMy2bu7hebF77GRoYb9U3O_ny0fkjmfBaSxDyR0m5AGclPxM7d3CTjbanKTU2pU_pJx1LTltYC","profile-url":"https://app.hubspot.com/contacts/62515/contact/11601174","properties":{"firstname":{"value":"Colin","versions":[{"value":"Colin","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299905,"selected":false}]},"num_conversion_events":{"value":"0","versions":[{"value":"0","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":0,"selected":false}]},"lastmodifieddate":{"value":"1551280300031","versions":[{"value":"1551280300031","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":1551280300031,"selected":false}]},"num_unique_conversion_events":{"value":"0","versions":[{"value":"0","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":0,"selected":false}]},"hs_email_domain":{"value":"example.net","versions":[{"value":"example.net","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":1551280299909,"selected":false}]},"createdate":{"value":"1551280299909","versions":[{"value":"1551280299909","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299909,"selected":false}]},"hs_lifecyclestage_subscriber_date":{"value":"1551280299909","versions":[{"value":"1551280299909","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299909,"selected":false}]},"lifecyclestage":{"value":"subscriber","versions":[{"value":"subscriber","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299909,"selected":false}]},"email":{"value":"80299cnzj@example.net","versions":[{"value":"80299cnzj@example.net","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299909,"selected":false}]},"lastname":{"value":"Kozey","versions":[{"value":"Kozey","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280299905,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":11601174,"saved-at-timestamp":1551280299952,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"80299cnzj@example.net","timestamp":1551280299909,"is-primary":true},{"type":"LEAD_GUID","value":"dd12822c-72d6-4516-9fbd-11ae7063e8e1","timestamp":1551280299920}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:40 GMT
+recorded_with: VCR 4.0.0

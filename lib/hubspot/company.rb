@@ -132,7 +132,7 @@ class Hubspot::Company < Hubspot::Resource
 
       contacts = response["contacts"].map do |result|
         result["properties"] = Hubspot::Utils.properties_array_to_hash(result["properties"])
-        Hubspot::Contact.from_result(result)
+        Hubspot::Contact2.from_result(result)
       end
 
       [contacts, response["vidOffset"], response["hasMore"]]

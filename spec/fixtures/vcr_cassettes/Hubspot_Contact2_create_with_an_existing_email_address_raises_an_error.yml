@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"Johnathan"},{"property":"lastname","value":"Hoeger"},{"property":"email","value":"80298lgte@example.org"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d682a191764780d7d400180c1a867fcfb1551280298; expires=Thu, 27-Feb-20
+        15:11:38 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B822E9CAB73046C2ECB651256ABB2823D0256B40F000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126827'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95cadf6c9fea-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":11601074,"canonical-vid":11601074,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mO21Nwa5gghjqguxuN8XxjAXpWpiBvano5yoSKn_Axi8ZDhPvjDRvp_AnDOBclJ1yV9VbT3GG30PEh-ihnWXUPZmv_3I8DXgSG_74teKQqTgu0dqHVAfocJhRPiJJLVVK7HFTsT","profile-url":"https://app.hubspot.com/contacts/62515/contact/11601074","properties":{"firstname":{"value":"Johnathan","versions":[{"value":"Johnathan","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280298726,"selected":false}]},"email":{"value":"80298lgte@example.org","versions":[{"value":"80298lgte@example.org","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280298726,"selected":false}]},"lastname":{"value":"Hoeger","versions":[{"value":"Hoeger","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280298726,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":11601074,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"80298lgte@example.org","timestamp":1551280298732,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"bc5845cb-827d-422b-8afe-05ad7c090b78","timestamp":1551280298744,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:39 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"80298lgte@example.org"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df4763b0462be2b790d27365e7ec868cb1551280299; expires=Thu, 27-Feb-20
+        15:11:39 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B1F888687253D61C28513962882D806020D5EEF6A000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126826'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95cd0af8959e-IAD
+    body:
+      encoding: UTF-8
+      string: '{"message":"Contact already exists","identityProfile":{"vid":11601074,"identity":[{"value":"80298lgte@example.org","type":"EMAIL","timestamp":1551280298732,"isPrimary":true},{"value":"bc5845cb-827d-422b-8afe-05ad7c090b78","type":"LEAD_GUID","timestamp":1551280298744}],"linkedVid":[],"isContact":true,"savedAtTimestamp":1551280298753},"status":"error","correlationId":"3742c30b-e81a-4c91-a4b4-93251a2c824c","error":"CONTACT_EXISTS","requestId":"1505a966ecc635be9d4c28991e08ffba"}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:39 GMT
+recorded_with: VCR 4.0.0

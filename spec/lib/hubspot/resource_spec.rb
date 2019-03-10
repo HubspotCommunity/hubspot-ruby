@@ -33,6 +33,10 @@ RSpec.describe Hubspot::Resource do
         expect(subject["name"]).to eq name
         expect(subject.name).to eq name
       end
+
+      it 'has changes' do
+        expect(subject.changes).not_to be_empty
+      end
     end
 
     context 'with no arguments' do

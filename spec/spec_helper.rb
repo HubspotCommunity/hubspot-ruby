@@ -16,6 +16,7 @@ require 'rspec/its'
 require 'webmock/rspec'
 require 'factory_bot'
 require 'faker'
+require 'byebug'
 require 'hubspot-ruby'
 
 # Requires supporting files with custom matchers and macros, etc,

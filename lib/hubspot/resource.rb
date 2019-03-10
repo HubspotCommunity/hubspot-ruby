@@ -22,7 +22,7 @@ module Hubspot
           properties: Hubspot::Utils.hash_to_properties(properties.stringify_keys, key_name: property_name_field)
         }
         response = Hubspot::Connection.post_json(create_path, params: {}, body: request)
-        new(response)
+        from_result(response)
       end
     end
 
@@ -76,6 +76,8 @@ module Hubspot
     end
 
     def reload
+      raise(Hubspot::InvalidParams.new("Resource must have an ID")) if @id.nil?
+
       response = Hubspot::Connection.get_json(find_path, id: @id)
       initialize_from(response.with_indifferent_access)
 
@@ -90,20 +92,29 @@ module Hubspot
       request = {
         properties: Hubspot::Utils.hash_to_properties(@changes.stringify_keys, key_name: property_name_field)
       }
-      if update_method == "put"
-        Hubspot::Connection.put_json(update_path, params: { id: @id }, body: request)
+
+      if persisted?
+        if update_method == "put"
+          response = Hubspot::Connection.put_json(update_path, params: { id: @id }, body: request)
+        else
+          response = Hubspot::Connection.post_json(update_path, params: { id: @id }, body: request)
+        end
       else
-        Hubspot::Connection.post_json(update_path, params: { id: @id }, body: request)
+        response = Hubspot::Connection.post_json(create_path, params: {}, body: request)
+
+        # Grab the new ID from the response
+        @id = response[id_field]
       end
 
-      modifications = @changes.inject({}) { |h, (k, v)| h.merge(k => {"value" => v}) }
-      @properties = @properties.deep_merge(modifications)
-      @changes = {}
+      # Update the fields with the response
+      initialize_from(response.with_indifferent_access)
 
       self
     end
 
     def delete
+      raise(Hubspot::InvalidParams.new("Resource must have an ID")) if @id.nil?
+
       Hubspot::Connection.delete_json(delete_path, id: @id)
 
       @deleted = true
@@ -123,6 +134,10 @@ module Hubspot
       rescue NameError
         raise "CREATE_PATH not defined for #{self.class.name}"
       end
+    end
+
+    def create_path
+      self.class.create_path
     end
 
     def self.find_path

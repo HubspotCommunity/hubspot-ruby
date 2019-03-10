@@ -105,7 +105,7 @@ module Hubspot
                       else raise(Hubspot::InvalidParams, "Instance type not supported")
                       end
 
-        params = { objectType: objectType, objectId: object.vid }
+        params = { objectType: objectType, objectId: object.id }
         response = Hubspot::Connection.get_json(path, params)
         response["results"].map { |deal_id| find(deal_id) }
       end

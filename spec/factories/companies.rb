@@ -1,8 +1,9 @@
 
 FactoryBot.define do
   factory :company, class: Hubspot::Company do
-    name Faker::Company.name
+    to_create { |instance| instance.save }
 
-    skip_create
+    name Faker::Company.name
+    domain Faker::Internet.domain_name
   end
 end
