@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/0/profile?hapikey=<HAPI_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 10 Mar 2019 15:33:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da8eac2653491846a365818ec470705861552232034; expires=Mon, 09-Mar-20
+        15:33:54 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B329EDE248FEC82BD9BABE1673D60E586383125AA000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '122574'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Hubspot-Notfound:
+      - 'true'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4b5659851c499f4e-IAD
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"contact does not exist","correlationId":"67468b48-e5c0-4510-8dc1-ac9070dba443","requestId":"8c68ade7bde35d445e0f1d0366492872"}'
+    http_version: 
+  recorded_at: Sun, 10 Mar 2019 15:33:54 GMT
+recorded_with: VCR 4.0.0

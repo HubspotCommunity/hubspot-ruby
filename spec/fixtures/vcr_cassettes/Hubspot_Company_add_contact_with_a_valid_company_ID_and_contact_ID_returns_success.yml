@@ -1,0 +1,159 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Schinner, Armstrong and Frami"},{"name":"domain","value":"padberg.biz"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:20 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da99d274e451166e919056eb67e8e21e01551280280; expires=Thu, 27-Feb-20
+        15:11:20 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B61553F551D56DAB77F4C6F27ED5535F2B0232E4E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126858'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95568b8023e4-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1664890809,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280280111,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280280111,"source":"CALCULATED","sourceVid":[],"requestId":"83ced522-f6b3-4b94-8682-3c41936a9d2d"}]},"hs_lastmodifieddate":{"value":"1551280280111","timestamp":1551280280111,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280280111","timestamp":1551280280111,"source":"CALCULATED","sourceVid":[],"requestId":"83ced522-f6b3-4b94-8682-3c41936a9d2d"}]},"domain":{"value":"padberg.biz","timestamp":1551280280111,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280280111,"source":"API","sourceVid":[],"requestId":"83ced522-f6b3-4b94-8682-3c41936a9d2d"}]},"name":{"value":"Schinner,
+        Armstrong and Frami","timestamp":1551280280111,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
+        Armstrong and Frami","timestamp":1551280280111,"source":"API","sourceVid":[],"requestId":"83ced522-f6b3-4b94-8682-3c41936a9d2d"}]},"createdate":{"value":"1551280280111","timestamp":1551280280111,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280280111","timestamp":1551280280111,"source":"API","sourceVid":[],"requestId":"83ced522-f6b3-4b94-8682-3c41936a9d2d"},{"name":"createdate","value":"1551280280111","timestamp":1551280280111,"sourceId":"API","source":"API","sourceVid":[],"requestId":"83ced522-f6b3-4b94-8682-3c41936a9d2d"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:20 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"France"},{"property":"lastname","value":"Hyatt"},{"property":"email","value":"80280jpui@example.org"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:20 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d014c038736accb951d2f4c8ff75ec1a81551280280; expires=Thu, 27-Feb-20
+        15:11:20 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B3ED6A7D7375B4B04EE8DA90DE2482E95BDE8B44D000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126857'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95580c442462-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":11600774,"canonical-vid":11600774,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mMBsko6jE4bTzaKlK0ulgcc67_0OswtnG3iM_WnCVnX_tzkneU3BAS38CEzKPoKaNdVRWkIf9wFX7EwH5aw6pAFEWtsrXcTH3jcw19UaXmu_HfR4RaJ9fZl5APfitm4LpALYLfZ","profile-url":"https://app.hubspot.com/contacts/62515/contact/11600774","properties":{"firstname":{"value":"France","versions":[{"value":"France","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280280360,"selected":false}]},"email":{"value":"80280jpui@example.org","versions":[{"value":"80280jpui@example.org","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280280360,"selected":false}]},"lastname":{"value":"Hyatt","versions":[{"value":"Hyatt","source-type":"API","source-id":null,"source-label":null,"timestamp":1551280280360,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":11600774,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"80280jpui@example.org","timestamp":1551280280366,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"131ba613-f258-4f5a-ab07-0f024246c1e0","timestamp":1551280280376,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:20 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1664890809/contacts/11600774?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:20 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d16c6b3f5f7a8947755dc462b0778193c1551280280; expires=Thu, 27-Feb-20
+        15:11:20 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BF00D5F34A36E3FCDAAA3648702C3DBCA34132E81000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126856'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb9559ec7b23a8-IAD
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJwb3J0YWxJZCI6NjI1MTUsImNvbXBhbnlJZCI6MTY2NDg5MDgwOSwiaXNEZWxldGVkIjpmYWxzZSwicHJvcGVydGllcyI6eyJ3ZWJzaXRlIjp7InZhbHVlIjoicGFkYmVyZy5iaXoiLCJ0aW1lc3RhbXAiOjE1NTEyODAyODAxMTEsInNvdXJjZSI6IkNBTENVTEFURUQiLCJzb3VyY2VJZCI6bnVsbCwidmVyc2lvbnMiOlt7Im5hbWUiOiJ3ZWJzaXRlIiwidmFsdWUiOiJwYWRiZXJnLmJpeiIsInRpbWVzdGFtcCI6MTU1MTI4MDI4MDExMSwic291cmNlIjoiQ0FMQ1VMQVRFRCIsInNvdXJjZVZpZCI6W10sInJlcXVlc3RJZCI6IjgzY2VkNTIyLWY2YjMtNGI5NC04NjgyLTNjNDE5MzZhOWQyZCJ9XX0sImhzX2xhc3Rtb2RpZmllZGRhdGUiOnsidmFsdWUiOiIxNTUxMjgwMjgwNTg2IiwidGltZXN0YW1wIjoxNTUxMjgwMjgwNTg2LCJzb3VyY2UiOiJDQUxDVUxBVEVEIiwic291cmNlSWQiOm51bGwsInZlcnNpb25zIjpbeyJuYW1lIjoiaHNfbGFzdG1vZGlmaWVkZGF0ZSIsInZhbHVlIjoiMTU1MTI4MDI4MDU4NiIsInRpbWVzdGFtcCI6MTU1MTI4MDI4MDU4Niwic291cmNlIjoiQ0FMQ1VMQVRFRCIsInNvdXJjZVZpZCI6W119XX0sImRvbWFpbiI6eyJ2YWx1ZSI6InBhZGJlcmcuYml6IiwidGltZXN0YW1wIjoxNTUxMjgwMjgwMTExLCJzb3VyY2UiOiJBUEkiLCJzb3VyY2VJZCI6bnVsbCwidmVyc2lvbnMiOlt7Im5hbWUiOiJkb21haW4iLCJ2YWx1ZSI6InBhZGJlcmcuYml6IiwidGltZXN0YW1wIjoxNTUxMjgwMjgwMTExLCJzb3VyY2UiOiJBUEkiLCJzb3VyY2VWaWQiOltdLCJyZXF1ZXN0SWQiOiI4M2NlZDUyMi1mNmIzLTRiOTQtODY4Mi0zYzQxOTM2YTlkMmQifV19LCJuYW1lIjp7InZhbHVlIjoiU2NoaW5uZXIsIEFybXN0cm9uZyBhbmQgRnJhbWkiLCJ0aW1lc3RhbXAiOjE1NTEyODAyODAxMTEsInNvdXJjZSI6IkFQSSIsInNvdXJjZUlkIjpudWxsLCJ2ZXJzaW9ucyI6W3sibmFtZSI6Im5hbWUiLCJ2YWx1ZSI6IlNjaGlubmVyLCBBcm1zdHJvbmcgYW5kIEZyYW1pIiwidGltZXN0YW1wIjoxNTUxMjgwMjgwMTExLCJzb3VyY2UiOiJBUEkiLCJzb3VyY2VWaWQiOltdLCJyZXF1ZXN0SWQiOiI4M2NlZDUyMi1mNmIzLTRiOTQtODY4Mi0zYzQxOTM2YTlkMmQifV19LCJkZXNjcmlwdGlvbiI6eyJ2YWx1ZSI6IkhpZXIgZW50c3RlaHQgZGllIEludGVybmV0cHLDpHNlbnogZGVyIERvbWFpbiByZWluZXItcGFkYmVyZy5kZS4iLCJ0aW1lc3RhbXAiOjE1NTEyODAyODA0MDgsInNvdXJjZSI6IkJJREVOIiwic291cmNlSWQiOiJCaWRlblByb3BlcnR5TWFwcGluZ3MiLCJ2ZXJzaW9ucyI6W3sibmFtZSI6ImRlc2NyaXB0aW9uIiwidmFsdWUiOiJIaWVyIGVudHN0ZWh0IGRpZSBJbnRlcm5ldHByw6RzZW56IGRlciBEb21haW4gcmVpbmVyLXBhZGJlcmcuZGUuIiwidGltZXN0YW1wIjoxNTUxMjgwMjgwNDA4LCJzb3VyY2VJZCI6IkJpZGVuUHJvcGVydHlNYXBwaW5ncyIsInNvdXJjZSI6IkJJREVOIiwic291cmNlVmlkIjpbXX1dfSwiY3JlYXRlZGF0ZSI6eyJ2YWx1ZSI6IjE1NTEyODAyODAxMTEiLCJ0aW1lc3RhbXAiOjE1NTEyODAyODAxMTEsInNvdXJjZSI6IkFQSSIsInNvdXJjZUlkIjpudWxsLCJ2ZXJzaW9ucyI6W3sibmFtZSI6ImNyZWF0ZWRhdGUiLCJ2YWx1ZSI6IjE1NTEyODAyODAxMTEiLCJ0aW1lc3RhbXAiOjE1NTEyODAyODAxMTEsInNvdXJjZSI6IkFQSSIsInNvdXJjZVZpZCI6W10sInJlcXVlc3RJZCI6IjgzY2VkNTIyLWY2YjMtNGI5NC04NjgyLTNjNDE5MzZhOWQyZCJ9XX19LCJhZGRpdGlvbmFsRG9tYWlucyI6W10sInN0YXRlQ2hhbmdlcyI6W10sIm1lcmdlQXVkaXRzIjpbXX0=
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:20 GMT
+recorded_with: VCR 4.0.0

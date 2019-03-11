@@ -41,8 +41,8 @@ describe Hubspot::Deal do
 
   describe '.find_by_company' do
     cassette 'deal_find_by_company'
-    let(:company) { Hubspot::Company.create!('Test Company') }
-    let(:deal) { Hubspot::Deal.create!(portal_id, [company.vid], [vid], { amount: amount }) }
+    let(:company) { Hubspot::Company.create(name: 'Test Company') }
+    let(:deal) { Hubspot::Deal.create!(portal_id, [company.id], [vid], { amount: amount }) }
 
     it 'returns company deals' do
       deals = Hubspot::Deal.find_by_company(company)

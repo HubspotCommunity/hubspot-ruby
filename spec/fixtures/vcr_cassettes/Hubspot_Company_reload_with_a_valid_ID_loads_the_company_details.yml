@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Schinner, Armstrong and Frami"},{"name":"domain","value":"padberg.biz"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:11 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d6aa7929eb31cd345fe65a18c01bc72b21551280271; expires=Thu, 27-Feb-20
+        15:11:11 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BC6D620340A9CE221F8C794AAD4379585D95B4A5B000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126886'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb951eee8d23e4-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1664908831,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280271222,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280271222,"source":"CALCULATED","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"hs_lastmodifieddate":{"value":"1551280271222","timestamp":1551280271222,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280271222","timestamp":1551280271222,"source":"CALCULATED","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"domain":{"value":"padberg.biz","timestamp":1551280271222,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280271222,"source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"name":{"value":"Schinner,
+        Armstrong and Frami","timestamp":1551280271222,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
+        Armstrong and Frami","timestamp":1551280271222,"source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"createdate":{"value":"1551280271222","timestamp":1551280271222,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280271222","timestamp":1551280271222,"source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"},{"name":"createdate","value":"1551280271222","timestamp":1551280271222,"sourceId":"API","source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:11 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/companies/v2/companies/1664908831?hapikey=<HAPI_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 15:11:11 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df5a8796c4f6d5be16ff011994f5d257e1551280271; expires=Thu, 27-Feb-20
+        15:11:11 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B447FC18FFB295F0AE783ED71885A08660DE77F64000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '160000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '126885'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding, User-Agent
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4afb95207b58244a-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1664908831,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280271222,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280271222,"source":"CALCULATED","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"hs_lastmodifieddate":{"value":"1551280271222","timestamp":1551280271222,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280271222","timestamp":1551280271222,"source":"CALCULATED","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"domain":{"value":"padberg.biz","timestamp":1551280271222,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280271222,"source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"name":{"value":"Schinner,
+        Armstrong and Frami","timestamp":1551280271222,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
+        Armstrong and Frami","timestamp":1551280271222,"source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]},"createdate":{"value":"1551280271222","timestamp":1551280271222,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280271222","timestamp":1551280271222,"source":"API","sourceVid":[],"requestId":"22a01def-2243-44a1-954a-38282d864444"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 15:11:11 GMT
+recorded_with: VCR 4.0.0
