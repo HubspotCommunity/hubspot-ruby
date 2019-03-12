@@ -12,7 +12,7 @@ describe Hubspot::Connection do
       @http_response.body { 'mocked response' }
 
       mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).get(@url, format: :json) { @http_response }
+      mock(Hubspot::Connection).get(@url, format: :json, read_timeout: nil, open_timeout: nil) { @http_response }
       Hubspot::Connection.get_json(@url, {})
     end
   end
@@ -25,7 +25,7 @@ describe Hubspot::Connection do
       @http_response.body { 'mocked response' }
 
       mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json) { @http_response }
+      mock(Hubspot::Connection).post(@url, body: "{}", headers: {"Content-Type"=>"application/json"}, format: :json, read_timeout: nil, open_timeout: nil) { @http_response }
       Hubspot::Connection.post_json(@url, params: {}, body: {})
     end
   end
@@ -37,7 +37,7 @@ describe Hubspot::Connection do
       @http_response.body { 'mocked response' }
 
       mock(Hubspot::Connection).generate_url(@url, {}) { @url }
-      mock(Hubspot::Connection).delete(@url, format: :json) { @http_response }
+      mock(Hubspot::Connection).delete(@url, format: :json, read_timeout: nil, open_timeout: nil) { @http_response }
       Hubspot::Connection.delete_json(@url, {})
     end
   end
