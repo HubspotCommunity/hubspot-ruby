@@ -34,7 +34,8 @@ Hubspot.configure({
   client_id: <CLIENT_ID>,
   client_secret: <CLIENT_SECRET>,
   redirect_uri: <REDIRECT_URI>,
-  timeout: nil,
+  read_timeout: nil, # or :timeout to set read_timeout and open_timeout
+  open_timeout: nil,
 })
 ```
 
