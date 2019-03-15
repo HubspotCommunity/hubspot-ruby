@@ -5,7 +5,7 @@ module Hubspot
     class << self
       def get_json(path, opts)
         url = generate_url(path, opts)
-        response = get(url, format: :json, timeout: timeout(opts))
+        response = get(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
         log_request_and_response url, response
         handle_response(response)
       end
@@ -14,7 +14,7 @@ module Hubspot
         no_parse = opts[:params].delete(:no_parse) { false }
 
         url = generate_url(path, opts[:params])
-        response = post(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json, timeout: timeout(opts))
+        response = post(url, { body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts) })
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
 
@@ -29,7 +29,8 @@ module Hubspot
           body: options[:body].to_json,
           headers: { "Content-Type" => "application/json" },
           format: :json,
-          timeout: timeout(options)
+          read_timeout: read_timeout(options),
+          open_timeout: open_timeout(options),
         )
 
         log_request_and_response(url, response, options[:body])
@@ -38,7 +39,7 @@ module Hubspot
 
       def delete_json(path, opts)
         url = generate_url(path, opts)
-        response = delete(url, format: :json, timeout: timeout(opts))
+        response = delete(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
         response
@@ -46,8 +47,12 @@ module Hubspot
 
       protected
 
-      def timeout(opts = {})
-        opts.delete(:timeout) || Hubspot::Config.timeout
+      def read_timeout(opts = {})
+        opts.delete(:read_timeout) || Hubspot::Config.read_timeout
+      end
+
+      def open_timeout(opts = {})
+        opts.delete(:open_timeout) || Hubspot::Config.open_timeout
       end
 
       def handle_response(response)

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
-  s.version = "0.6.1"
+  s.version = "0.7.0"
   s.require_paths = ["lib"]
   s.authors = ["Andrew DiMichele", "Chris Bisnett"]
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
@@ -34,5 +34,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency("awesome_print")
   s.add_development_dependency("timecop")
   s.add_development_dependency("guard-rspec")
+  s.add_development_dependency("byebug")
+  s.add_development_dependency("faker")
+  s.add_development_dependency("factory_bot")
 end
 

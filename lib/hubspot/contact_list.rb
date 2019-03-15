@@ -85,7 +85,7 @@ module Hubspot
         opts[:list_id] = @id
 
         response = Hubspot::Connection.get_json(path, Hubspot::ContactProperties.add_default_parameters(opts))
-        @contacts = response['contacts'].map! { |c| Hubspot::Contact.new(c) }
+        @contacts = response['contacts'].map! { |c| Hubspot::Contact.from_result(c) }
         paged ? response : @contacts
       else
         @contacts
@@ -100,14 +100,14 @@ module Hubspot
 
     # {http://developers.hubspot.com/docs/methods/lists/add_contact_to_list}
     def add(contacts)
-      contact_ids = [contacts].flatten.uniq.compact.map(&:vid)
+      contact_ids = [contacts].flatten.uniq.compact.map(&:id)
       response = Hubspot::Connection.post_json(ADD_CONTACT_PATH, params: { list_id: @id }, body: { vids: contact_ids })
       response['updated'].sort == contact_ids.sort
     end
 
     # {http://developers.hubspot.com/docs/methods/lists/remove_contact_from_list}
     def remove(contacts)
-      contact_ids = [contacts].flatten.uniq.compact.map(&:vid)
+      contact_ids = [contacts].flatten.uniq.compact.map(&:id)
       response = Hubspot::Connection.post_json(REMOVE_CONTACT_PATH, params: { list_id: @id }, body: { vids: contact_ids })
       response['updated'].sort == contact_ids.sort
     end
