@@ -24,6 +24,7 @@ require 'hubspot/owner'
 require 'hubspot/engagement'
 require 'hubspot/subscription'
 require 'hubspot/oauth'
+require 'hubspot/crm_associations'
 
 module Hubspot
   def self.configure(config={})
