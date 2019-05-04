@@ -1,9 +1,13 @@
 module Hubspot
   class Resource
 
-    class_attribute :id_field, instance_writer: false, default: "id"
-    class_attribute :property_name_field, instance_writer: false, default: "property"
-    class_attribute :update_method, instance_writer: false, default: "put"
+    class_attribute :id_field, instance_writer: false
+    class_attribute :property_name_field, instance_writer: false
+    class_attribute :update_method, instance_writer: false
+
+    self.id_field = "id"
+    self.property_name_field = "property"
+    self.update_method = "put"
 
     class << self
       def from_result(result)
