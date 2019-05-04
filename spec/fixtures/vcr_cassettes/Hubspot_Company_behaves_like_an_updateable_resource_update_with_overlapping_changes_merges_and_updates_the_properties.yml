@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Fisher and Sons"},{"name":"domain","value":"rolfson.co"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d8047dababd7525ca768e3bb01032d1081556981034; expires=Sun, 03-May-20
+        14:43:54 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B0363F8C2467DEFCFCD561DB19E9337D10F2A1178000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979547'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fe8c9c8958a-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1896382703,"isDeleted":false,"properties":{"website":{"value":"rolfson.co","timestamp":1556981034393,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"rolfson.co","timestamp":1556981034393,"source":"CALCULATED","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]},"hs_lastmodifieddate":{"value":"1556981034393","timestamp":1556981034393,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981034393","timestamp":1556981034393,"source":"CALCULATED","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]},"domain":{"value":"rolfson.co","timestamp":1556981034393,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"rolfson.co","timestamp":1556981034393,"source":"API","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]},"name":{"value":"Fisher
+        and Sons","timestamp":1556981034393,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Fisher
+        and Sons","timestamp":1556981034393,"source":"API","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]},"createdate":{"value":"1556981034393","timestamp":1556981034393,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981034393","timestamp":1556981034393,"source":"API","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"},{"name":"createdate","value":"1556981034393","timestamp":1556981034393,"sourceId":"API","source":"API","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:54 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1896382703?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"},{"name":"description","value":"My
+        Corporation"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d6e56c2ee344fc4e624adc0aafbce7cad1556981034; expires=Sun, 03-May-20
+        14:43:54 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BE822CDB37862630F984AC9C47EDC85E03CF274E2000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979546'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fea680f95b4-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1896382703,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981034647","timestamp":1556981034647,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981034647","timestamp":1556981034647,"source":"CALCULATED","sourceVid":[],"requestId":"473494bf-d091-4252-8576-b1bb489d40f3"},{"name":"hs_lastmodifieddate","value":"1556981034393","timestamp":1556981034393,"source":"CALCULATED","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]},"name":{"value":"Foobar","timestamp":1556981034647,"source":"API","sourceId":"473494bf-d091-4252-8576-b1bb489d40f3","versions":[{"name":"name","value":"Foobar","timestamp":1556981034647,"sourceId":"473494bf-d091-4252-8576-b1bb489d40f3","source":"API","sourceVid":[],"requestId":"473494bf-d091-4252-8576-b1bb489d40f3"},{"name":"name","value":"Fisher
+        and Sons","timestamp":1556981034393,"source":"API","sourceVid":[],"requestId":"fd0aa74a-da19-4666-b11d-4be546395aae"}]},"description":{"value":"My
+        Corporation","timestamp":1556981034647,"source":"API","sourceId":"473494bf-d091-4252-8576-b1bb489d40f3","versions":[{"name":"description","value":"My
+        Corporation","timestamp":1556981034647,"sourceId":"473494bf-d091-4252-8576-b1bb489d40f3","source":"API","sourceVid":[],"requestId":"473494bf-d091-4252-8576-b1bb489d40f3"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:54 GMT
+recorded_with: VCR 4.0.0

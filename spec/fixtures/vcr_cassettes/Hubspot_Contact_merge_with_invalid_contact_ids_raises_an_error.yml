@@ -15,7 +15,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sun, 10 Mar 2019 15:34:03 GMT
+      - Sat, 04 May 2019 14:44:44 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,18 +23,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d8ed5d73369390405ec71548dcd86ad961552232043; expires=Mon, 09-Mar-20
-        15:34:03 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=dd6e4c80e6fc76ce91df1bb171a75a8ef1556981084; expires=Sun, 03-May-20
+        14:44:44 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B4297CE0244ED7B2EE200A2A39331B65ED16F615C000000000000000000
+      - 2B3419610968BDABD048CD6E59C94F6FE0D4E422C1000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '122550'
+      - '979454'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '57'
+      - '59'
       Vary:
       - Accept-Encoding
       - Accept-Encoding
@@ -47,11 +47,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4b5659c0f922cf02-IAD
+      - 4d1b41203ab1c1f2-IAD
     body:
       encoding: UTF-8
       string: '{"status":"error","message":"canonical vid is not a valid contact or
-        is already in the process of being merged","correlationId":"ece817a9-11d5-4bad-bea8-a9c86c7bf562","requestId":"6c9f32062d98ee2ba5c28a1d9273ac38"}'
+        is already in the process of being merged","correlationId":"07183c3f-3867-4a1c-b264-c3680ed82231","requestId":"4a37890c8fc6c30556da6644b72f7e7b"}'
     http_version: 
-  recorded_at: Sun, 10 Mar 2019 15:34:03 GMT
+  recorded_at: Sat, 04 May 2019 14:44:44 GMT
 recorded_with: VCR 4.0.0

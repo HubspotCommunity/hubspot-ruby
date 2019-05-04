@@ -23,6 +23,9 @@ require 'hubspot-ruby'
 # in ./support/ and its subdirectories.
 Dir["#{RSPEC_ROOT}/support/**/*.rb"].each {|f| require f}
 
+# Require shared examples
+Dir["#{RSPEC_ROOT}/shared_examples/**/*.rb"].each {|f| require f}
+
 RSpec.configure do |config|
   config.after(:each) do
     Hubspot::Config.reset!

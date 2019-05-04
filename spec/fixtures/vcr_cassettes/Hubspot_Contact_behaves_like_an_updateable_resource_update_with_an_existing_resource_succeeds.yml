@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"Dorian"},{"property":"lastname","value":"Sporer"},{"property":"email","value":"81066emrd@example.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:44:27 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d748667208df08b4de961e8c5891c9ac11556981066; expires=Sun, 03-May-20
+        14:44:26 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BF56DCF23DCEB84B81E255BEC221C27B4FD14B125000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979489'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b40b44883c1b6-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":12053174,"canonical-vid":12053174,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mO0fXHxJMWJzgQrmZAU639g-C2NKxH3CiDCq2s-8J3WmtvRZuy8leMJnVW43l2bouKF75Xcrgq8NvMeStvL5eJAWCfn2w-CvVD0ddxfxplBziCwkV3lJ0dWloYq0LQkhssR_DsN","profile-url":"https://app.hubspot.com/contacts/62515/contact/12053174","properties":{"firstname":{"value":"Dorian","versions":[{"value":"Dorian","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981067019,"selected":false}]},"email":{"value":"81066emrd@example.com","versions":[{"value":"81066emrd@example.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981067019,"selected":false}]},"lastname":{"value":"Sporer","versions":[{"value":"Sporer","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981067019,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":12053174,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"81066emrd@example.com","timestamp":1556981067025,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"bfe96628-99e2-4b0c-a88f-f11123a6c3ef","timestamp":1556981067035,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:44:27 GMT
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/12053174/profile?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:44:27 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de6724a24d4b6f375c7642d3d7da8e7d81556981067; expires=Sun, 03-May-20
+        14:44:27 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BEF86940F71B89BAE8198A5EC0328B6B1533F673B000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979488'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b40b709ad5685-IAD
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:44:27 GMT
+recorded_with: VCR 4.0.0

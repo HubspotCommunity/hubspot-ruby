@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Leuschke-Watsica"},{"name":"domain","value":"hauck.io"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:51 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da52deca62846b3190d3e5d16cf70dfad1556981031; expires=Sun, 03-May-20
+        14:43:51 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B871D90252309CC737785E093EDE77D673FD6AEB9000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979557'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fd80946cf54-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897466915,"isDeleted":false,"properties":{"website":{"value":"hauck.io","timestamp":1556981031717,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"hauck.io","timestamp":1556981031717,"source":"CALCULATED","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]},"hs_lastmodifieddate":{"value":"1556981031717","timestamp":1556981031717,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981031717","timestamp":1556981031717,"source":"CALCULATED","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]},"domain":{"value":"hauck.io","timestamp":1556981031717,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"hauck.io","timestamp":1556981031717,"source":"API","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]},"name":{"value":"Leuschke-Watsica","timestamp":1556981031717,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Leuschke-Watsica","timestamp":1556981031717,"source":"API","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]},"createdate":{"value":"1556981031717","timestamp":1556981031717,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981031717","timestamp":1556981031717,"source":"API","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"},{"name":"createdate","value":"1556981031717","timestamp":1556981031717,"sourceId":"API","source":"API","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:51 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1897466915?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:52 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d363dd44ced64cf09e0d02d86aed6a30b1556981031; expires=Sun, 03-May-20
+        14:43:51 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BFC695A3F3F92345620E58EF0858268DB1CE263F3000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979556'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fd9cdb49f3a-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897466915,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981031990","timestamp":1556981031990,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981031990","timestamp":1556981031990,"source":"CALCULATED","sourceVid":[],"requestId":"56d9cc82-c8a0-4a01-a4a2-2dada90c5943"},{"name":"hs_lastmodifieddate","value":"1556981031717","timestamp":1556981031717,"source":"CALCULATED","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]},"name":{"value":"Foobar","timestamp":1556981031990,"source":"API","sourceId":"56d9cc82-c8a0-4a01-a4a2-2dada90c5943","versions":[{"name":"name","value":"Foobar","timestamp":1556981031990,"sourceId":"56d9cc82-c8a0-4a01-a4a2-2dada90c5943","source":"API","sourceVid":[],"requestId":"56d9cc82-c8a0-4a01-a4a2-2dada90c5943"},{"name":"name","value":"Leuschke-Watsica","timestamp":1556981031717,"source":"API","sourceVid":[],"requestId":"b0cbb498-19a7-4dfd-8740-1051f87157c0"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:52 GMT
+recorded_with: VCR 4.0.0

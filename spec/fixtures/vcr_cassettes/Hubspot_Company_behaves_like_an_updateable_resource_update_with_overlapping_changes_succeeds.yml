@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Pfeffer Group"},{"name":"domain","value":"monahan.info"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:53 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df2d6fbceecae67ffbd4082e4ebfd79121556981033; expires=Sun, 03-May-20
+        14:43:53 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B4B6D87980302C67BFD841E615C1FFDD60516C78E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979549'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '56'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fe56aee571b-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897447165,"isDeleted":false,"properties":{"website":{"value":"monahan.info","timestamp":1556981033850,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"monahan.info","timestamp":1556981033850,"source":"CALCULATED","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"}]},"hs_lastmodifieddate":{"value":"1556981033850","timestamp":1556981033850,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981033850","timestamp":1556981033850,"source":"CALCULATED","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"}]},"domain":{"value":"monahan.info","timestamp":1556981033850,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"monahan.info","timestamp":1556981033850,"source":"API","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"}]},"name":{"value":"Pfeffer
+        Group","timestamp":1556981033850,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Pfeffer
+        Group","timestamp":1556981033850,"source":"API","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"}]},"createdate":{"value":"1556981033850","timestamp":1556981033850,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981033850","timestamp":1556981033850,"source":"API","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"},{"name":"createdate","value":"1556981033850","timestamp":1556981033850,"sourceId":"API","source":"API","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:53 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1897447165?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"},{"name":"description","value":"My
+        Corporation"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da1373ab676d8176cbc58f6ccc42895e41556981034; expires=Sun, 03-May-20
+        14:43:54 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BE4921DF5021686A2D915B0977C8ADE302B7DFA8C000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979548'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fe7089b9f46-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897447165,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981034123","timestamp":1556981034123,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981034123","timestamp":1556981034123,"source":"CALCULATED","sourceVid":[],"requestId":"2131d23c-019c-4fdc-bf86-44d8da3328b5"},{"name":"hs_lastmodifieddate","value":"1556981034105","timestamp":1556981034105,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"Foobar","timestamp":1556981034123,"source":"API","sourceId":"2131d23c-019c-4fdc-bf86-44d8da3328b5","versions":[{"name":"name","value":"Foobar","timestamp":1556981034123,"sourceId":"2131d23c-019c-4fdc-bf86-44d8da3328b5","source":"API","sourceVid":[],"requestId":"2131d23c-019c-4fdc-bf86-44d8da3328b5"},{"name":"name","value":"Pfeffer
+        Group","timestamp":1556981033850,"source":"API","sourceVid":[],"requestId":"0c28a40e-3ee1-40dd-865c-a42550f1ac03"}]},"description":{"value":"My
+        Corporation","timestamp":1556981034123,"source":"API","sourceId":"2131d23c-019c-4fdc-bf86-44d8da3328b5","versions":[{"name":"description","value":"My
+        Corporation","timestamp":1556981034123,"sourceId":"2131d23c-019c-4fdc-bf86-44d8da3328b5","source":"API","sourceVid":[],"requestId":"2131d23c-019c-4fdc-bf86-44d8da3328b5"},{"name":"description","value":"-
+        MONAHAN.INFO -","timestamp":1556981034030,"sourceId":"BidenPropertyMappings","source":"BIDEN","sourceVid":[]}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:54 GMT
+recorded_with: VCR 4.0.0

@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 10 Mar 2019 15:33:59 GMT
+      - Sat, 04 May 2019 14:44:42 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -21,18 +21,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d48bac427ad2c8de0f5e4bbef51eea65f1552232039; expires=Mon, 09-Mar-20
-        15:33:59 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d4cae83122d476ab9af2f8e446bfaff061556981081; expires=Sun, 03-May-20
+        14:44:41 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B8D14AAA25DD1721EF174BEB32B7EA1551C9B6993000000000000000000
+      - 2B64293F3FA1545E7A92E3DE047F6A35CE015D648E000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '122560'
+      - '979459'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '59'
+      - '57'
       Vary:
       - Accept-Encoding
       - Accept-Encoding
@@ -45,10 +45,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4b5659a46c4bcf06-IAD
+      - 4d1b411258c69fb8-IAD
     body:
       encoding: UTF-8
       string: '{"query":"123xyz","offset":0,"has-more":false,"total":0,"contacts":[]}'
     http_version: 
-  recorded_at: Sun, 10 Mar 2019 15:33:59 GMT
+  recorded_at: Sat, 04 May 2019 14:44:42 GMT
 recorded_with: VCR 4.0.0

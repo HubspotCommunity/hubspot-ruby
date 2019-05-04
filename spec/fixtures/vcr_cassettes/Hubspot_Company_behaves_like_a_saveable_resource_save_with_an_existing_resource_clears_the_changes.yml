@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Mante Inc"},{"name":"domain","value":"zboncakhudson.name"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:49 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d9cd9b9ea75b91a9cc22b6dab5d9d58151556981029; expires=Sun, 03-May-20
+        14:43:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B5E42F574A6161A175D8F2EF6B0AD753B12E45427000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979559'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fcc488ccee8-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897515213,"isDeleted":false,"properties":{"website":{"value":"zboncakhudson.name","timestamp":1556981029832,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"zboncakhudson.name","timestamp":1556981029832,"source":"CALCULATED","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]},"hs_lastmodifieddate":{"value":"1556981029832","timestamp":1556981029832,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981029832","timestamp":1556981029832,"source":"CALCULATED","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]},"domain":{"value":"zboncakhudson.name","timestamp":1556981029832,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"zboncakhudson.name","timestamp":1556981029832,"source":"API","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]},"name":{"value":"Mante
+        Inc","timestamp":1556981029832,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Mante
+        Inc","timestamp":1556981029832,"source":"API","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]},"createdate":{"value":"1556981029832","timestamp":1556981029832,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981029832","timestamp":1556981029832,"source":"API","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"},{"name":"createdate","value":"1556981029832","timestamp":1556981029832,"sourceId":"API","source":"API","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:49 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1897515213?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:51 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de4789f9ed7b3b1f8a656f63efb217f761556981031; expires=Sun, 03-May-20
+        14:43:51 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B113B9CB5AC0C433A9ABD86CB122C63D70457A56D000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979558'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fd4ac87c18e-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897515213,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981031413","timestamp":1556981031413,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981031413","timestamp":1556981031413,"source":"CALCULATED","sourceVid":[],"requestId":"3028c12f-f1a9-4551-a344-24e09de1f7e7"},{"name":"hs_lastmodifieddate","value":"1556981029832","timestamp":1556981029832,"source":"CALCULATED","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]},"name":{"value":"Foobar","timestamp":1556981031413,"source":"API","sourceId":"3028c12f-f1a9-4551-a344-24e09de1f7e7","versions":[{"name":"name","value":"Foobar","timestamp":1556981031413,"sourceId":"3028c12f-f1a9-4551-a344-24e09de1f7e7","source":"API","sourceVid":[],"requestId":"3028c12f-f1a9-4551-a344-24e09de1f7e7"},{"name":"name","value":"Mante
+        Inc","timestamp":1556981029832,"source":"API","sourceVid":[],"requestId":"92b5d081-2fa7-4a01-8435-f9435103f938"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:51 GMT
+recorded_with: VCR 4.0.0

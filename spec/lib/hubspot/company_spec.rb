@@ -12,6 +12,17 @@ RSpec.describe Hubspot::Company do
 
   before{ Hubspot.configure(hapikey: "demo") }
 
+  it_behaves_like "a saveable resource", :company do
+    def set_property(company)
+      company.name = "Foobar"
+    end
+  end
+
+  it_behaves_like "an updateable resource", :company do
+    let(:changed_properties) { { name: "Foobar" } }
+    let(:overlapping_properties) { { name: "My Corp", description: "My Corporation" } }
+  end
+
   describe '.find' do
     context 'with a valid ID' do
       cassette
@@ -131,50 +142,6 @@ RSpec.describe Hubspot::Company do
         expect {
           subject.reload
         }.to raise_error(Hubspot::InvalidParams)
-      end
-    end
-  end
-
-  describe '#save' do
-    context 'with no changes' do
-      cassette
-
-      subject { described_class.new }
-
-      it 'creates a new company' do
-        expect {
-          subject.save
-        }.to change { subject.id }.from(nil)
-      end
-
-      it 'has no changes' do
-        expect {
-          subject
-        }.not_to change { subject.changed? }.from(false)
-      end
-    end
-
-    context 'with changes' do
-      cassette
-
-      subject { build :company }
-
-      it 'persists the company' do
-        expect {
-          subject.save
-        }.to change { subject.persisted? }.from(false).to(true)
-      end
-
-      it 'updates the ID property' do
-        expect {
-          subject.save
-        }.to change { subject.id }.from(nil)
-      end
-
-      it 'resets the changes' do
-        expect {
-          subject.save
-        }.to change { subject.changed? }.from(true).to(false)
       end
     end
   end

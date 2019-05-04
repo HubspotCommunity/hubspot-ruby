@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"Benny"},{"property":"lastname","value":"Schamberger"},{"property":"email","value":"81063mlec@example.net"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:44:23 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc81fe4a55a5ccbf30d7670e172996ab31556981063; expires=Sun, 03-May-20
+        14:44:23 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B80FBD622718E9306C4BD596551D7F4029266965E000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979496'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b409ec89f9f88-IAD
+    body:
+      encoding: UTF-8
+      string: '{"vid":12053024,"canonical-vid":12053024,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mPptcfsMRrBMDqq17SthfZJhUwDtsyFgiLW_I2iEdC8Odcs2hQ9h37dWt_ZBaUUsSQ81MxKXeUyN6oKlNu4qZodX4oIj0caCIIcvgISffZnQtLTkPF_t3f1aWwVWOGcCwzouEyL","profile-url":"https://app.hubspot.com/contacts/62515/contact/12053024","properties":{"firstname":{"value":"Benny","versions":[{"value":"Benny","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981063516,"selected":false}]},"email":{"value":"81063mlec@example.net","versions":[{"value":"81063mlec@example.net","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981063516,"selected":false}]},"lastname":{"value":"Schamberger","versions":[{"value":"Schamberger","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981063516,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":12053024,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"81063mlec@example.net","timestamp":1556981063522,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"6b79a739-99ee-41b4-8b02-ab1a465bcbe7","timestamp":1556981063534,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:44:23 GMT
+recorded_with: VCR 4.0.0

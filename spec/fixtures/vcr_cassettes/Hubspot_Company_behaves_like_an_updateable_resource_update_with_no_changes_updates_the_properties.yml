@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Kuphal Inc"},{"name":"domain","value":"kreigerhagenes.biz"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:53 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d5e24d94c2cfb6626e5bd4fc8627633bd1556981033; expires=Sun, 03-May-20
+        14:43:53 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B672FA4E16B04FC03D9DA511210C10EFAC5253CED000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979551'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fe25a9ec17c-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897447164,"isDeleted":false,"properties":{"website":{"value":"kreigerhagenes.biz","timestamp":1556981033355,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"kreigerhagenes.biz","timestamp":1556981033355,"source":"CALCULATED","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]},"hs_lastmodifieddate":{"value":"1556981033355","timestamp":1556981033355,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981033355","timestamp":1556981033355,"source":"CALCULATED","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]},"domain":{"value":"kreigerhagenes.biz","timestamp":1556981033355,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"kreigerhagenes.biz","timestamp":1556981033355,"source":"API","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]},"name":{"value":"Kuphal
+        Inc","timestamp":1556981033355,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Kuphal
+        Inc","timestamp":1556981033355,"source":"API","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]},"createdate":{"value":"1556981033355","timestamp":1556981033355,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981033355","timestamp":1556981033355,"source":"API","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"},{"name":"createdate","value":"1556981033355","timestamp":1556981033355,"sourceId":"API","source":"API","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:53 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1897447164?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:53 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d114c0c5cd2be6f544ff034131843a7531556981033; expires=Sun, 03-May-20
+        14:43:53 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B2B260F4637FC13E57CCCD330BB27D1967C09ABD9000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979550'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fe3cf649f3a-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897447164,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981033594","timestamp":1556981033594,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981033594","timestamp":1556981033594,"source":"CALCULATED","sourceVid":[],"requestId":"d8ff8ffc-2871-4995-b96b-09019324b0e1"},{"name":"hs_lastmodifieddate","value":"1556981033355","timestamp":1556981033355,"source":"CALCULATED","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]},"name":{"value":"Foobar","timestamp":1556981033594,"source":"API","sourceId":"d8ff8ffc-2871-4995-b96b-09019324b0e1","versions":[{"name":"name","value":"Foobar","timestamp":1556981033594,"sourceId":"d8ff8ffc-2871-4995-b96b-09019324b0e1","source":"API","sourceVid":[],"requestId":"d8ff8ffc-2871-4995-b96b-09019324b0e1"},{"name":"name","value":"Kuphal
+        Inc","timestamp":1556981033355,"source":"API","sourceVid":[],"requestId":"a01acfc9-e338-4890-85c3-7a20f954a458"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:53 GMT
+recorded_with: VCR 4.0.0

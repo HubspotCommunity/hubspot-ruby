@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Klein, Bogan and Tremblay"},{"name":"domain","value":"hackett.org"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:52 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d444f9febf6f13c98e8f5b2e974c3769b1556981032; expires=Sun, 03-May-20
+        14:43:52 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BFC6297B93AD66ABF1EBC2010C3DAABF2C5E661DE000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979553'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '57'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fdf1fc5c1ed-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897466916,"isDeleted":false,"properties":{"website":{"value":"hackett.org","timestamp":1556981032837,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"hackett.org","timestamp":1556981032837,"source":"CALCULATED","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]},"hs_lastmodifieddate":{"value":"1556981032837","timestamp":1556981032837,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981032837","timestamp":1556981032837,"source":"CALCULATED","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]},"domain":{"value":"hackett.org","timestamp":1556981032837,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"hackett.org","timestamp":1556981032837,"source":"API","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]},"name":{"value":"Klein,
+        Bogan and Tremblay","timestamp":1556981032837,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Klein,
+        Bogan and Tremblay","timestamp":1556981032837,"source":"API","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]},"createdate":{"value":"1556981032837","timestamp":1556981032837,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981032837","timestamp":1556981032837,"source":"API","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"},{"name":"createdate","value":"1556981032837","timestamp":1556981032837,"sourceId":"API","source":"API","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:52 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1897466916?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:53 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc837b56cb4ac0ee6daa4bbd49b988c991556981033; expires=Sun, 03-May-20
+        14:43:53 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B3EB91B2D69022088347E6060048154DD59AAE7DF000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979552'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fe0bb69cec4-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897466916,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981033102","timestamp":1556981033102,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981033102","timestamp":1556981033102,"source":"CALCULATED","sourceVid":[],"requestId":"1b95fae8-0a02-4e26-96a9-a3aa04e8c3aa"},{"name":"hs_lastmodifieddate","value":"1556981032837","timestamp":1556981032837,"source":"CALCULATED","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]},"name":{"value":"Foobar","timestamp":1556981033102,"source":"API","sourceId":"1b95fae8-0a02-4e26-96a9-a3aa04e8c3aa","versions":[{"name":"name","value":"Foobar","timestamp":1556981033102,"sourceId":"1b95fae8-0a02-4e26-96a9-a3aa04e8c3aa","source":"API","sourceVid":[],"requestId":"1b95fae8-0a02-4e26-96a9-a3aa04e8c3aa"},{"name":"name","value":"Klein,
+        Bogan and Tremblay","timestamp":1556981032837,"source":"API","sourceVid":[],"requestId":"eebc42c2-020a-4e8a-a50c-d9dc2b7fbed7"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:53 GMT
+recorded_with: VCR 4.0.0

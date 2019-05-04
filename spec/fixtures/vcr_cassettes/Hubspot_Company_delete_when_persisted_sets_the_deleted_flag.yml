@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
-      string: '{"properties":[{"name":"name","value":"Schinner, Armstrong and Frami"},{"name":"domain","value":"padberg.biz"}]}'
+      string: '{"properties":[{"name":"name","value":"Dooley-Hudson"},{"name":"domain","value":"mcdermott.org"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:12 GMT
+      - Sat, 04 May 2019 14:43:58 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,14 +23,62 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d343942ed7947e6fef74d0b1dd9a56c531551280272; expires=Thu, 27-Feb-20
-        15:11:12 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=db0b49cbfac55e54c66728cd5854a2d4d1556981038; expires=Sun, 03-May-20
+        14:43:58 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B0861A879CD96C272AEE67866853F2EC532F51BE9000000000000000000
+      - 2B00621B3B495FB11F062E1567F74B46668C727D9A000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126879'
+      - '979535'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b40019fe8cf00-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1897466918,"isDeleted":false,"properties":{"website":{"value":"mcdermott.org","timestamp":1556981038363,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"mcdermott.org","timestamp":1556981038363,"source":"CALCULATED","sourceVid":[],"requestId":"5bb121fc-c993-4875-9b46-eb57f3e87892"}]},"hs_lastmodifieddate":{"value":"1556981038363","timestamp":1556981038363,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981038363","timestamp":1556981038363,"source":"CALCULATED","sourceVid":[],"requestId":"5bb121fc-c993-4875-9b46-eb57f3e87892"}]},"domain":{"value":"mcdermott.org","timestamp":1556981038363,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"mcdermott.org","timestamp":1556981038363,"source":"API","sourceVid":[],"requestId":"5bb121fc-c993-4875-9b46-eb57f3e87892"}]},"name":{"value":"Dooley-Hudson","timestamp":1556981038363,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Dooley-Hudson","timestamp":1556981038363,"source":"API","sourceVid":[],"requestId":"5bb121fc-c993-4875-9b46-eb57f3e87892"}]},"createdate":{"value":"1556981038363","timestamp":1556981038363,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981038363","timestamp":1556981038363,"source":"API","sourceVid":[],"requestId":"5bb121fc-c993-4875-9b46-eb57f3e87892"},{"name":"createdate","value":"1556981038363","timestamp":1556981038363,"sourceId":"API","source":"API","sourceVid":[],"requestId":"5bb121fc-c993-4875-9b46-eb57f3e87892"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:58 GMT
+- request:
+    method: delete
+    uri: https://api.hubapi.com/companies/v2/companies/1897466918?hapikey=<HAPI_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dde5475380ea46be9d7a2b42d03556d2d1556981038; expires=Sun, 03-May-20
+        14:43:58 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B71F576809A51238BAF08993C8B788D6644428ABB000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979534'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
@@ -44,60 +92,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb95289d739f6c-IAD
+      - 4d1b4002eafacf14-IAD
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1664906143,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280272891,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280272891,"source":"CALCULATED","sourceVid":[],"requestId":"ccab3716-c9c7-4993-a807-9027b58b80e3"}]},"hs_lastmodifieddate":{"value":"1551280272891","timestamp":1551280272891,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280272891","timestamp":1551280272891,"source":"CALCULATED","sourceVid":[],"requestId":"ccab3716-c9c7-4993-a807-9027b58b80e3"}]},"domain":{"value":"padberg.biz","timestamp":1551280272891,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280272891,"source":"API","sourceVid":[],"requestId":"ccab3716-c9c7-4993-a807-9027b58b80e3"}]},"name":{"value":"Schinner,
-        Armstrong and Frami","timestamp":1551280272891,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
-        Armstrong and Frami","timestamp":1551280272891,"source":"API","sourceVid":[],"requestId":"ccab3716-c9c7-4993-a807-9027b58b80e3"}]},"createdate":{"value":"1551280272891","timestamp":1551280272891,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280272891","timestamp":1551280272891,"source":"API","sourceVid":[],"requestId":"ccab3716-c9c7-4993-a807-9027b58b80e3"},{"name":"createdate","value":"1551280272891","timestamp":1551280272891,"sourceId":"API","source":"API","sourceVid":[],"requestId":"ccab3716-c9c7-4993-a807-9027b58b80e3"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+      string: '{"companyId":1897466918,"deleted":true}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:13 GMT
-- request:
-    method: delete
-    uri: https://api.hubapi.com/companies/v2/companies/1664906143?hapikey=<HAPI_KEY>
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 27 Feb 2019 15:11:13 GMT
-      Content-Type:
-      - application/json;charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - __cfduid=df5414e5fb93ef67c8ea057f8796fac401551280273; expires=Thu, 27-Feb-20
-        15:11:13 GMT; path=/; domain=.hubapi.com; HttpOnly
-      X-Trace:
-      - 2B138D9A7088971E5F84388B80C36128A3AF58D52B000000000000000000
-      X-Hubspot-Ratelimit-Daily:
-      - '160000'
-      X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126878'
-      X-Hubspot-Ratelimit-Secondly:
-      - '60'
-      X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '59'
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Expect-Ct:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 4afb952b382dc190-IAD
-    body:
-      encoding: UTF-8
-      string: '{"companyId":1664906143,"deleted":true}'
-    http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:13 GMT
+  recorded_at: Sat, 04 May 2019 14:43:58 GMT
 recorded_with: VCR 4.0.0
