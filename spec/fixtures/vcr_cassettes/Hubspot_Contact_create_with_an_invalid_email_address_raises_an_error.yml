@@ -15,7 +15,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sun, 10 Mar 2019 15:33:56 GMT
+      - Sat, 04 May 2019 14:44:39 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,18 +23,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dc84201397697cd947ded184d14f2a8eb1552232036; expires=Mon, 09-Mar-20
-        15:33:56 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d471e679583030d4e8dca92cafef2ff741556981079; expires=Sun, 03-May-20
+        14:44:39 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B7555C3D358697DE3CFFFDE352250EC8F56D8821A000000000000000000
+      - 2BE1063EAF8F9BC9081FF37377E5DDE4EB5CB361B5000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '122567'
+      - '979467'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '57'
+      - '59'
       Vary:
       - Accept-Encoding
       - Accept-Encoding
@@ -47,12 +47,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4b565995be9fc1ef-IAD
+      - 4d1b40ffde18c1ed-IAD
     body:
       encoding: UTF-8
       string: '{"validationResults":[{"isValid":false,"message":"Email address an_invalid_email
         is invalid","error":"INVALID_EMAIL","name":"email"}],"status":"error","message":"Property
-        values were not valid","correlationId":"59374b00-5910-4141-b070-12241ce70142","requestId":"257b53dd82039b94629f3a229373917d"}'
+        values were not valid","correlationId":"0a40ba3a-1594-4647-a48d-a84a6af2cb57","requestId":"feac3dd272a81eeb29178aa452ff2364"}'
     http_version: 
-  recorded_at: Sun, 10 Mar 2019 15:33:56 GMT
+  recorded_at: Sat, 04 May 2019 14:44:39 GMT
 recorded_with: VCR 4.0.0

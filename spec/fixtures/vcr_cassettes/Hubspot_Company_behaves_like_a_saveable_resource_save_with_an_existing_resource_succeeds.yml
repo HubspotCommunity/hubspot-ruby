@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Corkery LLC"},{"name":"domain","value":"greenholt.info"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:49 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da207d3a82804153b258fb848e30003011556981029; expires=Sun, 03-May-20
+        14:43:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B10D6BFE18F45AEB5EAC0C195BDD59223B11EF204000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979561'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fc8e961cf0c-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1896421689,"isDeleted":false,"properties":{"website":{"value":"greenholt.info","timestamp":1556981029300,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"greenholt.info","timestamp":1556981029300,"source":"CALCULATED","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]},"hs_lastmodifieddate":{"value":"1556981029300","timestamp":1556981029300,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981029300","timestamp":1556981029300,"source":"CALCULATED","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]},"domain":{"value":"greenholt.info","timestamp":1556981029300,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"greenholt.info","timestamp":1556981029300,"source":"API","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]},"name":{"value":"Corkery
+        LLC","timestamp":1556981029300,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Corkery
+        LLC","timestamp":1556981029300,"source":"API","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]},"createdate":{"value":"1556981029300","timestamp":1556981029300,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981029300","timestamp":1556981029300,"source":"API","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"},{"name":"createdate","value":"1556981029300","timestamp":1556981029300,"sourceId":"API","source":"API","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:49 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/1896421689?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:49 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d167b079ba93386f9e4ae7c4397f6c2ef1556981029; expires=Sun, 03-May-20
+        14:43:49 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2B82E4F07D864DAFF1012B6A74E0945D49ABFA7CB4000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979560'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fcaa9419fe2-IAD
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":1896421689,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1556981029568","timestamp":1556981029568,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981029568","timestamp":1556981029568,"source":"CALCULATED","sourceVid":[],"requestId":"e3fce88d-237a-42c0-9b84-2526e8f7cbde"},{"name":"hs_lastmodifieddate","value":"1556981029300","timestamp":1556981029300,"source":"CALCULATED","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]},"name":{"value":"Foobar","timestamp":1556981029568,"source":"API","sourceId":"e3fce88d-237a-42c0-9b84-2526e8f7cbde","versions":[{"name":"name","value":"Foobar","timestamp":1556981029568,"sourceId":"e3fce88d-237a-42c0-9b84-2526e8f7cbde","source":"API","sourceVid":[],"requestId":"e3fce88d-237a-42c0-9b84-2526e8f7cbde"},{"name":"name","value":"Corkery
+        LLC","timestamp":1556981029300,"source":"API","sourceVid":[],"requestId":"5cf88e5a-f937-4fdd-8aef-ec19b143512e"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:49 GMT
+recorded_with: VCR 4.0.0

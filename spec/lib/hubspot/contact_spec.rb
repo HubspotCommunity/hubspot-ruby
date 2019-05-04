@@ -2,6 +2,17 @@ RSpec.describe Hubspot::Contact do
 
   before{ Hubspot.configure(hapikey: 'demo') }
 
+  it_behaves_like "a saveable resource", :contact do
+    def set_property(contact)
+      contact.firstname = "foobar"
+    end
+  end
+
+  it_behaves_like "an updateable resource", :contact do
+    let(:changed_properties) { { firstname: "foobar" } }
+    let(:overlapping_properties) { { firstname: "asdf", lastname: "qwer" } }
+  end
+
   describe '.find' do
     context 'with a valid ID' do
       cassette

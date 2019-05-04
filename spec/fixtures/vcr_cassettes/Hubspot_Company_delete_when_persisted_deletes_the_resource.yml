@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
-      string: '{"properties":[{"name":"name","value":"Schinner, Armstrong and Frami"},{"name":"domain","value":"padberg.biz"}]}'
+      string: '{"properties":[{"name":"name","value":"Boyer-Schmitt"},{"name":"domain","value":"emmerich.info"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:13 GMT
+      - Sat, 04 May 2019 14:43:58 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,18 +23,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d1c3b79da5986092d18472b304d5950661551280273; expires=Thu, 27-Feb-20
-        15:11:13 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=da33234302d2823ccb8fd862125d60ef81556981038; expires=Sun, 03-May-20
+        14:43:58 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B6D16067B96CA4EFF660D8195CFAAB3A0EA99FB7F000000000000000000
+      - 2BBADF6AE279DD3AA153F4BA59C7F44D5289AE209A000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126877'
+      - '979533'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '58'
+      - '56'
       Access-Control-Allow-Credentials:
       - 'false'
       Strict-Transport-Security:
@@ -44,17 +44,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb952c7e012462-IAD
+      - 4d1b400479e3cedc-IAD
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1664890808,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280273435,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280273435,"source":"CALCULATED","sourceVid":[],"requestId":"bf134e76-350e-4174-9230-2e628bff4fbb"}]},"hs_lastmodifieddate":{"value":"1551280273435","timestamp":1551280273435,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280273435","timestamp":1551280273435,"source":"CALCULATED","sourceVid":[],"requestId":"bf134e76-350e-4174-9230-2e628bff4fbb"}]},"domain":{"value":"padberg.biz","timestamp":1551280273435,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280273435,"source":"API","sourceVid":[],"requestId":"bf134e76-350e-4174-9230-2e628bff4fbb"}]},"name":{"value":"Schinner,
-        Armstrong and Frami","timestamp":1551280273435,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
-        Armstrong and Frami","timestamp":1551280273435,"source":"API","sourceVid":[],"requestId":"bf134e76-350e-4174-9230-2e628bff4fbb"}]},"createdate":{"value":"1551280273435","timestamp":1551280273435,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280273435","timestamp":1551280273435,"source":"API","sourceVid":[],"requestId":"bf134e76-350e-4174-9230-2e628bff4fbb"},{"name":"createdate","value":"1551280273435","timestamp":1551280273435,"sourceId":"API","source":"API","sourceVid":[],"requestId":"bf134e76-350e-4174-9230-2e628bff4fbb"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+      string: '{"portalId":62515,"companyId":1897515214,"isDeleted":false,"properties":{"website":{"value":"emmerich.info","timestamp":1556981038830,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"emmerich.info","timestamp":1556981038830,"source":"CALCULATED","sourceVid":[],"requestId":"ed928aae-a285-4c41-99dc-5f8582014069"}]},"hs_lastmodifieddate":{"value":"1556981038830","timestamp":1556981038830,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981038830","timestamp":1556981038830,"source":"CALCULATED","sourceVid":[],"requestId":"ed928aae-a285-4c41-99dc-5f8582014069"}]},"domain":{"value":"emmerich.info","timestamp":1556981038830,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"emmerich.info","timestamp":1556981038830,"source":"API","sourceVid":[],"requestId":"ed928aae-a285-4c41-99dc-5f8582014069"}]},"name":{"value":"Boyer-Schmitt","timestamp":1556981038830,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Boyer-Schmitt","timestamp":1556981038830,"source":"API","sourceVid":[],"requestId":"ed928aae-a285-4c41-99dc-5f8582014069"}]},"createdate":{"value":"1556981038830","timestamp":1556981038830,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981038830","timestamp":1556981038830,"source":"API","sourceVid":[],"requestId":"ed928aae-a285-4c41-99dc-5f8582014069"},{"name":"createdate","value":"1556981038830","timestamp":1556981038830,"sourceId":"API","source":"API","sourceVid":[],"requestId":"ed928aae-a285-4c41-99dc-5f8582014069"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:13 GMT
+  recorded_at: Sat, 04 May 2019 14:43:58 GMT
 - request:
     method: delete
-    uri: https://api.hubapi.com/companies/v2/companies/1664890808?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/companies/v2/companies/1897515214?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -65,7 +63,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:13 GMT
+      - Sat, 04 May 2019 14:43:59 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -73,18 +71,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=de2878c22fb557eda3eee861ff95662cd1551280273; expires=Thu, 27-Feb-20
-        15:11:13 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=de4e809180588cc8fa71c2e6d0fbca2ac1556981039; expires=Sun, 03-May-20
+        14:43:59 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B6CE962A8C11BAB3B7C2B855C24801D321E29F911000000000000000000
+      - 2B24217ED8E5EA0982A7C7B1464A34D12181B2E3A6000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126876'
+      - '979532'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '57'
+      - '59'
       Access-Control-Allow-Credentials:
       - 'false'
       Strict-Transport-Security:
@@ -94,15 +92,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb952e1b929fba-IAD
+      - 4d1b4005fe3fc1a2-IAD
     body:
       encoding: UTF-8
-      string: '{"companyId":1664890808,"deleted":true}'
+      string: '{"companyId":1897515214,"deleted":true}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:13 GMT
+  recorded_at: Sat, 04 May 2019 14:43:59 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/companies/v2/companies/1664890808?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/companies/v2/companies/1897515214?hapikey=<HAPI_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -113,7 +111,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:13 GMT
+      - Sat, 04 May 2019 14:43:59 GMT
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
@@ -121,18 +119,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d5c25b31d04be686e57b117b94ebcf8801551280273; expires=Thu, 27-Feb-20
-        15:11:13 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=dbdd81e44f5c0e8155fd2c7e38b7c0c081556981039; expires=Sun, 03-May-20
+        14:43:59 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2BA4111786508D8295EC4A06B25DD2D964A15DCFB3000000000000000000
+      - 2BA280F77D7E94E61F654ABB1FA918CE5A555FA03A000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126875'
+      - '979531'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '56'
+      - '58'
       X-Hubspot-Notfound:
       - 'true'
       Access-Control-Allow-Credentials:
@@ -144,10 +142,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb952f09532450-IAD
+      - 4d1b400739469f9a-IAD
     body:
       encoding: UTF-8
-      string: '{"status":"error","message":"resource not found","correlationId":"cdf6a5d1-5008-497c-866b-68ee502ba1c9","requestId":"e64f55a5d4e642d570a083f17b5f8e80"}'
+      string: '{"status":"error","message":"resource not found","correlationId":"ec135ab1-6270-4c00-872b-d11d6ce8819d","requestId":"d0dc3ce23e2661d7083bf559c983b0a2"}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:13 GMT
+  recorded_at: Sat, 04 May 2019 14:43:59 GMT
 recorded_with: VCR 4.0.0

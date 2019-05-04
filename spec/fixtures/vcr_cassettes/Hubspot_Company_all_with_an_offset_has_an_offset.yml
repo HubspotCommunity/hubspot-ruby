@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
-      string: '{"properties":[{"name":"name","value":"Schinner, Armstrong and Frami"},{"name":"domain","value":"padberg.biz"}]}'
+      string: '{"properties":[{"name":"name","value":"Kulas, Bernhard and Herzog"},{"name":"domain","value":"goodwin.info"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:17 GMT
+      - Sat, 04 May 2019 14:44:11 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,14 +23,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d6bc6722ed8f45df0c3ec41a998f520da1551280277; expires=Thu, 27-Feb-20
-        15:11:17 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d9b0c55326003b9c10921f7b011acf1cb1556981051; expires=Sun, 03-May-20
+        14:44:11 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B2B42D4A8BDE9CFC4BCBF76010425C1D21ED86ABB000000000000000000
+      - 2B0DF9961EA20B6F1C4F4D766CD735FFC839CD4735000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126868'
+      - '979523'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
@@ -44,17 +44,17 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb95448bc59592-IAD
+      - 4d1b40541d49cf18-IAD
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1664906146,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280277230,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280277230,"source":"CALCULATED","sourceVid":[],"requestId":"c1f0ef55-5528-4f18-a125-a43c96437bc9"}]},"hs_lastmodifieddate":{"value":"1551280277230","timestamp":1551280277230,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280277230","timestamp":1551280277230,"source":"CALCULATED","sourceVid":[],"requestId":"c1f0ef55-5528-4f18-a125-a43c96437bc9"}]},"domain":{"value":"padberg.biz","timestamp":1551280277230,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280277230,"source":"API","sourceVid":[],"requestId":"c1f0ef55-5528-4f18-a125-a43c96437bc9"}]},"name":{"value":"Schinner,
-        Armstrong and Frami","timestamp":1551280277230,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
-        Armstrong and Frami","timestamp":1551280277230,"source":"API","sourceVid":[],"requestId":"c1f0ef55-5528-4f18-a125-a43c96437bc9"}]},"createdate":{"value":"1551280277230","timestamp":1551280277230,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280277230","timestamp":1551280277230,"source":"API","sourceVid":[],"requestId":"c1f0ef55-5528-4f18-a125-a43c96437bc9"},{"name":"createdate","value":"1551280277230","timestamp":1551280277230,"sourceId":"API","source":"API","sourceVid":[],"requestId":"c1f0ef55-5528-4f18-a125-a43c96437bc9"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+      string: '{"portalId":62515,"companyId":1897400098,"isDeleted":false,"properties":{"website":{"value":"goodwin.info","timestamp":1556981051708,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"goodwin.info","timestamp":1556981051708,"source":"CALCULATED","sourceVid":[],"requestId":"ab1646a7-2467-4c7c-acd1-da68a6c3897b"}]},"hs_lastmodifieddate":{"value":"1556981051708","timestamp":1556981051708,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981051708","timestamp":1556981051708,"source":"CALCULATED","sourceVid":[],"requestId":"ab1646a7-2467-4c7c-acd1-da68a6c3897b"}]},"domain":{"value":"goodwin.info","timestamp":1556981051708,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"goodwin.info","timestamp":1556981051708,"source":"API","sourceVid":[],"requestId":"ab1646a7-2467-4c7c-acd1-da68a6c3897b"}]},"name":{"value":"Kulas,
+        Bernhard and Herzog","timestamp":1556981051708,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Kulas,
+        Bernhard and Herzog","timestamp":1556981051708,"source":"API","sourceVid":[],"requestId":"ab1646a7-2467-4c7c-acd1-da68a6c3897b"}]},"createdate":{"value":"1556981051708","timestamp":1556981051708,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981051708","timestamp":1556981051708,"source":"API","sourceVid":[],"requestId":"ab1646a7-2467-4c7c-acd1-da68a6c3897b"},{"name":"createdate","value":"1556981051708","timestamp":1556981051708,"sourceId":"API","source":"API","sourceVid":[],"requestId":"ab1646a7-2467-4c7c-acd1-da68a6c3897b"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:17 GMT
+  recorded_at: Sat, 04 May 2019 14:44:11 GMT
 - request:
     method: get
-    uri: https://api.hubapi.com/companies/v2/companies/paged?hapikey=<HAPI_KEY>&limit=25&offset=1664906146
+    uri: https://api.hubapi.com/companies/v2/companies/paged?hapikey=<HAPI_KEY>&limit=25&offset=1897400098
     body:
       encoding: US-ASCII
       string: ''
@@ -65,7 +65,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:17 GMT
+      - Sat, 04 May 2019 14:44:12 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -73,18 +73,18 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dd3dc3cbd8af5571ea8e1d8b912029b741551280277; expires=Thu, 27-Feb-20
-        15:11:17 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d4ec779b15ca440ba2f8bb511de35251e1556981051; expires=Sun, 03-May-20
+        14:44:11 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2BDEEB82FA14D657F9F904840319AF2DBA9BC4A868000000000000000000
+      - 2B0B85C3EBD01F63620B28D64271C373A9A3656219000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126867'
+      - '979522'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '57'
+      - '59'
       Vary:
       - Accept-Encoding, User-Agent
       Access-Control-Allow-Credentials:
@@ -96,10 +96,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb95458d59c1e5-IAD
+      - 4d1b40568ef3c18e-IAD
     body:
       encoding: UTF-8
-      string: '{"has-more":false,"offset":1664911095,"companies":[{"portalId":62515,"companyId":1664908830,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664908831,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664911094,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664911095,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}]}'
+      string: '{"has-more":true,"offset":1897514264,"companies":[{"portalId":62515,"companyId":1897429954,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897429955,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897430034,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897430035,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897430036,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897430041,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897430239,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897430240,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897446738,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897446877,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897446878,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897446879,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897447125,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897447164,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897447165,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897466708,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897466728,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897466914,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897466915,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897466916,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897466917,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897514240,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897514241,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897514244,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1897514264,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}]}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:17 GMT
+  recorded_at: Sat, 04 May 2019 14:44:12 GMT
 recorded_with: VCR 4.0.0

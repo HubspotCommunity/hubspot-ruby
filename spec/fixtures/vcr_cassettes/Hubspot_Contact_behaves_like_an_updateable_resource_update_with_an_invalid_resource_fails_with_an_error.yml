@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact/vid/0/profile?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"firstname","value":"foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:44:29 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df3860ebc3e096b64a30561c4a30bfb241556981069; expires=Sun, 03-May-20
+        14:44:29 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BBA23064EB8E7FF0AAF75883C01A2F4CD2A673070000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979486'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '59'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Hubspot-Notfound:
+      - 'true'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b40c29c53cf54-IAD
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"resource not found","correlationId":"0c178784-740b-4dcf-806d-182dcd58b1e9","requestId":"23a2ffa5b68f2f3214a7ad5be920435c"}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:44:29 GMT
+recorded_with: VCR 4.0.0

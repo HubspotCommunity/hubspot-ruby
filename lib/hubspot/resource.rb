@@ -24,6 +24,28 @@ module Hubspot
         response = Hubspot::Connection.post_json(create_path, params: {}, body: request)
         from_result(response)
       end
+
+      def update(id, properties = {})
+        begin
+          update!(id, properties)
+        rescue Hubspot::RequestError => e
+          false
+        end
+      end
+
+      def update!(id, properties = {})
+        request = {
+          properties: Hubspot::Utils.hash_to_properties(properties.stringify_keys, key_name: property_name_field)
+        }
+
+        if update_method == "put"
+          response = Hubspot::Connection.put_json(update_path, params: { id: id, no_parse: true }, body: request)
+        else
+          response = Hubspot::Connection.post_json(update_path, params: { id: id, no_parse: true }, body: request)
+        end
+
+        response.success?
+      end
     end
 
     def initialize(id_or_properties = nil)
@@ -99,18 +121,29 @@ module Hubspot
         else
           response = Hubspot::Connection.post_json(update_path, params: { id: @id }, body: request)
         end
+
+        update_from_changes
       else
         response = Hubspot::Connection.post_json(create_path, params: {}, body: request)
 
         # Grab the new ID from the response
         @id = response[id_field]
-      end
 
-      # Update the fields with the response
-      initialize_from(response.with_indifferent_access)
+        # Update the fields with the response
+        initialize_from(response.with_indifferent_access)
+      end
 
       @persisted = true
       true
+    end
+
+    def update(properties)
+      if properties && !properties.is_a?(Hash)
+        raise ArgumentError, "When assigning properties, you must pass a hash as an argument."
+      end
+
+      @changes = @changes.merge(properties)
+      save
     end
 
     def delete
@@ -119,7 +152,7 @@ module Hubspot
       Hubspot::Connection.delete_json(delete_path, id: @id)
 
       @deleted = true
-      @changes = {}
+      @changes = HashWithIndifferentAccess.new
       true
     end
 
@@ -184,7 +217,17 @@ module Hubspot
       add_accessors(@properties.keys)
 
       # Clear any changes
-      @changes = {}
+      @changes = HashWithIndifferentAccess.new
+    end
+
+    def update_from_changes
+      @changes.each do |k, v|
+        @properties[k] ||= {}
+        @properties[k]["value"] = v
+      end
+
+      # Clear any changes
+      @changes = HashWithIndifferentAccess.new
     end
 
     def add_accessors(keys)

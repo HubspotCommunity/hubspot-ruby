@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
-      string: '{"properties":[{"name":"name","value":"Schinner, Armstrong and Frami"},{"name":"domain","value":"padberg.biz"}]}'
+      string: '{"properties":[{"name":"name","value":"Smitham and Sons"},{"name":"domain","value":"bogisich.io"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:19 GMT
+      - Sat, 04 May 2019 14:44:15 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,14 +23,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dcd2c70e94270eb84f522958ca7a6e4221551280279; expires=Thu, 27-Feb-20
-        15:11:19 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d9826c39ae2e1a4e09cb116b58068cbd31556981055; expires=Sun, 03-May-20
+        14:44:15 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2BF7CDDB5750B2559F9912D447F5B3914A9F21DEA7000000000000000000
+      - 2B7EA250EE799E8FC4138445DFDCD26418399D6AE4000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126862'
+      - '979517'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
@@ -44,17 +44,17 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb95507bd7c1a4-IAD
+      - 4d1b406cf80b9566-IAD
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1664906148,"isDeleted":false,"properties":{"website":{"value":"padberg.biz","timestamp":1551280279138,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"padberg.biz","timestamp":1551280279138,"source":"CALCULATED","sourceVid":[],"requestId":"f48a1b3a-ecae-4ad1-97fc-261464091437"}]},"hs_lastmodifieddate":{"value":"1551280279138","timestamp":1551280279138,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1551280279138","timestamp":1551280279138,"source":"CALCULATED","sourceVid":[],"requestId":"f48a1b3a-ecae-4ad1-97fc-261464091437"}]},"domain":{"value":"padberg.biz","timestamp":1551280279138,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"padberg.biz","timestamp":1551280279138,"source":"API","sourceVid":[],"requestId":"f48a1b3a-ecae-4ad1-97fc-261464091437"}]},"name":{"value":"Schinner,
-        Armstrong and Frami","timestamp":1551280279138,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Schinner,
-        Armstrong and Frami","timestamp":1551280279138,"source":"API","sourceVid":[],"requestId":"f48a1b3a-ecae-4ad1-97fc-261464091437"}]},"createdate":{"value":"1551280279138","timestamp":1551280279138,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1551280279138","timestamp":1551280279138,"source":"API","sourceVid":[],"requestId":"f48a1b3a-ecae-4ad1-97fc-261464091437"},{"name":"createdate","value":"1551280279138","timestamp":1551280279138,"sourceId":"API","source":"API","sourceVid":[],"requestId":"f48a1b3a-ecae-4ad1-97fc-261464091437"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+      string: '{"portalId":62515,"companyId":1897466919,"isDeleted":false,"properties":{"website":{"value":"bogisich.io","timestamp":1556981055541,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"bogisich.io","timestamp":1556981055541,"source":"CALCULATED","sourceVid":[],"requestId":"23b52c33-7f4c-413a-99fb-4cf4f3a914d2"}]},"hs_lastmodifieddate":{"value":"1556981055541","timestamp":1556981055541,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981055541","timestamp":1556981055541,"source":"CALCULATED","sourceVid":[],"requestId":"23b52c33-7f4c-413a-99fb-4cf4f3a914d2"}]},"domain":{"value":"bogisich.io","timestamp":1556981055541,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"bogisich.io","timestamp":1556981055541,"source":"API","sourceVid":[],"requestId":"23b52c33-7f4c-413a-99fb-4cf4f3a914d2"}]},"name":{"value":"Smitham
+        and Sons","timestamp":1556981055541,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Smitham
+        and Sons","timestamp":1556981055541,"source":"API","sourceVid":[],"requestId":"23b52c33-7f4c-413a-99fb-4cf4f3a914d2"}]},"createdate":{"value":"1556981055541","timestamp":1556981055541,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981055541","timestamp":1556981055541,"source":"API","sourceVid":[],"requestId":"23b52c33-7f4c-413a-99fb-4cf4f3a914d2"},{"name":"createdate","value":"1556981055541","timestamp":1556981055541,"sourceId":"API","source":"API","sourceVid":[],"requestId":"23b52c33-7f4c-413a-99fb-4cf4f3a914d2"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:19 GMT
+  recorded_at: Sat, 04 May 2019 14:44:15 GMT
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/domains/padberg.biz/companies?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/companies/v2/domains/bogisich.io/companies?hapikey=<HAPI_KEY>
     body:
       encoding: UTF-8
       string: '{"limit":25,"requestOptions":{},"offset":{"isPrimary":true,"companyId":null}}'
@@ -67,7 +67,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:19 GMT
+      - Sat, 04 May 2019 14:44:15 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -75,14 +75,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d289161c25918b14f0919145893103b091551280279; expires=Thu, 27-Feb-20
-        15:11:19 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d86a11ce58f0af7f427a7076f5648742f1556981055; expires=Sun, 03-May-20
+        14:44:15 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B9BC2CD9442471A844EB70598A3780197BE73CEEE000000000000000000
+      - 2B3E50070A461BD9DA28D374AF4394179CA455D03E000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126861'
+      - '979516'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
@@ -96,10 +96,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb9551db12247a-IAD
+      - 4d1b406e8c225673-IAD
     body:
       encoding: UTF-8
-      string: '{"results":[{"portalId":62515,"companyId":1664881557,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664887029,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664887030,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664895202,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664895203,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664906142,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664906146,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664906148,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]},{"portalId":62515,"companyId":1664908831,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}],"hasMore":false,"offset":{"companyId":1664908831,"isPrimary":true}}'
+      string: '{"results":[{"portalId":62515,"companyId":1897466919,"isDeleted":false,"properties":{},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}],"hasMore":false,"offset":{"companyId":1897466919,"isPrimary":true}}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:19 GMT
+  recorded_at: Sat, 04 May 2019 14:44:15 GMT
 recorded_with: VCR 4.0.0

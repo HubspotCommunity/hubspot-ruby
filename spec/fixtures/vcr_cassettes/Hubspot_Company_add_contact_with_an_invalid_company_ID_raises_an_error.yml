@@ -15,7 +15,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 27 Feb 2019 15:11:22 GMT
+      - Sat, 04 May 2019 14:44:21 GMT
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
@@ -23,14 +23,14 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dc66ae3221c6521c30be78dcf9d9b3cb71551280282; expires=Thu, 27-Feb-20
-        15:11:22 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=d6990ee98a136ceae0728e218e93a53eb1556981061; expires=Sun, 03-May-20
+        14:44:21 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B78988C913FF31302D51E256BADD82E0E042A2C2E000000000000000000
+      - 2BFE94E1F0F5FB0729826BCF1CFD012E79B2069A65000000000000000000
       X-Hubspot-Ratelimit-Daily:
-      - '160000'
+      - '1000000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '126848'
+      - '979501'
       X-Hubspot-Ratelimit-Secondly:
       - '60'
       X-Hubspot-Ratelimit-Secondly-Remaining:
@@ -46,11 +46,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4afb9562abcc23a8-IAD
+      - 4d1b408fc84157c3-IAD
     body:
       encoding: UTF-8
       string: '{"status":"error","message":"Couldn''t find a company with the ID ''1''
-        in portal ''62515''","correlationId":"354a635c-3d98-49e8-9ddc-2ee6dc029b40","requestId":"efe97ab63449b2bbbb79589ab2b84852"}'
+        in portal ''62515''","correlationId":"e2fbd77d-011a-448e-b716-127c26146599","requestId":"e5f62eb2bf0bcfd004e6371b23c3130c"}'
     http_version: 
-  recorded_at: Wed, 27 Feb 2019 15:11:22 GMT
+  recorded_at: Sat, 04 May 2019 14:44:21 GMT
 recorded_with: VCR 4.0.0

@@ -14,7 +14,15 @@ module Hubspot
         no_parse = opts[:params].delete(:no_parse) { false }
 
         url = generate_url(path, opts[:params])
-        response = post(url, { body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts) })
+        response = post(
+          url,
+          body: opts[:body].to_json,
+          headers: { 'Content-Type' => 'application/json' },
+          format: :json,
+          read_timeout: read_timeout(opts),
+          open_timeout: open_timeout(opts)
+        )
+
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
 
@@ -22,6 +30,7 @@ module Hubspot
       end
 
       def put_json(path, options)
+        no_parse = options[:params].delete(:no_parse) { false }
         url = generate_url(path, options[:params])
 
         response = put(
@@ -34,7 +43,9 @@ module Hubspot
         )
 
         log_request_and_response(url, response, options[:body])
-        handle_response(response)
+        raise(Hubspot::RequestError.new(response)) unless response.success?
+
+        no_parse ? response : response.parsed_response
       end
 
       def delete_json(path, opts)

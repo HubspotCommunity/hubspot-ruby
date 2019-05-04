@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/0?hapikey=<HAPI_KEY>
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Foobar"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 04 May 2019 14:43:52 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '190'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de134823efd285b284c0a4a801154ec331556981032; expires=Sun, 03-May-20
+        14:43:52 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - 2BED46D4C79E1F2B9D75A1B102CB637010E8BE42FC000000000000000000
+      X-Hubspot-Ratelimit-Daily:
+      - '1000000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '979554'
+      X-Hubspot-Ratelimit-Secondly:
+      - '60'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '58'
+      X-Hubspot-Notfound:
+      - 'true'
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4d1b3fdd8df495ae-IAD
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Couldn''t find a company with the ID ''0''
+        in portal ''62515''","correlationId":"a0cac8b2-78e7-4a4e-976a-ffac432ce5ea","requestId":"c09777ad893f1a2de369da52a52ae3a7"}'
+    http_version: 
+  recorded_at: Sat, 04 May 2019 14:43:52 GMT
+recorded_with: VCR 4.0.0
