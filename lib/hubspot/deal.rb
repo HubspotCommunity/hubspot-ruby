@@ -49,6 +49,15 @@ module Hubspot
          Hubspot::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
        end
 
+       # Didssociate a deal with a contact or company
+       # {https://developers.hubspot.com/docs/methods/deals/delete_association}
+       # Usage
+       # Hubspot::Deal.dissociate!(45146940, [], [52])
+       def dissociate!(deal_id, company_ids=[], vids=[])
+         objecttype = company_ids.any? ? 'COMPANY' : 'CONTACT'
+         object_ids = (company_ids.any? ? company_ids : vids).join('&id=')
+         Hubspot::Connection.delete_json(ASSOCIATE_DEAL_PATH, { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids })
+       end
 
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
