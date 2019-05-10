@@ -26,6 +26,11 @@ class Hubspot::Contact < Hubspot::Resource
       end
     end
 
+    def find_by_vid(vid)
+      response = Hubspot::Connection.get_json(FIND_PATH, id: vid)
+      from_result(response)
+    end
+    
     def find_by_email(email)
       response = Hubspot::Connection.get_json(FIND_BY_EMAIL_PATH, email: email)
       from_result(response)
