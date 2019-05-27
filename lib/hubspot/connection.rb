@@ -87,7 +87,7 @@ module Hubspot
           options[:hapikey] = false
         else
           Hubspot::Config.ensure! :hapikey
-        end
+          end
         path = path.clone
         params = params.clone
         base_url = options[:base_url] || Hubspot::Config.base_url
@@ -96,7 +96,7 @@ module Hubspot
         if path =~ /:portal_id/
           Hubspot::Config.ensure! :portal_id
           params["portal_id"] = Hubspot::Config.portal_id if path =~ /:portal_id/
-        end
+          end
 
         params.each do |k,v|
           if path.match(":#{k}")
@@ -140,6 +140,13 @@ module Hubspot
     def self.submit(path, opts)
       url = generate_url(path, opts[:params], { base_url: 'https://forms.hubspot.com', hapikey: false })
       post(url, body: opts[:body], headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
+    end
+  end
+
+  class EventConnection < Connection
+    def self.trigger(path, opts)
+      url = generate_url(path, opts[:params], { base_url: 'https://track.hubspot.com', hapikey: false })
+      get(url, body: opts[:body], headers: opts[:headers])
     end
   end
 end
