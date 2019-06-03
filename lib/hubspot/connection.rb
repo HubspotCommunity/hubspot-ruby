@@ -139,7 +139,8 @@ module Hubspot
 
     def self.submit(path, opts)
       url = generate_url(path, opts[:params], { base_url: 'https://forms.hubspot.com', hapikey: false })
-      post(url, body: opts[:body], headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
+      params = CGI.escape(opts[:body].map{|k,v| "#{k}=#{v}"}.join("&"))
+      post(url, body: params, headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
     end
   end
 end
