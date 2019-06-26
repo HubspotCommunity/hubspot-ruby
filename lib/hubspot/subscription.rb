@@ -23,6 +23,15 @@ module Hubspot
         response = Hubspot::Connection.get_json(SUBSCRIPTION_PATH, {email_address: email})
         new(response)
       end
+
+      def unsubscribe_from_all_emails(email)
+        response =
+          Hubspot::Connection.put_json(
+            SUBSCRIPTION_PATH, params: { email_address: email },
+                               body: { "unsubscribeFromAll": true }
+          )
+        new(response)
+      end
     end
   end
 end
