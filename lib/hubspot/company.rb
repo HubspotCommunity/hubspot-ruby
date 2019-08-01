@@ -15,6 +15,7 @@ class Hubspot::Company < Hubspot::Resource
   REMOVE_CONTACT_PATH     = '/companies/v2/companies/:id/contacts/:contact_id'
   SEARCH_DOMAIN_PATH      = '/companies/v2/domains/:domain/companies'
   UPDATE_PATH             = '/companies/v2/companies/:id'
+  ASSOCIATE_COMPANY_TO_CONTACT_PATH = '/crm-associations/v1/associations'
 
   class << self
     def all(opts = {})
@@ -33,24 +34,46 @@ class Hubspot::Company < Hubspot::Resource
     def search_domain(domain, opts = {})
       Hubspot::PagedCollection.new(opts) do |options, offset, limit|
         request = {
-          "limit" => limit,
-          "requestOptions" => options,
+          "limit" => 2,
+          "requestOptions" => { 'properties': ['domain', 'createdate', 'name', 'hs_lastmodifieddate'] },
           "offset" => {
             "isPrimary" => true,
-            "companyId" => offset
+            "companyId" => 0
           }
         }
-
         response = Hubspot::Connection.post_json(
           SEARCH_DOMAIN_PATH,
           params: { domain: domain },
           body: request
         )
-
         companies = response["results"].map { |result| from_result(result) }
 
         [companies, response["offset"]["companyId"], response["hasMore"]]
       end
+    end
+
+    def create_or_update(company_id, properties = {})
+      if company_id.present?
+        path = UPDATE_PATH
+        params = { id: company_id}
+      else
+        path = CREATE_PATH
+        params = {}
+      end
+      request = JSON.parse(properties)
+      if company_id.present?
+        response = Hubspot::Connection.put_json(path, params: params, body: request)
+      else
+        response = Hubspot::Connection.post_json(path, params: params, body: request)
+      end
+      from_result(response)
+    end
+
+    def associate_contact_to_company(properties = {})
+      response = Hubspot::Connection.put_json(
+        ASSOCIATE_COMPANY_TO_CONTACT_PATH,
+        params: {}, body: properties
+      )
     end
 
     def recently_created(opts = {})
