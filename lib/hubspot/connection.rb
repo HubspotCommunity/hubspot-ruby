@@ -30,6 +30,14 @@ module Hubspot
         response.parsed_response
       end
 
+      def patch_json(path, opts)
+        url = generate_url(path, opts[:params])
+        response = patch(url, body: opts[:body].to_json, headers: { 'Content-Type' => 'application/json' }, format: :json)
+        log_request_and_response url, response, opts[:body]
+        raise(Hubspot::RequestError.new(response)) unless response.success?
+        response.parsed_response
+      end
+
       def delete_json(path, opts)
         url = generate_url(path, opts)
         response = delete(url, format: :json)

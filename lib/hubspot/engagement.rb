@@ -102,15 +102,31 @@ module Hubspot
     end
 
     # Updates the properties of an engagement
-    # {http://developers.hubspot.com/docs/methods/engagements/update_engagement}
+    # {https://developers.hubspot.com/docs/methods/engagements/update_engagement-patch}
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Engagement] self
-    def update!(params)
+    def patch!(params)
       data = {
         engagement: params[:engagement]     || engagement,
         associations: params[:associations] || associations,
         attachments: params[:attachments]   || attachments,
         metadata: params[:metadata]         || metadata
+      }
+
+      Hubspot::Connection.patch_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
+      self
+    end
+
+    # Patch the properties of an engagement
+    # {http://developers.hubspot.com/docs/methods/engagements/update_engagement}
+    # @param params [Hash] hash of properties to update
+    # @return [Hubspot::Engagement] self
+    def update!(params)
+      data = {
+          engagement: params[:engagement]     || engagement,
+          associations: params[:associations] || associations,
+          attachments: params[:attachments]   || attachments,
+          metadata: params[:metadata]         || metadata
       }
 
       Hubspot::Connection.put_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
