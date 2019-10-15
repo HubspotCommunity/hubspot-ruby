@@ -36,6 +36,7 @@ module Hubspot
       end
 
       def find(id, include_inactive=false)
+        path     = GET_OWNER_PATH
         response = Hubspot::Connection.get_json(path, owner_id: id,
           include_inactive: include_inactive)
         new(response)
