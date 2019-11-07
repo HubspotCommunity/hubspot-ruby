@@ -183,3 +183,32 @@ describe Hubspot::Connection do
     end
   end
 end
+
+describe Hubspot::EventConnection do
+  describe '.trigger' do
+    let(:path) { '/path' }
+    let(:options) { { params: {} } }
+    let(:headers) { nil }
+
+    subject { described_class.trigger(path, options) }
+    before do
+      Hubspot.configure(hapikey: 'demo', portal_id: '62515')
+      allow(described_class).to receive(:get).and_return(true)
+    end
+
+    it 'calls get with a custom url' do
+      subject
+      expect(described_class).to have_received(:get).with('https://track.hubspot.com/path', body: nil, headers: nil)
+    end
+
+    context 'with more options' do
+      let(:headers) { { 'User-Agent' => 'something' } }
+      let(:options) { { params: {}, headers: headers } }
+
+      it 'supports headers' do
+        subject
+        expect(described_class).to have_received(:get).with('https://track.hubspot.com/path', body: nil, headers: headers)
+      end
+    end
+  end
+end
