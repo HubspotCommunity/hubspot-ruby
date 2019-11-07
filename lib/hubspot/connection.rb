@@ -142,4 +142,11 @@ module Hubspot
       post(url, body: opts[:body], headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
     end
   end
+
+  class EventConnection < Connection
+    def self.trigger(path, opts)
+      url = generate_url(path, opts[:params], { base_url: 'https://track.hubspot.com', hapikey: false })
+      get(url, body: opts[:body], headers: opts[:headers])
+    end
+  end
 end
