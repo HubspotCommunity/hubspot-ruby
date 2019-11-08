@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/deals/v1/deal?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"associations":{"associatedCompanyIds":[8954037],"associatedVids":[27136]},"properties":[{"name":"amount","value":"30"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 Nov 2019 15:19:02 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=redacted; expires=Sat, 07-Nov-20
+        15:19:01 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - redacted
+      X-Hubspot-Ratelimit-Daily:
+      - '250000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '249599'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '91'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
+      X-Hubspot-Ratelimit-Secondly:
+      - '10'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '9'
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 532885dc7e5ab78d-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":1152692179,"isDeleted":false,"associations":{"associatedVids":[],"associatedCompanyIds":[],"associatedDealIds":[],"associatedTicketIds":[]},"associationCreateFailures":[{"association":{"fromObjectId":1152692179,"toObjectId":8954037,"associationCategory":"HUBSPOT_DEFINED","associationTypeId":5,"timestamp":null},"failReason":"INVALID_OBJECT_IDS","message":"COMPANY=8954037
+        is not valid"},{"association":{"fromObjectId":1152692179,"toObjectId":27136,"associationCategory":"HUBSPOT_DEFINED","associationTypeId":3,"timestamp":null},"failReason":"INVALID_OBJECT_IDS","message":"CONTACT=27136
+        is not valid"}],"properties":{"hs_closed_amount_in_home_currency":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_closed_amount_in_home_currency","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"amount":{"value":"30","timestamp":1573226341920,"source":"API","sourceId":null,"versions":[{"name":"amount","value":"30","timestamp":1573226341920,"source":"API","sourceVid":[]}]},"hs_closed_amount":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_closed_amount","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_lastmodifieddate":{"value":"1573226341920","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1573226341920","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1573226341920","timestamp":1573226341920,"source":"API","sourceId":"","versions":[{"name":"hs_createdate","value":"1573226341920","timestamp":1573226341920,"sourceId":"","source":"API","sourceVid":[]}]},"hs_object_id":{"value":"1152692179","timestamp":1573226341920,"source":"API","sourceId":null,"versions":[{"name":"hs_object_id","value":"1152692179","timestamp":1573226341920,"source":"API","sourceVid":[]}]},"createdate":{"value":"1573226341920","timestamp":1573226341920,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1573226341920","timestamp":1573226341920,"source":"API","sourceVid":[]}]},"hs_projected_amount":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_projected_amount","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"amount_in_home_currency":{"value":"30","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"amount_in_home_currency","value":"30","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_deal_stage_probability":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_deal_stage_probability","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"days_to_close":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"days_to_close","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_projected_amount_in_home_currency":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_projected_amount_in_home_currency","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]}},"imports":[],"stateChanges":[]}'
+    http_version:
+  recorded_at: Fri, 08 Nov 2019 15:19:02 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/deals/v1/deal/1152692179?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"dealname","value":"super deal"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 Nov 2019 15:19:02 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=redacted; expires=Sat, 07-Nov-20
+        15:19:02 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - redacted
+      X-Hubspot-Ratelimit-Daily:
+      - '250000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '249598'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '90'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
+      X-Hubspot-Ratelimit-Secondly:
+      - '10'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '9'
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 532885df0f04692a-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"dealId":1152692179,"isDeleted":false,"associations":{"associatedVids":[],"associatedCompanyIds":[],"associatedDealIds":[],"associatedTicketIds":[]},"properties":{"hs_closed_amount_in_home_currency":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_closed_amount_in_home_currency","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"dealname":{"value":"super
+        deal","timestamp":1573226342377,"source":"API","sourceId":null,"versions":[{"name":"dealname","value":"super
+        deal","timestamp":1573226342377,"source":"API","sourceVid":[]}]},"amount":{"value":"30","timestamp":1573226341920,"source":"API","sourceId":null,"versions":[{"name":"amount","value":"30","timestamp":1573226341920,"source":"API","sourceVid":[]}]},"createdate":{"value":"1573226341920","timestamp":1573226341920,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1573226341920","timestamp":1573226341920,"source":"API","sourceVid":[]}]},"amount_in_home_currency":{"value":"30","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"amount_in_home_currency","value":"30","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_deal_stage_probability":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_deal_stage_probability","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"days_to_close":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"days_to_close","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_closed_amount":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_closed_amount","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_lastmodifieddate":{"value":"1573226342377","timestamp":1573226342377,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1573226342377","timestamp":1573226342377,"source":"CALCULATED","sourceVid":[]},{"name":"hs_lastmodifieddate","value":"1573226341920","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[]}]},"hs_createdate":{"value":"1573226341920","timestamp":1573226341920,"source":"API","sourceId":"","versions":[{"name":"hs_createdate","value":"1573226341920","timestamp":1573226341920,"sourceId":"","source":"API","sourceVid":[]}]},"hs_object_id":{"value":"1152692179","timestamp":1573226341920,"source":"API","sourceId":null,"versions":[{"name":"hs_object_id","value":"1152692179","timestamp":1573226341920,"source":"API","sourceVid":[]}]},"hs_projected_amount":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_projected_amount","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]},"hs_projected_amount_in_home_currency":{"value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_projected_amount_in_home_currency","value":"0","timestamp":1573226341920,"source":"CALCULATED","sourceVid":[],"sourceMetadata":""}]}},"imports":[],"stateChanges":[]}'
+    http_version:
+  recorded_at: Fri, 08 Nov 2019 15:19:02 GMT
+recorded_with: VCR 5.0.0
