@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.hubapi.com/deals/v1/deal/0?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"dealname","value":"super deal"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 08 Nov 2019 15:18:59 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '263'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=redacted; expires=Sat, 07-Nov-20
+        15:18:59 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - redacted
+      X-Hubspot-Notfound:
+      - 'true'
+      X-Hubspot-Ratelimit-Daily:
+      - '250000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '249604'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '96'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
+      X-Hubspot-Ratelimit-Secondly:
+      - '10'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '9'
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 532885ce4f7fcdd7-CDG
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"No deal found for dealId=0 portalId=62515","correlationId":"ea967775-f24d-4c01-9a17-4e5b8709c90b","errors":[{"message":"This
+        deal 0 does not exist."}],"category":"OBJECT_NOT_FOUND","requestId":"6a572d20-8314-4aa5-8496-49e7594bd1d1"}'
+    http_version:
+  recorded_at: Fri, 08 Nov 2019 15:18:59 GMT
+recorded_with: VCR 5.0.0
