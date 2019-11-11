@@ -54,6 +54,18 @@ class Hubspot::Company < Hubspot::Resource
       end
     end
 
+    def update_company(company_id, properties = {})
+      if company_id.present?
+        path = UPDATE_PATH
+        params = { id: company_id}
+      end
+      request = JSON.parse(properties)
+      if company_id.present?
+        response = Hubspot::Connection.put_json(path, params: params, body: request)
+      end
+      from_result(response)
+    end
+
     def create_or_update(company_id, properties = {})
       if company_id.present?
         path = UPDATE_PATH
