@@ -2,17 +2,18 @@ Gem::Specification.new do |s|
   s.name = "hubspot-ruby"
   s.version = "0.7.0"
   s.require_paths = ["lib"]
-  s.authors = ["Andrew DiMichele", "Chris Bisnett"]
+  s.authors = ["Jonathan", "Juliette"]
+  s.email = ["jonathan@hoggo.com", "juliette@hoggo.com"]
   s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
   s.licenses = ["MIT"]
   s.files = [".rspec", "Gemfile", "Guardfile", "LICENSE.txt", "README.md", "RELEASING.md", "Rakefile", "hubspot-ruby.gemspec"]
   s.files += Dir["lib/**/*.rb"]
   s.files += Dir["lib/**/*.rake"]
   s.files += Dir["spec/**/*.rb"]
-  s.homepage = "http://github.com/adimichele/hubspot-ruby"
+  s.homepage = "http://github.com/lounna-sas/hubspot-ruby"
   s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
   s.metadata = {
-    "changelog_uri" => "https://github.com/adimichele/hubspot-ruby/blob/master/History.md"
+    "changelog_uri" => "https://github.com/lounna-sas/hubspot-ruby/blob/master/History.md"
   }
 
   s.required_ruby_version = ">= 2.3"
