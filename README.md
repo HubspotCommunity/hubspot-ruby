@@ -1,7 +1,5 @@
 # HubSpot REST API wrappers for ruby
 
-[![Build Status](https://travis-ci.org/adimichele/hubspot-ruby.svg?branch=master)](https://travis-ci.org/adimichele/hubspot-ruby)
-
 **This is the master branch and contains unreleased and potentially breaking changes. If you are looking for the most recent stable release you want the [v0-stable branch](https://github.com/adimichele/hubspot-ruby/tree/v0-stable).**
 
 Wraps the HubSpot REST API for convenient access from ruby applications.
@@ -10,12 +8,12 @@ Documentation for the HubSpot REST API can be found here: https://developers.hub
 
 ## Setup
 
-    gem install hubspot-ruby
+    gem install hubspot-api-ruby
 
 Or with bundler,
 
 ```ruby
-gem "hubspot-ruby"
+gem "hubspot-api-ruby"
 ```
 
 ## Getting Started
@@ -147,12 +145,12 @@ irb(main):001:0> company = Hubspot::Company.find(1726317857)
 
 irb(main):002:0> company = Hubspot::Company.find(1)
 Traceback (most recent call last):
-        6: from /home/chris/projects/hubspot-ruby/bin/console:20:in `<main>'
+        6: from ./hubspot-api-ruby/bin/console:20:in `<main>'
         5: from (irb):2
-        4: from /home/chris/projects/hubspot-ruby/lib/hubspot/resource.rb:17:in `find'
-        3: from /home/chris/projects/hubspot-ruby/lib/hubspot/resource.rb:81:in `reload'
-        2: from /home/chris/projects/hubspot-ruby/lib/hubspot/connection.rb:10:in `get_json'
-        1: from /home/chris/projects/hubspot-ruby/lib/hubspot/connection.rb:52:in `handle_response'
+        4: from ./hubspot-api-ruby/lib/hubspot/resource.rb:17:in `find'
+        3: from ./hubspot-api-ruby/lib/hubspot/resource.rb:81:in `reload'
+        2: from ./hubspot-api-ruby/lib/hubspot/connection.rb:10:in `get_json'
+        1: from ./hubspot-api-ruby/lib/hubspot/connection.rb:52:in `handle_response'
 Hubspot::RequestError (Response body: {"status":"error","message":"resource not found","correlationId":"7c8ba50e-16a4-4a52-a304-ff249175a8f1","requestId":"b4898274bf8992924082b4a460b90cbe"})
 ```
 
@@ -193,9 +191,9 @@ irb(main):001:0> company = Hubspot::Company.new
 
 irb(main):002:0> company.name
 Traceback (most recent call last):
-        3: from /home/chris/projects/hubspot-ruby/bin/console:20:in `<main>'
+        3: from ./hubspot-api-ruby/bin/console:20:in `<main>'
         2: from (irb):2
-        1: from /home/chris/projects/hubspot-ruby/lib/hubspot/resource.rb:215:in `method_missing'
+        1: from ./hubspot-api-ruby/lib/hubspot/resource.rb:215:in `method_missing'
 NoMethodError (undefined method `name' for #<Hubspot::Company:0x0000561d0a8bdff8>)
 
 irb(main):003:0> company.name = "Foobar"
@@ -211,7 +209,7 @@ To make working with API endpoints that return multiple resources easier, the re
 
 ```ruby
 irb(main):001:0> contacts = Hubspot::Contact.all
-=> #<Hubspot::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@/home/chris/projects/hubspot-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9242374, @has_more=true>
+=> #<Hubspot::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@./hubspot-api-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9242374, @has_more=true>
 
 irb(main):002:0> contacts.more?
 => true
@@ -226,14 +224,14 @@ irb(main):005:0> contacts.first
 => #<Hubspot::Contact:0x000055ba3c29bac0 @changes={}, @properties={"firstname"=>{"value"=>"My Street X 1551971239 => My Street X 1551971267 => My Street X 1551971279"}, "lastmodifieddate"=>{"value"=>"1551971286841"}, "company"=>{"value"=>"MadKudu"}, "lastname"=>{"value"=>"Test0830181615"}}, @id=9153674, @persisted=true, @deleted=false, @metadata={"addedAt"=>1535664601481, "vid"=>9153674, "canonical-vid"=>9153674, "merged-vids"=>[], "portal-id"=>62515, "is-contact"=>true, "profile-token"=>"AO_T-mPNHk6O7jh8u8D2IlrhZn7GO91w-weZrC93_UaJvdB0U4o6Uc_PkPJ3DOpf15sUplrxMzG9weiTTpPI05Nr04zxnaNYBVcWHOlMbVlJ2Avq1KGoCBVbIoQucOy_YmCBIfOXRtcc", "profile-url"=>"https://app.hubspot.com/contacts/62515/contact/9153674", "form-submissions"=>[], "identity-profiles"=>[{"vid"=>9153674, "saved-at-timestamp"=>1535664601272, "deleted-changed-timestamp"=>0, "identities"=>[{"type"=>"EMAIL", "value"=>"test.0830181615@test.com", "timestamp"=>1535664601151, "is-primary"=>true}, {"type"=>"LEAD_GUID", "value"=>"01a107c4-3872-44e0-ab2e-47061507ffa1", "timestamp"=>1535664601259}]}], "merge-audits"=>[]}>
 
 irb(main):006:0> contacts.next_page
-=> #<Hubspot::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=9242374, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@/home/chris/projects/hubspot-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9324874, @has_more=true>
+=> #<Hubspot::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=9242374, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@./hubspot-api-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9324874, @has_more=true>
 ```
 
 For Hubspot resources that support batch updates for updating multiple resources, the collection provides an `update_all()` method:
 
 ```ruby
 irb(main):001:0> companies = Hubspot::Company.all(limit: 5)
-=> #<Hubspot::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@/home/chris/projects/hubspot-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
+=> #<Hubspot::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@./hubspot-api-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
 
 irb(main):002:0> companies.size
 => 5
@@ -242,7 +240,7 @@ irb(main):003:0> companies.update_all(lifecyclestage: "opportunity")
 => true
 
 irb(main):004:0> companies.refresh
-=> #<Hubspot::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@/home/chris/projects/hubspot-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
+=> #<Hubspot::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@./hubspot-api-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
 ```
 
 ### Deleting a resource
@@ -262,7 +260,7 @@ irb(main):002:0> contact.delete
 * Contact -> Hubspot::Contact
 * Company -> Hubspot::Company
 
-## Contributing to hubspot-ruby
+## Contributing to hubspot-api-ruby
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -295,4 +293,3 @@ VCR_RECORD=1 bundle exec rspec spec
 ## Disclaimer
 
 This project and the code therein was not created by and is not supported by HubSpot, Inc or any of its affiliates.
-

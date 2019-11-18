@@ -1,19 +1,19 @@
 Gem::Specification.new do |s|
-  s.name = "hubspot-ruby"
+  s.name = "hubspot-api-ruby"
   s.version = "0.7.0"
   s.require_paths = ["lib"]
   s.authors = ["Jonathan", "Juliette"]
   s.email = ["jonathan@hoggo.com", "juliette@hoggo.com"]
-  s.description = "hubspot-ruby is a wrapper for the HubSpot REST API"
+  s.description = "hubspot-api-ruby is a wrapper for the HubSpot REST API"
   s.licenses = ["MIT"]
-  s.files = [".rspec", "Gemfile", "Guardfile", "LICENSE.txt", "README.md", "RELEASING.md", "Rakefile", "hubspot-ruby.gemspec"]
+  s.files = [".rspec", "Gemfile", "Guardfile", "LICENSE.txt", "README.md", "RELEASING.md", "Rakefile", "hubspot-api-ruby.gemspec"]
   s.files += Dir["lib/**/*.rb"]
   s.files += Dir["lib/**/*.rake"]
   s.files += Dir["spec/**/*.rb"]
-  s.homepage = "http://github.com/lounna-sas/hubspot-ruby"
-  s.summary = "hubspot-ruby is a wrapper for the HubSpot REST API"
+  s.homepage = "http://github.com/lounna-sas/hubspot-api-ruby"
+  s.summary = "hubspot-api-ruby is a wrapper for the HubSpot REST API"
   s.metadata = {
-    "changelog_uri" => "https://github.com/lounna-sas/hubspot-ruby/blob/master/History.md"
+    "changelog_uri" => "https://github.com/lounna-sas/hubspot-api-ruby/blob/master/History.md"
   }
 
   s.required_ruby_version = ">= 2.3"
@@ -40,4 +40,3 @@ Gem::Specification.new do |s|
   s.add_development_dependency("faker")
   s.add_development_dependency("factory_bot")
 end
-

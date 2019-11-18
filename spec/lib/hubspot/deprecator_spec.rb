@@ -9,7 +9,7 @@ RSpec.describe Hubspot::Deprecator do
     it "uses the correct gem name" do
       deprecator = Hubspot::Deprecator.build
 
-      expect(deprecator.gem_name).to eq("hubspot-ruby")
+      expect(deprecator.gem_name).to eq("hubspot-api-ruby")
     end
   end
 end
