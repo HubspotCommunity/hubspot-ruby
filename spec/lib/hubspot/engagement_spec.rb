@@ -71,6 +71,38 @@ describe Hubspot::Engagement do
       end
     end
 
+    describe ".all" do
+      cassette "find_all_engagements"
+
+      it 'must get the engagements list' do
+        engagements = Hubspot::Engagement.all
+
+        expect(engagements['engagements'].size).to eql 100 # default page size
+
+        first = engagements['engagements'].first
+        last = engagements['engagements'].last
+
+        expect(first).to be_a Hubspot::Engagement
+        expect(first.engagement['id']).to eql 3981023
+
+        expect(last).to be_a Hubspot::Engagement
+        expect(last.engagement['id']).to eql 36579065
+      end
+
+      it 'must filter only 2 engagements' do
+        engagements = Hubspot::Engagement.all(limit: 2)
+        expect(engagements['engagements'].size).to eql 2
+      end
+
+      it 'it must offset the engagements' do
+        single_list = Hubspot::Engagement.all(limit: 5)
+        expect(single_list['engagements'].size).to eql 5
+
+        second = Hubspot::Engagement.all(count: 1, offset: single_list['offset'])['engagements'].first
+        expect(second.engagement['id']).to eql 4815722
+      end
+    end
+
     describe ".associate!" do
       cassette "engagement_associate"
 
