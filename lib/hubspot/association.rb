@@ -8,9 +8,13 @@ class Hubspot::Association
 
   class << self
     def create(from_id, to_id, definition_id)
-      batch_create([{from_id: from_id, to_id: to_id, definition_id: definition_id}])
+      batch_create([{ from_id: from_id, to_id: to_id, definition_id: definition_id }])
     end
 
+    # Make multiple associations in a single API call
+    # {https://developers.hubspot.com/docs/methods/crm-associations/batch-associate-objects}
+    # usage:
+    # Hubspot::Association.batch_create([{ from_id: 1, to_id: 2, definition_id: Hubspot::Association::COMPANY_TO_CONTACT }])
     def batch_create(associations)
       request = associations.map { |assocation| build_association_body(assocation) }
       Hubspot::Connection.put_json(BATCH_CREATE_PATH, params: { no_parse: true }, body: request).success?
@@ -20,6 +24,10 @@ class Hubspot::Association
       batch_delete([{from_id: from_id, to_id: to_id, definition_id: definition_id}])
     end
 
+    # Remove multiple associations in a single API call
+    # {https://developers.hubspot.com/docs/methods/crm-associations/batch-delete-associations}
+    # usage:
+    # Hubspot::Association.batch_delete([{ from_id: 1, to_id: 2, definition_id: Hubspot::Association::COMPANY_TO_CONTACT }])
     def batch_delete(associations)
       request = associations.map { |assocation| build_association_body(assocation) }
       Hubspot::Connection.put_json(BATCH_DELETE_PATH, params: { no_parse: true }, body: request).success?
