@@ -13,7 +13,7 @@ class Hubspot::Association
 
     def batch_create(associations)
       request = associations.map { |assocation| build_association_body(assocation) }
-      Hubspot::Connection.put_json(BATCH_CREATE_PATH, body: request).success?
+      Hubspot::Connection.put_json(BATCH_CREATE_PATH, params: { no_parse: true }, body: request).success?
     end
 
     def delete(from_id, to_id, definition_id)
@@ -22,7 +22,7 @@ class Hubspot::Association
 
     def batch_delete(associations)
       request = associations.map { |assocation| build_association_body(assocation) }
-      Hubspot::Connection.put_json(BATCH_CREATE_PATH, body: request).success?
+      Hubspot::Connection.put_json(BATCH_CREATE_PATH, params: { no_parse: true }, body: request).success?
     end
 
     private
