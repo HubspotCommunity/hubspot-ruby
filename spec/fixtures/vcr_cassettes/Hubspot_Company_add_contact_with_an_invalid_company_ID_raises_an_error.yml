@@ -2,43 +2,51 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.hubapi.com/companies/v2/companies/1/contacts/1?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/crm-associations/v1/associations/create-batch?hapikey=demo
     body:
       encoding: UTF-8
-      string: 'null'
+      string: '[{"fromObjectId":1,"toObjectId":1,"category":"HUBSPOT_DEFINED","definitionId":2}]'
     headers:
       Content-Type:
       - application/json
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 400
+      message: Bad Request
     headers:
       Date:
-      - Sat, 04 May 2019 14:44:21 GMT
+      - Wed, 20 Nov 2019 17:05:12 GMT
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '190'
+      - '209'
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d6990ee98a136ceae0728e218e93a53eb1556981061; expires=Sun, 03-May-20
-        14:44:21 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        17:05:12 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2BFE94E1F0F5FB0729826BCF1CFD012E79B2069A65000000000000000000
+      - redacted
       X-Hubspot-Ratelimit-Daily:
-      - '1000000'
+      - '250000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '979501'
+      - '249628'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '89'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
       X-Hubspot-Ratelimit-Secondly:
-      - '60'
+      - '10'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '59'
-      X-Hubspot-Notfound:
-      - 'true'
+      - '8'
+      Vary:
+      - Accept-Encoding
       Access-Control-Allow-Credentials:
       - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Expect-Ct:
@@ -46,11 +54,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4d1b408fc84157c3-IAD
+      - 538c01e52928cdab-CDG
     body:
       encoding: UTF-8
-      string: '{"status":"error","message":"Couldn''t find a company with the ID ''1''
-        in portal ''62515''","correlationId":"e2fbd77d-011a-448e-b716-127c26146599","requestId":"e5f62eb2bf0bcfd004e6371b23c3130c"}'
-    http_version: 
-  recorded_at: Sat, 04 May 2019 14:44:21 GMT
-recorded_with: VCR 4.0.0
+      string: '{"status":"error","message":"One or more associations are invalid","correlationId":"47a734e3-78b1-44f8-916d-6f3f1116cfab","errors":["COMPANY=1
+        is not valid"],"requestId":"e50ae34b-8dfe-4948-a74e-1c1e92685ede"}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 17:05:12 GMT
+recorded_with: VCR 5.0.0

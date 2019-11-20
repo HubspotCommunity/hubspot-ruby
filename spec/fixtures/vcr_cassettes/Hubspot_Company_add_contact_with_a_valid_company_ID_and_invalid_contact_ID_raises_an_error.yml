@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
     body:
       encoding: UTF-8
-      string: '{"properties":[{"name":"name","value":"Grant LLC"},{"name":"domain","value":"botsford.net"}]}'
+      string: '{"properties":[{"name":"name","value":"Wolff Inc"},{"name":"domain","value":"gleichner.io"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 04 May 2019 14:44:20 GMT
+      - Wed, 20 Nov 2019 17:05:12 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,20 +23,30 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d65fcfe478266039da7604e372615a0341556981060; expires=Sun, 03-May-20
-        14:44:20 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        17:05:11 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B5C0095B230847F2293FE4BAF6F10E24D55264125000000000000000000
+      - redacted
       X-Hubspot-Ratelimit-Daily:
-      - '1000000'
+      - '250000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '979503'
+      - '249630'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '91'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
       X-Hubspot-Ratelimit-Secondly:
-      - '60'
+      - '10'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '55'
+      - '9'
+      Vary:
+      - Accept-Encoding
       Access-Control-Allow-Credentials:
       - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Expect-Ct:
@@ -44,53 +54,61 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4d1b408cff259f4c-IAD
+      - 538c01e12faba843-CDG
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1896332005,"isDeleted":false,"properties":{"website":{"value":"botsford.net","timestamp":1556981060664,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"botsford.net","timestamp":1556981060664,"source":"CALCULATED","sourceVid":[],"requestId":"910dcd56-c09d-428b-a43a-8fcdbc9e95d4"}]},"hs_lastmodifieddate":{"value":"1556981060664","timestamp":1556981060664,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981060664","timestamp":1556981060664,"source":"CALCULATED","sourceVid":[],"requestId":"910dcd56-c09d-428b-a43a-8fcdbc9e95d4"}]},"domain":{"value":"botsford.net","timestamp":1556981060664,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"botsford.net","timestamp":1556981060664,"source":"API","sourceVid":[],"requestId":"910dcd56-c09d-428b-a43a-8fcdbc9e95d4"}]},"name":{"value":"Grant
-        LLC","timestamp":1556981060664,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Grant
-        LLC","timestamp":1556981060664,"source":"API","sourceVid":[],"requestId":"910dcd56-c09d-428b-a43a-8fcdbc9e95d4"}]},"createdate":{"value":"1556981060664","timestamp":1556981060664,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981060664","timestamp":1556981060664,"source":"API","sourceVid":[],"requestId":"910dcd56-c09d-428b-a43a-8fcdbc9e95d4"},{"name":"createdate","value":"1556981060664","timestamp":1556981060664,"sourceId":"API","source":"API","sourceVid":[],"requestId":"910dcd56-c09d-428b-a43a-8fcdbc9e95d4"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
-    http_version: 
-  recorded_at: Sat, 04 May 2019 14:44:20 GMT
+      string: '{"portalId":62515,"companyId":2606347900,"isDeleted":false,"properties":{"website":{"value":"gleichner.io","timestamp":1574269511942,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"gleichner.io","timestamp":1574269511942,"source":"CALCULATED","sourceVid":[],"requestId":"167f3469-fcce-4d53-a142-7e9e041e5ccf"}]},"hs_lastmodifieddate":{"value":"1574269511942","timestamp":1574269511942,"source":"CALCULATED","sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","versions":[{"name":"hs_lastmodifieddate","value":"1574269511942","timestamp":1574269511942,"sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","source":"CALCULATED","sourceVid":[],"requestId":"167f3469-fcce-4d53-a142-7e9e041e5ccf"}]},"domain":{"value":"gleichner.io","timestamp":1574269511942,"source":"API","sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","versions":[{"name":"domain","value":"gleichner.io","timestamp":1574269511942,"sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","source":"API","sourceVid":[],"requestId":"167f3469-fcce-4d53-a142-7e9e041e5ccf"}]},"hs_object_id":{"value":"2606347900","timestamp":1574269511942,"source":"API","sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","versions":[{"name":"hs_object_id","value":"2606347900","timestamp":1574269511942,"sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","source":"API","sourceVid":[],"requestId":"167f3469-fcce-4d53-a142-7e9e041e5ccf"}]},"name":{"value":"Wolff
+        Inc","timestamp":1574269511942,"source":"API","sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","versions":[{"name":"name","value":"Wolff
+        Inc","timestamp":1574269511942,"sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","source":"API","sourceVid":[],"requestId":"167f3469-fcce-4d53-a142-7e9e041e5ccf"}]},"createdate":{"value":"1574269511942","timestamp":1574269511942,"source":"API","sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","versions":[{"name":"createdate","value":"1574269511942","timestamp":1574269511942,"sourceId":"167f3469-fcce-4d53-a142-7e9e041e5ccf","source":"API","sourceVid":[],"requestId":"167f3469-fcce-4d53-a142-7e9e041e5ccf"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 17:05:12 GMT
 - request:
     method: put
-    uri: https://api.hubapi.com/companies/v2/companies/1896332005/contacts/1?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/crm-associations/v1/associations/create-batch?hapikey=demo
     body:
       encoding: UTF-8
-      string: 'null'
+      string: '[{"fromObjectId":2606347900,"toObjectId":1234,"category":"HUBSPOT_DEFINED","definitionId":2}]'
     headers:
       Content-Type:
       - application/json
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 400
+      message: Bad Request
     headers:
       Date:
-      - Sat, 04 May 2019 14:44:20 GMT
+      - Wed, 20 Nov 2019 17:05:12 GMT
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '191'
+      - '212'
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dbd9e2f7f6bb0964317195fd1ce615e9f1556981060; expires=Sun, 03-May-20
-        14:44:20 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        17:05:12 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2BA5F060FD65F11C95427FE88738A7916FDEE1E05A000000000000000000
+      - redacted
       X-Hubspot-Ratelimit-Daily:
-      - '1000000'
+      - '250000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '979502'
+      - '249629'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '90'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
       X-Hubspot-Ratelimit-Secondly:
-      - '60'
+      - '10'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '54'
-      X-Hubspot-Notfound:
-      - 'true'
+      - '9'
+      Vary:
+      - Accept-Encoding
       Access-Control-Allow-Credentials:
       - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Expect-Ct:
@@ -98,11 +116,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4d1b408e7e9dcef8-IAD
+      - 538c01e37891a849-CDG
     body:
       encoding: UTF-8
-      string: '{"status":"error","message":"Couldn''t find a Contact with the vid
-        ''1'' in portal ''62515''","correlationId":"da291558-5d66-4175-8dbe-fc5e22840a8b","requestId":"491c402396a3b91ead6a4729b8d1de51"}'
-    http_version: 
-  recorded_at: Sat, 04 May 2019 14:44:20 GMT
-recorded_with: VCR 4.0.0
+      string: '{"status":"error","message":"One or more associations are invalid","correlationId":"922d64b6-eb37-4584-b971-4115dc8bb512","errors":["CONTACT=1234
+        is not valid"],"requestId":"b5918100-1395-4f83-ab8b-ec0299ed6826"}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 17:05:12 GMT
+recorded_with: VCR 5.0.0
