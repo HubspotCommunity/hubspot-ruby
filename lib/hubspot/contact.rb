@@ -47,6 +47,12 @@ class Hubspot::Contact < Hubspot::Resource
       from_result(response)
     end
 
+    def update_contact(contact, properties = {})
+      request = JSON.parse(properties)
+      params = { id: contact, no_parse: true}
+      response = Hubspot::Connection.post_json(UPDATE_PATH, params: params, body: request)
+    end
+
     def search(query, opts = {})
       Hubspot::PagedCollection.new(opts) do |options, offset, limit|
         response = Hubspot::Connection.get_json(
