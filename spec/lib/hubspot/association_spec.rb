@@ -130,4 +130,31 @@ RSpec.describe Hubspot::Association do
       end
     end
   end
+
+  describe '.all' do
+    subject { described_class.all(resource_id, definition_id) }
+
+    context 'with valid params' do
+      cassette
+
+      let(:resource_id) { deal.deal_id }
+      let(:definition_id) { described_class::DEAL_TO_CONTACT }
+      let(:deal) { Hubspot::Deal.create!(portal_id, [], contact_ids, {}) }
+      let(:contact_ids) { [contact.id, second_contact.id] }
+      let(:second_contact) { create :contact }
+
+      it 'finds the resources' do
+        expect(subject.map(&:id)).to contain_exactly(*contact_ids)
+      end
+    end
+
+    context 'with unsupported definition' do
+      let(:resource_id) { 1234 }
+      let(:definition_id) { -1 }
+
+      it 'raises an error' do
+        expect { subject }.to raise_error(Hubspot::InvalidParams, 'Definition not supported')
+      end
+    end
+  end
 end
