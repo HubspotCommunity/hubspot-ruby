@@ -10,7 +10,7 @@ describe Hubspot::Deal do
     end
   end
 
-  before{ Hubspot.configure(hapikey: "demo") }
+  before { Hubspot.configure(hapikey: 'demo') }
 
   describe "#initialize" do
     subject{ Hubspot::Deal.new(example_deal_hash) }
@@ -26,6 +26,34 @@ describe Hubspot::Deal do
     its(:portal_id)   { should eql portal_id }
     its(:company_ids) { should eql [company_id]}
     its(:vids)        { should eql [vid]}
+  end
+
+  describe '.associate' do
+    cassette
+    let(:deal) { Hubspot::Deal.create!(portal_id, [], [], {}) }
+    let(:company) { create :company }
+    let(:contact) { create :contact }
+    let(:contact_id) { contact.id }
+
+    subject { Hubspot::Deal.associate!(deal.deal_id, [company.id], [contact_id]) }
+
+    it 'associates the deal to the contact and the company' do
+      subject
+      find_deal = Hubspot::Deal.find(deal.deal_id)
+      find_deal.company_ids.should eql [company.id]
+      find_deal.vids.should eql [contact.id]
+    end
+
+    context 'when an id is invalid' do
+      let(:contact_id) { 1234 }
+
+      it 'raises an error and do not changes associations' do
+        expect { subject }.to raise_error(Hubspot::RequestError)
+        find_deal = Hubspot::Deal.find(deal.deal_id)
+        find_deal.company_ids.should eql []
+        find_deal.vids.should eql []
+      end
+    end
   end
 
   describe ".find" do
