@@ -5,12 +5,12 @@ cache: bundler
 before_install: gem install bundler
 
 rvm:
+  - 2.6
   - 2.5
-  - 2.4
-  - 2.3
 
 gemfile:
   - gemfiles/activesupport_4.2.gemfile
   - gemfiles/activesupport_5.0.gemfile
   - gemfiles/activesupport_5.1.gemfile
   - gemfiles/activesupport_5.2.gemfile
+  - gemfiles/activesupport_6.0.gemfile
