@@ -12,7 +12,6 @@ module Hubspot
     DEAL_PATH = "/deals/v1/deal/:deal_id"
     RECENT_UPDATED_PATH = "/deals/v1/deal/recent/modified"
     UPDATE_DEAL_PATH = '/deals/v1/deal/:deal_id'
-    ASSOCIATED_DEAL_PATH = "/deals/v1/deal/associated/:objectType/:objectId"
 
     attr_reader :properties
     attr_reader :portal_id
@@ -96,20 +95,15 @@ module Hubspot
       end
 
       # Find all deals associated to a contact or company
-      # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
       # @param object [Hubspot::Contact || Hubspot::Company] a contact or company
       # @return [Array] Array of Hubspot::Deal records
       def find_by_association(object)
-        path = ASSOCIATED_DEAL_PATH
-        objectType =  case object
-                      when Hubspot::Company then :company
-                      when Hubspot::Contact then :contact
-                      else raise(Hubspot::InvalidParams, "Instance type not supported")
-                      end
-
-        params = { objectType: objectType, objectId: object.id }
-        response = Hubspot::Connection.get_json(path, params)
-        response["results"].map { |deal_id| find(deal_id) }
+        definition = case object
+                     when Hubspot::Company then Hubspot::Association::COMPANY_TO_DEAL
+                     when Hubspot::Contact then Hubspot::Association::CONTACT_TO_DEAL
+                     else raise(Hubspot::InvalidParams, 'Instance type not supported')
+                     end
+        Hubspot::Association.all(object.id, definition)
       end
     end
 

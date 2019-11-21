@@ -68,12 +68,24 @@ describe Hubspot::Deal do
   end
 
   describe '.find_by_company' do
-    cassette 'deal_find_by_company'
-    let(:company) { Hubspot::Company.create(name: 'Test Company') }
-    let(:deal) { Hubspot::Deal.create!(portal_id, [company.id], [vid], { amount: amount }) }
+    cassette
+    let(:company) { create :company }
+    let!(:deal) { Hubspot::Deal.create!(portal_id, [company.id], [], { amount: amount }) }
 
     it 'returns company deals' do
       deals = Hubspot::Deal.find_by_company(company)
+      deals.first.deal_id.should eql deal.deal_id
+      deals.first.properties['amount'].should eql amount
+    end
+  end
+
+  describe '.find_by_contact' do
+    cassette
+    let(:contact) { create :contact }
+    let!(:deal) { Hubspot::Deal.create!(portal_id, [], [contact.id], { amount: amount }) }
+
+    it 'returns contact deals' do
+      deals = Hubspot::Deal.find_by_contact(contact)
       deals.first.deal_id.should eql deal.deal_id
       deals.first.properties['amount'].should eql amount
     end
