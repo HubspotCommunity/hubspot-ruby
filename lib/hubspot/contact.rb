@@ -169,8 +169,8 @@ module Hubspot
     attr_reader :is_contact, :list_memberships
 
     def initialize(response_hash)
-      props = response_hash['properties']
-      @properties = Hubspot::Utils.properties_to_hash(props) unless props.blank?
+      props = response_hash['properties'] || {}
+      @properties = Hubspot::Utils.properties_to_hash(props)
       @is_contact = response_hash["is-contact"]
       @list_memberships = response_hash["list-memberships"] || []
       @vid = response_hash['vid']
