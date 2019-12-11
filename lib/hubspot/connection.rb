@@ -132,12 +132,28 @@ module Hubspot
   class FilesConnection < Connection
     follow_redirects true
 
-    def self.get(path, opts)
-      url = generate_url(path, opts)
-      response = super(url, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
-      log_request_and_response url, response
-      raise(Hubspot::RequestError.new(response)) unless response.success?
-      response.parsed_response
+    class << self
+      def get(path, opts)
+        url = generate_url(path, opts)
+        response = super(url, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
+        log_request_and_response url, response
+        raise(Hubspot::RequestError.new(response)) unless response.success?
+        response.parsed_response
+      end
+
+      def post(path, opts)
+        url = generate_url(path, opts[:params])
+        response = super(
+          url,
+          body: opts[:body],
+          headers: { 'Content-Type' => 'multipart/form-data' },
+          read_timeout: read_timeout(opts), open_timeout: open_timeout(opts)
+        )
+        log_request_and_response url, response, opts[:body]
+        raise(Hubspot::RequestError.new(response)) unless response.success?
+
+        response
+      end
     end
   end
 end
