@@ -63,8 +63,18 @@ module Hubspot
 
     # {https://developers.hubspot.com/docs/methods/forms/submit_form}
     def submit(opts={})
-      response = Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
-      [204, 302, 200].include?(response.code)
+      [204, 302, 200].include?(http_request(opts).code)
+    end
+
+    #
+    # Separate the  HTTP request so the caller can optionally use
+    # the HTTParty object that is returned.
+    # That way there is access to the HTTPParty request methods
+    # The returned object can retrieve and record the response for compliance/other purpose:
+    # => Ex: |> request = hubspot_form_object.submit_http_request
+    # =>     |> request.request # Save this if neededs
+    def http_request(opts={})
+      Hubspot::FormsConnection.submit(SUBMIT_DATA_PATH, params: { form_guid: @guid }, body: opts)
     end
 
     # {https://developers.hubspot.com/docs/methods/forms/update_form}
