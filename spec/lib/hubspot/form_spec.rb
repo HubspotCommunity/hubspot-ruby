@@ -186,4 +186,49 @@ describe Hubspot::Form do
       form.destroyed?.should be true
     end
   end
+
+  describe '#http_request' do
+    cassette 'form_submit_data'
+
+    let(:form) { Hubspot::Form.find('561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0') }
+
+    context 'with a valid portal id' do
+      before do
+        Hubspot.configure(hapikey: 'demo', portal_id: '62515')
+      end
+
+      it 'returns the HTTParty::Response if the form submission is successful' do
+        params = {}
+        result = form.http_request(params)
+        result.should be_an_instance_of HTTParty::Response
+        result.code.should eq 200
+      end
+    end
+
+    context 'with an invalid portal id' do
+      before do
+        Hubspot.configure(hapikey: 'demo', portal_id: 'xxxx')
+      end
+
+      it 'returns the HTTParty::Response in case of errors' do
+        params = { unknown_field: :bogus_value }
+        result = form.http_request(params)
+        result.should be_an_instance_of HTTParty::Response
+        result.code.should eq 404
+      end
+    end
+
+    context 'when initializing Hubspot::Form directly' do
+      let(:form) { Hubspot::Form.new('guid' => '561d9ce9-bb4c-45b4-8e32-21cdeaa3a7f0') }
+
+      before { Hubspot.configure(hapikey: 'demo', portal_id: '62515') }
+
+      it 'returns the HTTParty::Response if the form submission is successful' do
+        params = {}
+        result = form.http_request(params)
+        result.should be_an_instance_of HTTParty::Response
+        result.code.should eq 200
+      end
+    end
+  end
 end
