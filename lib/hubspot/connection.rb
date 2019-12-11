@@ -128,4 +128,16 @@ module Hubspot
       post(url, body: opts[:body], headers: { 'Content-Type' => 'application/x-www-form-urlencoded' })
     end
   end
+
+  class FilesConnection < Connection
+    follow_redirects true
+
+    def self.get(path, opts)
+      url = generate_url(path, opts)
+      response = super(url, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
+      log_request_and_response url, response
+      raise(Hubspot::RequestError.new(response)) unless response.success?
+      response.parsed_response
+    end
+  end
 end

@@ -28,6 +28,11 @@ module Hubspot
         response = Hubspot::Connection.get_json(FORM_PATH, { form_guid: guid })
         new(response)
       end
+
+      def upload_file(uri)
+        path = URI::parse(uri).request_uri
+        Hubspot::FilesConnection.get(path, {})
+      end
     end
 
     attr_reader :guid

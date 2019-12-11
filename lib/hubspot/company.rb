@@ -151,7 +151,7 @@ module Hubspot
         end
         Hubspot::Connection.post_json(BATCH_UPDATE_PATH, params: {}, body: query)
       end
-    
+
       # Adds contact to a company
       # {http://developers.hubspot.com/docs/methods/companies/add_contact_to_company}
       # @param company_vid [Integer] The ID of a company to add a contact to
@@ -171,7 +171,8 @@ module Hubspot
     attr_reader :vid, :name
 
     def initialize(response_hash)
-      @properties = Hubspot::Utils.properties_to_hash(response_hash["properties"])
+      props = response_hash['properties'] || {}
+      @properties = Hubspot::Utils.properties_to_hash(props)
       @vid = response_hash["companyId"]
       @name = @properties.try(:[], "name")
     end
