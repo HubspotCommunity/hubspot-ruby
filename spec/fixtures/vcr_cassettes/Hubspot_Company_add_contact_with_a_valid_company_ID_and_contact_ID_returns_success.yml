@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
     body:
       encoding: UTF-8
-      string: '{"properties":[{"name":"name","value":"Conroy, Kiehn and Gleason"},{"name":"domain","value":"yostbartell.net"}]}'
+      string: '{"properties":[{"name":"name","value":"Buckridge-Steuber"},{"name":"domain","value":"barrows.info"}]}'
     headers:
       Content-Type:
       - application/json
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 04 May 2019 14:44:17 GMT
+      - Wed, 20 Nov 2019 17:05:09 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -23,20 +23,30 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=da5ff40409e7e4ef824d9bee575c5df131556981057; expires=Sun, 03-May-20
-        14:44:17 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        17:05:09 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B653FAA0D7F299502807C51ABABCA5708A32B9CBD000000000000000000
+      - redacted
       X-Hubspot-Ratelimit-Daily:
-      - '1000000'
+      - '250000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '979513'
+      - '249638'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '99'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
       X-Hubspot-Ratelimit-Secondly:
-      - '60'
+      - '10'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '58'
+      - '9'
+      Vary:
+      - Accept-Encoding
       Access-Control-Allow-Credentials:
       - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Expect-Ct:
@@ -44,20 +54,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4d1b40799a59cec0-IAD
+      - 538c01cf58abee13-CDG
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1897515216,"isDeleted":false,"properties":{"website":{"value":"yostbartell.net","timestamp":1556981057563,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"yostbartell.net","timestamp":1556981057563,"source":"CALCULATED","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"hs_lastmodifieddate":{"value":"1556981057563","timestamp":1556981057563,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981057563","timestamp":1556981057563,"source":"CALCULATED","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"domain":{"value":"yostbartell.net","timestamp":1556981057563,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"yostbartell.net","timestamp":1556981057563,"source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"name":{"value":"Conroy,
-        Kiehn and Gleason","timestamp":1556981057563,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Conroy,
-        Kiehn and Gleason","timestamp":1556981057563,"source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"createdate":{"value":"1556981057563","timestamp":1556981057563,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981057563","timestamp":1556981057563,"source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"},{"name":"createdate","value":"1556981057563","timestamp":1556981057563,"sourceId":"API","source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
-    http_version: 
-  recorded_at: Sat, 04 May 2019 14:44:17 GMT
+      string: '{"portalId":62515,"companyId":2606347890,"isDeleted":false,"properties":{"website":{"value":"barrows.info","timestamp":1574269509097,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"barrows.info","timestamp":1574269509097,"source":"CALCULATED","sourceVid":[],"requestId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f"}]},"hs_lastmodifieddate":{"value":"1574269509097","timestamp":1574269509097,"source":"CALCULATED","sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","versions":[{"name":"hs_lastmodifieddate","value":"1574269509097","timestamp":1574269509097,"sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","source":"CALCULATED","sourceVid":[],"requestId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f"}]},"domain":{"value":"barrows.info","timestamp":1574269509097,"source":"API","sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","versions":[{"name":"domain","value":"barrows.info","timestamp":1574269509097,"sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","source":"API","sourceVid":[],"requestId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f"}]},"hs_object_id":{"value":"2606347890","timestamp":1574269509097,"source":"API","sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","versions":[{"name":"hs_object_id","value":"2606347890","timestamp":1574269509097,"sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","source":"API","sourceVid":[],"requestId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f"}]},"name":{"value":"Buckridge-Steuber","timestamp":1574269509097,"source":"API","sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","versions":[{"name":"name","value":"Buckridge-Steuber","timestamp":1574269509097,"sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","source":"API","sourceVid":[],"requestId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f"}]},"createdate":{"value":"1574269509097","timestamp":1574269509097,"source":"API","sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","versions":[{"name":"createdate","value":"1574269509097","timestamp":1574269509097,"sourceId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f","source":"API","sourceVid":[],"requestId":"f0a55eb7-0238-4299-b3ed-246cffe3b54f"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 17:05:09 GMT
 - request:
     method: post
-    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
     body:
       encoding: UTF-8
-      string: '{"properties":[{"property":"firstname","value":"Jeffery"},{"property":"lastname","value":"Hermiston"},{"property":"email","value":"81057rjyj@example.org"}]}'
+      string: '{"properties":[{"property":"firstname","value":"Edyth"},{"property":"lastname","value":"Heathcote"},{"property":"email","value":"fidelia@example.net"}]}'
     headers:
       Content-Type:
       - application/json
@@ -67,7 +75,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 04 May 2019 14:44:18 GMT
+      - Wed, 20 Nov 2019 17:05:09 GMT
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -75,23 +83,31 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d9027c19ae982b4343668c6c50edaa2601556981057; expires=Sun, 03-May-20
-        14:44:17 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        17:05:09 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B3044E8F0761161F3C3B15FA0CB8BBA643C04F985000000000000000000
+      - redacted
       X-Hubspot-Ratelimit-Daily:
-      - '1000000'
+      - '250000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '979512'
+      - '249637'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '98'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
       X-Hubspot-Ratelimit-Secondly:
-      - '60'
+      - '10'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '57'
+      - '9'
       Vary:
       - Accept-Encoding
       - Accept-Encoding
       Access-Control-Allow-Credentials:
       - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Expect-Ct:
@@ -99,49 +115,53 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4d1b407b49b2cf68-IAD
+      - 538c01d1cc33b7b7-CDG
     body:
       encoding: UTF-8
-      string: '{"vid":12052824,"canonical-vid":12052824,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mOqBB77gqiLE-3taj4nCeKoi6YCNfouVA9lG2pjtOt-jntul1By1OLaguwBK2Yt5CSaia3ofZ_2Ei0aopjat1YxRqbe1vwQK1Om9vgI8uJvF9pHi0TH7PLZQruclsYwzdiBB3Pa","profile-url":"https://app.hubspot.com/contacts/62515/contact/12052824","properties":{"firstname":{"value":"Jeffery","versions":[{"value":"Jeffery","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981057836,"selected":false}]},"email":{"value":"81057rjyj@example.org","versions":[{"value":"81057rjyj@example.org","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981057836,"selected":false}]},"lastname":{"value":"Hermiston","versions":[{"value":"Hermiston","source-type":"API","source-id":null,"source-label":null,"timestamp":1556981057836,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":12052824,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"81057rjyj@example.org","timestamp":1556981057842,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"1d136dd8-a648-4ee6-a85c-84421dffab72","timestamp":1556981057855,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
-    http_version: 
-  recorded_at: Sat, 04 May 2019 14:44:18 GMT
+      string: '{"vid":73601,"canonical-vid":73601,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mMvZ-Uf-cMK66IZxi2_IF6LlrbLDqBkMn012Px4DGrHBIPrtzwB4vC0Bjo0xdeXDV3Sgg9m6uFvgc3jmSoP7ueBYfv4ZYXA6ThOFByJ0HebbZNy_5gmZOzaA8ii0ux2AcUYlPOe","profile-url":"https://app.hubspot.com/contacts/62515/contact/73601","properties":{"firstname":{"value":"Edyth","versions":[{"value":"Edyth","source-type":"API","source-id":null,"source-label":null,"timestamp":1574269509493,"selected":false}]},"email":{"value":"fidelia@example.net","versions":[{"value":"fidelia@example.net","source-type":"API","source-id":null,"source-label":null,"timestamp":1574269509493,"selected":false}]},"lastname":{"value":"Heathcote","versions":[{"value":"Heathcote","source-type":"API","source-id":null,"source-label":null,"timestamp":1574269509493,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":73601,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"fidelia@example.net","timestamp":1574269509503,"is-primary":true,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"da36905a-af74-46b3-9406-ddfa872d5c9e","timestamp":1574269509530,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 17:05:09 GMT
 - request:
     method: put
-    uri: https://api.hubapi.com/companies/v2/companies/1897515216/contacts/12052824?hapikey=<HAPI_KEY>
+    uri: https://api.hubapi.com/crm-associations/v1/associations/create-batch?hapikey=demo
     body:
       encoding: UTF-8
-      string: 'null'
+      string: '[{"fromObjectId":2606347890,"toObjectId":73601,"category":"HUBSPOT_DEFINED","definitionId":2}]'
     headers:
       Content-Type:
       - application/json
   response:
     status:
-      code: 200
-      message: OK
+      code: 204
+      message: No Content
     headers:
       Date:
-      - Sat, 04 May 2019 14:44:18 GMT
-      Content-Type:
-      - application/json;charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      - Wed, 20 Nov 2019 17:05:10 GMT
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d9eb79258840bef46611806a461fefa551556981058; expires=Sun, 03-May-20
-        14:44:18 GMT; path=/; domain=.hubapi.com; HttpOnly
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        17:05:10 GMT; path=/; domain=.hubapi.com; HttpOnly
       X-Trace:
-      - 2B87E5C2AF23C9FD8C5FE53D92F3F26EEE1B99511B000000000000000000
+      - redacted
       X-Hubspot-Ratelimit-Daily:
-      - '1000000'
+      - '250000'
       X-Hubspot-Ratelimit-Daily-Remaining:
-      - '979511'
+      - '249636'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '97'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
       X-Hubspot-Ratelimit-Secondly:
-      - '60'
+      - '10'
       X-Hubspot-Ratelimit-Secondly-Remaining:
-      - '59'
+      - '9'
       Access-Control-Allow-Credentials:
       - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Expect-Ct:
@@ -149,12 +169,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4d1b407ebcafcf60-IAD
+      - 538c01d5995ccddb-CDG
     body:
       encoding: UTF-8
-      string: '{"portalId":62515,"companyId":1897515216,"isDeleted":false,"properties":{"website":{"value":"yostbartell.net","timestamp":1556981057563,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"yostbartell.net","timestamp":1556981057563,"source":"CALCULATED","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"hs_lastmodifieddate":{"value":"1556981057563","timestamp":1556981057563,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1556981057563","timestamp":1556981057563,"source":"CALCULATED","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"domain":{"value":"yostbartell.net","timestamp":1556981057563,"source":"API","sourceId":null,"versions":[{"name":"domain","value":"yostbartell.net","timestamp":1556981057563,"source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"name":{"value":"Conroy,
-        Kiehn and Gleason","timestamp":1556981057563,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Conroy,
-        Kiehn and Gleason","timestamp":1556981057563,"source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]},"createdate":{"value":"1556981057563","timestamp":1556981057563,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1556981057563","timestamp":1556981057563,"source":"API","sourceVid":[],"requestId":"ed726e97-d7d6-41f5-bffe-590b5d3f5f51"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
-    http_version: 
-  recorded_at: Sat, 04 May 2019 14:44:18 GMT
-recorded_with: VCR 4.0.0
+      string: ''
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 17:05:10 GMT
+recorded_with: VCR 5.0.0

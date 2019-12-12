@@ -1,16 +1,5 @@
 RSpec.describe Hubspot::Company do
-  # let(:example_company_hash) do
-  #   VCR.use_cassette("company_example") do
-  #     HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
-  #   end
-  # end
-  # let(:company_with_contacts_hash) do
-  #   VCR.use_cassette("company_with_contacts") do
-  #     HTTParty.get("https://api.hubapi.com/companies/v2/companies/115200636?hapikey=demo").parsed_response
-  #   end
-  # end
-
-  before{ Hubspot.configure(hapikey: "demo") }
+  before { Hubspot.configure(hapikey: 'demo') }
 
   it_behaves_like "a saveable resource", :company do
     def set_property(company)
@@ -279,13 +268,11 @@ RSpec.describe Hubspot::Company do
       subject { described_class.add_contact company.id, contact.id }
 
       it 'returns success' do
-        expect(subject).to be_truthy
+        expect(subject).to be true
       end
 
       it 'adds the contact to the company' do
-        expect {
-          subject
-        }.to change { company.contact_ids }.by([contact.id])
+        expect { subject }.to change { company.contact_ids }.by([contact.id])
       end
     end
 
@@ -294,12 +281,10 @@ RSpec.describe Hubspot::Company do
 
       let(:company) { create :company }
 
-      subject { described_class.add_contact company.id, 1 }
+      subject { described_class.add_contact company.id, 1234 }
 
       it 'raises an error' do
-        expect {
-          subject
-        }.to raise_error(Hubspot::RequestError, /Contact with the vid/)
+        expect { subject }.to raise_error(Hubspot::RequestError, /CONTACT=1234 is not valid/)
       end
     end
 
@@ -309,32 +294,30 @@ RSpec.describe Hubspot::Company do
       subject { described_class.add_contact 1, 1 }
 
       it 'raises an error' do
-        expect {
-          subject
-        }.to raise_error(Hubspot::RequestError, /company with the ID/)
+        expect { subject }.to raise_error(Hubspot::RequestError, /COMPANY=1 is not valid/)
       end
     end
   end
 
   describe '.remove_contact' do
     context 'with a valid company ID and contact ID' do
-      cassette allow_playback_repeats: true
+      cassette
 
-      let!(:company) { create :company }
-      let!(:contact) { create :contact, associatedCompanyId: company.id }
+      let(:company) { create :company }
+      let(:contact) { create :contact }
 
+      before { described_class.add_contact(company.id, contact.id) }
       subject { described_class.remove_contact company.id, contact.id }
 
       it 'returns success' do
-        expect(subject).to be_truthy
+        expect(subject).to be true
       end
 
-      # Testing this turns out to be hard since using associatedCompanyId doesn't immediately add
-      # the contact to the company but triggers some background job to perform the update. Since
-      # we're testing the gem interface and not the API (that's Hubspot's job) this should be OK to
-      # leave out.
-      #
-      # it 'removes the contact from the company'
+      it 'removes the contact from the company' do
+        expect(company.contact_ids.resources).to eq [contact.id]
+        subject
+        expect(company.contact_ids.resources).to eq []
+      end
     end
   end
 end

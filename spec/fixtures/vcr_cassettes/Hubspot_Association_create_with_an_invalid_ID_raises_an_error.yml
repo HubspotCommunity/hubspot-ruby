@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies/?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Wintheiser and Sons"},{"name":"domain","value":"bernhard.net"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Nov 2019 14:40:35 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        14:40:35 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - redacted
+      X-Hubspot-Ratelimit-Daily:
+      - '250000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '249941'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '95'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
+      X-Hubspot-Ratelimit-Secondly:
+      - '10'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '9'
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 538b2e0c1bb0ee60-CDG
+    body:
+      encoding: UTF-8
+      string: '{"portalId":62515,"companyId":2605973259,"isDeleted":false,"properties":{"website":{"value":"bernhard.net","timestamp":1574260835285,"source":"CALCULATED","sourceId":null,"versions":[{"name":"website","value":"bernhard.net","timestamp":1574260835285,"source":"CALCULATED","sourceVid":[],"requestId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8"}]},"hs_lastmodifieddate":{"value":"1574260835285","timestamp":1574260835285,"source":"CALCULATED","sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","versions":[{"name":"hs_lastmodifieddate","value":"1574260835285","timestamp":1574260835285,"sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","source":"CALCULATED","sourceVid":[],"requestId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8"}]},"domain":{"value":"bernhard.net","timestamp":1574260835285,"source":"API","sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","versions":[{"name":"domain","value":"bernhard.net","timestamp":1574260835285,"sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","source":"API","sourceVid":[],"requestId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8"}]},"hs_object_id":{"value":"2605973259","timestamp":1574260835285,"source":"API","sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","versions":[{"name":"hs_object_id","value":"2605973259","timestamp":1574260835285,"sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","source":"API","sourceVid":[],"requestId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8"}]},"name":{"value":"Wintheiser
+        and Sons","timestamp":1574260835285,"source":"API","sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","versions":[{"name":"name","value":"Wintheiser
+        and Sons","timestamp":1574260835285,"sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","source":"API","sourceVid":[],"requestId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8"}]},"createdate":{"value":"1574260835285","timestamp":1574260835285,"source":"API","sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","versions":[{"name":"createdate","value":"1574260835285","timestamp":1574260835285,"sourceId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8","source":"API","sourceVid":[],"requestId":"ecefdf8f-ad41-4b3b-816b-cc94634a15e8"}]}},"additionalDomains":[],"stateChanges":[],"mergeAudits":[]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 14:40:35 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/crm-associations/v1/associations/create-batch?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '[{"fromObjectId":2605973259,"toObjectId":1234,"category":"HUBSPOT_DEFINED","definitionId":2}]'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 20 Nov 2019 14:40:35 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '212'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=redacted; expires=Fri, 20-Dec-19
+        14:40:35 GMT; path=/; domain=.hubapi.com; HttpOnly
+      X-Trace:
+      - redacted
+      X-Hubspot-Ratelimit-Daily:
+      - '250000'
+      X-Hubspot-Ratelimit-Daily-Remaining:
+      - '249940'
+      X-Hubspot-Ratelimit-Interval-Milliseconds:
+      - '10000'
+      X-Hubspot-Ratelimit-Remaining:
+      - '94'
+      X-Hubspot-Ratelimit-Max:
+      - '100'
+      X-Hubspot-Ratelimit-Secondly:
+      - '10'
+      X-Hubspot-Ratelimit-Secondly-Remaining:
+      - '9'
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 538b2e0d897fcd7b-CDG
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"One or more associations are invalid","correlationId":"1c4bbe72-cfbe-4a7d-8388-6de4be7a9a26","errors":["CONTACT=1234
+        is not valid"],"requestId":"725053b4-f7cd-4e4a-8746-b34f925ce9b2"}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 14:40:35 GMT
+recorded_with: VCR 5.0.0

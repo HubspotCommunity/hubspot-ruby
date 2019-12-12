@@ -10,7 +10,7 @@ describe Hubspot::Deal do
     end
   end
 
-  before{ Hubspot.configure(hapikey: "demo") }
+  before { Hubspot.configure(hapikey: 'demo') }
 
   describe "#initialize" do
     subject{ Hubspot::Deal.new(example_deal_hash) }
@@ -28,6 +28,34 @@ describe Hubspot::Deal do
     its(:vids)        { should eql [vid]}
   end
 
+  describe '.associate' do
+    cassette
+    let(:deal) { Hubspot::Deal.create!(portal_id, [], [], {}) }
+    let(:company) { create :company }
+    let(:contact) { create :contact }
+    let(:contact_id) { contact.id }
+
+    subject { Hubspot::Deal.associate!(deal.deal_id, [company.id], [contact_id]) }
+
+    it 'associates the deal to the contact and the company' do
+      subject
+      find_deal = Hubspot::Deal.find(deal.deal_id)
+      find_deal.company_ids.should eql [company.id]
+      find_deal.vids.should eql [contact.id]
+    end
+
+    context 'when an id is invalid' do
+      let(:contact_id) { 1234 }
+
+      it 'raises an error and do not changes associations' do
+        expect { subject }.to raise_error(Hubspot::RequestError)
+        find_deal = Hubspot::Deal.find(deal.deal_id)
+        find_deal.company_ids.should eql []
+        find_deal.vids.should eql []
+      end
+    end
+  end
+
   describe ".find" do
     cassette "deal_find"
     let(:deal) {Hubspot::Deal.create!(portal_id, [company_id], [vid], { amount: amount})}
@@ -40,12 +68,24 @@ describe Hubspot::Deal do
   end
 
   describe '.find_by_company' do
-    cassette 'deal_find_by_company'
-    let(:company) { Hubspot::Company.create(name: 'Test Company') }
-    let(:deal) { Hubspot::Deal.create!(portal_id, [company.id], [vid], { amount: amount }) }
+    cassette
+    let(:company) { create :company }
+    let!(:deal) { Hubspot::Deal.create!(portal_id, [company.id], [], { amount: amount }) }
 
     it 'returns company deals' do
       deals = Hubspot::Deal.find_by_company(company)
+      deals.first.deal_id.should eql deal.deal_id
+      deals.first.properties['amount'].should eql amount
+    end
+  end
+
+  describe '.find_by_contact' do
+    cassette
+    let(:contact) { create :contact }
+    let!(:deal) { Hubspot::Deal.create!(portal_id, [], [contact.id], { amount: amount }) }
+
+    it 'returns contact deals' do
+      deals = Hubspot::Deal.find_by_contact(contact)
       deals.first.deal_id.should eql deal.deal_id
       deals.first.properties['amount'].should eql amount
     end
