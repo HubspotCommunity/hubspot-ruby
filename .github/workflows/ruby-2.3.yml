@@ -1,0 +1,134 @@
+name: Ruby 2.3.x
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  activesupport_42:
+    name: ActiveSupport 4.2.x
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        version: 2.3.x
+
+    - uses: actions/cache@v1
+      id: bundle-42
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ hashFiles('hubspot-api-ruby.gemspec') }}-${{ hashFiles('gemfiles/activesupport_4.2.gemfile') }}
+
+    - name: Install Dependencies
+      if: steps.bundle-42.outputs.cache-hit != 'true'
+      run: |
+        gem install bundler
+        bundle install --jobs=3 --retry=3 --path=vendor/bundle
+        bundle exec appraisal install
+      env:
+        BUNDLE_GEMFILE: gemfiles/activesupport_4.2.gemfile
+
+    - name: Tests
+      run: |
+        bundle exec appraisal rspec
+
+  activesupport_50:
+    name: ActiveSupport 5.0.x
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        version: 2.3.x
+
+    - uses: actions/cache@v1
+      id: bundle-50
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ hashFiles('hubspot-api-ruby.gemspec') }}-${{ hashFiles('gemfiles/activesupport_5.0.gemfile') }}
+
+    - name: Install Dependencies
+      if: steps.bundle-50.outputs.cache-hit != 'true'
+      run: |
+        gem install bundler
+        bundle install --jobs=3 --retry=3 --path=vendor/bundle
+        bundle exec appraisal install
+      env:
+        BUNDLE_GEMFILE: gemfiles/activesupport_5.0.gemfile
+
+    - name: Tests
+      run: |
+        bundle exec appraisal rspec
+
+  activesupport_51:
+    name: ActiveSupport 5.1.x
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        version: 2.3.x
+
+    - uses: actions/cache@v1
+      id: bundle-51
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ hashFiles('hubspot-api-ruby.gemspec') }}-${{ hashFiles('gemfiles/activesupport_5.1.gemfile') }}
+
+    - name: Install Dependencies
+      if: steps.bundle-51.outputs.cache-hit != 'true'
+      run: |
+        gem install bundler
+        bundle install --jobs=3 --retry=3 --path=vendor/bundle
+        bundle exec appraisal install
+      env:
+        BUNDLE_GEMFILE: gemfiles/activesupport_5.1.gemfile
+
+    - name: Tests
+      run: |
+        bundle exec appraisal rspec
+
+  activesupport_52:
+    name: ActiveSupport 5.2.x
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        version: 2.3.x
+
+    - uses: actions/cache@v1
+      id: bundle-52
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ hashFiles('hubspot-api-ruby.gemspec') }}-${{ hashFiles('gemfiles/activesupport_5.2.gemfile') }}
+
+    - name: Install Dependencies
+      if: steps.bundle-52.outputs.cache-hit != 'true'
+      run: |
+        gem install bundler
+        bundle install --jobs=3 --retry=3 --path=vendor/bundle
+        bundle exec appraisal install
+      env:
+        BUNDLE_GEMFILE: gemfiles/activesupport_5.2.gemfile
+
+    - name: Tests
+      run: |
+        bundle exec appraisal rspec

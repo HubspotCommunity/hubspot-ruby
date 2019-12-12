@@ -1,4 +1,4 @@
-require 'hubspot-ruby'
+require 'hubspot-api-ruby'
 
 namespace :hubspot do
   desc 'Dump properties to file'

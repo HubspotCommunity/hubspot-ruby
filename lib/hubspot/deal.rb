@@ -72,7 +72,21 @@ module Hubspot
         end
         Hubspot::Association.batch_create(associations)
       end
-      
+
+      # Didssociate a deal with a contact or company
+      # {https://developers.hubspot.com/docs/methods/deals/delete_association}
+      # Usage
+      # Hubspot::Deal.dissociate!(45146940, [32], [52])
+      def dissociate!(deal_id, company_ids=[], vids=[])
+        associations = company_ids.map do |id|
+          { from_id: deal_id, to_id: id, definition_id: Hubspot::Association::DEAL_TO_COMPANY }
+        end
+        associations += vids.map do |id|
+          { from_id: deal_id, to_id: id, definition_id: Hubspot::Association::DEAL_TO_CONTACT }
+        end
+        Hubspot::Association.batch_delete(associations)
+      end
+
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
         new(response)
