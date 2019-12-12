@@ -37,6 +37,28 @@ module Hubspot
         new(response)
       end
 
+      # Updates the properties of a deal
+      # {http://developers.hubspot.com/docs/methods/deals/update_deal}
+      # @param deal_id [Integer] hubspot deal_id
+      # @param params [Hash] hash of properties to update
+      # @return [boolean] success
+      def update(id, properties = {})
+        update!(id, properties)
+      rescue Hubspot::RequestError => e
+        false
+      end
+
+      # Updates the properties of a deal
+      # {http://developers.hubspot.com/docs/methods/deals/update_deal}
+      # @param deal_id [Integer] hubspot deal_id
+      # @param params [Hash] hash of properties to update
+      # @return [Hubspot::Deal] Deal record
+      def update!(id, properties = {})
+        request = { properties: Hubspot::Utils.hash_to_properties(properties.stringify_keys, key_name: 'name') }
+        response = Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: id, no_parse: true }, body: request)
+        response.success?
+      end
+
       # Associate a deal with a contact or company
       # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
       # Usage
@@ -50,7 +72,7 @@ module Hubspot
         end
         Hubspot::Association.batch_create(associations)
       end
-
+      
       def find(deal_id)
         response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
         new(response)
@@ -128,10 +150,11 @@ module Hubspot
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Deal] self
     def update!(params)
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
+      query = { 'properties' => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name') }
       Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
       @properties.merge!(params)
       self
     end
+    alias_method :update, :update!
   end
 end

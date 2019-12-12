@@ -12,6 +12,8 @@ class Hubspot::Contact < Hubspot::Resource
   MERGE_PATH              = '/contacts/v1/contact/merge-vids/:id/'
   SEARCH_PATH             = '/contacts/v1/search/query'
   UPDATE_PATH             = '/contacts/v1/contact/vid/:id/profile'
+  UPDATE_PATH             = '/contacts/v1/contact/vid/:id/profile'
+  BATCH_UPDATE_PATH       = '/contacts/v1/contact/batch'
 
   class << self
     def all(opts = {})
@@ -67,6 +69,32 @@ class Hubspot::Contact < Hubspot::Resource
         params: { id: primary.to_i, no_parse: true },
         body: { "vidToMerge" => secondary.to_i }
         )
+
+      true
+    end
+    
+    def batch_update(contacts, opts = {})
+      request = contacts.map do |contact|
+        # Use the specified options or update with the changes
+        changes = opts.empty? ? contact.changes : opts
+
+        unless changes.empty?
+          {
+            "vid" => contact.id,
+            "properties" => changes.map { |k, v| { "property" => k, "value" => v } }
+          }
+        end
+      end
+
+      # Remove any objects without changes and return if there is nothing to update
+      request.compact!
+      return true if request.empty?
+
+      Hubspot::Connection.post_json(
+        BATCH_UPDATE_PATH,
+        params: {},
+        body: request
+      )
 
       true
     end

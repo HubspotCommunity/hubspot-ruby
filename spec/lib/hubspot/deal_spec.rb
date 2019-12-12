@@ -3,6 +3,7 @@ describe Hubspot::Deal do
   let(:company_id) { 8954037 }
   let(:vid) { 27136 }
   let(:amount) { '30' }
+  let(:deal) { Hubspot::Deal.create!(portal_id, [company_id], [vid], { amount: amount}) }
 
   let(:example_deal_hash) do
     VCR.use_cassette("deal_example") do
@@ -28,6 +29,86 @@ describe Hubspot::Deal do
     its(:vids)        { should eql [vid]}
   end
 
+  describe '.update' do
+    let(:changed_properties) { { dealname: 'super deal' } }
+
+    context 'with an existing resource' do
+      cassette
+      subject { described_class.update(deal.deal_id, changed_properties) }
+
+      it 'updates' do
+        expect(subject).to be_truthy
+        find_deal = Hubspot::Deal.find(deal.deal_id)
+        expect(find_deal['dealname']).to eq 'super deal'
+      end
+    end
+
+    context 'with an invalid resource' do
+      cassette
+      subject { described_class.update(0, changed_properties) }
+
+      it { is_expected.to be false }
+    end
+  end
+
+  describe '.update!' do
+    let(:changed_properties) { { dealname: 'super deal' } }
+
+    context 'with an existing resource' do
+      cassette
+      subject { described_class.update!(deal.deal_id, changed_properties) }
+
+      it 'updates' do
+        expect(subject).to be_truthy
+        find_deal = Hubspot::Deal.find(deal.deal_id)
+        expect(find_deal['dealname']).to eq 'super deal'
+      end
+    end
+
+    context 'with an invalid resource' do
+      cassette
+      subject { described_class.update!(0, changed_properties) }
+
+      it 'fails with an error' do
+        expect { subject }.to raise_error Hubspot::RequestError
+      end
+    end
+  end
+
+  describe '#update' do
+    let(:changed_properties) { { dealname: 'super deal' }.stringify_keys }
+
+    context 'without overlapping changes' do
+      cassette
+      subject { deal.update(changed_properties) }
+
+      it 'updates the properties' do
+        expect(subject).to be_truthy
+        changed_properties.each do |property, value|
+          expect(deal[property]).to eq value
+        end
+      end
+    end
+
+    context 'with overlapping changes' do
+      cassette
+      subject { deal.update(changed_properties) }
+      let(:overlapping_properties) { { dealname: 'old deal', amount: 6 }.stringify_keys }
+
+      before(:each) do
+        overlapping_properties.each { |property, value| deal.properties[property] = value }
+      end
+
+      it 'merges and updates the properties' do
+        expect(subject).to be_truthy
+        overlapping_properties.merge(changed_properties).each do |property, value|
+          expect(deal[property]).to eq value
+        end
+      end
+    end
+  end
+  
+  
   describe '.associate' do
     cassette
     let(:deal) { Hubspot::Deal.create!(portal_id, [], [], {}) }
@@ -58,7 +139,6 @@ describe Hubspot::Deal do
 
   describe ".find" do
     cassette "deal_find"
-    let(:deal) {Hubspot::Deal.create!(portal_id, [company_id], [vid], { amount: amount})}
 
     it 'must find by the deal id' do
       find_deal = Hubspot::Deal.find(deal.deal_id)
@@ -125,8 +205,6 @@ describe Hubspot::Deal do
   describe "#destroy!" do
     it "should remove from hubspot" do
       VCR.use_cassette("destroy_deal") do
-        deal = Hubspot::Deal.create!(portal_id, [company_id], [vid], {amount: amount})
-
         result = deal.destroy!
 
         assert_requested :delete, hubspot_api_url("/deals/v1/deal/#{deal.deal_id}?hapikey=demo")

@@ -13,6 +13,7 @@ require 'hubspot/connection'
 require 'hubspot/contact'
 require 'hubspot/contact_properties'
 require 'hubspot/contact_list'
+require 'hubspot/event'
 require 'hubspot/form'
 require 'hubspot/blog'
 require 'hubspot/topic'
@@ -25,6 +26,7 @@ require 'hubspot/owner'
 require 'hubspot/engagement'
 require 'hubspot/subscription'
 require 'hubspot/oauth'
+require 'hubspot/file'
 
 module Hubspot
   def self.configure(config={})
