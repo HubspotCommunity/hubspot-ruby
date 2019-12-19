@@ -51,4 +51,44 @@ RSpec.describe Hubspot::Resource do
       end
     end
   end
+
+  describe '#[]' do
+    context 'using new' do
+      let(:resource) { described_class.new(properties) }
+      let(:properties) { { id: 1, firstname: 'John', lastname: 'Wayne' } }
+
+      it { expect(resource[:firstname]).to eq 'John' }
+      it { expect(resource['lastname']).to eq 'Wayne' }
+      it { expect(resource[:middlename]).to be nil }
+    end
+
+    context 'using from_result' do
+      let(:resource) { described_class.from_result({ properties: properties }) }
+      let(:properties) { { id: { 'value' => 1 }, firstname: { 'value' => 'John' }, lastname: { 'value' => 'Wayne' } } }
+
+      it { expect(resource[:firstname]).to eq 'John' }
+      it { expect(resource['lastname']).to eq 'Wayne' }
+      it { expect(resource[:middlename]).to be nil }
+    end
+  end
+
+  describe '#adding_accessors' do
+    describe 'getters' do
+      context 'using new' do
+        let(:resource) { described_class.new(properties) }
+        let(:properties) { { id: 1, firstname: 'John', lastname: 'Wayne' } }
+
+        it { expect(resource.firstname).to eq 'John' }
+        it { expect(resource.lastname).to eq 'Wayne' }
+      end
+
+      context 'using from_result' do
+        let(:resource) { described_class.from_result({ properties: properties }) }
+        let(:properties) { { id: { 'value' => 1 }, firstname: { 'value' => 'John' }, lastname: { 'value' => 'Wayne' } } }
+
+        it { expect(resource.firstname).to eq 'John' }
+        it { expect(resource.lastname).to eq 'Wayne' }
+      end
+    end
+  end
 end

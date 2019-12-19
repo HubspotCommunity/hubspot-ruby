@@ -98,7 +98,7 @@ module Hubspot
     end
 
     def [](name)
-      @changes[name] || @properties[name]
+      @changes[name] || @properties.dig(name, 'value')
     end
 
     def reload
@@ -238,7 +238,7 @@ module Hubspot
       singleton_class.instance_eval do
         keys.each do |k|
           # Define a getter
-          define_method(k) { @changes[k.to_sym] || @properties.dig(k, "value") }
+          define_method(k) { @changes[k.to_sym] || @properties.dig(k, 'value') }
 
           # Define a setter
           define_method("#{k}=") do |v|
@@ -257,7 +257,7 @@ module Hubspot
         # Call the new setter
         return send(method_name, arguments[0])
       elsif @properties.key?(method_name)
-        return @properties[method_name]
+        return @properties[method_name]['value']
       else
         super
       end
