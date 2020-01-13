@@ -38,12 +38,22 @@ module Hubspot
           redirect_uri: Hubspot::Config.redirect_uri,
         }.merge(params)
 
-        response = post(url, body: body, headers: DEFAULT_OAUTH_HEADERS)
+        response = post(url, body: body, headers: DEFAULT_OAUTH_HEADERS, read_timeout: read_timeout(options), open_timeout: open_timeout(options))
         log_request_and_response url, response, body
 
         raise(Hubspot::RequestError.new(response)) unless response.success?
 
         no_parse ? response : response.parsed_response
+      end
+
+      private
+
+      def read_timeout(opts = {})
+        opts.delete(:read_timeout) || Hubspot::Config.read_timeout
+      end
+
+      def open_timeout(opts = {})
+        opts.delete(:open_timeout) || Hubspot::Config.open_timeout
       end
     end
   end
