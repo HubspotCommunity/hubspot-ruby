@@ -151,6 +151,22 @@ module Hubspot
         response.merge("contacts" => response["contacts"].map { |contact_hash| new(contact_hash) })
       end
 
+      # {https://developers.hubspot.com/docs/methods/contacts/search_contacts}
+      # contact_properties represents the properties you want to get from the contact
+      def search(query, options = {}, contact_properties = [])
+        count   = options.fetch(:count, 100)
+        offset  = options.fetch(:offset, 0)
+
+        params = { q: query, count: count, offset: offset }
+
+        unless contact_properties.empty?
+          params[:property] = contact_properties
+        end
+
+        response = Hubspot::Connection.get_json(QUERY_PATH, params)
+        response.merge("contacts" => response["contacts"].map { |contact_hash| new(contact_hash) })
+      end
+
       # Merge two contacts
       # Properties of the secondary contact will be applied to the primary contact
       # The main email will be the primary contact's
