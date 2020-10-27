@@ -15,7 +15,7 @@ Documentation for the HubSpot REST API can be found here: https://developers.hub
 Or with bundler,
 
 ```ruby
-gem "hubspot-ruby"
+gem "hubspot-api-legacy"
 ```
 
 ## Getting Started
@@ -25,7 +25,7 @@ Authentication docs].
 
 Below is a complete list of configuration options with the default values:
 ```ruby
-Hubspot.configure({
+HubspotLegacy.configure({
   hapikey: <HAPIKEY>,
   base_url: "https://api.hubapi.com",
   portal_id: <PORTAL_ID>,
@@ -50,7 +50,7 @@ environment.
 
 To set the HubSpot API key, aka `hapikey`, run the following:
 ```ruby
-Hubspot.configure(hapikey: "YOUR_API_KEY")
+HubspotLegacy.configure(hapikey: "YOUR_API_KEY")
 ```
 
 If you have a HubSpot account, you can find your API key by logging in and
@@ -61,7 +61,7 @@ visiting: https://app.hubspot.com/keys/get
 Configure the library with the client ID and secret from your [HubSpot App](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
 
 ```ruby
-Hubspot.configure(
+HubspotLegacy.configure(
     client_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     client_secret: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     redirect_uri: "https://myapp.com/oauth")
@@ -70,19 +70,19 @@ Hubspot.configure(
 To initiate an OAuth connection to your app, create a URL with the required scopes:
 
 ```ruby
-Hubspot::OAuth.authorize_url(["contacts", "content"])
+HubspotLegacy::OAuth.authorize_url(["contacts", "content"])
 ```
 
 After the user accepts the scopes and installs the integration with their HubSpot account, they will be redirected to the URI requested with the query parameter `code` appended to the URL. `code` can then be passed to HubSpot to generate an access token:
 
 ```ruby
-Hubspot::OAuth.create(params[:code])
+HubspotLegacy::OAuth.create(params[:code])
 ```
 
 To use the returned `access_token` string for authentication, you'll need to update the configuration:
 
 ```ruby
-Hubspot.configure(
+HubspotLegacy.configure(
     client_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     client_secret: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     redirect_uri: "https://myapp.com/oauth",
@@ -92,7 +92,7 @@ Hubspot.configure(
 Now all requests will use the provided access token when querying the API:
 
 ```ruby
-Hubspot::Contact.all
+HubspotLegacy::Contact.all
 ```
 
 ### Refreshing the token
@@ -100,7 +100,7 @@ Hubspot::Contact.all
 When you create a HubSpot OAuth token, it will have an expiration date given by the `expires_in` field returned from the create API. If you with to continue using the token without needing to create another, you'll need to refresh the token:
 
 ```ruby
-Hubspot::OAuth.refresh(refresh_token)
+HubspotLegacy::OAuth.refresh(refresh_token)
 ```
 
 ### A note on OAuth credentials
@@ -115,8 +115,8 @@ Classes have been created that map to Hubspot resource types and attempt to abst
 ### Creating a new resource
 
 ```ruby
-irb(main):001:0> company = Hubspot::Company.new(name: "My Company LLC.")
-=> #<Hubspot::Company:0x000055b9219cc068 @changes={"name"=>"My Company LLC."}, @properties={}, @id=nil, @persisted=false, @deleted=false>
+irb(main):001:0> company = HubspotLegacy::Company.new(name: "My Company LLC.")
+=> #<HubspotLegacy::Company:0x000055b9219cc068 @changes={"name"=>"My Company LLC."}, @properties={}, @id=nil, @persisted=false, @deleted=false>
 
 irb(main):002:0> company.persisted?
 => false
@@ -129,8 +129,8 @@ irb(main):004:0> company.persisted?
 ```
 
 ```ruby
-irb(main):001:0> company = Hubspot::Company.create(name: "Second Financial LLC.")
-=> #<Hubspot::Company:0x0000557ea7119fb0 @changes={}, @properties={"hs_lastmodifieddate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceId"=>nil, "versions"=>[{"name"=>"hs_lastmodifieddate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "name"=>{"value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"name", "value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "createdate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}, {"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "sourceId"=>"API", "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}}, @id=1726317857, @persisted=true, @deleted=false, @metadata={"portalId"=>62515, "companyId"=>1726317857, "isDeleted"=>false, "additionalDomains"=>[], "stateChanges"=>[], "mergeAudits"=>[]}>
+irb(main):001:0> company = HubspotLegacy::Company.create(name: "Second Financial LLC.")
+=> #<HubspotLegacy::Company:0x0000557ea7119fb0 @changes={}, @properties={"hs_lastmodifieddate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceId"=>nil, "versions"=>[{"name"=>"hs_lastmodifieddate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "name"=>{"value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"name", "value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "createdate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}, {"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "sourceId"=>"API", "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}}, @id=1726317857, @persisted=true, @deleted=false, @metadata={"portalId"=>62515, "companyId"=>1726317857, "isDeleted"=>false, "additionalDomains"=>[], "stateChanges"=>[], "mergeAudits"=>[]}>
 
 irb(main):002:0> company.persisted?
 => true
@@ -142,10 +142,10 @@ irb(main):002:0> company.persisted?
 **Note:** Hubspot uses a combination of different names for the "ID" property of a resource based on what type of resource it is (eg. vid for Contact). This library attempts to abstract that away and generalizes an `id` property for all resources
 
 ```ruby
-irb(main):001:0> company = Hubspot::Company.find(1726317857)
-=> #<Hubspot::Company:0x0000562e4988c9a8 @changes={}, @properties={"hs_lastmodifieddate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceId"=>nil, "versions"=>[{"name"=>"hs_lastmodifieddate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "name"=>{"value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"name", "value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "createdate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}}, @id=1726317857, @persisted=true, @deleted=false, @metadata={"portalId"=>62515, "companyId"=>1726317857, "isDeleted"=>false, "additionalDomains"=>[], "stateChanges"=>[], "mergeAudits"=>[]}>
+irb(main):001:0> company = HubspotLegacy::Company.find(1726317857)
+=> #<HubspotLegacy::Company:0x0000562e4988c9a8 @changes={}, @properties={"hs_lastmodifieddate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceId"=>nil, "versions"=>[{"name"=>"hs_lastmodifieddate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "name"=>{"value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"name", "value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "createdate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}}, @id=1726317857, @persisted=true, @deleted=false, @metadata={"portalId"=>62515, "companyId"=>1726317857, "isDeleted"=>false, "additionalDomains"=>[], "stateChanges"=>[], "mergeAudits"=>[]}>
 
-irb(main):002:0> company = Hubspot::Company.find(1)
+irb(main):002:0> company = HubspotLegacy::Company.find(1)
 Traceback (most recent call last):
         6: from /home/chris/projects/hubspot-ruby/bin/console:20:in `<main>'
         5: from (irb):2
@@ -153,15 +153,15 @@ Traceback (most recent call last):
         3: from /home/chris/projects/hubspot-ruby/lib/hubspot/resource.rb:81:in `reload'
         2: from /home/chris/projects/hubspot-ruby/lib/hubspot/connection.rb:10:in `get_json'
         1: from /home/chris/projects/hubspot-ruby/lib/hubspot/connection.rb:52:in `handle_response'
-Hubspot::RequestError (Response body: {"status":"error","message":"resource not found","correlationId":"7c8ba50e-16a4-4a52-a304-ff249175a8f1","requestId":"b4898274bf8992924082b4a460b90cbe"})
+HubspotLegacy::RequestError (Response body: {"status":"error","message":"resource not found","correlationId":"7c8ba50e-16a4-4a52-a304-ff249175a8f1","requestId":"b4898274bf8992924082b4a460b90cbe"})
 ```
 
 
 ### Updating resource properties
 
 ```ruby
-irb(main):001:0> company = Hubspot::Company.find(1726317857)
-=> #<Hubspot::Company:0x0000563b9f3ee230 @changes={}, @properties={"hs_lastmodifieddate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceId"=>nil, "versions"=>[{"name"=>"hs_lastmodifieddate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "name"=>{"value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"name", "value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "createdate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}}, @id=1726317857, @persisted=true, @deleted=false, @metadata={"portalId"=>62515, "companyId"=>1726317857, "isDeleted"=>false, "additionalDomains"=>[], "stateChanges"=>[], "mergeAudits"=>[]}>
+irb(main):001:0> company = HubspotLegacy::Company.find(1726317857)
+=> #<HubspotLegacy::Company:0x0000563b9f3ee230 @changes={}, @properties={"hs_lastmodifieddate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceId"=>nil, "versions"=>[{"name"=>"hs_lastmodifieddate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"CALCULATED", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "name"=>{"value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"name", "value"=>"Second Financial LLC.", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}, "createdate"=>{"value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceId"=>nil, "versions"=>[{"name"=>"createdate", "value"=>"1552234087467", "timestamp"=>1552234087467, "source"=>"API", "sourceVid"=>[], "requestId"=>"fd45773b-30d0-4d9d-b3b8-a85e01534e46"}]}}, @id=1726317857, @persisted=true, @deleted=false, @metadata={"portalId"=>62515, "companyId"=>1726317857, "isDeleted"=>false, "additionalDomains"=>[], "stateChanges"=>[], "mergeAudits"=>[]}>
 
 irb(main):002:0> company.name
 => "Second Financial LLC."
@@ -188,15 +188,15 @@ irb(main):008:0> company.changes
 **Note:** Unlike ActiveRecord in Rails, in some cases not all properties of a resource are known. If these properties are not returned by the API then they will not have a getter method defined for them until they've been set first. This may change in the future to improve the user experience and different methods are being tested.
 
 ```ruby
-irb(main):001:0> company = Hubspot::Company.new
-=> #<Hubspot::Company:0x0000561d0a8bdff8 @changes={}, @properties={}, @id=nil, @persisted=false, @deleted=false>
+irb(main):001:0> company = HubspotLegacy::Company.new
+=> #<HubspotLegacy::Company:0x0000561d0a8bdff8 @changes={}, @properties={}, @id=nil, @persisted=false, @deleted=false>
 
 irb(main):002:0> company.name
 Traceback (most recent call last):
         3: from /home/chris/projects/hubspot-ruby/bin/console:20:in `<main>'
         2: from (irb):2
         1: from /home/chris/projects/hubspot-ruby/lib/hubspot/resource.rb:215:in `method_missing'
-NoMethodError (undefined method `name' for #<Hubspot::Company:0x0000561d0a8bdff8>)
+NoMethodError (undefined method `name' for #<HubspotLegacy::Company:0x0000561d0a8bdff8>)
 
 irb(main):003:0> company.name = "Foobar"
 => "Foobar"
@@ -210,8 +210,8 @@ irb(main):004:0> company.name
 To make working with API endpoints that return multiple resources easier, the returned instances will be wrapped in a collection instance. Just like in Rails, the collection instance provides helper methods for limiting the number of returned resources, paging through the results, and handles passing the options each time a new API call is made. The collection exposes all Ruby Array methods so you can use things like `size()`, `first()`, `last()`, and `map()`.
 
 ```ruby
-irb(main):001:0> contacts = Hubspot::Contact.all
-=> #<Hubspot::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@/home/chris/projects/hubspot-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9242374, @has_more=true>
+irb(main):001:0> contacts = HubspotLegacy::Contact.all
+=> #<HubspotLegacy::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@/home/chris/projects/hubspot-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9242374, @has_more=true>
 
 irb(main):002:0> contacts.more?
 => true
@@ -223,17 +223,17 @@ irb(main):004:0> contacts.size
 => 25
 
 irb(main):005:0> contacts.first
-=> #<Hubspot::Contact:0x000055ba3c29bac0 @changes={}, @properties={"firstname"=>{"value"=>"My Street X 1551971239 => My Street X 1551971267 => My Street X 1551971279"}, "lastmodifieddate"=>{"value"=>"1551971286841"}, "company"=>{"value"=>"MadKudu"}, "lastname"=>{"value"=>"Test0830181615"}}, @id=9153674, @persisted=true, @deleted=false, @metadata={"addedAt"=>1535664601481, "vid"=>9153674, "canonical-vid"=>9153674, "merged-vids"=>[], "portal-id"=>62515, "is-contact"=>true, "profile-token"=>"AO_T-mPNHk6O7jh8u8D2IlrhZn7GO91w-weZrC93_UaJvdB0U4o6Uc_PkPJ3DOpf15sUplrxMzG9weiTTpPI05Nr04zxnaNYBVcWHOlMbVlJ2Avq1KGoCBVbIoQucOy_YmCBIfOXRtcc", "profile-url"=>"https://app.hubspot.com/contacts/62515/contact/9153674", "form-submissions"=>[], "identity-profiles"=>[{"vid"=>9153674, "saved-at-timestamp"=>1535664601272, "deleted-changed-timestamp"=>0, "identities"=>[{"type"=>"EMAIL", "value"=>"test.0830181615@test.com", "timestamp"=>1535664601151, "is-primary"=>true}, {"type"=>"LEAD_GUID", "value"=>"01a107c4-3872-44e0-ab2e-47061507ffa1", "timestamp"=>1535664601259}]}], "merge-audits"=>[]}>
+=> #<HubspotLegacy::Contact:0x000055ba3c29bac0 @changes={}, @properties={"firstname"=>{"value"=>"My Street X 1551971239 => My Street X 1551971267 => My Street X 1551971279"}, "lastmodifieddate"=>{"value"=>"1551971286841"}, "company"=>{"value"=>"MadKudu"}, "lastname"=>{"value"=>"Test0830181615"}}, @id=9153674, @persisted=true, @deleted=false, @metadata={"addedAt"=>1535664601481, "vid"=>9153674, "canonical-vid"=>9153674, "merged-vids"=>[], "portal-id"=>62515, "is-contact"=>true, "profile-token"=>"AO_T-mPNHk6O7jh8u8D2IlrhZn7GO91w-weZrC93_UaJvdB0U4o6Uc_PkPJ3DOpf15sUplrxMzG9weiTTpPI05Nr04zxnaNYBVcWHOlMbVlJ2Avq1KGoCBVbIoQucOy_YmCBIfOXRtcc", "profile-url"=>"https://app.hubspot.com/contacts/62515/contact/9153674", "form-submissions"=>[], "identity-profiles"=>[{"vid"=>9153674, "saved-at-timestamp"=>1535664601272, "deleted-changed-timestamp"=>0, "identities"=>[{"type"=>"EMAIL", "value"=>"test.0830181615@test.com", "timestamp"=>1535664601151, "is-primary"=>true}, {"type"=>"LEAD_GUID", "value"=>"01a107c4-3872-44e0-ab2e-47061507ffa1", "timestamp"=>1535664601259}]}], "merge-audits"=>[]}>
 
 irb(main):006:0> contacts.next_page
-=> #<Hubspot::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=9242374, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@/home/chris/projects/hubspot-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9324874, @has_more=true>
+=> #<HubspotLegacy::PagedCollection:0x000055ba3c2b55d8 @limit_param="limit", @limit=25, @offset_param="offset", @offset=9242374, @options={}, @fetch_proc=#<Proc:0x000055ba3c2b5538@/home/chris/projects/hubspot-ruby/lib/hubspot/contact.rb:18>, @resources=[...snip...], @next_offset=9324874, @has_more=true>
 ```
 
 For Hubspot resources that support batch updates for updating multiple resources, the collection provides an `update_all()` method:
 
 ```ruby
-irb(main):001:0> companies = Hubspot::Company.all(limit: 5)
-=> #<Hubspot::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@/home/chris/projects/hubspot-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
+irb(main):001:0> companies = HubspotLegacy::Company.all(limit: 5)
+=> #<HubspotLegacy::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@/home/chris/projects/hubspot-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
 
 irb(main):002:0> companies.size
 => 5
@@ -242,14 +242,14 @@ irb(main):003:0> companies.update_all(lifecyclestage: "opportunity")
 => true
 
 irb(main):004:0> companies.refresh
-=> #<Hubspot::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@/home/chris/projects/hubspot-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
+=> #<HubspotLegacy::PagedCollection:0x000055d5314fe0c8 @limit_param="limit", @limit=5, @offset_param="offset", @offset=nil, @options={}, @fetch_proc=#<Proc:0x000055d5314fe028@/home/chris/projects/hubspot-ruby/lib/hubspot/company.rb:21>, @resources=[...snip...], @next_offset=116011506, @has_more=true>
 ```
 
 ### Deleting a resource
 
 ```ruby
-irb(main):001:0> contact = Hubspot::Contact.find(9324874)
-=> #<Hubspot::Contact:0x000055a87c87aee0 ...snip... >
+irb(main):001:0> contact = HubspotLegacy::Contact.find(9324874)
+=> #<HubspotLegacy::Contact:0x000055a87c87aee0 ...snip... >
 
 irb(main):002:0> contact.delete
 => true
@@ -259,8 +259,8 @@ irb(main):002:0> contact.delete
 
 **Note:** These are the currently defined classes the support the new resource API. This list will continue to grow as we update other classes. All existing classes will be updated prior to releasing v1.0.
 
-* Contact -> Hubspot::Contact
-* Company -> Hubspot::Company
+* Contact -> HubspotLegacy::Contact
+* Company -> HubspotLegacy::Company
 
 ## Contributing to hubspot-ruby
 

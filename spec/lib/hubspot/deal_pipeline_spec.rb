@@ -1,18 +1,18 @@
-RSpec.describe Hubspot::DealPipeline do
+RSpec.describe HubspotLegacy::DealPipeline do
   before do
-    Hubspot.configure hapikey: 'demo'
+    HubspotLegacy.configure hapikey: 'demo'
   end
 
   describe ".find" do
     it "retrieves a record by id" do
       VCR.use_cassette("find_deal_pipeline") do
-        deal_pipeline = Hubspot::DealPipeline.create!(label: "New Pipeline")
+        deal_pipeline = HubspotLegacy::DealPipeline.create!(label: "New Pipeline")
         id = deal_pipeline.pipeline_id
 
-        result = Hubspot::DealPipeline.find(deal_pipeline.pipeline_id)
+        result = HubspotLegacy::DealPipeline.find(deal_pipeline.pipeline_id)
 
         assert_requested :get, hubspot_api_url("/deals/v1/pipelines/#{id}")
-        expect(result).to be_a(Hubspot::DealPipeline)
+        expect(result).to be_a(HubspotLegacy::DealPipeline)
 
         deal_pipeline.destroy!
       end
@@ -22,13 +22,13 @@ RSpec.describe Hubspot::DealPipeline do
   describe ".all" do
     it "returns a list" do
       VCR.use_cassette("all_deal_pipelines") do
-        deal_pipeline = Hubspot::DealPipeline.create!(label: "New Pipeline")
+        deal_pipeline = HubspotLegacy::DealPipeline.create!(label: "New Pipeline")
 
-        results = Hubspot::DealPipeline.all
+        results = HubspotLegacy::DealPipeline.all
 
         assert_requested :get, hubspot_api_url("/deals/v1/pipelines")
         expect(results).to be_kind_of(Array)
-        expect(results.first).to be_a(Hubspot::DealPipeline)
+        expect(results.first).to be_a(HubspotLegacy::DealPipeline)
 
         deal_pipeline.destroy!
       end
@@ -38,10 +38,10 @@ RSpec.describe Hubspot::DealPipeline do
   describe ".create!" do
     it "creates a new record" do
       VCR.use_cassette("create_deal_pipeline") do
-        result = Hubspot::DealPipeline.create!(label: "New Pipeline")
+        result = HubspotLegacy::DealPipeline.create!(label: "New Pipeline")
 
         assert_requested :post, hubspot_api_url("/deals/v1/pipelines")
-        expect(result).to be_a(Hubspot::DealPipeline)
+        expect(result).to be_a(HubspotLegacy::DealPipeline)
 
         result.destroy!
       end
@@ -51,7 +51,7 @@ RSpec.describe Hubspot::DealPipeline do
   describe "#destroy!" do
     it "deletes the record" do
       VCR.use_cassette("delete_deal_pipeline") do
-        deal_pipeline = Hubspot::DealPipeline.create!(label: "New Pipeline")
+        deal_pipeline = HubspotLegacy::DealPipeline.create!(label: "New Pipeline")
         id = deal_pipeline.pipeline_id
 
         result = deal_pipeline.destroy!
@@ -71,7 +71,7 @@ RSpec.describe Hubspot::DealPipeline do
         ],
       }
 
-      deal_pipeline = Hubspot::DealPipeline.new(data)
+      deal_pipeline = HubspotLegacy::DealPipeline.new(data)
 
       result = deal_pipeline[0]
 
@@ -80,6 +80,6 @@ RSpec.describe Hubspot::DealPipeline do
   end
 
   def hubspot_api_url(path)
-    URI.join(Hubspot::Config.base_url, path, "?hapikey=demo")
+    URI.join(HubspotLegacy::Config.base_url, path, "?hapikey=demo")
   end
 end

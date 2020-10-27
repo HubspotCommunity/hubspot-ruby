@@ -1,6 +1,6 @@
-module HubspotApiHelpers
+module HubspotLegacyApiHelpers
   def hubspot_api_url(path)
-    URI.join(Hubspot::Config.base_url, path)
+    URI.join(HubspotLegacy::Config.base_url, path)
   end
 
   def assert_hubspot_api_request(method, path, options = {})
@@ -9,5 +9,5 @@ module HubspotApiHelpers
 end
 
 RSpec.configure do |c|
-  c.include HubspotApiHelpers
+  c.include HubspotLegacyApiHelpers
 end

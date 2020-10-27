@@ -1,5 +1,5 @@
 
-RSpec.describe Hubspot::Resource do
+RSpec.describe HubspotLegacy::Resource do
   describe '#new' do
     context 'when specifying an ID' do
       let(:id) { 1 }

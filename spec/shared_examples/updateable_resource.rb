@@ -38,7 +38,7 @@ RSpec.shared_examples_for "an updateable resource" do |factory_name|
       it 'fails with an error' do
         expect {
           subject
-        }.to raise_error Hubspot::RequestError
+        }.to raise_error HubspotLegacy::RequestError
       end
     end
   end

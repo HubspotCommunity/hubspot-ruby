@@ -1,17 +1,17 @@
-require 'hubspot-ruby'
+require 'hubspot-api-legacy'
 
-namespace :hubspot do
+namespace :hubspot_legacy do
   desc 'Dump properties to file'
   task :dump_properties, [:kind, :file, :hapikey, :include, :exclude] do |_, args|
-    Hubspot::Deprecator.build.deprecation_warning("hubspot:dump_properties")
+    HubspotLegacy::Deprecator.build.deprecation_warning("hubspot_legacy:dump_properties")
 
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     kind = args[:kind]
     unless %w(contact deal).include?(kind)
       raise ArgumentError, ':kind must be either "contact" or "deal"'
     end
-    klass = kind == 'contact' ? Hubspot::ContactProperties : Hubspot::DealProperties
-    props = Hubspot::Utils::dump_properties(klass, hapikey, build_filter(args))
+    klass = kind == 'contact' ? HubspotLegacy::ContactProperties : HubspotLegacy::DealProperties
+    props = HubspotLegacy::Utils::dump_properties(klass, hapikey, build_filter(args))
     if args[:file].blank?
       puts JSON.pretty_generate(props)
     else
@@ -23,7 +23,7 @@ namespace :hubspot do
 
   desc 'Restore properties from file'
   task :restore_properties, [:kind, :file, :hapikey, :dry_run] do |_, args|
-    Hubspot::Deprecator.build.deprecation_warning("hubspot:restore_properties")
+    HubspotLegacy::Deprecator.build.deprecation_warning("hubspot:restore_properties")
 
     hapikey = args[:hapikey] || ENV['HUBSPOT_API_KEY']
     if args[:file].blank?
@@ -33,10 +33,10 @@ namespace :hubspot do
     unless %w(contact deal).include?(kind)
       raise ArgumentError, ':kind must be either "contact" or "deal"'
     end
-    klass = kind == 'contact' ? Hubspot::ContactProperties : Hubspot::DealProperties
+    klass = kind == 'contact' ? HubspotLegacy::ContactProperties : HubspotLegacy::DealProperties
     file = File.read(args[:file])
     props = JSON.parse(file)
-    Hubspot::Utils.restore_properties(klass, hapikey, props, args[:dry_run] != 'false')
+    HubspotLegacy::Utils.restore_properties(klass, hapikey, props, args[:dry_run] != 'false')
   end
 
   private

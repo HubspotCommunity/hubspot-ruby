@@ -2,7 +2,7 @@ require 'timecop'
 
 describe Hubspot do
   before do
-    Hubspot.configure(hapikey: "demo")
+    HubspotLegacy.configure(hapikey: "demo")
     Timecop.freeze(Time.utc(2012, 'Oct', 10))
   end
 
@@ -10,15 +10,15 @@ describe Hubspot do
     Timecop.return
   end
 
-  describe Hubspot::Blog do
+  describe HubspotLegacy::Blog do
     describe ".list" do
       it "returns a list of blogs" do
         VCR.use_cassette("blog_list") do
-          result = Hubspot::Blog.list
+          result = HubspotLegacy::Blog.list
 
           assert_requested :get, hubspot_api_url("/content/api/v2/blogs?hapikey=demo")
           expect(result).to be_kind_of(Array)
-          expect(result.first).to be_a(Hubspot::Blog)
+          expect(result.first).to be_a(HubspotLegacy::Blog)
         end
       end
     end
@@ -27,10 +27,10 @@ describe Hubspot do
       it "retrieves a blog by id" do
         VCR.use_cassette("blog_list") do
           id = 351076997
-          result = Hubspot::Blog.find_by_id(id)
+          result = HubspotLegacy::Blog.find_by_id(id)
 
           assert_requested :get, hubspot_api_url("/content/api/v2/blogs/#{id}?hapikey=demo")
-          expect(result).to be_a(Hubspot::Blog)
+          expect(result).to be_a(HubspotLegacy::Blog)
         end
       end
     end
@@ -41,7 +41,7 @@ describe Hubspot do
           "id" => 123,
           "name" => "Demo",
         }
-        blog = Hubspot::Blog.new(data)
+        blog = HubspotLegacy::Blog.new(data)
 
         expect(blog["id"]).to eq(data["id"])
         expect(blog["name"]).to eq(data["name"])
@@ -49,7 +49,7 @@ describe Hubspot do
 
       context "when the value is unknown" do
         it "returns nil" do
-          blog = Hubspot::Blog.new({})
+          blog = HubspotLegacy::Blog.new({})
 
           expect(blog["nope"]).to be_nil
         end
@@ -61,7 +61,7 @@ describe Hubspot do
         VCR.use_cassette("blog_posts/all_blog_posts") do
           blog_id = 123
           created_gt = timestamp_in_milliseconds(Time.now - 2.months)
-          blog = Hubspot::Blog.new({ "id" => blog_id })
+          blog = HubspotLegacy::Blog.new({ "id" => blog_id })
 
           result = blog.posts
 
@@ -74,7 +74,7 @@ describe Hubspot do
         VCR.use_cassette("blog_posts/filter_blog_posts") do
           blog_id = 123
           created_gt = timestamp_in_milliseconds(Time.now - 2.months)
-          blog = Hubspot::Blog.new({ "id" => 123 })
+          blog = HubspotLegacy::Blog.new({ "id" => 123 })
 
           result = blog.posts({ state: "DRAFT" })
 
@@ -84,20 +84,20 @@ describe Hubspot do
       end
 
       it "raises when given an unknown state" do
-        blog = Hubspot::Blog.new({})
+        blog = HubspotLegacy::Blog.new({})
 
         expect {
           blog.posts({ state: "unknown" })
-        }.to raise_error(Hubspot::InvalidParams, "State parameter was invalid")
+        }.to raise_error(HubspotLegacy::InvalidParams, "State parameter was invalid")
       end
     end
   end
 
-  describe Hubspot::BlogPost do
+  describe HubspotLegacy::BlogPost do
     describe "#created_at" do
       it "returns the created timestamp as a Time" do
         timestamp = timestamp_in_milliseconds(Time.now)
-        blog_post = Hubspot::BlogPost.new({ "created" => timestamp })
+        blog_post = HubspotLegacy::BlogPost.new({ "created" => timestamp })
 
         expect(blog_post.created_at).to eq(Time.at(timestamp/1000))
       end
@@ -108,10 +108,10 @@ describe Hubspot do
         VCR.use_cassette "blog_posts" do
           blog_post_id = 422192866
 
-          result = Hubspot::BlogPost.find_by_blog_post_id(blog_post_id)
+          result = HubspotLegacy::BlogPost.find_by_blog_post_id(blog_post_id)
 
           assert_requested :get, hubspot_api_url("/content/api/v2/blog-posts/#{blog_post_id}?hapikey=demo")
-          expect(result).to be_a(Hubspot::BlogPost)
+          expect(result).to be_a(HubspotLegacy::BlogPost)
         end
       end
     end
@@ -119,18 +119,18 @@ describe Hubspot do
     describe "#topics" do
       it "returns the list of topics" do
         VCR.use_cassette "blog_posts" do
-          blog_post = Hubspot::BlogPost.find_by_blog_post_id(422192866)
+          blog_post = HubspotLegacy::BlogPost.find_by_blog_post_id(422192866)
 
           topics = blog_post.topics
 
           expect(topics).to be_kind_of(Array)
-          expect(topics.first).to be_a(Hubspot::Topic)
+          expect(topics.first).to be_a(HubspotLegacy::Topic)
         end
       end
 
       context "when the blog post does not have topics" do
         it "returns an empty list" do
-          blog_post = Hubspot::BlogPost.new({ "topic_ids" => [] })
+          blog_post = HubspotLegacy::BlogPost.new({ "topic_ids" => [] })
 
           topics = blog_post.topics
 
@@ -141,7 +141,7 @@ describe Hubspot do
   end
 
   def hubspot_api_url(path)
-    URI.join(Hubspot::Config.base_url, path)
+    URI.join(HubspotLegacy::Config.base_url, path)
   end
 
   def timestamp_in_milliseconds(time)

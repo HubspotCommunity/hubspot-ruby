@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "hubspot-ruby"
+require "hubspot-api-legacy"
 
 # Include Byebug for debugging
 require "byebug"
@@ -14,7 +14,7 @@ require "byebug"
 # Pry.start
 
 # Configure with the demo key by default
-Hubspot.configure(hapikey: 'demo')
+HubspotLegacy.configure(hapikey: 'demo')
 
 require "irb"
 IRB.start(__FILE__)

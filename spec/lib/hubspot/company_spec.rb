@@ -1,4 +1,4 @@
-RSpec.describe Hubspot::Company do
+RSpec.describe HubspotLegacy::Company do
   # let(:example_company_hash) do
   #   VCR.use_cassette("company_example") do
   #     HTTParty.get("https://api.hubapi.com/companies/v2/companies/21827084?hapikey=demo").parsed_response
@@ -10,7 +10,7 @@ RSpec.describe Hubspot::Company do
   #   end
   # end
 
-  before{ Hubspot.configure(hapikey: "demo") }
+  before{ HubspotLegacy.configure(hapikey: "demo") }
 
   it_behaves_like "a saveable resource", :company do
     def set_property(company)
@@ -42,7 +42,7 @@ RSpec.describe Hubspot::Company do
       it 'raises an error' do
         expect {
           subject
-        }.to raise_error(Hubspot::RequestError, /resource not found/)
+        }.to raise_error(HubspotLegacy::RequestError, /resource not found/)
       end
     end
   end
@@ -141,7 +141,7 @@ RSpec.describe Hubspot::Company do
       it 'raises an error' do
         expect {
           subject.reload
-        }.to raise_error(Hubspot::InvalidParams)
+        }.to raise_error(HubspotLegacy::InvalidParams)
       end
     end
   end
@@ -155,7 +155,7 @@ RSpec.describe Hubspot::Company do
       it 'raises an error' do
         expect {
           subject.delete
-        }.to raise_error(Hubspot::InvalidParams)
+        }.to raise_error(HubspotLegacy::InvalidParams)
       end
     end
 
@@ -175,7 +175,7 @@ RSpec.describe Hubspot::Company do
 
         expect {
           described_class.find subject.id
-        }.to raise_error(Hubspot::RequestError)
+        }.to raise_error(HubspotLegacy::RequestError)
       end
     end
   end
@@ -187,8 +187,8 @@ RSpec.describe Hubspot::Company do
       subject { described_class.all }
 
       it 'returns a collection' do
-        expect(subject).to be_a(Hubspot::PagedCollection)
-        expect(subject.first).to be_a(Hubspot::Company)
+        expect(subject).to be_a(HubspotLegacy::PagedCollection)
+        expect(subject.first).to be_a(HubspotLegacy::Company)
       end
 
       it 'has an offset' do
@@ -207,7 +207,7 @@ RSpec.describe Hubspot::Company do
       subject { described_class.all offset: company.id }
 
       it 'returns a collection' do
-        expect(subject).to be_a(Hubspot::PagedCollection)
+        expect(subject).to be_a(HubspotLegacy::PagedCollection)
       end
 
       it 'has an offset' do
@@ -226,8 +226,8 @@ RSpec.describe Hubspot::Company do
       subject { described_class.all limit: limit }
 
       it 'returns a collection' do
-        expect(subject).to be_a(Hubspot::PagedCollection)
-        expect(subject.first).to be_a(Hubspot::Company)
+        expect(subject).to be_a(HubspotLegacy::PagedCollection)
+        expect(subject.first).to be_a(HubspotLegacy::Company)
       end
 
       it 'respects the limit' do
@@ -244,8 +244,8 @@ RSpec.describe Hubspot::Company do
     subject { described_class.search_domain company.domain }
 
     it 'returns a collection' do
-      expect(subject).to be_a(Hubspot::PagedCollection)
-      expect(subject.first).to be_a(Hubspot::Company)
+      expect(subject).to be_a(HubspotLegacy::PagedCollection)
+      expect(subject.first).to be_a(HubspotLegacy::Company)
     end
   end
 
@@ -255,7 +255,7 @@ RSpec.describe Hubspot::Company do
     subject { described_class.recently_created }
 
     it 'returns a collection' do
-      expect(subject).to be_a(Hubspot::PagedCollection)
+      expect(subject).to be_a(HubspotLegacy::PagedCollection)
     end
   end
 
@@ -265,7 +265,7 @@ RSpec.describe Hubspot::Company do
     subject { described_class.recently_modified }
 
     it 'returns a collection' do
-      expect(subject).to be_a(Hubspot::PagedCollection)
+      expect(subject).to be_a(HubspotLegacy::PagedCollection)
     end
   end
 
@@ -299,7 +299,7 @@ RSpec.describe Hubspot::Company do
       it 'raises an error' do
         expect {
           subject
-        }.to raise_error(Hubspot::RequestError, /Contact with the vid/)
+        }.to raise_error(HubspotLegacy::RequestError, /Contact with the vid/)
       end
     end
 
@@ -311,7 +311,7 @@ RSpec.describe Hubspot::Company do
       it 'raises an error' do
         expect {
           subject
-        }.to raise_error(Hubspot::RequestError, /company with the ID/)
+        }.to raise_error(HubspotLegacy::RequestError, /company with the ID/)
       end
     end
   end

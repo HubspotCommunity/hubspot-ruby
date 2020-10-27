@@ -1,4 +1,4 @@
-class Hubspot::Company < Hubspot::Resource
+class HubspotLegacy::Company < HubspotLegacy::Resource
   self.id_field = "companyId"
   self.property_name_field = "name"
 
@@ -18,8 +18,8 @@ class Hubspot::Company < Hubspot::Resource
 
   class << self
     def all(opts = {})
-      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-        response = Hubspot::Connection.get_json(
+      HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+        response = HubspotLegacy::Connection.get_json(
           ALL_PATH,
           options.merge(offset: offset, limit: limit)
         )
@@ -31,7 +31,7 @@ class Hubspot::Company < Hubspot::Resource
     end
 
     def search_domain(domain, opts = {})
-      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
+      HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
         request = {
           "limit" => limit,
           "requestOptions" => options,
@@ -41,7 +41,7 @@ class Hubspot::Company < Hubspot::Resource
           }
         }
 
-        response = Hubspot::Connection.post_json(
+        response = HubspotLegacy::Connection.post_json(
           SEARCH_DOMAIN_PATH,
           params: { domain: domain },
           body: request
@@ -54,8 +54,8 @@ class Hubspot::Company < Hubspot::Resource
     end
 
     def recently_created(opts = {})
-      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-        response = Hubspot::Connection.get_json(
+      HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+        response = HubspotLegacy::Connection.get_json(
           RECENTLY_CREATED_PATH,
           {offset: offset, count: limit}
         )
@@ -67,8 +67,8 @@ class Hubspot::Company < Hubspot::Resource
     end
 
     def recently_modified(opts = {})
-      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-        response = Hubspot::Connection.get_json(
+      HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+        response = HubspotLegacy::Connection.get_json(
           RECENTLY_MODIFIED_PATH,
           {offset: offset, count: limit}
         )
@@ -80,7 +80,7 @@ class Hubspot::Company < Hubspot::Resource
     end
 
     def add_contact(id, contact_id)
-      Hubspot::Connection.put_json(
+      HubspotLegacy::Connection.put_json(
         ADD_CONTACT_PATH,
         params: { id: id, contact_id: contact_id }
       )
@@ -88,7 +88,7 @@ class Hubspot::Company < Hubspot::Resource
     end
 
     def remove_contact(id, contact_id)
-      Hubspot::Connection.delete_json(
+      HubspotLegacy::Connection.delete_json(
         REMOVE_CONTACT_PATH,
         { id: id, contact_id: contact_id }
       )
@@ -113,7 +113,7 @@ class Hubspot::Company < Hubspot::Resource
       request.compact!
       return true if request.empty?
 
-      Hubspot::Connection.post_json(
+      HubspotLegacy::Connection.post_json(
         BATCH_UPDATE_PATH,
         params: {},
         body: request
@@ -124,15 +124,15 @@ class Hubspot::Company < Hubspot::Resource
   end
 
   def contacts(opts = {})
-    Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-      response = Hubspot::Connection.get_json(
+    HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+      response = HubspotLegacy::Connection.get_json(
         CONTACTS_PATH,
         {"id" => @id, "vidOffset" => offset, "count" => limit}
       )
 
       contacts = response["contacts"].map do |result|
-        result["properties"] = Hubspot::Utils.properties_array_to_hash(result["properties"])
-        Hubspot::Contact.from_result(result)
+        result["properties"] = HubspotLegacy::Utils.properties_array_to_hash(result["properties"])
+        HubspotLegacy::Contact.from_result(result)
       end
 
       [contacts, response["vidOffset"], response["hasMore"]]
@@ -140,8 +140,8 @@ class Hubspot::Company < Hubspot::Resource
   end
 
   def contact_ids(opts = {})
-    Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-      response = Hubspot::Connection.get_json(
+    HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+      response = HubspotLegacy::Connection.get_json(
         CONTACT_IDS_PATH,
         {"id" => @id, "vidOffset" => offset, "count" => limit}
       )

@@ -1,7 +1,7 @@
-RSpec.describe Hubspot::CompanyProperties do
+RSpec.describe HubspotLegacy::CompanyProperties do
   describe '.add_default_parameters' do
     let(:opts) { {} }
-    subject { Hubspot::CompanyProperties.add_default_parameters(opts) }
+    subject { HubspotLegacy::CompanyProperties.add_default_parameters(opts) }
     context 'default parameters' do
       context 'without property parameter' do
         its([:property]) { should == 'email' }
@@ -14,12 +14,12 @@ RSpec.describe Hubspot::CompanyProperties do
     end
   end
 
-  before { Hubspot.configure(hapikey: ENV.fetch("HUBSPOT_HAPI_KEY", "demo")) }
+  before { HubspotLegacy.configure(hapikey: ENV.fetch("HUBSPOT_HAPI_KEY", "demo")) }
 
   describe ".all" do
     it "should return all properties" do
       VCR.use_cassette "company_properties/all_properties" do
-        Hubspot::CompanyProperties.create!({
+        HubspotLegacy::CompanyProperties.create!({
           "name" => "fax_number",
           "label" => "Fax Number",
           "description" => "The company fax number.",
@@ -28,14 +28,14 @@ RSpec.describe Hubspot::CompanyProperties do
           "fieldType" => "text"
         })
 
-        response = Hubspot::CompanyProperties.all
+        response = HubspotLegacy::CompanyProperties.all
 
         assert_hubspot_api_request(:get, "/properties/v1/companies/properties")
 
         company_property_names = response.map { |property| property["name"] }
         expect(company_property_names).to include("fax_number")
 
-        Hubspot::CompanyProperties.delete!("fax_number")
+        HubspotLegacy::CompanyProperties.delete!("fax_number")
       end
     end
 
@@ -45,7 +45,7 @@ RSpec.describe Hubspot::CompanyProperties do
           group_a = "socialmediainformation"
           group_b = "companyinformation"
 
-          Hubspot::CompanyProperties.create!({
+          HubspotLegacy::CompanyProperties.create!({
             "name" => "instagram_handle",
             "label" => "Instagram Handle",
             "description" => "The company's Instagram handle.",
@@ -53,7 +53,7 @@ RSpec.describe Hubspot::CompanyProperties do
             "type" => "string",
             "fieldType" => "text"
           })
-          Hubspot::CompanyProperties.create!({
+          HubspotLegacy::CompanyProperties.create!({
             "name" => "fax_number",
             "label" => "Fax Number",
             "description" => "The company fax number.",
@@ -62,7 +62,7 @@ RSpec.describe Hubspot::CompanyProperties do
             "fieldType" => "text"
           })
 
-          response = Hubspot::CompanyProperties.all({}, { include: [group_a] })
+          response = HubspotLegacy::CompanyProperties.all({}, { include: [group_a] })
 
           assert_hubspot_api_request(:get, "/properties/v1/companies/properties")
 
@@ -70,8 +70,8 @@ RSpec.describe Hubspot::CompanyProperties do
           expect(group_names).to include(group_a)
           expect(group_names).not_to include(group_b)
 
-          Hubspot::CompanyProperties.delete!("instagram_handle")
-          Hubspot::CompanyProperties.delete!("fax_number")
+          HubspotLegacy::CompanyProperties.delete!("instagram_handle")
+          HubspotLegacy::CompanyProperties.delete!("fax_number")
         end
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe Hubspot::CompanyProperties do
           group_a = "socialmediainformation"
           group_b = "companyinformation"
 
-          Hubspot::CompanyProperties.create!({
+          HubspotLegacy::CompanyProperties.create!({
             "name" => "instagram_handle",
             "label" => "Instagram Handle",
             "description" => "The company's Instagram handle.",
@@ -90,7 +90,7 @@ RSpec.describe Hubspot::CompanyProperties do
             "type" => "string",
             "fieldType" => "text"
           })
-          Hubspot::CompanyProperties.create!({
+          HubspotLegacy::CompanyProperties.create!({
             "name" => "fax_number",
             "label" => "Fax Number",
             "description" => "The company fax number.",
@@ -99,7 +99,7 @@ RSpec.describe Hubspot::CompanyProperties do
             "fieldType" => "text"
           })
 
-          response = Hubspot::CompanyProperties.all({}, { exclude: [group_a] })
+          response = HubspotLegacy::CompanyProperties.all({}, { exclude: [group_a] })
 
           assert_hubspot_api_request(:get, "/properties/v1/companies/properties")
 
@@ -107,8 +107,8 @@ RSpec.describe Hubspot::CompanyProperties do
           expect(group_names).not_to include(group_a)
           expect(group_names).to include(group_b)
 
-          Hubspot::CompanyProperties.delete!("fax_number")
-          Hubspot::CompanyProperties.delete!("instagram_handle")
+          HubspotLegacy::CompanyProperties.delete!("fax_number")
+          HubspotLegacy::CompanyProperties.delete!("instagram_handle")
         end
       end
     end
@@ -123,7 +123,7 @@ RSpec.describe Hubspot::CompanyProperties do
             "groupName" => "companyinformation",
           }
 
-          response = Hubspot::CompanyProperties.create!(create_params)
+          response = HubspotLegacy::CompanyProperties.create!(create_params)
 
           assert_hubspot_api_request(
             :post,
@@ -136,13 +136,13 @@ RSpec.describe Hubspot::CompanyProperties do
           )
           expect(response["name"]).to eq(name)
 
-          Hubspot::CompanyProperties.delete!(name)
+          HubspotLegacy::CompanyProperties.delete!(name)
         end
       end
 
       context "with no valid parameters" do
         it "returns nil" do
-          response = Hubspot::CompanyProperties.create!({})
+          response = HubspotLegacy::CompanyProperties.create!({})
 
           expect(response).to be nil
         end
@@ -156,7 +156,7 @@ RSpec.describe Hubspot::CompanyProperties do
           label = "fax number label"
           new_label = "new fax number label"
 
-          Hubspot::CompanyProperties.create!({
+          HubspotLegacy::CompanyProperties.create!({
             "groupName" => "companyinformation",
             "label" => label,
             "name" => name,
@@ -169,7 +169,7 @@ RSpec.describe Hubspot::CompanyProperties do
             "type" => "string",
           }
 
-          response = Hubspot::CompanyProperties.update!(name, update_params)
+          response = HubspotLegacy::CompanyProperties.update!(name, update_params)
 
           assert_hubspot_api_request(
             :put,
@@ -183,7 +183,7 @@ RSpec.describe Hubspot::CompanyProperties do
           )
           expect(response["label"]).to eq(new_label)
 
-          Hubspot::CompanyProperties.delete!(name)
+          HubspotLegacy::CompanyProperties.delete!(name)
         end
       end
 
@@ -192,7 +192,7 @@ RSpec.describe Hubspot::CompanyProperties do
           company_property_name = "fax_number"
           params = {}
 
-          response = Hubspot::CompanyProperties.update!(
+          response = HubspotLegacy::CompanyProperties.update!(
             company_property_name,
             params
           )
@@ -207,13 +207,13 @@ RSpec.describe Hubspot::CompanyProperties do
         VCR.use_cassette("company_properties/delete_property") do
           name = "fax_number"
 
-          Hubspot::CompanyProperties.create!({
+          HubspotLegacy::CompanyProperties.create!({
             "groupName" => "companyinformation",
             "name" => name,
             "type" => "string",
           })
 
-          response = Hubspot::CompanyProperties.delete!(name)
+          response = HubspotLegacy::CompanyProperties.delete!(name)
 
           assert_hubspot_api_request(
             :delete,
@@ -228,8 +228,8 @@ RSpec.describe Hubspot::CompanyProperties do
         it "raises an error" do
           VCR.use_cassette("company_properties/delete_non_property") do
             expect {
-              Hubspot::CompanyProperties.delete!("non-existent")
-            }.to raise_error(Hubspot::RequestError)
+              HubspotLegacy::CompanyProperties.delete!("non-existent")
+            }.to raise_error(HubspotLegacy::RequestError)
           end
         end
       end
@@ -241,16 +241,16 @@ RSpec.describe Hubspot::CompanyProperties do
       it "returns all groups" do
         VCR.use_cassette("company_properties/all_groups") do
           group_name = "group_awesome"
-          Hubspot::CompanyProperties.create_group!(name: group_name)
+          HubspotLegacy::CompanyProperties.create_group!(name: group_name)
 
-          response = Hubspot::CompanyProperties.groups
+          response = HubspotLegacy::CompanyProperties.groups
 
           assert_hubspot_api_request(:get, "/properties/v1/companies/groups")
 
           group_names = response.map { |group| group["name"] }
           expect(group_names).to include(group_name)
 
-          Hubspot::CompanyProperties.delete_group!(group_name)
+          HubspotLegacy::CompanyProperties.delete_group!(group_name)
         end
       end
 
@@ -260,7 +260,7 @@ RSpec.describe Hubspot::CompanyProperties do
             group_a = "socialmediainformation"
             group_b = "companyinformation"
 
-            Hubspot::CompanyProperties.create!({
+            HubspotLegacy::CompanyProperties.create!({
               "name" => "instagram_handle",
               "label" => "Instagram Handle",
               "description" => "The company's Instagram handle.",
@@ -268,7 +268,7 @@ RSpec.describe Hubspot::CompanyProperties do
               "type" => "string",
               "fieldType" => "text"
             })
-            Hubspot::CompanyProperties.create!({
+            HubspotLegacy::CompanyProperties.create!({
               "name" => "fax_number",
               "label" => "Fax Number",
               "description" => "The company fax number.",
@@ -277,15 +277,15 @@ RSpec.describe Hubspot::CompanyProperties do
               "fieldType" => "text"
             })
 
-            response = Hubspot::CompanyProperties.groups(
+            response = HubspotLegacy::CompanyProperties.groups(
               {},
               { include: group_a }
             )
 
             assert_hubspot_api_request(:get, "/properties/v1/companies/groups")
 
-            Hubspot::CompanyProperties.delete!("instagram_handle")
-            Hubspot::CompanyProperties.delete!("fax_number")
+            HubspotLegacy::CompanyProperties.delete!("instagram_handle")
+            HubspotLegacy::CompanyProperties.delete!("fax_number")
 
             group_names = response.map { |group| group["name"] }
             expect(group_names).to include(group_a)
@@ -300,7 +300,7 @@ RSpec.describe Hubspot::CompanyProperties do
             group_a = "socialmediainformation"
             group_b = "companyinformation"
 
-            Hubspot::CompanyProperties.create!({
+            HubspotLegacy::CompanyProperties.create!({
               "name" => "instagram_handle",
               "label" => "Instagram Handle",
               "description" => "The company's Instagram handle.",
@@ -308,7 +308,7 @@ RSpec.describe Hubspot::CompanyProperties do
               "type" => "string",
               "fieldType" => "text"
             })
-            Hubspot::CompanyProperties.create!({
+            HubspotLegacy::CompanyProperties.create!({
               "name" => "fax_number",
               "label" => "Fax Number",
               "description" => "The company fax number.",
@@ -317,7 +317,7 @@ RSpec.describe Hubspot::CompanyProperties do
               "fieldType" => "text"
             })
 
-            response = Hubspot::CompanyProperties.groups(
+            response = HubspotLegacy::CompanyProperties.groups(
               {},
               { exclude: group_a }
             )
@@ -328,8 +328,8 @@ RSpec.describe Hubspot::CompanyProperties do
             expect(group_names).not_to include(group_a)
             expect(group_names).to include(group_b)
 
-            Hubspot::CompanyProperties.delete!("instagram_handle")
-            Hubspot::CompanyProperties.delete!("fax_number")
+            HubspotLegacy::CompanyProperties.delete!("instagram_handle")
+            HubspotLegacy::CompanyProperties.delete!("fax_number")
           end
         end
       end
@@ -340,7 +340,7 @@ RSpec.describe Hubspot::CompanyProperties do
     describe '.create_group!' do
       context 'with no valid parameters' do
         it 'should return nil' do
-          expect(Hubspot::CompanyProperties.create_group!({})).to be(nil)
+          expect(HubspotLegacy::CompanyProperties.create_group!({})).to be(nil)
         end
       end
 
@@ -348,8 +348,8 @@ RSpec.describe Hubspot::CompanyProperties do
         cassette 'company_properties/create_group'
 
         it 'should return the valid parameters' do
-          response = Hubspot::CompanyProperties.create_group!(params)
-          expect(Hubspot::CompanyProperties.same?(response, params)).to be true
+          response = HubspotLegacy::CompanyProperties.create_group!(params)
+          expect(HubspotLegacy::CompanyProperties.same?(response, params)).to be true
         end
       end
 
@@ -360,8 +360,8 @@ RSpec.describe Hubspot::CompanyProperties do
 
         it 'should return the valid parameters' do
           params['name'] = 'ff_group235'
-          response       = Hubspot::CompanyProperties.create_group!(sub_params)
-          expect(Hubspot::CompanyProperties.same?(response, sub_params)).to be true
+          response       = HubspotLegacy::CompanyProperties.create_group!(sub_params)
+          expect(HubspotLegacy::CompanyProperties.same?(response, sub_params)).to be true
         end
       end
     end
@@ -370,7 +370,7 @@ RSpec.describe Hubspot::CompanyProperties do
       context 'with no valid parameters' do
 
         it 'should return nil ' do
-          expect(Hubspot::CompanyProperties.update_group!(params['name'], {})).to be(nil)
+          expect(HubspotLegacy::CompanyProperties.update_group!(params['name'], {})).to be(nil)
         end
       end
 
@@ -380,8 +380,8 @@ RSpec.describe Hubspot::CompanyProperties do
         it 'should return the valid parameters' do
           params['displayName'] = 'Test Group OneA'
 
-          response = Hubspot::CompanyProperties.update_group!(params['name'], params)
-          expect(Hubspot::CompanyProperties.same?(response, params)).to be true
+          response = HubspotLegacy::CompanyProperties.update_group!(params['name'], params)
+          expect(HubspotLegacy::CompanyProperties.same?(response, params)).to be true
         end
       end
 
@@ -394,7 +394,7 @@ RSpec.describe Hubspot::CompanyProperties do
         cassette 'company_properties/delete_group'
 
         it 'should return nil' do
-          expect(Hubspot::CompanyProperties.delete_group!(name)).to eq(nil)
+          expect(HubspotLegacy::CompanyProperties.delete_group!(name)).to eq(nil)
         end
       end
 
@@ -402,7 +402,7 @@ RSpec.describe Hubspot::CompanyProperties do
         cassette 'company_properties/delete_non_group'
 
         it 'should raise an error' do
-          expect { Hubspot::CompanyProperties.delete_group!(name) }.to raise_error(Hubspot::RequestError)
+          expect { HubspotLegacy::CompanyProperties.delete_group!(name) }.to raise_error(HubspotLegacy::RequestError)
         end
       end
     end

@@ -1,6 +1,6 @@
 require 'hubspot/utils'
 
-module Hubspot
+module HubspotLegacy
   #
   # HubSpot Engagements API
   #
@@ -29,15 +29,15 @@ module Hubspot
 
     class << self
       def create!(params={})
-        response = Hubspot::Connection.post_json(CREATE_ENGAGMEMENT_PATH, params: {}, body: params )
+        response = HubspotLegacy::Connection.post_json(CREATE_ENGAGMEMENT_PATH, params: {}, body: params )
         new(HashWithIndifferentAccess.new(response))
       end
 
       def find(engagement_id)
         begin
-          response = Hubspot::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
+          response = HubspotLegacy::Connection.get_json(ENGAGEMENT_PATH, { engagement_id: engagement_id })
           response ? new(HashWithIndifferentAccess.new(response)) : nil
-        rescue Hubspot::RequestError => ex
+        rescue HubspotLegacy::RequestError => ex
           if ex.response.code == 404
             return nil
           else
@@ -57,12 +57,12 @@ module Hubspot
       def find_by_association(association_id, association_type)
         path = GET_ASSOCIATED_ENGAGEMENTS
         params = { objectType: association_type, objectId: association_id }
-        raise Hubspot::InvalidParams, 'expecting Integer parameter' unless association_id.try(:is_a?, Integer)
-        raise Hubspot::InvalidParams, 'expecting String parameter' unless association_type.try(:is_a?, String)
+        raise HubspotLegacy::InvalidParams, 'expecting Integer parameter' unless association_id.try(:is_a?, Integer)
+        raise HubspotLegacy::InvalidParams, 'expecting String parameter' unless association_type.try(:is_a?, String)
 
         engagements = []
         begin
-          response = Hubspot::Connection.get_json(path, params)
+          response = HubspotLegacy::Connection.get_json(path, params)
           engagements = response["results"].try(:map) { |engagement| new(engagement) }
         rescue => e
           raise e unless e.message =~ /not found/
@@ -76,7 +76,7 @@ module Hubspot
       # @param object_type [string] one of contact, company, or deal
       # @param object_vid [int] id of the contact, company, or deal to associate
       def associate!(engagement_id, object_type, object_vid)
-        Hubspot::Connection.put_json(ASSOCIATE_ENGAGEMENT_PATH,
+        HubspotLegacy::Connection.put_json(ASSOCIATE_ENGAGEMENT_PATH,
                                      params: {
                                        engagement_id: engagement_id,
                                        object_type: object_type,
@@ -89,7 +89,7 @@ module Hubspot
     # {http://developers.hubspot.com/docs/methods/engagements/delete-engagement}
     # @return [TrueClass] true
     def destroy!
-      Hubspot::Connection.delete_json(ENGAGEMENT_PATH, {engagement_id: id})
+      HubspotLegacy::Connection.delete_json(ENGAGEMENT_PATH, {engagement_id: id})
       @destroyed = true
     end
 
@@ -104,7 +104,7 @@ module Hubspot
     # Updates the properties of an engagement
     # {http://developers.hubspot.com/docs/methods/engagements/update_engagement}
     # @param params [Hash] hash of properties to update
-    # @return [Hubspot::Engagement] self
+    # @return [HubspotLegacy::Engagement] self
     def update!(params)
       data = {
         engagement: params[:engagement]     || engagement,
@@ -113,7 +113,7 @@ module Hubspot
         metadata: params[:metadata]         || metadata
       }
 
-      Hubspot::Connection.put_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
+      HubspotLegacy::Connection.put_json(ENGAGEMENT_PATH, params: { engagement_id: id }, body: data)
       self
     end
   end

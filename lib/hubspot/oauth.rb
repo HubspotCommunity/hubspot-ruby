@@ -1,6 +1,6 @@
 require 'httparty'
 
-module Hubspot
+module HubspotLegacy
   class OAuth < Connection
     include HTTParty
 
@@ -18,30 +18,30 @@ module Hubspot
       end
 
       def authorize_url(scopes, params={})
-        client_id = params[:client_id] || Hubspot::Config.client_id
-        redirect_uri = params[:redirect_uri] || Hubspot::Config.redirect_uri
+        client_id = params[:client_id] || HubspotLegacy::Config.client_id
+        redirect_uri = params[:redirect_uri] || HubspotLegacy::Config.redirect_uri
         scopes = Array.wrap(scopes)
 
         "https://app.hubspot.com/oauth/authorize?client_id=#{client_id}&scope=#{scopes.join("%20")}&redirect_uri=#{redirect_uri}"
       end
 
       def token_url
-        token_url = Hubspot::Config.base_url + "/oauth/v1/token"
+        token_url = HubspotLegacy::Config.base_url + "/oauth/v1/token"
       end
 
       def oauth_post(url, params, options={})
         no_parse = options[:no_parse] || false
 
         body = {
-          client_id: Hubspot::Config.client_id,
-          client_secret: Hubspot::Config.client_secret,
-          redirect_uri: Hubspot::Config.redirect_uri,
+          client_id: HubspotLegacy::Config.client_id,
+          client_secret: HubspotLegacy::Config.client_secret,
+          redirect_uri: HubspotLegacy::Config.redirect_uri,
         }.merge(params)
 
         response = post(url, body: body, headers: DEFAULT_OAUTH_HEADERS)
         log_request_and_response url, response, body
 
-        raise(Hubspot::RequestError.new(response)) unless response.success?
+        raise(HubspotLegacy::RequestError.new(response)) unless response.success?
 
         no_parse ? response : response.parsed_response
       end

@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name = "hubspot-ruby"
+  s.name = "hubspot-api-legacy"
   s.version = "0.7.0"
   s.require_paths = ["lib"]
   s.authors = ["Andrew DiMichele", "Chris Bisnett"]

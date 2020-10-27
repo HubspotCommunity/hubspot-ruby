@@ -17,7 +17,7 @@ require 'webmock/rspec'
 require 'factory_bot'
 require 'faker'
 require 'byebug'
-require 'hubspot-ruby'
+require 'hubspot-api-legacy'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -28,7 +28,7 @@ Dir["#{RSPEC_ROOT}/shared_examples/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
   config.after(:each) do
-    Hubspot::Config.reset!
+    HubspotLegacy::Config.reset!
   end
 
   config.filter_run_when_matching :focus

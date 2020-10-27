@@ -1,4 +1,4 @@
-module Hubspot
+module HubspotLegacy
   class CompanyProperties < Properties
 
     ALL_PROPERTIES_PATH  = "/properties/v1/companies/properties"

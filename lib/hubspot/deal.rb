@@ -1,6 +1,6 @@
 require 'hubspot/utils'
 
-module Hubspot
+module HubspotLegacy
   #
   # HubSpot Deals API
   #
@@ -26,32 +26,32 @@ module Hubspot
       @deal_id = response_hash["dealId"]
       @company_ids = response_hash["associations"]["associatedCompanyIds"]
       @vids = response_hash["associations"]["associatedVids"]
-      @properties = Hubspot::Utils.properties_to_hash(response_hash["properties"])
+      @properties = HubspotLegacy::Utils.properties_to_hash(response_hash["properties"])
     end
 
     class << self
       def create!(portal_id, company_ids, vids, params={})
-        #TODO: clean following hash, Hubspot::Utils should do the trick
+        #TODO: clean following hash, HubspotLegacy::Utils should do the trick
         associations_hash = {"portalId" => portal_id, "associations" => { "associatedCompanyIds" => company_ids, "associatedVids" => vids}}
-        post_data = associations_hash.merge({ properties: Hubspot::Utils.hash_to_properties(params, key_name: "name") })
+        post_data = associations_hash.merge({ properties: HubspotLegacy::Utils.hash_to_properties(params, key_name: "name") })
 
-        response = Hubspot::Connection.post_json(CREATE_DEAL_PATH, params: {}, body: post_data )
+        response = HubspotLegacy::Connection.post_json(CREATE_DEAL_PATH, params: {}, body: post_data )
         new(response)
       end
 
        # Associate a deal with a contact or company
        # {http://developers.hubspot.com/docs/methods/deals/associate_deal}
        # Usage
-       # Hubspot::Deal.associate!(45146940, [], [52])
+       # HubspotLegacy::Deal.associate!(45146940, [], [52])
        def associate!(deal_id, company_ids=[], vids=[])
          objecttype = company_ids.any? ? 'COMPANY' : 'CONTACT'
          object_ids = (company_ids.any? ? company_ids : vids).join('&id=')
-         Hubspot::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
+         HubspotLegacy::Connection.put_json(ASSOCIATE_DEAL_PATH, params: { deal_id: deal_id, OBJECTTYPE: objecttype, objectId: object_ids}, body: {})
        end
 
 
       def find(deal_id)
-        response = Hubspot::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
+        response = HubspotLegacy::Connection.get_json(DEAL_PATH, { deal_id: deal_id })
         new(response)
       end
 
@@ -59,7 +59,7 @@ module Hubspot
         path = ALL_DEALS_PATH
 
         opts[:includeAssociations] = true # Needed for initialize to work
-        response = Hubspot::Connection.get_json(path, opts)
+        response = HubspotLegacy::Connection.get_json(path, opts)
 
         result = {}
         result['deals'] = response['deals'].map { |d| new(d) }
@@ -73,40 +73,40 @@ module Hubspot
       # @param count [Integer] the amount of deals to return.
       # @param offset [Integer] pages back through recent contacts.
       def recent(opts = {})
-        response = Hubspot::Connection.get_json(RECENT_UPDATED_PATH, opts)
+        response = HubspotLegacy::Connection.get_json(RECENT_UPDATED_PATH, opts)
         response['results'].map { |d| new(d) }
       end
 
       # Find all deals associated to a company
       # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
-      # @param company [Hubspot::Company] the company
-      # @return [Array] Array of Hubspot::Deal records
+      # @param company [HubspotLegacy::Company] the company
+      # @return [Array] Array of HubspotLegacy::Deal records
       def find_by_company(company)
         find_by_association company
       end
 
       # Find all deals associated to a contact
       # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
-      # @param contact [Hubspot::Contact] the contact
-      # @return [Array] Array of Hubspot::Deal records
+      # @param contact [HubspotLegacy::Contact] the contact
+      # @return [Array] Array of HubspotLegacy::Deal records
       def find_by_contact(contact)
         find_by_association contact
       end
 
       # Find all deals associated to a contact or company
       # {http://developers.hubspot.com/docs/methods/deals/get-associated-deals}
-      # @param object [Hubspot::Contact || Hubspot::Company] a contact or company
-      # @return [Array] Array of Hubspot::Deal records
+      # @param object [HubspotLegacy::Contact || HubspotLegacy::Company] a contact or company
+      # @return [Array] Array of HubspotLegacy::Deal records
       def find_by_association(object)
         path = ASSOCIATED_DEAL_PATH
         objectType =  case object
-                      when Hubspot::Company then :company
-                      when Hubspot::Contact then :contact
-                      else raise(Hubspot::InvalidParams, "Instance type not supported")
+                      when HubspotLegacy::Company then :company
+                      when HubspotLegacy::Contact then :contact
+                      else raise(HubspotLegacy::InvalidParams, "Instance type not supported")
                       end
 
         params = { objectType: objectType, objectId: object.id }
-        response = Hubspot::Connection.get_json(path, params)
+        response = HubspotLegacy::Connection.get_json(path, params)
         response["results"].map { |deal_id| find(deal_id) }
       end
     end
@@ -115,7 +115,7 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
     def destroy!
-      Hubspot::Connection.delete_json(DEAL_PATH, {deal_id: deal_id})
+      HubspotLegacy::Connection.delete_json(DEAL_PATH, {deal_id: deal_id})
       @destroyed = true
     end
 
@@ -130,10 +130,10 @@ module Hubspot
     # Updates the properties of a deal
     # {https://developers.hubspot.com/docs/methods/deals/update_deal}
     # @param params [Hash] hash of properties to update
-    # @return [Hubspot::Deal] self
+    # @return [HubspotLegacy::Deal] self
     def update!(params)
-      query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
-      Hubspot::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
+      query = {"properties" => HubspotLegacy::Utils.hash_to_properties(params.stringify_keys!, key_name: 'name')}
+      HubspotLegacy::Connection.put_json(UPDATE_DEAL_PATH, params: { deal_id: deal_id }, body: query)
       @properties.merge!(params)
       self
     end

@@ -1,4 +1,4 @@
-module Hubspot
+module HubspotLegacy
   class Connection
     include HTTParty
 
@@ -24,7 +24,7 @@ module Hubspot
         )
 
         log_request_and_response url, response, opts[:body]
-        raise(Hubspot::RequestError.new(response)) unless response.success?
+        raise(HubspotLegacy::RequestError.new(response)) unless response.success?
 
         no_parse ? response : response.parsed_response
       end
@@ -43,7 +43,7 @@ module Hubspot
         )
 
         log_request_and_response(url, response, options[:body])
-        raise(Hubspot::RequestError.new(response)) unless response.success?
+        raise(HubspotLegacy::RequestError.new(response)) unless response.success?
 
         no_parse ? response : response.parsed_response
       end
@@ -52,30 +52,30 @@ module Hubspot
         url = generate_url(path, opts)
         response = delete(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
         log_request_and_response url, response, opts[:body]
-        raise(Hubspot::RequestError.new(response)) unless response.success?
+        raise(HubspotLegacy::RequestError.new(response)) unless response.success?
         response
       end
 
       protected
 
       def read_timeout(opts = {})
-        opts.delete(:read_timeout) || Hubspot::Config.read_timeout
+        opts.delete(:read_timeout) || HubspotLegacy::Config.read_timeout
       end
 
       def open_timeout(opts = {})
-        opts.delete(:open_timeout) || Hubspot::Config.open_timeout
+        opts.delete(:open_timeout) || HubspotLegacy::Config.open_timeout
       end
 
       def handle_response(response)
         if response.success?
           response.parsed_response
         else
-          raise(Hubspot::RequestError.new(response))
+          raise(HubspotLegacy::RequestError.new(response))
         end
       end
 
       def log_request_and_response(uri, response, body=nil)
-        Hubspot::Config.logger.info(<<~MSG)
+        HubspotLegacy::Config.logger.info(<<~MSG)
           Hubspot: #{uri}.
           Body: #{body}.
           Response: #{response.code} #{response.body}
@@ -83,19 +83,19 @@ module Hubspot
       end
 
       def generate_url(path, params={}, options={})
-        if Hubspot::Config.access_token.present?
+        if HubspotLegacy::Config.access_token.present?
           options[:hapikey] = false
         else
-          Hubspot::Config.ensure! :hapikey
+          HubspotLegacy::Config.ensure! :hapikey
         end
         path = path.clone
         params = params.clone
-        base_url = options[:base_url] || Hubspot::Config.base_url
-        params["hapikey"] = Hubspot::Config.hapikey unless options[:hapikey] == false
+        base_url = options[:base_url] || HubspotLegacy::Config.base_url
+        params["hapikey"] = HubspotLegacy::Config.hapikey unless options[:hapikey] == false
 
         if path =~ /:portal_id/
-          Hubspot::Config.ensure! :portal_id
-          params["portal_id"] = Hubspot::Config.portal_id if path =~ /:portal_id/
+          HubspotLegacy::Config.ensure! :portal_id
+          params["portal_id"] = HubspotLegacy::Config.portal_id if path =~ /:portal_id/
         end
 
         params.each do |k,v|
@@ -104,7 +104,7 @@ module Hubspot
             params.delete(k)
           end
         end
-        raise(Hubspot::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
+        raise(HubspotLegacy::MissingInterpolation.new("Interpolation not resolved")) if path =~ /:/
 
         query = params.map do |k,v|
           v.is_a?(Array) ? v.map { |value| param_string(k,value) } : param_string(k,v)

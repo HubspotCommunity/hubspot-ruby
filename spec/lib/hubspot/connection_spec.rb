@@ -1,6 +1,6 @@
-describe Hubspot::Connection do
+describe HubspotLegacy::Connection do
   before do
-    Hubspot.configure hapikey: 'fake'
+    HubspotLegacy.configure hapikey: 'fake'
   end
 
   describe ".get_json" do
@@ -11,7 +11,7 @@ describe Hubspot::Connection do
       stub_request(:get, "https://api.hubapi.com/some/path?hapikey=fake").
         to_return(status: 200, body: JSON.generate(body))
 
-      result = Hubspot::Connection.get_json(path, {})
+      result = HubspotLegacy::Connection.get_json(path, {})
 
       expect(result).to eq({ "key" => "value" })
     end
@@ -25,7 +25,7 @@ describe Hubspot::Connection do
       stub_request(:post, "https://api.hubapi.com/some/path?hapikey=fake&name=ABC").
         to_return(status: 200, body: JSON.generate(body))
 
-      result = Hubspot::Connection.post_json(path, params: { name: "ABC" })
+      result = HubspotLegacy::Connection.post_json(path, params: { name: "ABC" })
 
       expect(result).to eq({ "id" => 1, "name" => "ABC" })
     end
@@ -38,7 +38,7 @@ describe Hubspot::Connection do
       stub_request(:delete, "https://api.hubapi.com/some/path?hapikey=fake").
         to_return(status: 204, body: JSON.generate({}))
 
-      result = Hubspot::Connection.delete_json(path, {})
+      result = HubspotLegacy::Connection.delete_json(path, {})
 
       expect(result.code).to eq(204)
     end
@@ -52,7 +52,7 @@ describe Hubspot::Connection do
       stub_request(:put, "https://api.hubapi.com/some/path?hapikey=fake").
         to_return(status: 200, body: JSON.generate(vid: 123))
 
-      response = Hubspot::Connection.put_json(path, update_options)
+      response = HubspotLegacy::Connection.put_json(path, update_options)
 
       assert_requested(
         :put,
@@ -75,7 +75,7 @@ describe Hubspot::Connection do
       stub_request(:put, "https://api.hubapi.com/some/path?hapikey=fake").
         to_return(status: 200, body: JSON.generate("response body"))
 
-      Hubspot::Connection.put_json(path, update_options)
+      HubspotLegacy::Connection.put_json(path, update_options)
 
       expect(logger).to have_received(:info).with(<<~MSG)
         Hubspot: https://api.hubapi.com/some/path?hapikey=fake.
@@ -92,8 +92,8 @@ describe Hubspot::Connection do
         to_return(status: 401)
 
       expect {
-        Hubspot::Connection.put_json(path, update_options)
-      }.to raise_error(Hubspot::RequestError)
+        HubspotLegacy::Connection.put_json(path, update_options)
+      }.to raise_error(HubspotLegacy::RequestError)
     end
   end
 
@@ -102,8 +102,8 @@ describe Hubspot::Connection do
       let(:path){ "/test/:email/profile" }
       let(:params){{email: "test"}}
       let(:options){{}}
-      subject{ Hubspot::Connection.send(:generate_url, path, params, options) }
-      before{ Hubspot.configure(hapikey: "demo", portal_id: "62515") }
+      subject{ HubspotLegacy::Connection.send(:generate_url, path, params, options) }
+      before{ HubspotLegacy.configure(hapikey: "demo", portal_id: "62515") }
 
       it "doesn't modify params" do
         expect{ subject }.to_not change{params}
@@ -116,16 +116,16 @@ describe Hubspot::Connection do
       end
 
       context "when configure hasn't been called" do
-        before{ Hubspot::Config.reset! }
+        before{ HubspotLegacy::Config.reset! }
         it "raises a config exception" do
-          expect{ subject }.to raise_error Hubspot::ConfigurationError
+          expect{ subject }.to raise_error HubspotLegacy::ConfigurationError
         end
       end
 
       context "with interpolations but no params" do
         let(:params){{}}
         it "raises an interpolation exception" do
-          expect{ subject }.to raise_error Hubspot::MissingInterpolation
+          expect{ subject }.to raise_error HubspotLegacy::MissingInterpolation
         end
       end
 
@@ -170,7 +170,7 @@ describe Hubspot::Connection do
       end
 
       context "passing Array as parameters for batch mode, key is prefixed with batch_" do
-        let(:path) { Hubspot::ContactList::LIST_BATCH_PATH }
+        let(:path) { HubspotLegacy::ContactList::LIST_BATCH_PATH }
         let(:params) { { batch_list_id: [1,2,3] } }
         it{ should == "https://api.hubapi.com/contacts/v1/lists/batch?listId=1&listId=2&listId=3&hapikey=demo" }
       end
@@ -179,7 +179,7 @@ describe Hubspot::Connection do
 
   def stub_logger
     instance_double(Logger, info: true).tap do |logger|
-      allow(Hubspot::Config).to receive(:logger).and_return(logger)
+      allow(HubspotLegacy::Config).to receive(:logger).and_return(logger)
     end
   end
 end

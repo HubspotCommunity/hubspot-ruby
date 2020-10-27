@@ -1,4 +1,4 @@
-class Hubspot::Collection
+class HubspotLegacy::Collection
   def initialize(opts = {}, &block)
     @options = opts
     @fetch_proc = block

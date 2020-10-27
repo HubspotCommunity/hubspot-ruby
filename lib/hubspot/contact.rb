@@ -1,4 +1,4 @@
-class Hubspot::Contact < Hubspot::Resource
+class HubspotLegacy::Contact < HubspotLegacy::Resource
   self.id_field = "vid"
   self.update_method = "post"
 
@@ -15,8 +15,8 @@ class Hubspot::Contact < Hubspot::Resource
 
   class << self
     def all(opts = {})
-      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-        response = Hubspot::Connection.get_json(
+      HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+        response = HubspotLegacy::Connection.get_json(
           ALL_PATH,
           options.merge("count" => limit, "vidOffset" => offset)
           )
@@ -27,12 +27,12 @@ class Hubspot::Contact < Hubspot::Resource
     end
 
     def find_by_email(email)
-      response = Hubspot::Connection.get_json(FIND_BY_EMAIL_PATH, email: email)
+      response = HubspotLegacy::Connection.get_json(FIND_BY_EMAIL_PATH, email: email)
       from_result(response)
     end
 
     def find_by_user_token(token)
-      response = Hubspot::Connection.get_json(FIND_BY_USER_TOKEN_PATH, token: token)
+      response = HubspotLegacy::Connection.get_json(FIND_BY_USER_TOKEN_PATH, token: token)
       from_result(response)
     end
     alias_method :find_by_utk, :find_by_user_token
@@ -43,15 +43,15 @@ class Hubspot::Contact < Hubspot::Resource
 
     def create_or_update(email, properties = {})
       request = {
-        properties: Hubspot::Utils.hash_to_properties(properties.stringify_keys, key_name: "property")
+        properties: HubspotLegacy::Utils.hash_to_properties(properties.stringify_keys, key_name: "property")
       }
-      response = Hubspot::Connection.post_json(CREATE_OR_UPDATE_PATH, params: {email: email}, body: request)
+      response = HubspotLegacy::Connection.post_json(CREATE_OR_UPDATE_PATH, params: {email: email}, body: request)
       from_result(response)
     end
 
     def search(query, opts = {})
-      Hubspot::PagedCollection.new(opts) do |options, offset, limit|
-        response = Hubspot::Connection.get_json(
+      HubspotLegacy::PagedCollection.new(opts) do |options, offset, limit|
+        response = HubspotLegacy::Connection.get_json(
           SEARCH_PATH,
           options.merge(q: query, offset: offset, count: limit)
           )
@@ -62,7 +62,7 @@ class Hubspot::Contact < Hubspot::Resource
     end
 
     def merge(primary, secondary)
-      Hubspot::Connection.post_json(
+      HubspotLegacy::Connection.post_json(
         MERGE_PATH,
         params: { id: primary.to_i, no_parse: true },
         body: { "vidToMerge" => secondary.to_i }

@@ -1,4 +1,8 @@
-## 1.0.0 (TBD)
+## 1.0.0 (October 26, 2020)
+
+* [#1] Rename gem to `HubspotLegacy` in order to not conflict with the official one
+
+[#1]: https://github.com/ordwaylabs/hubspot-api-legacy/pull/1
 
 * [#168] `Hubspot.configure` will raise when given none or multiple ways to
   authenticate with the HubSpot API.
@@ -18,8 +22,8 @@
 ## 0.6.1 (November 29, 2018)
 
 * [#148] Deprecate the use of the hubspot rake tasks. Deprecating these tasks
-  includes deprecating the use of `Hubspot::Utils.dump_properties` and
-  `Hubspot::Utils.restore_properties`.
+  includes deprecating the use of `HubspotLegacy::Utils.dump_properties` and
+  `HubspotLegacy::Utils.restore_properties`.
 
 [#148]: https://github.com/adimichele/hubspot-ruby/pull/148
 

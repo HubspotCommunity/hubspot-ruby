@@ -1,4 +1,4 @@
-module Hubspot
+module HubspotLegacy
   #
   # HubSpot Contacts API
   #
@@ -11,17 +11,17 @@ module Hubspot
       # Lists the blogs
       # {https://developers.hubspot.com/docs/methods/blogv2/get_blogs}
       # No param filtering is currently implemented
-      # @return [Hubspot::Blog] the first 20 blogs or empty_array
+      # @return [HubspotLegacy::Blog] the first 20 blogs or empty_array
       def list
-        response = Hubspot::Connection.get_json(BLOG_LIST_PATH, {})
+        response = HubspotLegacy::Connection.get_json(BLOG_LIST_PATH, {})
         response['objects'].map { |b| new(b) }
       end
 
       # Finds a specific blog by its ID
       # {https://developers.hubspot.com/docs/methods/blogv2/get_blogs_blog_id}
-      # @return Hubspot::Blog
+      # @return HubspotLegacy::Blog
       def find_by_id(id)
-        response = Hubspot::Connection.get_json(GET_BLOG_BY_ID_PATH, { blog_id: id })
+        response = HubspotLegacy::Connection.get_json(GET_BLOG_BY_ID_PATH, { blog_id: id })
         new(response)
       end
     end
@@ -41,7 +41,7 @@ module Hubspot
     #   defaults to returning the last 2 months worth of published blog posts
     #   in date descending order (i.e. most recent first)
     # {https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts}
-    # @return [Hubspot::BlogPost]
+    # @return [HubspotLegacy::BlogPost]
     def posts(params = {})
       default_params = {
         content_group_id: self["id"],
@@ -49,13 +49,13 @@ module Hubspot
         created__gt: Time.now - 2.month,
         state: 'PUBLISHED'
       }
-      raise Hubspot::InvalidParams.new('params must be passed as a hash') unless params.is_a?(Hash)
+      raise HubspotLegacy::InvalidParams.new('params must be passed as a hash') unless params.is_a?(Hash)
       params = default_params.merge(params)
 
-      raise Hubspot::InvalidParams.new('State parameter was invalid') unless [false, 'PUBLISHED', 'DRAFT'].include?(params[:state])
+      raise HubspotLegacy::InvalidParams.new('State parameter was invalid') unless [false, 'PUBLISHED', 'DRAFT'].include?(params[:state])
       params.each { |k, v| params.delete(k) if v == false }
 
-      response = Hubspot::Connection.get_json(BLOG_POSTS_PATH, params)
+      response = HubspotLegacy::Connection.get_json(BLOG_POSTS_PATH, params)
       response['objects'].map { |p| BlogPost.new(p) }
     end
   end
@@ -65,9 +65,9 @@ module Hubspot
 
     # Returns a specific blog post by ID
     # {https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts_blog_post_id}
-    # @return Hubspot::BlogPost
+    # @return HubspotLegacy::BlogPost
     def self.find_by_blog_post_id(id)
-      response = Hubspot::Connection.get_json(GET_BLOG_POST_BY_ID_PATH, { blog_post_id: id })
+      response = HubspotLegacy::Connection.get_json(GET_BLOG_POST_BY_ID_PATH, { blog_post_id: id })
       new(response)
     end
 
@@ -89,7 +89,7 @@ module Hubspot
           []
         else
           @properties['topic_ids'].map do |topic_id|
-            Hubspot::Topic.find_by_topic_id(topic_id)
+            HubspotLegacy::Topic.find_by_topic_id(topic_id)
           end
         end
       end
