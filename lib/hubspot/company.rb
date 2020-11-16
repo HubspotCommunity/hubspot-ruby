@@ -70,7 +70,7 @@ class Hubspot::Company < Hubspot::Resource
       Hubspot::PagedCollection.new(opts) do |options, offset, limit|
         response = Hubspot::Connection.get_json(
           RECENTLY_MODIFIED_PATH,
-          {offset: offset, count: limit}
+          options.merge(offset: offset, limit: limit)
         )
 
         companies = response["results"].map { |result| from_result(result) }
