@@ -1,22 +1,28 @@
 module Hubspot
   class File
-    UPLOAD_FILE_PATH = '/filemanager/api/v2/files'
-
+    UPLOAD_FILE_PATH = '/filemanager/api/v3/files/upload'
+  
     class << self
-      def upload(file, params)
-        query = {
-          overwrite: params['overwrite'] || false,
-          hidden: params['hidden'] || false
+      def upload(file, params = {})
+        body = {
+          file: file,
+          options: JSON.generate(file_options(params)),
+          folderPath: '/docs'
         }
-        options = {
-          multipart:
-            [
-              { name: 'files', contents: file },
-              { name: 'file_names', contents: params['file_names'] },
-              { name: 'folder_paths', contents: params['folder_paths'] }
-            ]
+
+        ::Hubspot::FilesConnection.post(UPLOAD_FILE_PATH, body: body, params: params)
+      end
+
+      protected
+
+      def file_options(params)
+        {
+          'access' => params['access'] || 'PUBLIC_INDEXABLE',
+          'ttl' => params['ttl'] || 'P3M',
+          'overwrite' => params['overwrite'] || false,
+          'duplicateValidationStrategy' => params['duplicate_validation_strategy'] || 'NONE',
+          'duplicateValidationScope' => params['duplicate_validation_scope'] || 'ENTIRE_PORTAL'
         }
-        Hubspot::FilesConnection.post(UPLOAD_FILE_PATH, params: query, body: options)
       end
     end
   end
