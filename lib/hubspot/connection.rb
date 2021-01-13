@@ -4,7 +4,7 @@ module Hubspot
 
     class << self
       def get_json(path, opts)
-        url = generate_url(path, opts)
+        url = generate_url(path, opts[:params])
         response = get(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
         log_request_and_response url, response
         handle_response(response)
