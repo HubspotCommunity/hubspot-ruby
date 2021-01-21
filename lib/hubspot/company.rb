@@ -158,6 +158,14 @@ class Hubspot::Company < Hubspot::Resource
 
       true
     end
+
+    def company_by_id(company_id)
+      if company_id.present?
+        path = FIND_PATH
+        params = { id: company_id }
+        response = Hubspot::Connection.get_json(path, params: params)
+      end
+    end
   end
 
   def contacts(opts = {})
