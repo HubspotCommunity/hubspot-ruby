@@ -42,11 +42,15 @@ class Hubspot::Contact < Hubspot::Resource
     end
 
     def create_or_update(email, properties = {})
-      request = {
-        properties: Hubspot::Utils.hash_to_properties(properties.stringify_keys, key_name: "property")
-      }
+      request = JSON.parse(properties)
       response = Hubspot::Connection.post_json(CREATE_OR_UPDATE_PATH, params: {email: email}, body: request)
       from_result(response)
+    end
+
+    def update_contact(contact, properties = {})
+      request = JSON.parse(properties)
+      params = { id: contact, no_parse: true}
+      response = Hubspot::Connection.post_json(UPDATE_PATH, params: params, body: request)
     end
 
     def search(query, opts = {})
