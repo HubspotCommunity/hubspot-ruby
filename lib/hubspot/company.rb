@@ -133,21 +133,21 @@ class Hubspot::Company < Hubspot::Resource
       true
     end
 
-    def batch_update(companies, opts = {})
-      request = companies.map do |company|
-        # Use the specified options or update with the changes
-        changes = opts.empty? ? company.changes : opts
+    def batch_update(request)
+      # request = companies.map do |company|
+      #   # Use the specified options or update with the changes
+      #   changes = opts.empty? ? company.changes : opts
 
-        unless changes.empty?
-          {
-            "objectId" => company.id,
-            "properties" => changes.map { |k, v| { "name" => k, "value" => v } }
-          }
-        end
-      end
+      #   unless changes.empty?
+      #     {
+      #       "objectId" => company.id,
+      #       "properties" => changes.map { |k, v| { "name" => k, "value" => v } }
+      #     }
+      #   end
+      # end
 
       # Remove any objects without changes and return if there is nothing to update
-      request.compact!
+      request.compact
       return true if request.empty?
 
       Hubspot::Connection.post_json(
