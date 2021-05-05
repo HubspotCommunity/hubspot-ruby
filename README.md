@@ -1,3 +1,10 @@
+# POULPE FORK - WHY?
+✍️In WOO-API we currently use 2 apps for managing hubspot. This is because we started (May 2020) with the `hubspot-ruby` gem and decided later (April 2021) to integrate all future Hubspot services with the official `hubspot-api-client` gem.<br/>
+⏳The full conversion to the `hubspot-api-client` will be done in the future, at which point we will stop using the `hubspot-ruby` gem.<br/>
+⚠️For now we need both. The only problem is that both gems use an OAuth class differently. In this gem it is a Class, in the `hubspot-api-client` gem it is a Module. So this does not play nicely together (bundle cannot be resolved).<br/>
+✅Thus our solution to fork this gem and comment the OAuth class in this gem. That is literally all we do in this gem.<br/><br/>
+👇 below the Readme as in the `hubspot-ruby` gem
+
 # HubSpot REST API wrappers for ruby
 
 [![Build Status](https://travis-ci.org/adimichele/hubspot-ruby.svg?branch=master)](https://travis-ci.org/adimichele/hubspot-ruby)
