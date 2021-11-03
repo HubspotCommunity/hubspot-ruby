@@ -61,6 +61,23 @@ describe Hubspot::Config do
       expect(Hubspot::Config.hapikey).to be nil
       expect(Hubspot::Config.portal_id).to be nil
     end
+    
+    it "clears oauth token" do
+      Hubspot::Config.configure(client_id: "123abc", client_secret: "456def", redirect_uri: "https://example.com", access_token: "789ghi")
+
+      expect(Hubspot::Connection.headers.size).to be 1
+
+      Hubspot::Config.reset!
+
+      expect(Hubspot::Config.hapikey).to be nil
+      expect(Hubspot::Config.client_id).to be nil
+      expect(Hubspot::Config.client_secret).to be nil
+      expect(Hubspot::Config.redirect_uri).to be nil
+      expect(Hubspot::Config.access_token).to be nil
+      
+      expect(Hubspot::Connection.headers.empty?).to be true
+            
+    end
   end
 
   describe ".ensure!" do
