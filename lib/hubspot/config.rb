@@ -42,7 +42,11 @@ module Hubspot
         @portal_id = nil
         @logger = DEFAULT_LOGGER
         @access_token = nil
-        Hubspot::Connection.headers({})
+        @client_id = nil
+        @client_secret = nil
+        @redirect_uri = nil
+        
+        Hubspot::Connection.headers.clear
       end
 
       def ensure!(*params)
