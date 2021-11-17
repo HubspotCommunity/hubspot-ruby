@@ -12,6 +12,8 @@ class Hubspot::Contact < Hubspot::Resource
   MERGE_PATH              = '/contacts/v1/contact/merge-vids/:id/'
   SEARCH_PATH             = '/contacts/v1/search/query'
   UPDATE_PATH             = '/contacts/v1/contact/vid/:id/profile'
+  DELETE_SECONDARY_EMAIL_PATH =
+    '/contacts/v1/secondary-email/:id/email/:email'
 
   class << self
     def all(opts = {})
@@ -78,5 +80,11 @@ class Hubspot::Contact < Hubspot::Resource
 
   def merge(contact)
     self.class.merge(@id, contact.to_i)
+  end
+
+  def delete_secondary_email(secondary_email)
+    raise(Hubspot::InvalidParams.new("Resource must have an ID")) if @id.nil?
+    Hubspot::Connection.delete_json(DELETE_SECONDARY_EMAIL_PATH, id: @id, email: secondary_email)
+    true
   end
 end
