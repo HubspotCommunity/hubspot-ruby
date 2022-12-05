@@ -44,7 +44,7 @@ RSpec.describe Hubspot::Contact do
     context 'without properties' do
       cassette
 
-      let(:email) { Faker::Internet.safe_email("#{(0..3).map { (65 + rand(26)).chr }.join}#{Time.new.to_i.to_s[-5..-1]}") }
+      let(:email) { Faker::Internet.safe_email(name: "#{(0..3).map { (65 + rand(26)).chr }.join}#{Time.new.to_i.to_s[-5..-1]}") }
       subject { described_class.create email }
 
       it 'creates a new contact' do
@@ -56,7 +56,7 @@ RSpec.describe Hubspot::Contact do
     context 'with properties' do
       cassette
 
-      let(:email) { Faker::Internet.safe_email("#{(0..3).map { (65 + rand(26)).chr }.join}#{Time.new.to_i.to_s[-5..-1]}") }
+      let(:email) { Faker::Internet.safe_email(name: "#{(0..3).map { (65 + rand(26)).chr }.join}#{Time.new.to_i.to_s[-5..-1]}") }
       let(:firstname) { "Allison" }
       let(:properties) { { firstname: firstname } }
 
