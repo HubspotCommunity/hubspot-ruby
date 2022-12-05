@@ -60,6 +60,7 @@ describe Hubspot::Config do
 
       expect(Hubspot::Config.hapikey).to be nil
       expect(Hubspot::Config.portal_id).to be nil
+      expect(Hubspot::Config.default_config).to be nil
     end
   end
 
@@ -82,6 +83,47 @@ describe Hubspot::Config do
           Hubspot::Config.ensure!(:portal_id)
         }.not_to raise_error
       end
+    end
+  end
+
+  describe "thread safety" do
+    it "localizes changes to the config to the current thread" do
+      Hubspot::Config.configure(hapikey: "123abc")
+
+      Thread.new do
+        Hubspot::Config.configure(hapikey: "foo")
+        expect(Hubspot::Config.hapikey).to eq("foo")
+      end.join
+
+      expect(Hubspot::Config.hapikey).to eq("123abc")
+    end
+
+    it "falls back to the global config when no thread local config exists" do
+      Hubspot::Config.configure(hapikey: "123abc")
+
+      Thread.new do
+        expect(Hubspot::Config.hapikey).to eq("123abc")
+      end.join
+    end
+
+    it "does not overwrite @default_config w/o reset" do
+      Hubspot::Config.configure(hapikey: "123abc")
+
+      Thread.new do
+        Hubspot::Config.configure(hapikey: "foobar")
+        expect(Hubspot::Config.hapikey).to eq("foobar")
+      end.join
+
+      expect(Hubspot::Config.default_config).to eq("hapikey" => "123abc")
+
+      # Setting to nil thru setter doesn't change the default
+      # I don't like this, but it is expected behavior.
+      Hubspot::Config.hapikey = nil
+      expect(Hubspot::Config.hapikey).to eq("123abc")
+
+      Hubspot::Config.reset!
+
+      expect(Hubspot::Config.hapikey).to be_nil
     end
   end
 end
