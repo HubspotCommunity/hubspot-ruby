@@ -3,9 +3,26 @@ module Hubspot
     include HTTParty
 
     class << self
+      @@mutex = Mutex.new
+
+      # A copy/paste from srouce, except instead of modifying the default_options,
+      # we modify the thread-local default_headers config
+      def headers(h = nil)
+        if h
+          raise ArgumentError, 'Headers must be an object which responds to #to_hash' unless h.respond_to?(:to_hash)
+          Config.default_headers = Config.default_headers.to_hash.merge(h.to_hash)
+        else
+          Config.default_headers || {}
+        end
+      end
+
       def get_json(path, opts)
         url = generate_url(path, opts)
-        response = get(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
+
+        response = with_headers do
+          get(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
+        end
+
         log_request_and_response url, response
         handle_response(response)
       end
@@ -14,14 +31,16 @@ module Hubspot
         no_parse = opts[:params].delete(:no_parse) { false }
 
         url = generate_url(path, opts[:params])
-        response = post(
-          url,
-          body: opts[:body].to_json,
-          headers: { 'Content-Type' => 'application/json' },
-          format: :json,
-          read_timeout: read_timeout(opts),
-          open_timeout: open_timeout(opts)
-        )
+        response = with_headers do
+          response = post(
+            url,
+            body: opts[:body].to_json,
+            headers: { 'Content-Type' => 'application/json' },
+            format: :json,
+            read_timeout: read_timeout(opts),
+            open_timeout: open_timeout(opts)
+          )
+        end
 
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
@@ -33,14 +52,16 @@ module Hubspot
         no_parse = options[:params].delete(:no_parse) { false }
         url = generate_url(path, options[:params])
 
-        response = put(
-          url,
-          body: options[:body].to_json,
-          headers: { "Content-Type" => "application/json" },
-          format: :json,
-          read_timeout: read_timeout(options),
-          open_timeout: open_timeout(options),
-        )
+        response = with_headers do
+          put(
+            url,
+            body: options[:body].to_json,
+            headers: { "Content-Type" => "application/json" },
+            format: :json,
+            read_timeout: read_timeout(options),
+            open_timeout: open_timeout(options),
+          )
+        end
 
         log_request_and_response(url, response, options[:body])
         raise(Hubspot::RequestError.new(response)) unless response.success?
@@ -50,13 +71,31 @@ module Hubspot
 
       def delete_json(path, opts)
         url = generate_url(path, opts)
-        response = delete(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
+        response = with_headers do
+          delete(url, format: :json, read_timeout: read_timeout(opts), open_timeout: open_timeout(opts))
+        end
         log_request_and_response url, response, opts[:body]
         raise(Hubspot::RequestError.new(response)) unless response.success?
         response
       end
 
       protected
+
+      # This method hacks in thread saftey for connection headers
+      # With the use of a mutex, we store the previously set headers,
+      # apply any thread-local headers, yield the given block,
+      # then restore the previously set headers
+      def with_headers
+        @@mutex.synchronize do
+          prior_default_headers = default_options[:headers]
+          default_options[:headers] = Config.default_headers
+
+          yielded_response = yield
+
+          default_options[:headers] = prior_default_headers
+          yielded_response
+        end
+      end
 
       def read_timeout(opts = {})
         opts.delete(:read_timeout) || Hubspot::Config.read_timeout

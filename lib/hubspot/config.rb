@@ -5,7 +5,7 @@ module Hubspot
   class Config
     CONFIG_KEYS = [
       :hapikey, :base_url, :portal_id, :logger, :access_token, :client_id,
-      :client_secret, :redirect_uri, :read_timeout, :open_timeout
+      :client_secret, :redirect_uri, :read_timeout, :open_timeout, :default_headers
     ]
     DEFAULT_LOGGER = Logger.new(nil)
     DEFAULT_BASE_URL = "https://api.hubapi.com".freeze
@@ -29,6 +29,11 @@ module Hubspot
         end
       end
 
+      def access_token=(value)
+        self.default_headers = default_headers.merge("Authorization" => "Bearer #{value}") if value
+        Thread.current["hubspot-ruby-access_token"] = value
+      end
+
       # @default_config stores the 'original' configuration so we don't have
       # to reconfigure in every thread, effectively allow inherited configs from a parent thread.
       #
@@ -47,9 +52,6 @@ module Hubspot
           raise Hubspot::ConfigurationError.new("You must provide either an access_token or an hapikey")
         end
 
-        if access_token.present?
-          Hubspot::Connection.headers("Authorization" => "Bearer #{access_token}")
-        end
         self
       end
 
@@ -61,7 +63,7 @@ module Hubspot
         self.portal_id = nil
         self.logger = DEFAULT_LOGGER
         self.access_token = nil
-        Hubspot::Connection.headers({})
+        self.default_headers = {}
       end
 
       def ensure!(*params)

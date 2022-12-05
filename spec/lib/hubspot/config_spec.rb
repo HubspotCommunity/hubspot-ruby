@@ -3,38 +3,46 @@ describe Hubspot::Config do
     it "sets the hapikey config" do
       hapikey = "demo"
 
-      config = Hubspot::Config.configure(hapikey: hapikey)
+      Hubspot::Config.configure(hapikey: hapikey)
 
-      expect(config.hapikey).to eq(hapikey)
+      expect(Hubspot::Config.hapikey).to eq(hapikey)
     end
 
     it "changes the base_url" do
       base_url = "https://api.hubapi.com/v2"
 
-      config = Hubspot::Config.configure(
+      Hubspot::Config.configure(
         hapikey: "123abc",
         base_url: base_url
       )
 
-      expect(config.base_url).to eq(base_url)
+      expect(Hubspot::Config.base_url).to eq(base_url)
     end
 
     it "sets a default value for base_url" do
-      config = Hubspot::Config.configure(hapikey: "123abc")
+      Hubspot::Config.configure(hapikey: "123abc")
 
-      expect(config.base_url).to eq("https://api.hubapi.com")
+      expect(Hubspot::Config.base_url).to eq("https://api.hubapi.com")
     end
 
     it "sets a value for portal_id" do
       portal_id = "62515"
 
-      config = Hubspot::Config.configure(
+      Hubspot::Config.configure(
         hapikey: "123abc",
         portal_id: portal_id
       )
 
-      expect(config.portal_id).to eq(portal_id)
+      expect(Hubspot::Config.portal_id).to eq(portal_id)
     end
+
+    it "augments the default_headers when an access_token is provided" do
+      Hubspot::Config.configure(access_token: "123abc")
+
+      expect(Hubspot::Config.access_token).to eq("123abc")
+      expect(Hubspot::Config.default_headers).to eq("Authorization" => "Bearer 123abc")
+    end
+
 
     it "raises when an authentication approach is not provided" do
       expect {
