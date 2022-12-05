@@ -16,12 +16,16 @@ module Hubspot
       CONFIG_KEYS.each do |key|
         namespaced_key = "hubspot-ruby-#{key}"
 
-        define_method key do
-          Thread.current[namespaced_key] || @default_config.try(:[], key.to_s)
+        unless respond_to?(key)
+          define_method key do
+            Thread.current[namespaced_key] || @default_config.try(:[], key.to_s)
+          end
         end
 
-        define_method "#{key}=" do |value|
-          Thread.current[namespaced_key] = value
+        unless respond_to?("#{key}=")
+          define_method "#{key}=" do |value|
+            Thread.current[namespaced_key] = value
+          end
         end
       end
 
