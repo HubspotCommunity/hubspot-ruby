@@ -25,18 +25,18 @@ module Hubspot
 
     class << self
       # {https://developers.hubspot.com/docs/methods/contacts/create_contact}
-      def create!(email, params={})
+      def create!(connection, email, params={})
         params_with_email = params.stringify_keys
         params_with_email = params.stringify_keys.merge('email' => email) if email
         post_data = {properties: Hubspot::Utils.hash_to_properties(params_with_email)}
-        response = Hubspot::Connection.post_json(CREATE_CONTACT_PATH, params: {}, body: post_data )
+        response = connection.post_json(CREATE_CONTACT_PATH, params: {}, body: post_data )
         new(response)
       end
 
       # {https://developers.hubspot.com/docs/methods/contacts/get_contacts}
       # {https://developers.hubspot.com/docs/methods/contacts/get_recently_updated_contacts}
       # {https://developers.hubspot.com/docs/methods/contacts/get_recently_created_contacts}
-      def all(opts={})
+      def all(connection, opts={})
         recent = opts.delete(:recent) { false }
         recent_created = opts.delete(:recent_created) { false }
         paged = opts.delete(:paged) { false }
@@ -49,7 +49,7 @@ module Hubspot
           [CONTACTS_PATH, opts]
         end
 
-        response = Hubspot::Connection.get_json(path, opts)
+        response = connection.get_json(path, opts)
         response['contacts'].map! { |c| new(c) }
         paged ? response : response['contacts']
       end
@@ -57,9 +57,9 @@ module Hubspot
       # TODO: create or update a contact
       # PATH /contacts/v1/contact/createOrUpdate/email/:contact_email
       # API endpoint: https://developers.hubspot.com/docs/methods/contacts/create_or_update
-      def createOrUpdate(email, params={})
+      def createOrUpdate(connection, email, params={})
         post_data = {properties: Hubspot::Utils.hash_to_properties(params.stringify_keys)}
-        response = Hubspot::Connection.post_json(CREATE_OR_UPDATE_PATH, params: { contact_email: email }, body: post_data )
+        response = connection.post_json(CREATE_OR_UPDATE_PATH, params: { contact_email: email }, body: post_data )
         contact = find_by_id(response['vid'])
         contact.is_new = response['isNew']
         contact
@@ -67,7 +67,7 @@ module Hubspot
 
       # NOTE: Performance is best when calls are limited to 100 or fewer contacts
       # {https://developers.hubspot.com/docs/methods/contacts/batch_create_or_update}
-      def create_or_update!(contacts)
+      def create_or_update!(connection, contacts)
         query = contacts.map do |ch|
           contact_hash = ch.with_indifferent_access
           if contact_hash[:vid]
@@ -85,7 +85,7 @@ module Hubspot
           end
           contact_param
         end
-        Hubspot::Connection.post_json(BATCH_CREATE_OR_UPDATE_PATH,
+        connection.post_json(BATCH_CREATE_OR_UPDATE_PATH,
                                       params: {},
                                       body: query)
       end
@@ -93,21 +93,21 @@ module Hubspot
       # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_vid}
-      def find_by_id(vids)
+      def find_by_id(connection, vids)
         batch_mode, path, params = case vids
         when Integer then [false, GET_CONTACT_BY_ID_PATH, { contact_id: vids }]
         when Array then [true, CONTACT_BATCH_PATH, { batch_vid: vids }]
         else raise Hubspot::InvalidParams, 'expecting Integer or Array of Integers parameter'
         end
 
-        response = Hubspot::Connection.get_json(path, params)
+        response = connection.get_json(path, params)
         raise Hubspot::ApiError if batch_mode
         new(response)
       end
 
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_email}
-      def find_by_email(emails)
+      def find_by_email(connection, emails)
         batch_mode, path, params = case emails
         when String then [false, GET_CONTACT_BY_EMAIL_PATH, { contact_email: emails }]
         when Array then [true, GET_CONTACTS_BY_EMAIL_PATH, { batch_email: emails }]
@@ -115,7 +115,7 @@ module Hubspot
         end
 
         begin
-          response = Hubspot::Connection.get_json(path, params)
+          response = connection.get_json(path, params)
           if batch_mode
             response.map{|_, contact| new(contact)}
           else
@@ -130,24 +130,24 @@ module Hubspot
       # NOTE: problem with batch api endpoint
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_utk}
       # {https://developers.hubspot.com/docs/methods/contacts/get_batch_by_utk}
-      def find_by_utk(utks)
+      def find_by_utk(connection, utks)
         batch_mode, path, params = case utks
         when String then [false, GET_CONTACT_BY_UTK_PATH, { contact_utk: utks }]
         when Array then [true, GET_CONTACTS_BY_UTK_PATH, { batch_utk: utks }]
         else raise Hubspot::InvalidParams, 'expecting String or Array of Strings parameter'
         end
 
-        response = Hubspot::Connection.get_json(path, params)
+        response = connection.get_json(path, params)
         raise Hubspot::ApiError if batch_mode
         new(response)
       end
 
       # {https://developers.hubspot.com/docs/methods/contacts/search_contacts}
-      def search(query, options = {})
+      def search(connection, query, options = {})
         count   = options.fetch(:count, 100)
         offset  = options.fetch(:offset, 0)
 
-        response = Hubspot::Connection.get_json(QUERY_PATH, { q: query, count: count, offset: offset })
+        response = connection.get_json(QUERY_PATH, { q: query, count: count, offset: offset })
         response.merge("contacts" => response["contacts"].map { |contact_hash| new(contact_hash) })
       end
 
@@ -156,8 +156,8 @@ module Hubspot
       # The main email will be the primary contact's
       # The secondary email still won't be available for new contacts
       # {https://developers.hubspot.com/docs/methods/contacts/merge-contacts}
-      def merge!(primary_contact_vid, secondary_contact_vid)
-        Hubspot::Connection.post_json(
+      def merge!(connection, primary_contact_vid, secondary_contact_vid)
+        connection.post_json(
           MERGE_CONTACT_PATH,
           params: { contact_id: primary_contact_vid, no_parse: true },
           body: { vidToMerge: secondary_contact_vid }
@@ -196,9 +196,9 @@ module Hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/update_contact}
     # @param params [Hash] hash of properties to update
     # @return [Hubspot::Contact] self
-    def update!(params)
+    def update!(connection, params)
       query = {"properties" => Hubspot::Utils.hash_to_properties(params.stringify_keys!)}
-      Hubspot::Connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
+      connection.post_json(UPDATE_CONTACT_PATH, params: { contact_id: vid }, body: query)
       @properties.merge!(params)
       self
     end
@@ -206,8 +206,8 @@ module Hubspot
     # Archives the contact in hubspot
     # {https://developers.hubspot.com/docs/methods/contacts/delete_contact}
     # @return [TrueClass] true
-    def destroy!
-      Hubspot::Connection.delete_json(DESTROY_CONTACT_PATH, { contact_id: vid })
+    def destroy!(connection)
+      connection.delete_json(DESTROY_CONTACT_PATH, { contact_id: vid })
       @destroyed = true
     end
 

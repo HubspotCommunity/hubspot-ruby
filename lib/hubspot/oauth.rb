@@ -7,39 +7,39 @@ module Hubspot
     DEFAULT_OAUTH_HEADERS = {"Content-Type" => "application/x-www-form-urlencoded;charset=utf-8"}
 
     class << self
-      def refresh(token, params={}, options={})
-        oauth_post(token_url, { grant_type: "refresh_token", refresh_token: token }.merge(params),
+      def refresh(config, token, params={}, options={})
+        oauth_post(config, { grant_type: "refresh_token", refresh_token: token }.merge(params),
           options)
       end
 
-      def create(code, params={}, options={})
-        oauth_post(token_url, { grant_type: "authorization_code", code: code }.merge(params),
+      def create(config, code, params={}, options={})
+        oauth_post(config, { grant_type: "authorization_code", code: code }.merge(params),
           options)
       end
 
-      def authorize_url(scopes, params={})
-        client_id = params[:client_id] || Hubspot::Config.client_id
-        redirect_uri = params[:redirect_uri] || Hubspot::Config.redirect_uri
+      def authorize_url(config, scopes, params={})
+        client_id = params[:client_id] || config.client_id
+        redirect_uri = params[:redirect_uri] || config.redirect_uri
         scopes = Array.wrap(scopes)
 
         "https://app.hubspot.com/oauth/authorize?client_id=#{client_id}&scope=#{scopes.join("%20")}&redirect_uri=#{redirect_uri}"
       end
 
-      def token_url
-        token_url = Hubspot::Config.base_url + "/oauth/v1/token"
+      def token_url(config)
+        config.base_url + "/oauth/v1/token"
       end
 
-      def oauth_post(url, params, options={})
+      def oauth_post(config, params, options={})
         no_parse = options[:no_parse] || false
 
+        url = token_url(config)
         body = {
-          client_id: Hubspot::Config.client_id,
-          client_secret: Hubspot::Config.client_secret,
-          redirect_uri: Hubspot::Config.redirect_uri,
+          client_id: config.client_id,
+          client_secret: config.client_secret,
+          redirect_uri: config.redirect_uri,
         }.merge(params)
 
         response = post(url, body: body, headers: DEFAULT_OAUTH_HEADERS)
-        log_request_and_response url, response, body
 
         raise(Hubspot::RequestError.new(response)) unless response.success?
 
