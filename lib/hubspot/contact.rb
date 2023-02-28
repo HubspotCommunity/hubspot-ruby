@@ -101,8 +101,11 @@ module Hubspot
         end
 
         response = connection.get_json(path, params)
-        raise Hubspot::ApiError if batch_mode
-        new(response)
+        if batch_mode
+          response.values.map{|i| new(i)}
+        else
+          new(response)
+        end
       end
 
       # {https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email}
