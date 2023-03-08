@@ -15,36 +15,36 @@ module Hubspot
         superclass.add_default_parameters(opts)
       end
 
-      def all(opts={}, filter={})
-        superclass.all(ALL_PROPERTIES_PATH, opts, filter)
+      def all(connection, opts={}, filter={})
+        superclass.all(connection, ALL_PROPERTIES_PATH, opts, filter)
       end
 
-      def groups(opts={}, filter={})
-        superclass.groups(ALL_GROUPS_PATH, opts, filter)
+      def groups(connection, opts={}, filter={})
+        superclass.groups(connection, ALL_GROUPS_PATH, opts, filter)
       end
 
-      def create!(params={})
-        superclass.create!(CREATE_PROPERTY_PATH, params)
+      def create!(connection, params={})
+        superclass.create!(connection, CREATE_PROPERTY_PATH, params)
       end
 
-      def update!(property_name, params={})
-        superclass.update!(UPDATE_PROPERTY_PATH, property_name, params)
+      def update!(connection, property_name, params={})
+        superclass.update!(connection, UPDATE_PROPERTY_PATH, property_name, params)
       end
 
-      def delete!(property_name)
-        superclass.delete!(DELETE_PROPERTY_PATH, property_name)
+      def delete!(connection, property_name)
+        superclass.delete!(connection, DELETE_PROPERTY_PATH, property_name)
       end
 
-      def create_group!(params={})
-        superclass.create_group!(CREATE_GROUP_PATH, params)
+      def create_group!(connection, params={})
+        superclass.create_group!(connection, CREATE_GROUP_PATH, params)
       end
 
-      def update_group!(group_name, params={})
-        superclass.update_group!(UPDATE_GROUP_PATH, group_name, params)
+      def update_group!(connection, group_name, params={})
+        superclass.update_group!(connection, UPDATE_GROUP_PATH, group_name, params)
       end
 
-      def delete_group!(group_name)
-        superclass.delete_group!(DELETE_GROUP_PATH, group_name)
+      def delete_group!(connection, group_name)
+        superclass.delete_group!(connection, DELETE_GROUP_PATH, group_name)
       end
 
       def same?(src, dst)
