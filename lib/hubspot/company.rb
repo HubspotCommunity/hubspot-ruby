@@ -15,6 +15,7 @@ class Hubspot::Company < Hubspot::Resource
   REMOVE_CONTACT_PATH     = '/companies/v2/companies/:id/contacts/:contact_id'
   SEARCH_DOMAIN_PATH      = '/companies/v2/domains/:domain/companies'
   UPDATE_PATH             = '/companies/v2/companies/:id'
+  MERGE_PATH              = '/crm/v3/objects/companies/merge'
 
   class << self
     def all(opts = {})
@@ -121,6 +122,18 @@ class Hubspot::Company < Hubspot::Resource
 
       true
     end
+
+    def merge(merge_into_id, merged_id)
+      Hubspot::Connection.post_json(
+        MERGE_PATH,
+        params: {},
+        body: {
+          "primaryObjectId" => merge_into_id,
+          "objectIdToMerge" => merged_id
+        }
+      )
+    end
+
   end
 
   def contacts(opts = {})
@@ -156,5 +169,9 @@ class Hubspot::Company < Hubspot::Resource
 
   def remove_contact(contact)
     self.class.remove_contact(@id, contact.to_i)
+  end
+
+  def merge(company)
+    self.class.merge(@id, company.to_i)
   end
 end

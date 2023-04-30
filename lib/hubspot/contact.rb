@@ -38,7 +38,11 @@ class Hubspot::Contact < Hubspot::Resource
     alias_method :find_by_utk, :find_by_user_token
 
     def create(email, properties = {})
-      super(properties.merge("email" => email))
+      if email
+        super(properties.merge("email" => email))
+      else
+        super(properties)
+      end
     end
 
     def create_or_update(email, properties = {})
