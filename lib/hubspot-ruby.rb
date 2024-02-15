@@ -20,6 +20,26 @@ require 'hubspot/owner'
 require 'hubspot/engagement'
 require 'hubspot/subscription'
 
+class String
+  # colorization
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+end
+
+deprecation_message = <<~DEPRECATION_MESSAGE
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!!! This fork of hubspot-ruby is deprecated. Please use the official hubspot-ruby   !!!! 
+  !!!! gem or consider the hubspot-api-client gem.                                     !!!!
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+DEPRECATION_MESSAGE
+
+warn(deprecation_message.red)
+
 module Hubspot
   def self.configure(config={})
     Hubspot::Config.configure(config)
