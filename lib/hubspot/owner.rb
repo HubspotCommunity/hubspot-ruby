@@ -8,11 +8,8 @@ module Hubspot
   # TODO: Update an Owner
   # TODO: Delete an Owner
   class Owner
-    GET_OWNER_PATH    = '/owners/v2/owners/:owner_id' # GET
-    GET_OWNERS_PATH   = '/owners/v2/owners' # GET
-    CREATE_OWNER_PATH = '/owners/v2/owners' # POST
-    UPDATE_OWNER_PATH = '/owners/v2/owners/:owner_id' # PUT
-    DELETE_OWNER_PATH = '/owners/v2/owners/:owner_id' # DELETE
+    GET_OWNER_PATH    = '/crm/v3/owners/:owner_id' # GET
+    GET_OWNERS_PATH   = '/crm/v3/owners' # GET
 
 
     attr_reader :properties, :owner_id, :email
@@ -36,14 +33,15 @@ module Hubspot
       end
 
       def find(id, include_inactive=false)
+        path     = GET_OWNER_PATH
         response = Hubspot::Connection.get_json(path, owner_id: id,
-          include_inactive: include_inactive)
+                                                archived: include_inactive)
         new(response)
       end
 
       def find_by_email(email, include_inactive=false)
         path     = GET_OWNERS_PATH
-        params   = { email: email, includeInactive: include_inactive }
+        params   = { email: email, archived: include_inactive }
         response = Hubspot::Connection.get_json(path, params)
         response.blank? ? nil : new(response.first)
       end
